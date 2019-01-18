@@ -1,13 +1,13 @@
-/*! nice-validator 1.0.10
- * (c) 2012-2017 Jony Zhang <niceue@live.com>, MIT Licensed
+/*! nice-validator 1.1.4
+ * (c) 2012-2018 Jony Zhang <niceue@live.com>, MIT Licensed
  * https://github.com/niceue/nice-validator
  */
 ;(function(factory) {
-    typeof module === "object" && module.exports ? module.exports = factory( require( "jquery" ) ) :
+    typeof module === 'object' && module.exports ? module.exports = factory( require( 'jquery' ) ) :
     typeof define === 'function' && define.amd ? define(['jquery'], factory) :
     factory(jQuery);
 }(function($, undefined) {
-    "use strict";
+    'use strict';
 
     var NS = 'validator',
         CLS_NS = '.' + NS,
@@ -16,7 +16,6 @@
         CLS_NS_FORM = '.form',
         CLS_WRAPPER = 'nice-' + NS,
         CLS_MSG_BOX = 'msg-box',
-        ARIA_REQUIRED = 'aria-required',
         ARIA_INVALID = 'aria-invalid',
         DATA_RULE = 'data-rule',
         DATA_MSG = 'data-msg',
@@ -287,7 +286,7 @@
             }
             options = me._opt = options || {};
             dataOpt = attr(element, 'data-'+ NS +'-option');
-            dataOpt = me._dataOpt = dataOpt && dataOpt.charAt(0) === '{' ? (new Function("return " + dataOpt))() : {};
+            dataOpt = me._dataOpt = dataOpt && dataOpt.charAt(0) === '{' ? (new Function('return ' + dataOpt))() : {};
             themeOpt = me._themeOpt = themes[ options.theme || dataOpt.theme || defaults.theme ];
             opt = me.options = $.extend({}, defaults, fieldDefaults, themeOpt, me.options, options, dataOpt);
 
@@ -337,19 +336,16 @@
 
             if ( !(me.isAjaxSubmit = !!me.options.valid) ) {
                 // if there is a "valid.form" event
-                var events = ($._data || $.data)(form, "events");
+                var events = ($._data || $.data)(form, 'events');
                 me.isAjaxSubmit = issetEvent(events, 'valid', 'form') || issetEvent(events, 'submit', 'form-plugin');
             }
 
             function issetEvent(events, name, namespace) {
-                if ( events && events[name] &&
-                     $.map(events[name], function(e){
+                return !!(
+                    events && events[name]
+                    && $.map(events[name], function(e){
                         return ~e.namespace.indexOf(namespace) ? 1 : null;
-                     }).length
-                ) {
-                    return true;
-                }
-                return false;
+                    }).length )
             }
         },
 
@@ -412,8 +408,10 @@
             ) {
                 key = '#' + el.id;
             }
-            // doesn't verify a field that has neither id nor name
-            if (!key) return;
+            // Generate id
+            if (!key) {
+                key = '#' + (el.id = 'N' + String(Math.random()).slice(-12));
+            }
 
             field = me.getField(key, true);
             // The priority of passing parameter by DOM is higher than by JS.
@@ -428,7 +426,6 @@
                 }
                 if ( /\brequired\b/.test(field.rule) ) {
                     field.required = true;
-                    attr(el, ARIA_REQUIRED, true);
                 }
                 if (timely = attr(el, DATA_TIMELY)) {
                     field.timely = +timely;
@@ -464,9 +461,9 @@
                     var args = arguments;
                     args[4] = args[4] || args[5];
                     field._rules.push({
-                        and: args[1] === "&",
-                        not: args[2] === "!",
-                        or: args[6] === "|",
+                        and: args[1] === '&',
+                        not: args[2] === '!',
+                        or:  args[6] === '|',
                         method: args[3],
                         params: args[4] ? $.map( args[4].split(', '), trim ) : undefined
                     });
@@ -515,7 +512,7 @@
             var me = this,
                 opt = me.options,
                 form = e.target,
-                canSubmit = e.type === 'submit' && !e.isDefaultPrevented();
+                canSubmit = e.type === 'submit' && form.tagName === 'FORM' && !e.isDefaultPrevented();
 
             e.preventDefault();
 
@@ -592,9 +589,6 @@
         _resetElement: function(el, all) {
             this._setClass(el, null);
             this.hideMsg(el);
-            if (all) {
-                attr(el, ARIA_REQUIRED, null);
-            }
         },
 
         // Handle events: "focusin/click"
@@ -784,7 +778,7 @@
                     me.showMsg(type)
                 }
                 else if ( type === 'tip' ) {
-                    me.$el.find(INPUT_SELECTOR +"["+ DATA_TIP +"]", el).each(function(){
+                    me.$el.find(INPUT_SELECTOR +'['+ DATA_TIP +']', el).each(function(){
                         me.showMsg(this, {type: type, msg: msg});
                     });
                 }
@@ -893,11 +887,14 @@
                     isValid = true;
                 }
             }
+            else {
+                isValid = !!ret
+            }
 
             rule = field._rules[field._i];
             if (rule.not) {
                 msg = undefined;
-                isValid = method === "required" || !isValid;
+                isValid = method === 'required' || !isValid;
             }
             if (rule.or) {
                 if (isValid) {
@@ -1002,7 +999,7 @@
             field._r = method;
 
             if (old && !field.must && !rule.must && rule.result !== undefined &&
-                 old.ruleName === method && old.id === el.id &&
+                old.ruleName === method && old.id === el.id &&
                 field.value && old.value === field.value )
             {
                 // get result from cache
@@ -1156,7 +1153,7 @@
             if ( $el.is(INPUT_SELECTOR) ) {
                 tgt = msgOpt.target || attr(el, DATA_TARGET);
                 if (tgt) {
-                    tgt = isFunction(tgt) ? tgt.call(this, el) : this.$el.find(tgt);
+                    tgt = !isFunction(tgt) ? tgt.charAt(0) === '#' ? $(tgt) : this.$el.find(tgt) : tgt.call(this, el);
                     if (tgt.length) {
                         if ( tgt.is(INPUT_SELECTOR) ) {
                             $el = tgt
@@ -1170,7 +1167,7 @@
                 }
                 if (!$msgbox) {
                     datafor = (!_checkable(el) || !el.name) && el.id ? el.id : el.name;
-                    $msgbox = this.$el.find(msgOpt.wrapper + '.' + CLS_MSG_BOX + '[for="' + datafor + '"]');
+                    $msgbox = (container || this.$el).find(msgOpt.wrapper + '.' + CLS_MSG_BOX + '[for="' + datafor + '"]');
                 }
             } else {
                 $msgbox = $el;
@@ -1184,12 +1181,12 @@
                     'for': datafor
                 });
 
-                if ( _checkable(el) ) {
-                    var $parent = $el.parent();
-                    $msgbox.appendTo( $parent.is('label') ? $parent.parent() : $parent );
+                if (container) {
+                    $msgbox.appendTo(container);
                 } else {
-                    if (container) {
-                        $msgbox.appendTo(container);
+                    if ( _checkable(el) ) {
+                        var $parent = $el.parent();
+                        $msgbox.appendTo( $parent.is('label') ? $parent.parent() : $parent );
                     } else {
                         $msgbox[!msgOpt.pos || msgOpt.pos === 'right' ? 'insertAfter' : 'insertBefore']($el);
                     }
@@ -1288,7 +1285,7 @@
                 msgHide.call(me, $msgbox, msgOpt.type);
             } else {
                 $msgbox[0].style.display = 'none';
-                $msgbox[0].innerHTML = null;
+                $msgbox[0].innerHTML = '';
             }
         },
 
@@ -1415,7 +1412,7 @@
                 },
                 getValue: function() {
                     var elem = this.element;
-                    if (elem.type === "number" && elem.validity && elem.validity.badInput) {
+                    if (elem.type === 'number' && elem.validity && elem.validity.badInput) {
                         return 'NaN';
                     }
                     return  $(elem)[this._valHook()]();
@@ -1523,8 +1520,9 @@
         var k, that = context ? context === true ? this : context : Rules.prototype;
 
         for (k in obj) {
-            if (_checkRuleName(k))
+            if (_checkRuleName(k)) {
                 that[k] = _getRule(obj[k]);
+            }
         }
     }
 
@@ -1598,7 +1596,7 @@
     function _getDataRule(el, method) {
         var fn = trim(attr(el, DATA_RULE + '-' + method));
 
-        if ( fn && (fn = new Function("return " + fn)()) ) {
+        if ( fn && (fn = new Function('return ' + fn)()) ) {
             return _getRule(fn);
         }
     }
@@ -1641,8 +1639,8 @@
 
     // Translate field key to jQuery selector.
     function _key2selector(key) {
-        var isID = key.charAt(0) === "#";
-        key = key.replace(/([:.{(|)}/\[\]])/g, "\\$1");
+        var isID = key.charAt(0) === '#';
+        key = key.replace(/([:.{(|)}/\[\]])/g, '\\$1');
         return isID ? key : '[name="'+ key +'"]:first';
     }
 
@@ -1683,7 +1681,7 @@
     });
 
     new Messages({
-        fallback: "This field is not valid.",
+        fallback: 'This field is not valid.',
         loading: 'Validating...'
     });
 
@@ -1696,6 +1694,7 @@
          *
          * @example:
             required
+            required(jqSelector)
             required(anotherRule)
             required(not, -1)
             required(from, .contact)
@@ -1714,10 +1713,7 @@
                     }
                     else if ( me.rules[params[0]] ) {
                         if ( !val && !me.test(element, params[0]) ) {
-                            attr(element, ARIA_REQUIRED, null);
                             return null;
-                        } else {
-                            attr(element, ARIA_REQUIRED, true);
                         }
                     }
                 }
@@ -1790,7 +1786,7 @@
             }
             re = '^(?:' + re + ')$';
 
-            return new RegExp(re).test(this.value) || this.messages.integer[key];
+            return new RegExp(re).test(this.value) || (this.messages.integer && this.messages.integer[key]);
         },
 
         /**
@@ -1811,6 +1807,7 @@
             if (!params) return;
 
             var me = this,
+                isValid = true,
                 a, b,
                 key, msg, type = 'eq', parser,
                 selector2, elem2, field2;
@@ -1838,7 +1835,7 @@
             }
 
             // If both fields are blank
-            if (!me.required && a === "" && b === "") {
+            if (!me.required && a === '' && b === '') {
                 return null;
             }
 
@@ -1854,26 +1851,29 @@
             }
 
             // If the compared field is incorrect, we only ensure that this field is correct.
-            if (type !== "eq" && !isNaN(+a) && isNaN(+b)) {
+            if (type !== 'eq' && !isNaN(+a) && isNaN(+b)) {
                 return true;
             }
 
-            msg = me.messages.match[type].replace( '{1}', me._getDisplay( element, field2.display || key ) );
-
             switch (type) {
                 case 'lt':
-                    return (+a < +b) || msg;
+                    isValid = +a < +b; break;
                 case 'lte':
-                    return (+a <= +b) || msg;
+                    isValid = +a <= +b; break;
                 case 'gte':
-                    return (+a >= +b) || msg;
+                    isValid = +a >= +b; break;
                 case 'gt':
-                    return (+a > +b) || msg;
+                    isValid = +a > +b; break;
                 case 'neq':
-                    return (a !== b) || msg;
+                    isValid = a !== b; break;
                 default:
-                    return (a === b) || msg;
+                    isValid = a === b;
             }
+
+            return isValid || (
+                isObject(me.messages.match)
+                && me.messages.match[type].replace( '{1}', me._getDisplay( elem2, field2.display || key ) )
+            );
         },
 
         /**
@@ -1918,7 +1918,7 @@
             if (params) {
                 return me.getRangeMsg(count, params);
             } else {
-                return !!count || _getDataMsg(elem, me, '') || me.messages.required;
+                return !!count || _getDataMsg(elem, me, '') || me.messages.required || false;
             }
         },
 
@@ -1956,6 +1956,8 @@
             By GET:             remote(get:path/to/server, name1, name2, ...);
             Name proxy:         remote(path/to/server, name1, proxyname2:name2, proxyname3:#id3, ...)
             Query String        remote(path/to/server, foo=1&bar=2, name1, name2, ...)
+            CORS                remote(cors:path/to/server)
+            JSONP               remote(jsonp:path/to/server)
          */
         remote: function(element, params) {
             if (!params) return;
@@ -2016,7 +2018,7 @@
          */
         filter: function(element, params) {
             var value = this.value,
-                temp = value.replace( params ? (new RegExp("[" + params[0] + "]", "gm")) : rUnsafe, '' );
+                temp = value.replace( params ? (new RegExp('[' + params[0] + ']', 'gm')) : rUnsafe, '' );
             if (temp !== value) this.setValue(temp);
         }
     });
