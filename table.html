@@ -1,19 +1,3 @@
-<script type="text/javascript">
-var tag_data = [
-    {id:1 ,name:'Chicago Bulls',desc:'芝加哥公牛'},
-    {id:2 ,name:'Cleveland Cavaliers',desc:'克里夫兰骑士'},
-    {id:3 ,name:'Detroit Pistons',desc:'底特律活塞'},
-    {id:4 ,name:'Indiana Pacers',desc:'印第安纳步行者'}
-];
-$('#selectPage1').selectPage({
-    showField : 'desc',
-    keyField : 'id',
-    data : tag_data,
-    listSize : 2,
-    pageSize : 2
-    //启用多选模式
-});
-</script>
 <div class="bjui-pageHeader">
     <form id="pagerForm" data-toggle="ajaxsearch" action="table.html" method="post">
         <input type="hidden" name="pageSize" value="${model.pageSize}">
@@ -29,7 +13,6 @@ $('#selectPage1').selectPage({
                 <option value="3">餐饮</option>
                 <option value="4">交通</option>
             </select>&nbsp;
-            <input type="text" id="selectPage1">
             <label>护照号：</label><input type="text" id="customNo" value="" name="code" class="form-control" size="10">&nbsp;
             <label>客户姓名：</label><input type="text" value="" name="name" class="form-control" size="8">&nbsp;
             <input type="checkbox" id="j_table_chk" value="true" data-toggle="icheck" data-label="我的客户">
