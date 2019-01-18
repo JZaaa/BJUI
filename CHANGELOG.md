@@ -9,7 +9,7 @@
 - 删除DragSort拖拽插件
 - zTree 插件升级至 v3.5.39
 - kindeditor 升级至 v4.1.12, 添加IE11支持
-- bootstrap-select升级至 v1.13.5
+- bootstrap-select升级至 v1.12.4
 - nice-validator 升级至 v1.1.4
 
 --------------------------------------------
