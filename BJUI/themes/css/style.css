@@ -722,3 +722,8 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
 .ztree .tree_del:hover{background-position:-265px -46px;}
 .ztree .diyBtn1{margin-left:2px;}
 .ztree_main *{font-size:14px;}
+
+/* bootstrap select */
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+ line-height: 1.625;
+}
