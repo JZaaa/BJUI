@@ -1,11 +1,23 @@
 # 更新日志
 -------------------------------------------
+## 2019-01-25
+
+### Improvements
+- 新增`Material-Blue`主题
+
+### Bug Fixed
+- 移除部分插件 Source Map
+- 修复select下拉框样式问题
+- bootstrap 升级至 v3.4.0, 并修复tooptip插件未获取对象报错问题
+
+-------------------------------------------
 ## 2019-01-18
 
+### Bug Fixed
 - 项目瘦身
 - 修复bjui-lookup组件未实例化前添加newurl无效问题
 
-### 插件更新
+### Update 
 - 删除DragSort拖拽插件
 - zTree 插件升级至 v3.5.39
 - kindeditor 升级至 v4.1.12, 添加IE11支持
