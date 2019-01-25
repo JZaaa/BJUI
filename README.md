@@ -24,7 +24,7 @@ jquery快速开发框架
 
 - clone 项目
 ````
-git clone git@github.com:JZaaa/B-JUI.git 
+git clone git@github.com:JZaaa/BJUI.git 
 ````
 - 在服务器下访问index.html查看项目演示
 - `BJUI`目录为本项目生产文件
