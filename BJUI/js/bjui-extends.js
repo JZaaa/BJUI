@@ -17,20 +17,20 @@
 
 +function ($) {
     'use strict';
-    
+
     $.fn.extend({
         /**
          * @param {Object} op: {type:GET/POST, url:ajax请求地址, data:ajax请求参数列表, callback:回调函数 }
          */
         ajaxUrl: function(op) {
             var $this = $(this)
-            
+
             $this.trigger(BJUI.eventType.beforeAjaxLoad)
-            
+
             if (op.loadingmask) {
                 $this.trigger(BJUI.eventType.ajaxStatus)
             }
-            
+
             $.ajax({
                 type     : op.type || 'GET',
                 url      : op.url,
@@ -44,16 +44,16 @@
                         $this.empty().html(response).append($ajaxMask).initui()
                         if ($.isFunction(op.callback)) op.callback(response)
                     } else {
-                        if (json[BJUI.keys.statusCode] == BJUI.statusCode.error) {
+                        if (json[BJUI.keys.statusCode] === BJUI.statusCode.error) {
                             if (json[BJUI.keys.message]) $this.alertmsg('error', json[BJUI.keys.message])
                             if (!$this.closest('.bjui-layout').length) {
                                 if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
                                 else $this.dialog('closeCurrent')
                             }
-                        } else if (json[BJUI.keys.statusCode] == BJUI.statusCode.timeout) {
+                        } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout) {
                             if ($this.closest('.bjui-dialog').length) $this.dialog('closeCurrent')
                             if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
-                            
+
                             $('body').alertmsg('info', (json[BJUI.keys.message] || BJUI.regional.sessiontimeout))
                             BJUI.loadLogin()
                         }
@@ -73,6 +73,11 @@
                 statusCode : {
                     503: function(xhr, ajaxOptions, thrownError) {
                         $this.alertmsg('error', FRAG.statusCode_503.replace('#statusCode_503#', BJUI.regional.statusCode_503) || thrownError)
+                    },
+                    // 添加 httpCode 403 超时弹框
+                    403: function (xhr, ajaxOptions, thrownError) {
+                        $this.alertmsg('error', '登录超时' || thrownError)
+                        BJUI.loadLogin()
                     }
                 }
             })
@@ -82,7 +87,7 @@
         },
         doAjax: function(op) {
             var $this = $(this), $target, $ajaxMask
-            
+
             if (!op.url) {
                 BJUI.debug('The ajax url is undefined!')
                 return
@@ -121,29 +126,29 @@
                     $target.trigger('bjui.ajaxError')
                 }
             }
-            
+
             $.ajax(op)
         },
         getPageTarget: function() {
             var $target
-            
+
             if (this.closest('.bjui-layout').length) $target = this.closest('.bjui-layout')
             else if (this.closest('.navtab-panel').length) $target = $.CurrentNavtab
             else $target = $.CurrentDialog
-            
+
             return $target
         },
         resizePageH: function() {
             return this.each(function() {
                 if ($(this).closest('.tab-content').length) return
-                
+
                 var $box         = $(this),
                     $pageHeader  = $box.find('> .bjui-pageHeader'),
                     $pageContent = $box.find('> .bjui-pageContent'),
                     $pageFooter  = $box.find('> .bjui-pageFooter'),
                     headH        = $pageHeader.outerHeight() || 0,
                     footH        = $pageFooter.outerHeight() || 0
-                
+
                 if ($box.hasClass('navtabPage') && $box.is(':hidden')) {
                     $box.show()
                     headH = $pageHeader.outerHeight() || 0
@@ -157,16 +162,16 @@
         },
         getMaxIndexObj: function($elements) {
             var zIndex = 0, index = 0
-            
+
             $elements.each(function(i) {
                 var newZIndex = parseInt($(this).css('zIndex')) || 1
-                
+
                 if (zIndex < newZIndex) {
                     zIndex = newZIndex
                     index  = i
                 }
             })
-            
+
             return $elements.eq(index)
         },
         /**
@@ -175,7 +180,7 @@
         serializeJson: function () {
             var o = {}
             var a = this.serializeArray()
-            
+
             $.each(a, function () {
                 if (o[this.name] !== undefined) {
                     if (!o[this.name].push) {
@@ -186,7 +191,7 @@
                    o[this.name] = this.value || ''
                 }
             })
-            
+
             return o
         },
         isTag: function(tn) {
@@ -212,7 +217,7 @@
             })
         }
     })
-    
+
     /**
      * 扩展String方法
      */
@@ -259,7 +264,7 @@
             $box = $box || $(document)
             return this.replace(/{\/?[^}]*}/g, function($1) {
                 var $input = $box.find($1.replace(/[{}]+/g, ''))
-                
+
                 return $input && $input.val() ? $input.val() : $1
             })
         },
@@ -268,14 +273,14 @@
         },
         replaceTm: function($data) {
             if (!$data) return this
-            
+
             return this.replace(RegExp('({[A-Za-z_]+[A-Za-z0-9_-]*})','g'), function($1) {
                 return $data[$1.replace(/[{}]+/g, '')]
             })
         },
         replaceTmById: function(_box) {
             var $parent = _box || $(document)
-            
+
             return this.replace(RegExp('({[A-Za-z_]+[A-Za-z0-9_-]*})','g'), function($1) {
                 var $input = $parent.find('#'+ $1.replace(/[{}]+/g, ''))
                 return $input.val() ? $input.val() : $1
@@ -298,7 +303,7 @@
         isSpaces: function() {
             for (var i = 0; i < this.length; i += 1) {
                 var ch = this.charAt(i)
-                
+
                 if (ch!=' '&& ch!='\n' && ch!='\t' && ch!='\r') return false
             }
             return true
@@ -317,7 +322,7 @@
         },
         toJson: function() {
             var json = this
-            
+
             try {
                 if (typeof json == 'object') json = json.toString()
                 if (!json.trim().match("^\{(.+:.+,*){1,}\}$")) return this
@@ -328,7 +333,7 @@
         },
         toObj: function() {
             var obj = null
-            
+
             try {
                 obj = (new Function('return '+ this))()
             } catch (e) {
@@ -345,37 +350,37 @@
         toFunc: function() {
             if (!this || this.length == 0) return undefined
             //if ($.isFunction(this)) return this
-            
+
             if (this.startsWith('function')) {
                 return (new Function('return '+ this))()
             }
-            
+
             var m_arr = this.split('.')
             var fn    = window
-            
+
             for (var i = 0; i < m_arr.length; i++) {
                 fn = fn[m_arr[i]]
             }
-            
+
             if (typeof fn === 'function') {
                 return fn
             }
-            
+
             return undefined
         },
         setUrlParam: function(key, value) {
             var str = '', url = this
-            
+
             if (url.indexOf('?') != -1)
                 str = url.substr(url.indexOf('?') + 1)
             else
                 return url + '?' + key + '=' + value
-            
+
             var returnurl = '', setparam = '', arr, modify = '0'
-            
+
             if (str.indexOf('&') != -1) {
                 arr = str.split('&')
-                
+
                 for (var i in arr) {
                     if (arr[i].split('=')[0] == key) {
                         setparam = value
@@ -385,12 +390,12 @@
                     }
                     returnurl = returnurl + arr[i].split('=')[0] + '=' + setparam + '&'
                 }
-                
+
                 returnurl = returnurl.substr(0, returnurl.length - 1)
                 if (modify == '0') {
                     if (returnurl == str)
                         returnurl = returnurl + '&' + key + '=' + value
-                }   
+                }
             } else {
                 if (str.indexOf('=') != -1) {
                     arr = str.split('=')
@@ -412,7 +417,7 @@
             return url.substr(0, url.indexOf('?')) + '?' + returnurl
         }
     })
-    
+
     /* Function */
     $.extend(Function.prototype, {
         //to fixed String.prototype -> toFunc
@@ -420,7 +425,7 @@
             return this
         }
     })
-    
+
     /* Array */
     $.extend(Array.prototype, {
         remove: function(index) {
@@ -429,29 +434,29 @@
         },
         unique: function() {
             var temp = new Array()
-            
+
             this.sort()
             for (var i = 0; i < this.length; i++) {
                 if (this[i] == this[i + 1]) continue
                 temp[temp.length] = this[i]
             }
-            
+
             return temp
         },
         myIndexOf: function(e) {
             if (!this || !this.length) return -1
-            
+
             for (var i = 0, j; j = this[i]; i++) {
                 if (j == e) return i
             }
-            
+
             return -1
         },
         /* serializeArray to json */
         toJson: function() {
             var o = {}
             var a = this
-            
+
             $.each(a, function () {
                 if (o[this.name] !== undefined) {
                     if (!o[this.name].push) {
@@ -462,15 +467,15 @@
                    o[this.name] = this.value || ''
                 }
             })
-            
+
             return o
         }
     })
-    
+
     /* Global */
     $.isJson = function(obj) {
         var flag = true
-        
+
         try {
             flag = $.parseJSON(obj)
         } catch (e) {
@@ -478,5 +483,5 @@
         }
         return flag ? true : false
     }
-    
+
 }(jQuery);
