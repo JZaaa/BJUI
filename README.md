@@ -1,31 +1,43 @@
 ## 介绍
 
+jquery快速开发框架
+
 ````
 原项目许久不再维护，未对IE11/Edge等浏览器进行兼容测试，请慎重选择本框架。
 
 本项目仅提供项目演示与个人部分修改
 ````
 
-## 项目演示
+## [项目演示](http://121.43.171.70/B-JUI/)
 
-[地址](http://121.43.171.70/B-JUI/)
+## 主题
+本项目新增了一个主题，点击右上方树形按钮选择`Material-Blue`
+![Material-Blue](./images/theme01.png)
+
+### 自定义主题
+可以配置`BJUI/themes/meterial_blue/variables.less` `@coreColor`色值配置自己颜色风格的页面
+
+## [更新日志](./CHANGELOG.md)
+
+
+## 使用
+
+- clone 项目
+````
+git clone git@github.com:JZaaa/B-JUI.git 
+````
+- 在服务器下访问index.html查看项目演示
+- `BJUI`目录为本项目生产文件
 
 --------------------------------------------------
 
 本项目为B-JUI2.x的插件更新版，原框架地址为 http://www.b-jui.com/
-
-[更新日志](./CHANGELOG.md)
-
 
 ## 兼容性
 
 - IE9.0+, Chrome[最佳], Firefox, Safari。
 - 本框架不适用于需要兼容IE8以下的开发者或使用者。
 
-## 本项目测试环境
-
-- 打开目录下的index.html即可。
-- 特别注意：Chrome浏览器由于安全性问题，不能直接测试，请自行搭建环境测试。
 
 ## 其他
 
