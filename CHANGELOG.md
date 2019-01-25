@@ -4,11 +4,14 @@
 
 ### Improvements
 - 新增`Material-Blue`主题
+- 新增 `httpCode: 403` 处理，默认弹出重新登录窗口
+- 新增 dialog\[callback.tabid\] 当tabid为空时，刷新本页面，设置为'false'则不刷新
 
 ### Bug Fixed
 - 移除部分插件 Source Map
 - 修复select下拉框样式问题
 - bootstrap 升级至 v3.4.0, 并修复tooptip插件未获取对象报错问题
+- 修复navtab清空查询无法重置排序问题
 
 -------------------------------------------
 ## 2019-01-18
