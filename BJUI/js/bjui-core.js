@@ -17,7 +17,7 @@
 
 +function ($) {
     'use strict';
-    
+
     var BJUI = {
         JSPATH     : 'BJUI/',
         PLUGINPATH : 'BJUI/plugins/',
@@ -26,6 +26,7 @@
             ctrl  : false,
             shift : false
         },
+        theme: 'blue',
         keyCode: {
             ENTER : 13, ESC  : 27, END : 35, HOME : 36,
             SHIFT : 16, CTRL : 17, TAB : 9,
@@ -33,13 +34,13 @@
             DELETE: 46, BACKSPACE: 8
         },
         eventType: {
-            initUI         : 'bjui.initUI',         // When document load completed or ajax load completed, B-JUI && Plugins init 
+            initUI         : 'bjui.initUI',         // When document load completed or ajax load completed, B-JUI && Plugins init
             beforeInitUI   : 'bjui.beforeInitUI',   // If your DOM do not init [add to DOM attribute 'data-noinit="true"']
-            afterInitUI    : 'bjui.afterInitUI',    // 
+            afterInitUI    : 'bjui.afterInitUI',    //
             ajaxStatus     : 'bjui.ajaxStatus',     // When performing ajax request, display or hidden progress bar
             resizeGrid     : 'bjui.resizeGrid',     // When the window or dialog resize completed
             beforeAjaxLoad : 'bjui.beforeAjaxLoad', // When perform '$.fn.ajaxUrl', to do something...
-            
+
             beforeLoadNavtab  : 'bjui.beforeLoadNavtab',
             beforeLoadDialog  : 'bjui.beforeLoadDialog',
             afterLoadNavtab   : 'bjui.afterLoadNavtab',
@@ -75,75 +76,76 @@
         },
         loadLogin: function() {
             var login = this.loginInfo
-            
+
             $('body').dialog({id:'bjui-login', url:login.url, title:login.title, width:login.width, height:login.height, mask:login.mask})
         },
         init: function(options) {
             var op = $.extend({}, options)
-            
+
             $.extend(BJUI.statusCode, op.statusCode)
             $.extend(BJUI.pageInfo, op.pageInfo)
             $.extend(BJUI.alertMsg, op.alertMsg)
             $.extend(BJUI.loginInfo, op.loginInfo)
             $.extend(BJUI.ui, op.ui)
-            
+
             if (op.JSPATH) this.JSPATH = op.JSPATH
             if (op.PLUGINPATH) this.PLUGINPATH = op.PLUGINPATH
             if (op.ajaxTimeout) this.ajaxTimeout = op.ajaxTimeout
-            
+
             this.IS_DEBUG = op.debug || false
+            this.theme = $.cookie('bjui_theme') || op.theme
             this.initEnv()
-            
-            if ((!$.cookie || !$.cookie('bjui_theme')) && op.theme) $(this).theme('setTheme', op.theme)
+
+            $(this).theme('setTheme', this.theme)
         },
         initEnv: function() {
             $(window).resize(function() {
                 var ww = $(this).width()
-                
+
                 if (BJUI.ui.windowWidth) {
                     if (BJUI.ui.windowWidth > 600 && BJUI.ui.windowWidth < ww)
                         ww = BJUI.ui.windowWidth
                 }
-                
+
                 BJUI.initLayout(ww)
                 setTimeout(function() {$(this).trigger(BJUI.eventType.resizeGrid)}, 30)
             })
-            
+
             setTimeout(function() {
                 var ww = $(window).width()
-                
+
                 if (BJUI.ui.windowWidth) {
                     if (BJUI.ui.windowWidth > 600 && BJUI.ui.windowWidth < ww)
                         ww = BJUI.ui.windowWidth
                 }
-                
+
                 BJUI.initLayout(ww)
                 $(document).initui()
             }, 10)
         },
         initLayout: function(ww) {
             var iContentW = ww - (BJUI.ui.showSlidebar ? $('#bjui-sidebar').width() + 6 : 6),
-                iContentH = $(window).height() - $('#bjui-header').height() - $('#bjui-footer').outerHeight(), 
+                iContentH = $(window).height() - $('#bjui-header').height() - $('#bjui-footer').outerHeight(),
                 navtabH   = $('#bjui-navtab').find('.tabsPageHeader').height()
-            
+
             if (BJUI.ui.windowWidth) $('#bjui-window').width(ww)
             BJUI.windowWidth = ww
-            
+
             $('#bjui-container').height(iContentH)
             $('#bjui-navtab').width(iContentW)
             $('#bjui-leftside, #bjui-sidebar, #bjui-sidebar-s, #bjui-splitBar, #bjui-splitBarProxy').css({height:'100%'})
             $('#bjui-navtab .tabsPageContent').height(iContentH - navtabH)
-            
+
             /* fixed pageFooter */
             setTimeout(function() {
                 $('#bjui-navtab > .tabsPageContent > .navtabPage').resizePageH()
                 $('#bjui-navtab > .tabsPageContent > .navtabPage').find('.bjui-layout').resizePageH()
             }, 10)
-            
+
             /* header navbar */
             var navbarWidth = $('body').data('bjui.navbar.width'),
                 $header = $('#bjui-header'), $toggle = $header.find('.bjui-navbar-toggle'), $logo = $header.find('.bjui-navbar-logo'), $navbar = $('#bjui-navbar-collapse'), $nav = $navbar.find('.bjui-navbar-right')
-            
+
             if (!navbarWidth) {
                 navbarWidth = {logoW:$logo.outerWidth(), navW:$nav.outerWidth()}
                 $('body').data('bjui.navbar.width', navbarWidth)
@@ -164,12 +166,12 @@
                 $hmoreR   = $hnavbox.next(),
                 hboxWidth = $hnavbox.width(),
                 liW       = 0
-            
+
             $hnavbar.find('> li').each(function(i) {
                 var $li = $(this)
-                
+
                 liW += $li.outerWidth()
-                
+
                 if (liW > hboxWidth) {
                     $hmoreR.show()
                     $hnavbox.data('hnav.move', true).data('hnav.liw', liW)
@@ -187,12 +189,12 @@
         getRegional : function(key) {
             if (String(key).indexOf('.') >= 0) {
                 var msg, arr = String(key).split('.')
-                
+
                 for (var i = 0; i < arr.length; i++) {
                     if (!msg) msg = BJUI.regional[arr[i]]
                     else msg = msg[arr[i]]
                 }
-                
+
                 return msg
             } else {
                 return BJUI.regional[key]
@@ -202,11 +204,11 @@
             $.each(regional, function(k, v) {
                 frag = frag.replaceAll('#'+ k +'#', v)
             })
-            
+
             return frag
         }
     }
-    
+
     window.BJUI = BJUI
-    
+
 }(jQuery);
