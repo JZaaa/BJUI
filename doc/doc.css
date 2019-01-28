@@ -14,6 +14,22 @@
 .bjui-doc td{line-height:1.7;}
 .bjui-doc .syntaxhighlighter *{font-size:12px !important; line-height:1.5 !important;}
 .bjui-doc .bjui-tablefixed .table{margin-bottom:0;}
+.bjui-doc .section h2, .bjui-doc .section h1, .bjui-doc .section h3 {
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 20px 0 10px;
+    color: #333;
+}
+.bjui-doc .section h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+.bjui-doc .section p {
+    padding: 2px 4px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #34495e;
+}
 
 /*
 
