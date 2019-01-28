@@ -1,92 +1,30 @@
 /**
+ * js.cookie
+ * Minified by jsDelivr using UglifyJS v3.4.4.
+ * Original file: /npm/js-cookie@2.2.0/src/js.cookie.js
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+!function(e){var n=!1;if("function"==typeof define&&define.amd&&(define(e),n=!0),"object"==typeof exports&&(module.exports=e(),n=!0),!n){var o=window.Cookies,t=window.Cookies=e();t.noConflict=function(){return window.Cookies=o,t}}}(function(){function g(){for(var e=0,n={};e<arguments.length;e++){var o=arguments[e];for(var t in o)n[t]=o[t]}return n}return function e(l){function C(e,n,o){var t;if("undefined"!=typeof document){if(1<arguments.length){if("number"==typeof(o=g({path:"/"},C.defaults,o)).expires){var r=new Date;r.setMilliseconds(r.getMilliseconds()+864e5*o.expires),o.expires=r}o.expires=o.expires?o.expires.toUTCString():"";try{t=JSON.stringify(n),/^[\{\[]/.test(t)&&(n=t)}catch(e){}n=l.write?l.write(n,e):encodeURIComponent(String(n)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),e=(e=(e=encodeURIComponent(String(e))).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent)).replace(/[\(\)]/g,escape);var i="";for(var c in o)o[c]&&(i+="; "+c,!0!==o[c]&&(i+="="+o[c]));return document.cookie=e+"="+n+i}e||(t={});for(var a=document.cookie?document.cookie.split("; "):[],s=/(%[0-9A-Z]{2})+/g,f=0;f<a.length;f++){var p=a[f].split("="),d=p.slice(1).join("=");this.json||'"'!==d.charAt(0)||(d=d.slice(1,-1));try{var u=p[0].replace(s,decodeURIComponent);if(d=l.read?l.read(d,u):l(d,u)||d.replace(s,decodeURIComponent),this.json)try{d=JSON.parse(d)}catch(e){}if(e===u){t=d;break}e||(t[u]=d)}catch(e){}}return t}}return(C.set=C).get=function(e){return C.call(C,e)},C.getJSON=function(){return C.apply({json:!0},[].slice.call(arguments))},C.defaults={},C.remove=function(e,n){C(e,"",g(n,{expires:-1}))},C.withConverter=e,C}(function(){})});
+
+
+/**
  * Cookie plugin
- *
- * Copyright (c) 2006 Klaus Hartl (stilbuero.de)
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
+ * jQuery Cookie封装
  *
  */
 
-/**
- * Create a cookie with the given name and value and other optional parameters.
- *
- * @example $.cookie('the_cookie', 'the_value');
- * @desc Set the value of a cookie.
- * @example $.cookie('the_cookie', 'the_value', {expires: 7, path: '/', domain: 'jquery.com', secure: true});
- * @desc Create a cookie with all available options.
- * @example $.cookie('the_cookie', 'the_value');
- * @desc Create a session cookie.
- * @example $.cookie('the_cookie', null);
- * @desc Delete a cookie by passing null as value.
- *
- * @param String name The name of the cookie.
- * @param String value The value of the cookie.
- * @param Object options An object literal containing key/value pairs to provide optional cookie attributes.
- * @option Number|Date expires Either an integer specifying the expiration date from now on in days or a Date object.
- *                             If a negative value is specified (e.g. a date in the past), the cookie will be deleted.
- *                             If set to null or omitted, the cookie will be a session cookie and will not be retained
- *                             when the the browser exits.
- * @option String path The value of the path atribute of the cookie (default: path of page that created the cookie).
- * @option String domain The value of the domain attribute of the cookie (default: domain of page that created the cookie).
- * @option Boolean secure If true, the secure attribute of the cookie will be set and the cookie transmission will
- *                        require a secure protocol (like HTTPS).
- * @type undefined
- *
- * @name $.cookie
- * @cat Plugins/Cookie
- * @author Klaus Hartl/klaus.hartl@stilbuero.de
- */
-
-/**
- * Get the value of a cookie with the given name.
- *
- * @example $.cookie('the_cookie');
- * @desc Get the value of a cookie.
- *
- * @param String name The name of the cookie.
- * @return The value of the cookie.
- * @type String
- *
- * @name $.cookie
- * @cat Plugins/Cookie
- * @author Klaus Hartl/klaus.hartl@stilbuero.de
- */
 jQuery.cookie = function(name, value, options) {
-    if (typeof value != 'undefined') { // name and value given, set cookie
+    if (typeof value != 'undefined') {
+        // set cookie
         options = options || {};
         if (value === null) {
-            value = '';
-            options.expires = -1;
+            // remove cookie
+            return Cookies.remove(name, options)
         }
-        var expires = '';
-        if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
-            var date;
-            if (typeof options.expires == 'number') {
-                date = new Date();
-                date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
-            } else {
-                date = options.expires;
-            }
-            expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
-        }
-        var path = options.path ? '; path=' + options.path : '';
-        var domain = options.domain ? '; domain=' + options.domain : '';
-        var secure = options.secure ? '; secure' : '';
-        document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
-    } else { // only name given, get cookie
-        var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
+        return Cookies.set(name, value, options)
+    } else {
+        // get cookie
+        return Cookies.get(name)
     }
 };
