@@ -1,8 +1,67 @@
+@import "../variables";
+
 @coreColor: #009688;
-/* 阴影 */
-@shadow-0: none;
-@shadow-1: rgba(0, 0, 0, .05) 0 (1px) (4px), rgba(0, 0, 0, .12) 0 (1px) (2px);
-@shadow-2: rgba(0, 0, 0, .12) 0 (1px) (6px), rgba(0, 0, 0, .15) 0 (1px) (4px);
-@shadow-3: rgba(0, 0, 0, .15) 0 (3px) (10px), rgba(0, 0, 0, .25) 0 (3px) (10px);
-@shadow-4: rgba(0, 0, 0, .188235) 0 (10px) (30px), rgba(0, 0, 0, .227451) 0 (6px) (10px);
-.box-shadow(@shadow) {box-shadow: @shadow;  -webkit-box-shadow: @shadow;-moz-box-shadow: @shadow;-ms-box-shadow: @shadow;}
+@green: green;
+@blue: #428bca;
+@black: #000;
+@red: #e10050;
+@orange: #FF6600;
+/* bootstrap color */
+@success: #5cb85c;
+@info: #5bc0de;
+@primary: darken(#428bca, 6.5%);
+@warning: #f0ad4e;
+@danger: #d9534f;
+
+// button 样式
+.button-variant(@color; @background) {
+  color: @color;
+  background-color: @background;
+  border-color:fade(@color, 50%);
+
+  &:active, &.active, &:hover, &:focus {
+    border-color: @color;
+    background-color:fade(@color, 8%);
+  }
+
+  &.flat {
+    border: 0;
+    background-color: transparent;
+    color: @color;
+
+    &:active, &.active, &:hover {
+      background-color: fade(lighten(@color, 10%), 20%);
+    }
+
+    &:focus {
+      background-color: fade(#999999 , 20%);
+    }
+
+  }
+}
+
+.button-variant-bs(@color) {
+  color: #fff;
+  background-color: @color;
+  border-color:fade(@color, 50%);
+
+  &:active, &.active, &:hover, &:focus {
+    border-color: @color;
+    background-color: darken(@color, 8%);
+  }
+
+  &.flat {
+    border: 0;
+    background-color: transparent;
+    color: @color;
+
+    &:active, &.active, &:hover {
+      background-color: fade(lighten(@color, 10%), 20%);
+    }
+
+    &:focus {
+      background-color: fade(#999999 , 20%);
+    }
+
+  }
+}

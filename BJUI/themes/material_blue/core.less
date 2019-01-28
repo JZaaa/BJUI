@@ -146,6 +146,92 @@ fieldset{border-color:#c3ced5;}
 .table > thead > tr > th.orderby a.order:hover{color:#fff!important; background:@coreColor;}
 .table > tbody > tr.selected > td{background-color:#d9e7f2;}
 
+/* button */
+.btn {
+  height:24px;
+  padding:2px 8px;
+  line-height:1.29758;
+  border-radius:2px;
+
+  .caret {
+    margin-left:4px; margin-top:-2px; vertical-align:middle;
+  }
+
+  &.btn-sm {
+    height:20px; font-size:12px; border-radius:2px;
+  }
+
+  &.btn-nm{
+    height:32px; padding:6px 8px; font-size:14px; border-radius:5px;
+  }
+
+  &.btn-lg{height:40px; padding:10px 8px; font-size:18px; line-height:1; border-radius:6px;}
+
+  &.btn-tag{position:relative; padding:3px 6px; text-shadow:0 1px 0 #FFF;}
+
+  &.btn-default{
+    &:active, &.active, &:hover, &:focus {
+      background-color:fade(@black, 8%);
+    }
+
+    &.flat {
+      border: 0;
+      background-color: transparent;
+      color: @black;
+
+      &:active, &.active, &:hover, &:focus {
+        background-color: fade(#999999 , 20%);
+      }
+
+    }
+  }
+
+  &.btn-close, &.btn-red{
+    .button-variant(@red, #fff);
+  }
+
+  &.btn-green{
+    .button-variant(@green, #fff);
+  }
+
+  &.btn-blue{
+    .button-variant(@blue, #fff);
+  }
+
+  &.btn-orange{
+    .button-variant(@orange, #fff);
+  }
+
+  &.btn-success {
+    .button-variant-bs(@success);
+  }
+
+  &.btn-info {
+    .button-variant-bs(@info);
+  }
+
+  &.btn-primary {
+    .button-variant-bs(@primary);
+  }
+
+  &.btn-danger {
+    .button-variant-bs(@danger);
+  }
+
+  &.btn-warning {
+    .button-variant-bs(@warning);
+  }
+
+  &[b-shadow] {
+    .box-shadow(@shadow-button);
+
+    &:active, &.active, &:hover, &:focus {
+      .box-shadow(@shadow-button-hover);
+    }
+  }
+
+}
+
 /* Main */
 #bjui-hnav-navbar-box {
   left: 0;
