@@ -15,7 +15,7 @@ jquery快速开发框架
 ![Material-Blue](./images/theme01.png)
 
 ### 自定义主题
-可以配置`BJUI/themes/meterial_blue/variables.less` `@coreColor`色值配置自己颜色风格的页面
+可以配置`BJUI/themes/material_blue/variables.less` `@coreColor`色值配置自己颜色风格的页面
 
 ## [更新日志](./CHANGELOG.md)
 
