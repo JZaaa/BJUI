@@ -139,7 +139,7 @@ fieldset{border-color:#c3ced5;}
   border-bottom-color:#c3ced5;
 }
 .table-hover > tbody > tr:hover > td,
-.table-hover > tbody > tr:hover > th{background-color:#ecf1f5;}
+.table-hover > tbody > tr:hover > th{background-color:#eee;}
 .table > thead > tr > th.orderby a.order{color:#CCC;}
 .table > thead > tr > th.orderby.asc a.order.asc,
 .table > thead > tr > th.orderby.desc a.order.desc,
@@ -653,20 +653,60 @@ fieldset{border-color:#c3ced5;}
 #bjui-contextmenu li.diver{ border-left:none; border-right:none;}
 #bjui-contextmenu li.diver:hover{background-color:transparent !important; cursor:default;}
 /* Calendar */
-#bjui-calendar{border:1px solid #c3ced5;}
-#bjui-calendar > .main > a.close{color:#c3ced5;}
-#bjui-calendar > .main > a.close:hover{color:#ff0000;}
-#bjui-calendar > .main > .head{background:#d9e7f2; border:1px solid #e3dced;}
-#bjui-calendar > .main > .body{border:1px solid #e3dced;}
-#bjui-calendar > .main > .foot{background:#f3f8fc; border:1px solid #e3dced;}
-#bjui-calendar > .main > .body > .days > dd.slt{background:#d9e7f2; border:1px solid #c3ced5;}
-#bjui-calendar > .main > .body > .days > dd:hover{border:1px solid #c3ced5;}
-#bjui-calendar > .main > .body > .days > dd.other{color:#c3ced5;}
-#bjui-calendar > .main > .foot > .time td{border:1px solid #c3ced5;}
-#bjui-calendar > .main > .foot > .time .up:hover,
-#bjui-calendar > .main > .foot > .time .down:hover{color:#fff; background:#222;}
-#bjui-calendar > .main > .tm > ul{background-color:#f3f8fc; border:1px solid #c3ced5;}
-#bjui-calendar > .main > .tm > ul > li:hover{background:#d9e7f2;}
+#bjui-calendar{
+  border:1px solid #c3ced5;
+  .box-shadow(@shadow-1);
+  > .main {
+    > a.close {
+      color:#c3ced5;
+      &:hover {
+        color:#ff0000;
+      }
+    }
+
+    > .head {
+    }
+
+    > .body {
+      border:1px solid #e3dced;
+
+      >.days > dd {
+        &.slt {
+          background:#d9e7f2; border:1px solid #c3ced5;
+        }
+
+        &:hover {
+          border:1px solid #c3ced5;
+        }
+        &.other {
+          color:#c3ced5;
+        }
+      }
+
+    }
+
+    > .foot {
+      background:#f3f8fc;
+
+      > .time {
+        td {
+          border:1px solid #c3ced5;
+        }
+        .up:hover,.down:hover {
+          color:#fff; background:#222;
+        }
+      }
+    }
+
+    >.tm > ul {
+      background-color:#f3f8fc; border:1px solid #c3ced5;
+
+      > li:hover {
+        background:#d9e7f2;
+      }
+    }
+  }
+}
 /* Spinner */
 .bjui-spinner{border-left-color:#ccc;}
 .bjui-spinner .up, .bjui-spinner .down{color:@coreColor;}
