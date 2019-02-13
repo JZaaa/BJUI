@@ -68,7 +68,7 @@
     Theme.prototype.cookie = function() {
         var theme = this.options.theme
 
-        if ($.cookie) $.cookie('bjui_theme', theme, { path: '/', expires: 30 });
+        if ($.cookie) $.cookie('bjui_theme', theme, { path: '', expires: 30 });
     }
 
     // THEME PLUGIN DEFINITION
