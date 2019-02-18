@@ -4,7 +4,7 @@ $(document).on('afterchange.bjui.datepicker', '.j_custom_issuedate', function(e,
     var pattern = 'yyyy-MM-dd'
     var start   = end = data.value
     var $end    = $(this).closest('tr').find('.j_custom_indate')
-    
+
     if ($end.length) {
         end.setFullYear(start.getFullYear() + 10)
         end.setDate(start.getDate() - 1)
@@ -14,16 +14,16 @@ $(document).on('afterchange.bjui.datepicker', '.j_custom_issuedate', function(e,
 //上传图片完成回调
 function custom_pic_upload_success(file, data, $upload) {
     var json = $.parseJSON(data)
-    if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
-        var pic = json.navTabId
-        
+    if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
+        var pic = json.filename
+
         $upload.next().val(pic).next().html('<img src="'+ pic +'" width="80" />')
     }
 }
 //删除回调
 $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
     var $tbody = $(e.relatedTarget)
-    
+
     console.log('你删除了一条数据，还有['+ $tbody.find('> tr').length +']条数据！')
 })
 </script>
@@ -65,7 +65,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <th title="客人姓名"><input type="text" name="customList[#index#].name" data-rule="required" value="熊大" size="5"></th>
                     <th title="拼音姓"><input type="text" name="customList[#index#].surname" data-rule="required" value="Xiong" size="5"></th>
                     <th title="拼音名"><input type="text" name="customList[#index#].enname" data-rule="required" value="Da" size="5"></th>
-                    <th title="性别"><select name="customList[#index#].sex" data-toggle="selectpicker" data-rule="required"><option value="true">男</option><option value="false">女</option></select></th>
+                    <th title="性别"><select name="customList[#index#].sex" data-toggle="selectpicker" data-rule="required"><option value="">--请选择--</option><option value="true">男</option><option value="false">女</option></select></th>
                     <th title="出生日期"><input type="text" name="customList[#index#].birthday" data-toggle="datepicker" data-rule="required" value="2010-01-02" size="10"></th>
                     <th title="出生地"><input type="text" name="customList[#index#].birthplace" data-rule="required" value="火星" size="3"></th>
                     <th title="居住地"><input type="text" name="customList[#index#].add" data-rule="required" value="森林" size="5"></th>
@@ -78,9 +78,9 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <th title="手机"><input type="text" name="customList[#index#].mobile" data-toggle="spinner" data-rule="required" value="1111111" size="5"></th>
                     <th title="备注"><textarea name="customList[#index#].note" data-toggle="autoheight" rows="1"></textarea></th>
                     <th title="照片">
-                        <div id="fileInput-custom-i[#index#]"
-                            data-toggle="upload" 
-                            data-uploader="ajaxPic.html?sessionid=?" 
+                        <div
+                            data-toggle="upload"
+                            data-uploader="ajaxUpload.html?sessionid=?"
                             data-file-size-limit="1024000000"
                             data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
                             data-multi="true"
@@ -99,7 +99,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td>孙悟空</td>
                     <td>Sun</td>
                     <td>Wukong</td>
-                    <td data-val="02">男</td>
+                    <td data-val="true"></td>
                     <td>0100-01-01</td>
                     <td>花果山</td>
                     <td>灵山</td>
@@ -122,7 +122,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td>唐僧</td>
                     <td>Tang</td>
                     <td>Seng</td>
-                    <td data-val="true">男</td>
+                    <td data-val="true"></td>
                     <td>0600-10-11</td>
                     <td>洛阳</td>
                     <td>灵山</td>
@@ -145,7 +145,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td>猪八戒</td>
                     <td>Zhu</td>
                     <td>Bajie</td>
-                    <td data-val="true">男</td>
+                    <td data-val="true"></td>
                     <td>0400-10-11</td>
                     <td>高老庄</td>
                     <td>灵山</td>
@@ -168,7 +168,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td>沙和尚</td>
                     <td>Sha</td>
                     <td>Heshang</td>
-                    <td data-val="true">男</td>
+                    <td data-val="true"></td>
                     <td>0450-10-11</td>
                     <td>流沙河</td>
                     <td>灵山</td>
