@@ -542,13 +542,26 @@ td[align=right] input{text-align:right;}
 .bjui-tabledit > tbody > tr > td{padding:2px 1px;}
 .bjui-tabledit > tbody > tr > td .form-control{padding:2px 3px; width:100%; height:24px; font-size:12px;}
 .bjui-tabledit > tbody > tr > td button.selectpicker{}
-.bjui-tabledit > tbody > tr > td span.msg-wrap{padding:3px 6px; min-height:24px;}
+.bjui-tabledit > tbody > tr > td span.msg-wrap{z-index: 2}
 .bjui-tabledit > tbody > tr > td span.n-arrow{top:5px;}
 .bjui-tabledit > tbody > tr.readonly > td{padding-left:2px;}
 .bjui-tabledit > tbody > tr.readonly > td .form-control{padding:0;background-color:transparent; -webkit-box-shadow:none !important; border:none; box-shadow:none !important;}
 .bjui-tabledit > tbody > tr.readonly > td .form-control:focus{border-color:transparent; -webkit-box-shadow:none !important; border:none; box-shadow:none !important;}
-.bjui-tabledit > tbody > tr.readonly > td button.selectpicker{padding-left:0; padding-top:4px; background:transparent; border:none; opacity:1; filter:alpha(opacity=100);}
-.bjui-tabledit > tbody > tr.readonly > td button.selectpicker > .caret{display:none;}
+.bjui-tabledit > tbody > tr.readonly > td .bootstrap-select {
+  width: auto !important;
+  > .dropdown-toggle {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top:4px;
+    background:transparent;
+    border:none;
+    opacity:1;
+    filter:alpha(opacity=100);
+    > .bs-caret {
+      display:none;
+    }
+  }
+}
 /* Alertmsg */
 .bjui-alert{position:absolute; top:0; left:50%; z-index:1011; display:block; margin-left:-230px; padding:10px; width:460px; background:#FFF; background:rgba(255, 255, 255, 0.8); border:1px #DDD solid; border-radius:3px; box-shadow:0 3px 9px rgba(0, 0, 0, 0.5);}
 .bjui-alert > .alertContent{display:block;}
@@ -607,7 +620,7 @@ td[align=right] input{text-align:right;}
 #bjui-calendar > .main > .body > dl > dd{float:left; width:28px; height:20px; overflow:hidden; line-height:20px; border:1px solid #fff; cursor:pointer;}
 #bjui-calendar > .main > .body > dl > dt{margin-top:4px; font-weight:bold; color:#666666; border-bottom:1px #EEE solid;}
 #bjui-calendar > .main > .body > .days > dd.other{color:#f7f7f7;}
-#bjui-calendar > .main > .body > .days > dd.disabled{color:#FAFAFA !important; background:#ccc;}
+#bjui-calendar > .main > .body > .days > dd.disabled{color:#FAFAFA !important; background:#ddd;}
 #bjui-calendar > .main > .foot > .time{float:left; display:none; background-color:#fff; border-collapse:collapse;}
 #bjui-calendar > .main > .foot > .time td{line-height:21px; vertical-align:center;}
 #bjui-calendar > .main > .foot > .time .hh,
