@@ -11,28 +11,18 @@
     <link href="BJUI/themes/css/bootstrap.min.css" rel="stylesheet">
     <!-- core - css -->
     <link href="BJUI/themes/css/style.css" rel="stylesheet">
-    <link href="BJUI/themes/blue/core.css" id="bjui-link-theme" rel="stylesheet">
+    <link href="BJUI/themes/material_blue/core.css" id="bjui-link-theme" rel="stylesheet">
     <!-- plug - css -->
     <link href="BJUI/plugins/kindeditor/themes/default/default.css" rel="stylesheet">
     <link href="BJUI/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="BJUI/plugins/bootstrapSelect/bootstrap-select.min.css" rel="stylesheet">
     <link href="BJUI/themes/css/FA/css/font-awesome.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lte IE 9]>
-    <script src="BJUI/other/html5shiv.min.js"></script>
-    <script src="BJUI/other/respond.min.js"></script>
-    <![endif]-->
+    <link href="BJUI/plugins/uploadify/css/uploadify.css" rel="stylesheet">
     <!-- jquery -->
     <script src="BJUI/js/jquery.min.js"></script>
-    <script src="BJUI/js/jquery.cookie.js"></script>
-    <!--[if lte IE 9]>
-    <script src="BJUI/other/jquery.iframe-transport.js"></script>
-    <![endif]-->
     <!-- BJUI.all 分模块压缩版 -->
     <script src="BJUI/js/bjui-all.js"></script>
     <!-- plugins -->
-    <!-- swfupload for uploadify && kindeditor -->
-    <script src="BJUI/plugins/swfupload/swfupload.js"></script>
     <!-- kindeditor -->
     <script src="BJUI/plugins/kindeditor/kindeditor-all.min.js"></script>
     <script src="BJUI/plugins/kindeditor/lang/zh_CN.js"></script>
@@ -51,7 +41,6 @@
     <script src="BJUI/plugins/icheck/icheck.min.js"></script>
     <!--other plugins -->
     <script src="BJUI/plugins/other/jquery.autosize.js"></script>
-    <link href="BJUI/plugins/uploadify/css/uploadify.css" rel="stylesheet">
     <script src="BJUI/plugins/uploadify/scripts/jquery.uploadify.min.js"></script>
     <script src="BJUI/plugins/download/jquery.fileDownload.js"></script>
     <!-- init -->
@@ -169,7 +158,7 @@
             <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png"></a>
+            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png" alt="logo"></a>
         </div>
         <nav id="bjui-navbar-collapse">
             <ul class="bjui-navbar-right">
@@ -186,12 +175,12 @@
                 <li><a href="index_tree.html" title="切换为列表导航(窄版)" style="background-color:#ff7b61;">列表导航栏(窄版)</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle theme blue" data-toggle="dropdown" title="切换皮肤"><i class="fa fa-tree"></i></a>
                     <ul class="dropdown-menu" role="menu" id="bjui-themes">
-                        <li><a href="javascript:;" class="theme_default" data-toggle="theme" data-theme="default">&nbsp;<i class="fa fa-tree"></i> 黑白分明&nbsp;&nbsp;</a></li>
-                        <li><a href="javascript:;" class="theme_orange" data-toggle="theme" data-theme="orange">&nbsp;<i class="fa fa-tree"></i> 橘子红了</a></li>
-                        <li><a href="javascript:;" class="theme_purple" data-toggle="theme" data-theme="purple">&nbsp;<i class="fa fa-tree"></i> 紫罗兰</a></li>
-                        <li class="active"><a href="javascript:;" class="theme_blue" data-toggle="theme" data-theme="blue">&nbsp;<i class="fa fa-tree"></i> 天空蓝</a></li>
-                        <li><a href="javascript:;" class="theme_green" data-toggle="theme" data-theme="green">&nbsp;<i class="fa fa-tree"></i> 绿草如茵</a></li>
-                        <li><a href="javascript:;" class="theme_material_blue" data-toggle="theme" data-theme="material_blue">&nbsp;<i class="fa fa-tree"></i> Material-Blue</a></li>
+                        <li><a href="javascript:" class="theme_default" data-toggle="theme" data-theme="default">&nbsp;<i class="fa fa-tree"></i> 黑白分明&nbsp;&nbsp;</a></li>
+                        <li><a href="javascript:" class="theme_orange" data-toggle="theme" data-theme="orange">&nbsp;<i class="fa fa-tree"></i> 橘子红了</a></li>
+                        <li><a href="javascript:" class="theme_purple" data-toggle="theme" data-theme="purple">&nbsp;<i class="fa fa-tree"></i> 紫罗兰</a></li>
+                        <li class="active"><a href="javascript:" class="theme_blue" data-toggle="theme" data-theme="blue">&nbsp;<i class="fa fa-tree"></i> 天空蓝</a></li>
+                        <li><a href="javascript:" class="theme_green" data-toggle="theme" data-theme="green">&nbsp;<i class="fa fa-tree"></i> 绿草如茵</a></li>
+                        <li><a href="javascript:" class="theme_material_blue" data-toggle="theme" data-theme="material_blue">&nbsp;<i class="fa fa-tree"></i> Material-Blue</a></li>
                     </ul>
                 </li>
             </ul>
@@ -200,7 +189,7 @@
             <button type="button" class="btn-default bjui-hnav-more-left" title="导航菜单左移"><i class="fa fa-angle-double-left"></i></button>
             <div id="bjui-hnav-navbar-box">
                 <ul id="bjui-hnav-navbar">
-                    <li class="active"><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-check-square-o"></i> 表单元素</a>
+                    <li class="active"><a href="javascript:" data-toggle="slidebar"><i class="fa fa-check-square-o"></i> 表单元素</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
                                 <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">表单元素</li>
@@ -212,7 +201,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-table"></i> 表格</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-table"></i> 表格</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree2" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="table">
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">表格</li>
@@ -222,7 +211,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-table"></i> Datagrid(beta)</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-table"></i> Datagrid(beta)</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree-datagrid" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="table">
                                 <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">datagrid (beta)</li>
@@ -232,7 +221,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-plane"></i> 弹出窗口</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-plane"></i> 弹出窗口</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree4" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="plane">
                                 <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">弹出窗口</li>
@@ -241,7 +230,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-coffee"></i> 框架组件</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-coffee"></i> 框架组件</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree6" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="coffee">
                                 <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">框架组件</li>
@@ -249,7 +238,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-bug"></i> 其他插件</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-bug"></i> 其他插件</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree7" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="bug">
                                 <li data-id="7" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">其他插件</li>
@@ -258,7 +247,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-database"></i> 综合应用</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-database"></i> 综合应用</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree8" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="database">
                                 <li data-id="8" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">综合应用</li>
@@ -266,7 +255,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-file-word-o"></i> 在线文档</a>
+                    <li><a href="javascript:" data-toggle="slidebar"><i class="fa fa-file-word-o"></i> 在线文档</a>
                         <div class="items hide" data-noinit="true">
                             <ul class="menu-items" data-faicon="fire" data-tit="新特性">
                                 <li><a href="doc/new/style.html" data-options="{id:'doc-new-style', faicon:'caret-right'}">全局样式</a></li>
@@ -274,7 +263,7 @@
                             <ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="star-o" data-tit="框架介绍">
                                 <li data-id="99" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">文件列表</li>
                                 <li data-id="100" data-pid="99" data-url="doc/base/filelist.html" data-tabid="doc-file" data-faicon="caret-right">文件详解</li>
-                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-faicon="caret-right">框架介绍</li>
+                                <li data-id="1" data-pid="0" data-faicon-close="folder-o" data-faicon="caret-right">框架介绍</li>
                                 <li data-id="10" data-pid="1" data-url="doc/base/structure.html" data-tabid="doc-base" data-faicon="caret-right">页面结构</li>
                                 <li data-id="11" data-pid="1" data-url="doc/base/init.html" data-tabid="doc-base" data-faicon="caret-right">框架初始化</li>
                                 <li data-id="12" data-pid="1" data-url="doc/base/hnav.html" data-tabid="doc-base" data-faicon="caret-right">横向导航菜单</li>
@@ -285,17 +274,17 @@
                                 <li data-id="17" data-pid="1" data-url="doc/base/api.html" data-tabid="doc-base" data-faicon="caret-right">jQuery API调用</li>
                                 <li data-id="18" data-pid="1" data-url="doc/base/event.html" data-tabid="doc-base" data-faicon="caret-right">事件</li>
                                 <li data-id="19" data-pid="1" data-url="doc/base/url.html" data-tabid="doc-base" data-update="true" data-faicon="caret-right">URL动态赋值</li>
-                                <li data-id="9" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-faicon="caret-right">框架皮肤</li>
+                                <li data-id="9" data-pid="0" data-faicon-close="folder-o" data-faicon="caret-right">框架皮肤</li>
                                 <li data-id="90" data-pid="9" data-url="doc/theme/color.html" data-tabid="doc-theme" data-faicon="caret-right">颜色值</li>
                             </ul>
                             <ul id="bjui-doc-tree-module" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="th" data-tit="框架组件">
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">标签navtab</li>
                                 <li data-id="20" data-pid="2" data-url="doc/navtab/navtab.html" data-tabid="doc-navtab" data-faicon="caret-right">创建navtab</li>
                                 <li data-id="21" data-pid="2" data-url="doc/navtab/navtab-op.html" data-tabid="doc-navtab" data-faicon="caret-right">参数及方法</li>
-                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-faicon="caret-right">弹窗dialog</li>
+                                <li data-id="3" data-pid="0" data-faicon-close="folder-o" data-faicon="caret-right">弹窗dialog</li>
                                 <li data-id="30" data-pid="3" data-url="doc/dialog/dialog.html" data-tabid="doc-dialog" data-faicon="caret-right">创建dialog</li>
                                 <li data-id="31" data-pid="3" data-url="doc/dialog/dialog-op.html" data-tabid="doc-dialog" data-faicon="caret-right">参数及方法</li>
-                                <li data-id="alertmsg" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-faicon="caret-right">信息提示alertmsg</li>
+                                <li data-id="alertmsg" data-pid="0" data-faicon-close="folder-o" data-faicon="caret-right">信息提示alertmsg</li>
                                 <li data-id="alertmsg-op" data-pid="alertmsg" data-url="doc/alertmsg/alertmsg.html" data-tabid="doc-alertmsg" data-faicon="caret-right">提示框alertmsg</li>
                                 <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">表单相关</li>
                                 <li data-id="60" data-pid="6" data-url="doc/form/datepicker.html" data-tabid="doc-form" data-faicon="caret-right">日期选择器</li>
@@ -359,7 +348,7 @@
                 <div class="collapse"></div>
             </div>
             <div id="bjui-sidebar">
-                <div class="toggleCollapse"><h2><i class="fa fa-bars"></i> 导航栏 <i class="fa fa-bars"></i></h2><a href="javascript:;" class="lock"><i class="fa fa-lock"></i></a></div>
+                <div class="toggleCollapse"><h2><i class="fa fa-bars"></i> 导航栏 <i class="fa fa-bars"></i></h2><a href="javascript:" class="lock"><i class="fa fa-lock"></i></a></div>
                 <div class="panel-group panel-main" data-toggle="accordion" id="bjui-accordionmenu" data-heightbox="#bjui-sidebar" data-offsety="26">
                 </div>
             </div>
@@ -368,7 +357,7 @@
             <div class="tabsPageHeader">
                 <div class="tabsPageHeaderContent">
                     <ul class="navtab-tab nav nav-tabs">
-                        <li data-url="index_layout.html"><a href="javascript:;"><span><i class="fa fa-home"></i> #maintab#</span></a></li>
+                        <li data-url="index_layout.html"><a href="javascript:"><span><i class="fa fa-home"></i> #maintab#</span></a></li>
                     </ul>
                 </div>
                 <div class="tabsLeft"><i class="fa fa-angle-double-left"></i></div>
@@ -376,7 +365,7 @@
                 <div class="tabsMore"><i class="fa fa-angle-double-down"></i></div>
             </div>
             <ul class="tabsMoreList">
-                <li><a href="javascript:;">#maintab#</a></li>
+                <li><a href="javascript:">#maintab#</a></li>
             </ul>
             <div class="navtab-panel tabsPageContent">
                 <div class="navtabPage unitBox">

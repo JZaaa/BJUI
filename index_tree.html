@@ -24,17 +24,18 @@
     <![endif]-->
     <!-- jquery -->
     <script src="BJUI/js/jquery.min.js"></script>
-    <script src="BJUI/js/jquery.cookie.js"></script>
     <!--[if lte IE 9]>
     <script src="BJUI/other/jquery.iframe-transport.js"></script>
     <![endif]-->
     <!-- BJUI.all 分模块压缩版 -->
     <!--<script src="BJUI/js/bjui-all.js"></script>-->
     <!-- 以下是B-JUI的分模块未压缩版，建议开发调试阶段使用下面的版本 -->
+    <script src="BJUI/js/jquery.cookie.js"></script>
     <script src="BJUI/js/bjui-core.js"></script>
     <script src="BJUI/js/bjui-regional.zh-CN.js"></script>
     <script src="BJUI/js/bjui-frag.js"></script>
     <script src="BJUI/js/bjui-extends.js"></script>
+    <script src="BJUI/js/bjui-modulefixed.js"></script>
     <script src="BJUI/js/bjui-basedrag.js"></script>
     <script src="BJUI/js/bjui-slidebar.js"></script>
     <script src="BJUI/js/bjui-contextmenu.js"></script>
@@ -59,7 +60,7 @@
     <script src="BJUI/js/bjui-plugins.js"></script>
     <!-- plugins -->
     <!-- swfupload for uploadify && kindeditor -->
-    <script src="BJUI/plugins/swfupload/swfupload.js"></script>
+    <!--<script src="BJUI/plugins/swfupload/swfupload.js"></script>-->
     <!-- kindeditor -->
     <script src="BJUI/plugins/kindeditor/kindeditor-all.min.js"></script>
     <script src="BJUI/plugins/kindeditor/lang/zh_CN.js"></script>
@@ -80,7 +81,7 @@
     <!--other plugins -->
     <script src="BJUI/plugins/other/jquery.autosize.js"></script>
     <link href="BJUI/plugins/uploadify/css/uploadify.css" rel="stylesheet">
-    <script src="BJUI/plugins/uploadify/scripts/jquery.uploadify.min.js"></script>
+    <script src="BJUI/plugins/uploadify/scripts/jquery.uploadify.js"></script>
     <script src="BJUI/plugins/download/jquery.fileDownload.js"></script>
     <!-- init -->
     <script type="text/javascript">
@@ -199,7 +200,7 @@
             <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png"></a>
+            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png" alt="logo"></a>
         </div>
         <nav id="bjui-navbar-collapse">
             <ul class="bjui-navbar-right">
@@ -407,11 +408,7 @@
             </div>
         </div>
     </div>
-    <footer id="bjui-footer">Copyright &copy; 2013 - 2015　<a href="http://www.cdjinyang.com/" target="_blank">成都锦杨科技</a>　
-        <!--
-        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252983288'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1252983288%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-        -->
-    </footer>
+    <footer id="bjui-footer">Copyright &copy; 2013 - 2019</footer>
 </div>
 </body>
 </html>
