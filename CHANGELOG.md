@@ -1,5 +1,26 @@
 # 更新日志
 -------------------------------------------
+## 2019-02-15
+
+### Improvements
+- 新增BJUI插件自动压缩脚本`bin/bjui-js-optimize.bat`
+- `jquery.cookie.js`合并至插件
+- 默认不加载`query.iframe-transport.js`、`html5shiv.min.js`、`respond.min.js`、`swfupload.min.js`插件，如需要请手动引入
+- BJUI插件代码优化
+- 刷新(关闭)Navtab(dialog)`uploadify`、`colorpicker`自动销毁
+- 新增`dialog`全局配置
+
+
+### Bug Fixed
+- 修复表格无排序下`reloadForm`调用错误
+- 修复可编辑表格`selectpicker`插件只读状态下状态错误
+- 修复可编辑表格`selectpicker`插件首次验证失效问题
+- 修复可编辑表格`upload`插件只读状态未隐藏问题
+- 修复`tags`插件输入为空时错误
+- 修复`uploadify`插件IE9下初始化错误
+- 修复`swfupload`与`uploadify`插件调用Flash错误 
+
+-------------------------------------------
 ## 2019-02-13
 
 ### Improvements
