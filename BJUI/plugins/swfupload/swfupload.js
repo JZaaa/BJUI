@@ -173,7 +173,11 @@
     };
 
     SWFUpload.prototype.getFlashHTML = function() {
-        return [ '<object id="', this.movieName, '" type="application/x-shockwave-flash" data="', this.settings.flash_url, '" width="', this.settings.button_width, '" height="', this.settings.button_height, '" class="swfupload">', '<param name="wmode" value="', this.settings.button_window_mode, '" />', '<param name="movie" value="', this.settings.flash_url, '" />', '<param name="quality" value="high" />', '<param name="menu" value="false" />', '<param name="allowScriptAccess" value="always" />', '<param name="flashvars" value="' + this.getFlashVars() + '" />', "</object>" ].join("");
+        var iefix = '';
+        if(navigator.userAgent.search(/MSIE/) > -1){
+            iefix = 'classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"';
+        }
+        return [ '<object ' + iefix + ' id="', this.movieName, '" type="application/x-shockwave-flash" data="', this.settings.flash_url, '" width="', this.settings.button_width, '" height="', this.settings.button_height, '" class="swfupload">', '<param name="wmode" value="', this.settings.button_window_mode, '" />', '<param name="movie" value="', this.settings.flash_url, '" />', '<param name="quality" value="high" />', '<param name="menu" value="false" />', '<param name="allowScriptAccess" value="always" />', '<param name="flashvars" value="' + this.getFlashVars() + '" />', "</object>" ].join("");
     };
 
     SWFUpload.prototype.getFlashVars = function() {
@@ -516,7 +520,7 @@
                 this.debug("Removing Flash functions hooks (this should only run in IE and should prevent memory leaks)");
                 for (var c in a) {
                     try {
-                        if (typeof a[c] === "function") {
+                        if (typeof a[c] === "function" && c[0] <= 'Z') {
                             a[c] = null;
                         }
                     } catch (b) {}
