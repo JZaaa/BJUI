@@ -49,12 +49,12 @@
     type: 'GET',
     data: {},
     loadingmask: true,
-    width: BJUI.dialog.width || 500,
-    height: BJUI.dialog.height || 300,
+    width: 500,
+    height: 300,
     minW: 65,
     minH: 40,
     max: false,
-    mask: BJUI.dialog.mask,
+    mask: false,
     resizable: true,
     drawable: true,
     maxable: true,
@@ -71,7 +71,7 @@
     var that = this
     return {
       getDefaults: function() {
-        return Dialog.DEFAULTS
+        return $.extend(Dialog.DEFAULTS, BJUI.dialog)
       },
       init: function($dialog) {
         var width = that.options.width > that.options.minW ? that.options.width : that.options.minW
@@ -140,7 +140,8 @@
   }
 
   Dialog.prototype.open = function() {
-    var that = this; var options = that.options
+    var that = this
+    var options = that.options
     var $body = $('body')
     var $dialog = $body.data(options.id)
 
@@ -627,7 +628,7 @@
 
     return this.each(function() {
       var $this = $(this)
-      var options = $.extend({}, Dialog.DEFAULTS, typeof option === 'object' && option)
+      var options = $.extend({}, Dialog.DEFAULTS, BJUI.dialog, typeof option === 'object' && option)
       var data = $this.data('bjui.dialog')
 
       if (!data) $this.data('bjui.dialog', (data = new Dialog(this, options)))
