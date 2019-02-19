@@ -31,6 +31,7 @@
     this.$element = $(element)
     this.$bar = this.$element.find('#bjui-sidebar')
     this.$sbar = this.$element.find('#bjui-sidebar-s')
+    this.$accordionmenu = this.$bar.find('#bjui-accordionmenu')
     this.$lock = this.$bar.find('> .toggleCollapse > .lock')
     this.$navtab = $('#bjui-navtab')
     this.$collapse = this.$sbar.find('.collapse')
@@ -185,6 +186,68 @@
     if ($('#bjui-hnav-navbar-box').length) {
       that.moveHnav()
     }
+
+    // menus-header添加active属性
+    that.$accordionmenu
+      .collapse()
+      .on('hidden.bs.collapse', function(e) {
+        $(this).find('> .panel > .panel-heading').each(function() {
+          var $heading = $(this)
+          var $a = $heading.find('> h4 > a')
+
+          if ($a.hasClass('collapsed')) $heading.removeClass('active')
+        })
+      })
+      .on('shown.bs.collapse', function (e) {
+        $(this).find('> .panel > .panel-heading').each(function() {
+          var $heading = $(this)
+          var $a = $heading.find('> h4 > a')
+
+          if (!$a.hasClass('collapsed')) $heading.addClass('active')
+        })
+      })
+
+    that.clickMenu()
+  }
+
+  // 点击菜单
+  Slidebar.prototype.clickMenu = function() {
+    var that = this
+    that.$bar.on('click', 'ul.menu-items li > a', function(e) {
+      e.preventDefault()
+      var $a = $(this)
+      var $li = $a.parent()
+      var options = $a.data('options').toObj()
+      var $children = $li.find('> .menu-items-children')
+      var onClose = function() {
+        $li.removeClass('active')
+      }
+      var onSwitch = function() {
+        that.$accordionmenu.find('ul.menu-items li').removeClass('switch')
+        $li.addClass('switch')
+      }
+
+      $li.addClass('active')
+      if (options) {
+        options.url = $a.attr('href')
+        if (options.url && options.url !== 'javascript:;') {
+          options.onClose = onClose
+          options.onSwitch = onSwitch
+
+          if (!options.title) options.title = $a.text()
+
+          if (!options.target) {
+            $a.navtab(options)
+          } else {
+            $a.dialog(options)
+          }
+        }
+      }
+      if ($children.length) {
+        $li.toggleClass('open')
+      }
+
+    })
   }
 
   Slidebar.prototype.moveHnav = function() {
@@ -238,7 +301,10 @@
 
     var $box = $('#bjui-accordionmenu')
 
-    var $trees; var $items; var $panel; var $array
+    var $trees
+    var $items
+    var $panel
+    var $array
 
     $trees = $li.find('> .items > ul.ztree')
     $items = $li.find('> .items > ul.menu-items')
@@ -264,7 +330,12 @@
 
     $box.empty()
     $array.each(function(i) {
-      var $t = $(this); var panel; var cls; var bodycls; var faicon = $t.data('faicon'); var faiconClose = $t.data('faiconClose'); var icon = faicon || 'dot-circle-o'
+      var $t = $(this)
+      var panel
+      var cls
+      var bodycls
+      var faicon = $t.data('faicon')
+      var icon = faicon || 'dot-circle-o'
 
       if ($t.data('tit')) title = $t.data('tit')
 
@@ -339,7 +410,9 @@
   })
 
   $(document).on('click.bjui.slidebar.data-api', '[data-toggle="slidebar"]', function(e) {
-    var $li = $(this).parent(); var $box = $('#bjui-accordionmenu'); var $panels = $li.data('bjui.slidebar.hnav.panels')
+    var $li = $(this).parent()
+    var $box = $('#bjui-accordionmenu')
+    var $panels = $li.data('bjui.slidebar.hnav.panels')
 
     $box.find('> .panel').detach()
 
