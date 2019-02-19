@@ -22,6 +22,7 @@
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
+    date: true,
     KeyPressed: { // key press state
       ctrl: false,
       shift: false
@@ -55,16 +56,16 @@
       afterCloseNavtab: 'bjui.afterCloseNavtab',
       afterCloseDialog: 'bjui.afterCloseDialog'
     },
-    pageInfo: { pageCurrent: 'pageCurrent', pageSize: 'pageSize', orderField: 'orderField', orderDirection: 'orderDirection' },
-    alertMsg: { displayPosition: 'topcenter', alertTimeout: 6000 }, // alertmsg display position && close timeout
-    ajaxTimeout: 30000,
+    pageInfo: { total: 'total', pageCurrent: 'pageCurrent', pageSize: 'pageSize', orderField: 'orderField', orderDirection: 'orderDirection' },
+    alertMsg: { displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 3000 }, // 信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时
+    ajaxTimeout: 50000,
     statusCode: { ok: 200, error: 300, timeout: 301 },
     keys: { statusCode: 'statusCode', message: 'message' },
     ui: {
       windowWidth: 0,
-      showSlidebar: true, // After the B-JUI initialization, display slidebar
-      clientPaging: true, // Response paging and sorting information on the client
-      overwriteHomeTab: false // When open an undefined id of navtab, whether overwrite the home navtab
+      showSlidebar: true, // 左侧导航栏锁定/隐藏
+      clientPaging: true, // 是否在客户端响应分页及排序参数
+      overwriteHomeTab: false // 当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
     },
     debug: function(msg) {
       if (this.IS_DEBUG) {
@@ -84,6 +85,13 @@
 
       $('body').dialog({ id: 'bjui-login', url: login.url, title: login.title, width: login.width, height: login.height, mask: login.mask })
     },
+    /**
+     * 初始化
+     * 可配置项:
+     *  [object]  pageInfo, statusCode, alertMsg, loginInfo, ui, dialog
+     *  [string] JSPATH, PLUGINPATH, ajaxTimeout, debug, theme
+     * @param options
+     */
     init: function(options) {
       var op = $.extend({}, options)
 
@@ -92,14 +100,17 @@
       $.extend(BJUI.alertMsg, op.alertMsg)
       $.extend(BJUI.loginInfo, op.loginInfo)
       $.extend(BJUI.ui, op.ui)
+      $.extend(BJUI.dialog, op.dialog)
 
       if (op.JSPATH) this.JSPATH = op.JSPATH
       if (op.PLUGINPATH) this.PLUGINPATH = op.PLUGINPATH
       if (op.ajaxTimeout) this.ajaxTimeout = op.ajaxTimeout
+      this.date = (op.date === undefined) ? this.date : op.date
 
       this.IS_DEBUG = op.debug || false
       this.theme = $.cookie('bjui_theme') || op.theme
       this.initEnv()
+      if (this.date) this.initDate()
 
       $(this).theme('setTheme', this.theme)
     },
@@ -151,7 +162,10 @@
       /* header navbar */
       var navbarWidth = $('body').data('bjui.navbar.width')
 
-      var $toggle = $header.find('.bjui-navbar-toggle'); var $logo = $header.find('.bjui-navbar-logo'); var $navbar = $('#bjui-navbar-collapse'); var $nav = $navbar.find('.bjui-navbar-right')
+      var $toggle = $header.find('.bjui-navbar-toggle')
+      var $logo = $header.find('.bjui-navbar-logo')
+      var $navbar = $('#bjui-navbar-collapse')
+      var $nav = $navbar.find('.bjui-navbar-right')
 
       if (!navbarWidth) {
         navbarWidth = { logoW: $logo.outerWidth(), navW: $nav.outerWidth() }
@@ -200,7 +214,8 @@
     },
     getRegional: function(key) {
       if (String(key).indexOf('.') >= 0) {
-        var msg; var arr = String(key).split('.')
+        var msg
+        var arr = String(key).split('.')
 
         for (var i = 0; i < arr.length; i++) {
           if (!msg) msg = BJUI.regional[arr[i]]
@@ -218,6 +233,15 @@
       })
 
       return frag
+    },
+    initDate: function() {
+      // 时钟
+      var today = new Date()
+      $('#bjui-date').html(today.formatDate('yyyy/MM/dd'))
+      setInterval(function() {
+        today = new Date(today.setSeconds(today.getSeconds() + 1))
+        $('#bjui-clock').html(today.formatDate('HH:mm:ss'))
+      }, 1000)
     }
   }
 
