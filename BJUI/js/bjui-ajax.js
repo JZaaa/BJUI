@@ -276,7 +276,11 @@
   }
 
   Bjuiajax.prototype.doSearch = function(options) {
-    var that = this; var $element = that.$element; var form = null; var op = { pageCurrent: 1 }; var $target = $element.closest('.bjui-layout'); var isValid = options.isValid
+    var that = this
+    var $element = that.$element
+    var op = { pageCurrent: 1 }
+    var $target = $element.closest('.bjui-layout')
+    var isValid = options.isValid
 
     options = $.extend({}, Bjuiajax.DEFAULTS, typeof options === 'object' && options)
     if (!options.url) options.url = $element.attr('action')
@@ -297,7 +301,7 @@
 
     var search = function() {
       if ($target && $target.length) {
-        form = that.tools.getPagerForm($target, op)
+        that.tools.getPagerForm($target, op)
 
         var data = $element.serializeJson(); var _data = {}
 
@@ -315,11 +319,11 @@
       } else {
         if (that.tools.getTarget() === Bjuiajax.NAVTAB) {
           $target = $.CurrentNavtab
-          form = that.tools.getPagerForm($target, op)
+          that.tools.getPagerForm($target, op)
           $element.navtab('reloadForm', options.clearQuery, options)
         } else {
           $target = $.CurrentDialog
-          form = that.tools.getPagerForm($target, op)
+          that.tools.getPagerForm($target, op)
           $element.dialog('reloadForm', options.clearQuery, options)
         }
       }
@@ -369,7 +373,8 @@
   }
 
   Bjuiajax.prototype.refreshLayout = function(options) {
-    var that = this; var $element = that.$element; var $target = options.target ? $(options.target) : null
+    var that = this
+    var $target = options.target ? $(options.target) : null
 
     options = $.extend({}, Bjuiajax.DEFAULTS, typeof options === 'object' && options)
     if (!$target || !$target.length) {
@@ -490,7 +495,9 @@
   }
 
   Bjuiajax.prototype.doExportChecked = function(options) {
-    var that = this; var $element = that.$element; var $target = options.target ? $(options.target) : null
+    var that = this
+    var $element = that.$element
+    var $target = options.target ? $(options.target) : null
 
     if (!options.url) {
       BJUI.debug('Error trying to open a export link: url is undefined!')
@@ -551,7 +558,9 @@
   }
 
   Bjuiajax.prototype.doAjaxChecked = function(options) {
-    var that = this; var $element = that.$element; var $target = options.target ? $(options.target) : null
+    var that = this
+    var $element = that.$element
+    var $target = options.target ? $(options.target) : null
 
     options = $.extend({}, Bjuiajax.DEFAULTS, typeof options === 'object' && options)
     if (!options.url) {
@@ -584,7 +593,7 @@
       var $checks = $target.find(':checkbox[name=' + options.group + ']:checked')
       var callback = options.callback && options.callback.toFunc()
 
-      if ($checks.length == 0) {
+      if ($checks.length === 0) {
         $element.alertmsg('error', FRAG.alertNotChecked.replace('#notchecked#', BJUI.regional.notchecked))
         return
       }

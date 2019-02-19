@@ -367,7 +367,6 @@
         if (treeNode.faiconClose) {
           $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'fa fa-' + treeNode.faiconClose)
         }
-        console.log('11')
         if (op.onCollapse) {
           op.onCollapse.toFunc().call(this, event, treeId, treeNode)
         }

@@ -399,7 +399,10 @@
 
   // if found tabid replace tab, else create a new tab.
   Navtab.prototype.openTab = function() {
-    var that = this; var $element = this.$element; var options = this.options; var tools = this.tools
+    var that = this
+    var $element = this.$element
+    var options = this.options
+    var tools = this.tools
 
     if (!options.url && options.href) options.url = options.href
     if (!options.url) {

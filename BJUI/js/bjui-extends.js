@@ -309,7 +309,6 @@
       for (var i = 0; i < this.length; i += 1) {
         var ch = this.charAt(i)
 
-        console.log(ch)
         if (ch !== ' ' && ch !== '\n' && ch !== '\t' && ch !== '\r') return false
       }
       return true
