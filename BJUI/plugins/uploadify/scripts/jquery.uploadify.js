@@ -96,6 +96,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				var settings = $.extend({
 					// Required Settings
 					id       : $this.attr('id'), // The ID of the DOM object
+					$element : $this, // DOM
 					swf      : 'uploadify.swf',  // The path to the uploadify SWF file
 					uploader : 'uploadify.php',  // The path to the server-side upload script
 
@@ -966,7 +967,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			}
 
 			// Call the user-defined event handler
-			if (settings.onUploadSuccess) settings.onUploadSuccess.call(this, file, data, response);
+			if (settings.onUploadSuccess) settings.onUploadSuccess.call(this, file, data, settings.$element);
 		}
 
 	}
