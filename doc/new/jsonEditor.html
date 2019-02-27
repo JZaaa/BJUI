@@ -1,0 +1,34 @@
+<link href="BJUI/plugins/codemirror/json-editor.css" rel="stylesheet">
+<script src="BJUI/plugins/codemirror/json-editor.min.js"></script>
+<div class="bjui-pageContent">
+    <div class="bjui-doc">
+        <h3 class="page-header">
+            JSON编辑器
+            <span class="label label-warning">该插件默认未引入框架，需手动引入</span>
+        </h3>
+        <blockquote>
+            <p>基于CodeMirrorr与json-lint插件</p>
+        </blockquote>
+        <h4>引入</h4>
+        <pre class="brush: html">
+            &lt;link href="BJUI/plugins/codemirror/json-editor.css" rel="stylesheet">
+            &lt;script src="BJUI/plugins/codemirror/json-editor.min.js">&lt;/script>
+        </pre>
+        <h4>初始化</h4>
+        <ul>
+            <li>Data属性：textarea添加属性<code>data-toggle="jsoneditor"</code>。
+                <textarea data-toggle="jsoneditor"></textarea>
+                <br>
+                <p>示例代码：</p>
+                <pre class="brush: html">
+                    &lt;textarea data-toggle="jsoneditor">&lt;/textarea>
+                </pre>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+    </ul>
+</div>
