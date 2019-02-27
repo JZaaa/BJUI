@@ -69,6 +69,10 @@
     /* fixed ui style */
     $box.find(':text, :password, textarea, :button, a.btn').each(function() {
       var $element = $(this)
+      // 判断是否存在[b-native]属性,存在则跳过
+      if ($element.attr('b-native') !== undefined) {
+        return
+      }
       var icon
       var _icon
       var $tabledit = $element.closest('table.bjui-tabledit')
@@ -688,6 +692,49 @@
     $box.find('form[data-toggle="ajaxform"]').each(function() {
       $(this).validator({ ignore: ':input' })
       $(this).validator('destroy')
+    })
+
+    /**
+     * jsonEditor
+     */
+    $box.find('textarea[data-toggle=jsoneditor]').each(function() {
+      var $this = $(this)
+      $this.hide()
+      setTimeout(function() {
+        var codeMirror = CodeMirror.fromTextArea($this[0], {
+          lineNumbers: true,
+          mode: 'application/json',
+          gutters: ['CodeMirror-lint-markers'],
+          theme: 'rubyblue',
+          lint: true
+        })
+        codeMirror.on('change', function(cm) {
+          $this.val(cm.getValue())
+        })
+      }, 100)
+    })
+
+    $box.find('[data-toggle=clipboard]').each(function() {
+      var $this = $(this)
+      var data = $this.data()
+      var opts = {}
+      if (data.target) {
+        opts.target = function() {
+          return $box.find(data.target)[0]
+        }
+      } else if (data.text) {
+        opts.text = function() {
+          return data.text
+        }
+      }
+      var clipboard = new ClipboardJS(this, opts)
+
+      clipboard.on('error', function(e) {
+        console.error('Action:', e.action)
+        console.error('Trigger:', e.trigger)
+        $box.alertmsg('error', '复制失败！')
+        // e.clearSelection()
+      })
     })
   })
 }(jQuery))
