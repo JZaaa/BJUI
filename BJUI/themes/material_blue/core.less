@@ -303,7 +303,7 @@ fieldset{border-color:#c3ced5;}
 
 // 左部菜单样式
 #bjui-sidebar {
-  background:#fafafa;
+  background:#fff;
   border-color:#c3ced5;
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -325,6 +325,11 @@ fieldset{border-color:#c3ced5;}
       left: 0;
       color:@coreColor;
     }
+  }
+
+  .panel.last-child {
+    border-bottom: none;
+    .box-shadow(@shadow-0)
   }
 
 }
