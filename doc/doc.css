@@ -181,3 +181,28 @@
   opacity: 0.5;
 }
 */
+
+.markdown-body {
+    overflow: auto;
+    color: #24292e;
+}
+.markdown-body h1 {
+    font-size: 32px;
+}
+.markdown-body h2 {
+    font-size: 24px;
+}
+.markdown-body h3 {
+    font-size: 20px;
+}
+.markdown-body ol, .markdown-body ul {
+    list-style-type: disc;
+    padding-left: 32px;
+}
+.markdown-body ul ul, .markdown-body ol ul {
+    list-style-type: circle;
+}
+.markdown-body li {
+    line-height: 1.8;
+    font-weight: 400;
+}

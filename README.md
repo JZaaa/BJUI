@@ -1,6 +1,6 @@
 ## 介绍
 
-jquery快速开发框架
+jQuery快速开发框架
 
 > 原项目已不再维护，本项目仅提供项目演示与个人部分修改。
 
@@ -33,8 +33,6 @@ git clone git@github.com:JZaaa/BJUI.git
 
 --------------------------------------------------
 
-本项目为B-JUI2.x的插件更新版，原框架地址为 http://www.b-jui.com/
-
 ## 兼容性
 
 - IE9.0+, Chrome[最佳], Firefox, Safari。
@@ -44,7 +42,6 @@ git clone git@github.com:JZaaa/BJUI.git
 ## 其他
 
 - **已不再维护** 原框架地址:http://www.b-jui.com/
-- 本框架
 
 
 ## 修改插件
