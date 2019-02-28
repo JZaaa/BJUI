@@ -69,10 +69,6 @@
     /* fixed ui style */
     $box.find(':text, :password, textarea, :button, a.btn').each(function() {
       var $element = $(this)
-      // 判断是否存在[b-native]属性,存在则跳过
-      if ($element.attr('b-native') !== undefined) {
-        return
-      }
       var icon
       var _icon
       var $tabledit = $element.closest('table.bjui-tabledit')
@@ -551,9 +547,16 @@
       })
     })
 
-    /* accordion */
+    /**
+     * bootstrap panel 手风琴 accordion,
+     * heightbox 填充目标元素
+     * height 每页元素高，默认为填充目标元素高度
+     * offsety 每页高度偏移, 内容高度 height - offsety
+     */
     $box.find('[data-toggle="accordion"]').each(function() {
-      var $this = $(this); var hBox = $this.data('heightbox'); var height = $this.data('height')
+      var $this = $(this)
+      var hBox = $this.data('heightbox')
+      var height = $this.data('height')
       var initAccordion = function(hBox, height) {
         var offsety = $this.data('offsety') || 0
 

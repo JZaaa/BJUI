@@ -189,7 +189,6 @@
       $this.prepend($ajaxBackground).prepend($ajaxProgress)
     }
 
-
     $ajaxBackground.css('zIndex', zIndex + 1)
     $ajaxProgress.css('zIndex', zIndex + 2)
 

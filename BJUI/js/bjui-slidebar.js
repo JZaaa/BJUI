@@ -136,7 +136,6 @@
 
   Slidebar.prototype.init = function() {
     var that = this
-
     if (!BJUI.ui.showSlidebar) {
       that.unlock()
     } else {
@@ -195,15 +194,27 @@
           var $heading = $(this)
           var $a = $heading.find('> h4 > a')
 
-          if ($a.hasClass('collapsed')) $heading.removeClass('active')
+          if ($a.hasClass('collapsed')) {
+            $heading.removeClass('active')
+            var $panel = $heading.parent()
+            if ($panel.is(':last-child')) {
+              $panel.removeClass('last-child')
+            }
+          }
         })
       })
-      .on('shown.bs.collapse', function (e) {
+      .on('shown.bs.collapse', function(e) {
         $(this).find('> .panel > .panel-heading').each(function() {
           var $heading = $(this)
           var $a = $heading.find('> h4 > a')
 
-          if (!$a.hasClass('collapsed')) $heading.addClass('active')
+          if (!$a.hasClass('collapsed')) {
+            $heading.addClass('active')
+            var $panel = $heading.parent()
+            if ($panel.is(':last-child')) {
+              $panel.addClass('last-child')
+            }
+          }
         })
       })
 
@@ -246,7 +257,6 @@
       if ($children.length) {
         $li.toggleClass('open')
       }
-
     })
   }
 
@@ -357,9 +367,7 @@
 
       if (!i) $panel.collapse('show')
     })
-
     $('#bjui-sidebar').initui()
-
     $li
       .addClass('active')
       .data('bjui.slidebar.hnav.panels', $box.find('> .panel'))
