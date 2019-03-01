@@ -108,10 +108,15 @@
         if (toggle && toggle === 'autoheight' && $.fn.autosize) $element.addClass('autosize').autosize()
       }
       if (!$tabledit.length) {
+        // 添加size%支持
         var size = $element.attr('size') || $element.attr('cols')
-        var width = size * 10
-
         if (!size) return
+        var width = 0
+        if (size.charAt(size.length - 1) !== '%') {
+          width = size * 10
+        } else {
+          width = size
+        }
         if (width) $element.css('width', width)
       }
     })

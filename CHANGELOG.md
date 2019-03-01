@@ -1,6 +1,8 @@
 # 更新日志
 -------------------------------------------
 ## master
+### Improvements
+- 新增\[ :text, :password, textarea, :button, a.btn \] `size`属性`%`支持
 
 ### Bug Fixed
 - 修复`uploadify`插件成功回调参数问题
