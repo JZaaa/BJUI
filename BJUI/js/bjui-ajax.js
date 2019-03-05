@@ -602,8 +602,16 @@
         ids.push($(this).val())
       })
 
-      options.url = options.url.setUrlParam((options.idname ? options.idname : 'ids'), ids.join(','))
-
+      if (options.data) {
+        options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+      } else {
+        options.data = {}
+      }
+      if (options.type && options.type.toLowerCase === 'get') {
+        options.url = options.url.setUrlParam((options.idname ? options.idname : 'ids'), ids.join(','))
+      } else {
+        options.data[options.idname ? options.idname : 'ids'] = ids.join(',')
+      }
       $element.doAjax({ type: options.type, url: options.url, data: options.data, callback: callback || $.proxy(function(data) { that.ajaxCallback(data) }, that) })
     }
 
