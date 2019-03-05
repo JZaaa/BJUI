@@ -378,8 +378,8 @@
       var r = url
       if (r != null && r !== 'undefined' && r !== '') {
         value = encodeURIComponent(value)
-        var reg = new RegExp('(^|)' + name + '=([^&]*)(|$)')
-        var tmp = name + '=' + value
+        var reg = new RegExp('(^|)' + key + '=([^&]*)(|$)')
+        var tmp = key + '=' + value
         if (url.match(reg) != null) {
           r = url.replace(reg, tmp)
         } else {
