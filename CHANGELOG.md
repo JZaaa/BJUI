@@ -1,11 +1,15 @@
 # 更新日志
 -------------------------------------------
-## master
+## v1.1.3
 ### Improvements
 - 新增\[ :text, :password, textarea, :button, a.btn \] `size`属性`%`支持
+- `doAjaxChecked`组件会根据请求类型设置参数传递类型，get参数会以`Query String Parameters`请求,其他会以`Form Data`方式请求
 
 ### Bug Fixed
-- 修复`uploadify`插件成功回调参数问题
+- 修复`uploadify`组件成功回调参数问题
+- 修复`doAjaxChecked`组件`idname`未设置问题
+- 修复`doAjaxChecked`组件`[data-data]`格式化错误问题
+- 修复`string.setUrlParam()`函数错误运行问题
 
 ### Other
 - `Material-Blue`主题重命名为 `Teal`
