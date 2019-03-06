@@ -1,5 +1,10 @@
 # 更新日志
 -------------------------------------------
+## master
+### BugFixed
+- 修复`doAjax`组件`[data-data]`格式化错误问题
+
+-------------------------------------------
 ## v1.1.3
 ### Improvements
 - 新增\[ :text, :password, textarea, :button, a.btn \] `size`属性`%`支持
