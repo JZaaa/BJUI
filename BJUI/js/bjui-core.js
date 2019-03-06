@@ -19,7 +19,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.1.3',
+    version: '1.1.4',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -250,7 +250,6 @@
       $box.find('.bjui-maskProgress').find('.progress').stop().animate({ width: '100%' }, 'fast', function() {
         $box.find('.bjui-ajax-mask').fadeOut('normal', function() { $(this).remove() })
       })
-      console.log('progress has been removed !')
     }
   }
 

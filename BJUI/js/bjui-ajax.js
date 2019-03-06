@@ -433,6 +433,10 @@
       options.url = encodeURI(options.url)
     }
 
+    if (options.data) {
+      options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+    }
+
     var callback = options.callback && options.callback.toFunc()
     var todo = function() {
       $element.doAjax({ type: options.type, url: options.url, data: options.data, callback: callback || $.proxy(function(data) { that.ajaxCallback(data) }, that) })
