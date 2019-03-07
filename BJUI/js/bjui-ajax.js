@@ -454,7 +454,10 @@
   }
 
   Bjuiajax.prototype.doExport = function(options) {
-    var that = this; var $element = that.$element; var $target = options.target ? $(options.target) : null; var form
+    var that = this
+    var $element = that.$element
+    var $target = options.target ? $(options.target) : null
+    var form
 
     if (!options.url) {
       BJUI.debug('Error trying to open a ajax link: url is undefined!')
@@ -477,10 +480,21 @@
           $target = $.CurrentDialog
         }
       }
+      if (options.data) {
+        options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+      } else {
+        options.data = {}
+      }
+
       form = that.tools.getPagerForm($target)
-      if (form) options.url = encodeURI(options.url + (options.url.indexOf('?') === -1 ? '?' : '&') + $(form).serialize())
+      if (form) {
+        options.data = $.extend(options.data, $(form).serializeJson())
+      }
 
       $.fileDownload(options.url, {
+        httpMethod: options.type,
+        data: options.data,
+        cookiePath: '/',
         failCallback: function(responseHtml, url) {
           if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
           that.ajaxDone(responseHtml)
@@ -541,9 +555,17 @@
         ids.push($(this).val())
       })
 
-      options.url = options.url.setUrlParam((options.idname ? options.idname : 'ids'), ids.join(','))
+      if (options.data) {
+        options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+      } else {
+        options.data = {}
+      }
+      options.data[options.idname ? options.idname : 'ids'] = ids.join(',')
 
       $.fileDownload(options.url, {
+        httpMethod: options.type,
+        data: options.data,
+        cookiePath: '/',
         failCallback: function(responseHtml, url) {
           if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
           that.ajaxDone(responseHtml)
@@ -611,11 +633,7 @@
       } else {
         options.data = {}
       }
-      if (options.type && options.type.toLowerCase === 'get') {
-        options.url = options.url.setUrlParam((options.idname ? options.idname : 'ids'), ids.join(','))
-      } else {
-        options.data[options.idname ? options.idname : 'ids'] = ids.join(',')
-      }
+      options.data[options.idname ? options.idname : 'ids'] = ids.join(',')
       $element.doAjax({ type: options.type, url: options.url, data: options.data, callback: callback || $.proxy(function(data) { that.ajaxCallback(data) }, that) })
     }
 
