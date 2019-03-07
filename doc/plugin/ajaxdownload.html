@@ -11,6 +11,8 @@
                 <script type="text/javascript">
                 function doc_filedownload1(a) {
                     $.fileDownload($(a).attr('href'), {
+                        httpMethod: 'get',
+                        data: null,
                         failCallback: function(responseHtml, url) {
                             if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
                             $(a).bjuiajax('ajaxDone', responseHtml)
@@ -24,6 +26,8 @@
                     &lt;script type="text/javascript"&gt;
                         function doc_filedownload1(a) {
                             $.fileDownload($(a).attr('href'), {
+                                httpMethod: 'get',
+                                data: null,
                                 failCallback: function(responseHtml, url) {
                                     if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
                                     $(a).bjuiajax('ajaxDone', responseHtml)
