@@ -4,6 +4,12 @@
 ### BugFixed
 - 修复`doAjax`组件`[data-data]`格式化错误问题
 
+### Improvements
+- 新增`doexport`/`doExportChecked`组件使用type、data属性。
+
+### Update
+- `jquery.fileDownload`插件升级至 v1.4.5
+
 -------------------------------------------
 ## v1.1.3
 ### Improvements
