@@ -253,7 +253,7 @@ KindEditor.plugin('image', function(K) {
 				left : '-1000px'
 			});
 			tempImg.bind('load', function() {
-				// setSize(tempImg.width(), tempImg.height());
+				setSize(tempImg.width(), tempImg.height());
 				tempImg.remove();
 			});
 			K(document.body).append(tempImg);
@@ -288,8 +288,8 @@ KindEditor.plugin('image', function(K) {
 			var img = self.plugin.getSelectedImage();
 			self.plugin.imageDialog({
 				imageUrl : img ? img.attr('data-ke-src') : 'http://',
-				imageWidth : img ? img.attr('width') : '',
-				imageHeight : img ? img.attr('height') : '',
+				imageWidth : img ? img.width() : '',
+				imageHeight : img ? img.height() : '',
 				imageTitle : img ? img.attr('title') : '',
 				imageAlign : img ? img.attr('align') : '',
 				showRemote : allowImageRemote,
