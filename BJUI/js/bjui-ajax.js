@@ -199,7 +199,17 @@
   Bjuiajax.prototype.navtabCallback = function(json) {
     var that = this
 
-    if (json.tabid) { setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100) }
+    if (json.closeCurrent && !json.forward) {
+      that.$element.navtab('closeCurrentTab')
+    } else if (json.tabid !== false) {
+      if (($.trim(json.tabid) === '') && json.statusCode === BJUI.statusCode.ok) {
+        setTimeout(function() { that.$element.navtab('refresh') }, 100)
+      } else if (json.tabid) {
+        setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100)
+      } else if (that.options.reload) {
+        setTimeout(function() { that.$element.navtab('refresh') }, 100)
+      }
+    }
     if (json.dialogid) { setTimeout(function() { that.$element.dialog('refresh', json.dialogid) }, 100) }
     if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
     if (json.datagrid) {
@@ -209,7 +219,7 @@
         })
       }, 100)
     }
-    if (json.closeCurrent && !json.forward) { that.$element.navtab('closeCurrentTab') } else if (that.options.reload) { setTimeout(function() { that.$element.navtab('refresh') }, 100) }
+
     if (json.forward) {
       var _forward = function() {
         that.$element.navtab('reload', { url: json.forward })
@@ -229,7 +239,13 @@
   Bjuiajax.prototype.dialogCallback = function(json) {
     var that = this
     // 当 tabid 为空时, 200 statusCode会自动刷新当前navtab, 设置为false时将不刷新
-    if ((!json.tabid) && json.statusCode === BJUI.statusCode.ok) { setTimeout(function() { that.$element.navtab('refresh') }, 100) } else if (json.tabid && json.tabid !== 'false') { setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100) }
+    if (json.tabid !== false) {
+      if (($.trim(json.tabid) === '') && json.statusCode === BJUI.statusCode.ok) {
+        setTimeout(function() { that.$element.navtab('refresh') }, 100)
+      } else if (json.tabid) {
+        setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100)
+      }
+    }
     if (json.dialogid) { setTimeout(function() { that.$element.dialog('refresh', json.dialogid) }, 100) }
     if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
     if (json.closeCurrent && !json.forward) { that.$element.dialog('closeCurrent') } else if (that.options.reload) { setTimeout(function() { that.$element.dialog('refresh') }, 100) }
