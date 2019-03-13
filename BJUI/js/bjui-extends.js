@@ -78,6 +78,12 @@
           403: function(xhr, ajaxOptions, thrownError) {
             $this.alertmsg('error', '登录超时' || thrownError)
             BJUI.loadLogin()
+          },
+          404: function(xhr, ajaxOptions, thrownError) {
+            $this.alertmsg('error', '请求未找到！ httpCode: 404' || thrownError)
+          },
+          500: function(xhr, ajaxOptions, thrownError) {
+            $this.alertmsg('error', '请求失败！ httpCode: 500' || thrownError)
           }
         }
       })
