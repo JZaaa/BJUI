@@ -362,4 +362,73 @@
 
     return new Date(_y, _m, _d).formatDate('yyyy-MM-dd')
   }
+
+  /**
+   * 时间格式化
+   * 示例： Date.parseTime(new Date(), '{y}-{m}-{d} {h}:{i}:{s}')
+   * @param time Date对象 或 时间戳， 默认当前时间
+   * @param format 返回格式 默认：{y}-{m}-{d} {h}:{i}:{s}
+   * @returns {void | string}
+   */
+  Date.parseTime = function(time, format) {
+    time = time || new Date()
+    format = format || '{y}-{m}-{d} {h}:{i}:{s}'
+    var date
+    if (typeof time === 'object') {
+      date = time
+    } else {
+      if (('' + time).length === 10) time = parseInt(time) * 1000
+      date = new Date(time)
+    }
+    var formatObj = {
+      y: date.getFullYear(),
+      m: date.getMonth() + 1,
+      d: date.getDate(),
+      h: date.getHours(),
+      i: date.getMinutes(),
+      s: date.getSeconds(),
+      a: date.getDay()
+    }
+    return format.replace(/{(y|m|d|h|i|s)+}/g, (result, key) => {
+      var value = formatObj[key]
+      if (result.length > 0 && value < 10) {
+        value = '0' + value
+      }
+      return value || 0
+    })
+  }
+  /**
+   * 设置0点
+   * @returns {Date}
+   */
+  Date.prototype.startTime = function() {
+    this.setHours(0)
+    this.setMinutes(0)
+    this.setSeconds(0)
+    this.setMilliseconds(0)
+    return this
+  }
+  /**
+   * @returns {Date}
+   */
+  Date.prototype.endTime = function() {
+    this.setHours(23)
+    this.setMinutes(59)
+    this.setSeconds(59)
+    this.setMilliseconds(999)
+    return this
+  }
+
+  /**
+   * 返回当天时间- 00:00:00|23:59:59
+   * @param type {String} start|end
+   * @returns {Date}
+   */
+  Date.today = function(type = 'start') {
+    if (type === 'start') {
+      return new Date().startTime()
+    } else {
+      return new Date().endTime()
+    }
+  }
 }(jQuery))

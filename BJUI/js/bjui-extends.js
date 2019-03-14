@@ -39,7 +39,8 @@
         dataType: 'html',
         timeout: BJUI.ajaxTimeout,
         success: function(response) {
-          var json = response.toJson(); var $ajaxMask = $this.find('> .bjui-ajax-mask')
+          var json = response.toJson()
+          var $ajaxMask = $this.find('> .bjui-ajax-mask')
           if (!json[BJUI.keys.statusCode]) {
             $this.empty().html(response).append($ajaxMask).initui()
             if ($.isFunction(op.callback)) op.callback(response)
@@ -211,17 +212,17 @@
       return $(this)[0].tagName.toLowerCase() === tn
     },
     /**
-         * 判断当前元素是否已经绑定某个事件
-         * @param {Object} type
-         */
+     * 判断当前元素是否已经绑定某个事件
+     * @param {Object} type
+     */
     isBind: function(type) {
       var _events = $(this).data('events')
       return _events && type && _events[type]
     },
     /**
-         * 输出firebug日志
-         * @param {Object} msg
-         */
+     * 输出firebug日志
+     * @param {Object} msg
+     */
     log: function(msg) {
       return this.each(function() {
         if (console) console.log('%s: %o', msg, this)
@@ -230,8 +231,8 @@
   })
 
   /**
-     * 扩展String方法
-     */
+   * 扩展String方法
+   */
   $.extend(String.prototype, {
     isPositiveInteger: function() {
       return (new RegExp(/^[1-9]\d*$/).test(this))
@@ -246,7 +247,7 @@
       return (new RegExp(/[\u4E00-\u9FA5]/).test(this))
     },
     trim: function() {
-      return this.replace(/(^\s*)|(\s*$)|\r|\n/g, '')
+      return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
     },
     startsWith: function(pattern) {
       return this.indexOf(pattern) === 0
@@ -397,6 +398,32 @@
         }
       }
       return r
+    },
+    /**
+     * 获取url参数
+     * @param name 参数名称，为空则返回所有参数Object集合
+     * @param url 目标url，默认为当前url
+     * @returns {*}
+     */
+    getQuery: function(name, url) {
+      var $location
+      var $params = {}
+      if (url) {
+        $location = document.createElement('a')
+        $location.href = url
+      } else {
+        $location = window.location
+      }
+      var $seg = $location.search.replace(/^\?/, '').split('&')
+      var len = $seg.length
+      var $p
+      for (var i = 0; i < len; i++) {
+        if ($seg[i]) {
+          $p = $seg[i].split('=')
+          $params[$p[0]] = decodeURIComponent($p[1])
+        }
+      }
+      return (name ? $params[name] : $params)
     }
   })
 
