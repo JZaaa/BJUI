@@ -389,7 +389,7 @@
       s: date.getSeconds(),
       a: date.getDay()
     }
-    return format.replace(/{(y|m|d|h|i|s)+}/g, (result, key) => {
+    return format.replace(/{([ymdhis])+}/g, function(result, key) {
       var value = formatObj[key]
       if (result.length > 0 && value < 10) {
         value = '0' + value
@@ -424,7 +424,8 @@
    * @param type {String} start|end
    * @returns {Date}
    */
-  Date.today = function(type = 'start') {
+  Date.today = function(type) {
+    type = type || 'start'
     if (type === 'start') {
       return new Date().startTime()
     } else {
