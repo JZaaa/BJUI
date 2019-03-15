@@ -7,6 +7,8 @@
 ### Improvements
 - 新增`doexport`/`doExportChecked`组件使用type、data属性。
 - 新增`navtab`组件默认回调设置`tabid: false`时不刷新当前标签页
+- 新增bjui.debug为false时，`404`/`500`错误弹窗处理
+- 新增部分拓展函数
 
 ### Update
 - `jquery.fileDownload`插件升级至 v1.4.5
