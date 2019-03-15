@@ -81,10 +81,14 @@
             BJUI.loadLogin()
           },
           404: function(xhr, ajaxOptions, thrownError) {
-            $this.alertmsg('error', ' httpCode: 404 .请求未找到！' || thrownError)
+            if (!BJUI.IS_DEBUG) {
+              $this.alertmsg('error', ' httpCode: 404 .请求未找到！' || thrownError)
+            }
           },
           500: function(xhr, ajaxOptions, thrownError) {
-            $this.alertmsg('error', ' httpCode: 500 .请求失败！' || thrownError)
+            if (!BJUI.IS_DEBUG) {
+              $this.alertmsg('error', ' httpCode: 500 .请求失败！' || thrownError)
+            }
           }
         }
       })
