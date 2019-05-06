@@ -80,6 +80,12 @@
             $this.alertmsg('error', '登录超时' || thrownError)
             BJUI.loadLogin()
           },
+          // 添加 httpCode 401 无权限
+          401: function(xhr, ajaxOptions, thrownError) {
+          	if (!BJUI.IS_DEBUG) {
+              $this.alertmsg('error', '无权限访问' || thrownError)
+            }
+          },
           404: function(xhr, ajaxOptions, thrownError) {
             if (!BJUI.IS_DEBUG) {
               $this.alertmsg('error', ' httpCode: 404 .请求未找到！' || thrownError)
