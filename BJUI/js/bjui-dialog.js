@@ -105,6 +105,9 @@
 
         $dialog.trigger(BJUI.eventType.beforeLoadDialog)
         BJUI.ModuleFixed.destroyModules($dialog)
+        if (options.data) {
+          options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+        }
 
         if (options.url) {
           $dialogContent.ajaxUrl({

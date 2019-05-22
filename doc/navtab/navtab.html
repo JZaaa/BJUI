@@ -4,7 +4,7 @@ function doc_navtab_onLoad($navtab) {
 }
 function doc_navtab_beforeClose($navtab) {
     var code = $navtab.find('#doc-mytab-code').val()
-    
+
     if (code) return true
     $navtab.alertmsg('error', 'beforeClose回调：关闭navtab前请先填入你的工号。')
     return false
@@ -38,7 +38,7 @@ function doc_navtab_onClose() {
                     &lt;script type="text/javascript">
                         function doc_navtab_beforeClose($navtab) {
                             var code = $navtab.find('#doc-mytab-code').val()
-                            
+
                             if (code) return true
                             $navtab.alertmsg('error', '关闭navtab前请先填入你的工号。')
                             return false

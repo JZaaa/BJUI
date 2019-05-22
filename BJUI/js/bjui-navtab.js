@@ -334,6 +334,9 @@
         var arefre = options.autorefresh && (isNaN(String(options.autorefresh)) ? 15 : options.autorefresh)
 
         BJUI.ModuleFixed.destroyModules($panel)
+        if (options.data) {
+          options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+        }
 
         $panel
           .trigger(BJUI.eventType.beforeLoadNavtab)

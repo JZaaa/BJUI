@@ -4,7 +4,7 @@ function doc_dialog_onLoad($dialog) {
 }
 function doc_dialog_beforeClose($dialog) {
     var code = $dialog.find('#doc-dialog-code').val()
-    
+
     if (code) return true
     $dialog.alertmsg('error', 'beforeClose回调：关闭弹窗前请先填入你的工号。')
     return false
@@ -19,7 +19,7 @@ function doc_dialog_onClose() {
         <blockquote>
             <p>创建一个dialog有以下两种方式：</p>
         </blockquote>
-        
+
         <ul>
             <li>Data属性：DOM添加属性<code>data-toggle="dialog"</code>后，单击触发。<br>
                 <span class="label label-default">DOM示例1：</span>　<a href="doc/dialog/mydialog.html" data-toggle="dialog" data-id="mydialog1" data-title="我的业务弹窗1">打开dialog</a><br>
@@ -66,7 +66,7 @@ function doc_dialog_onClose() {
                             }
                             function doc_dialog_beforeClose($dialog) {
                                 var code = $dialog.find('#doc-dialog-code').val()
-                                
+
                                 if (code) return true
                                 $dialog.alertmsg('error', 'beforeClose回调：关闭弹窗前请先填入你的工号。')
                                 return false
