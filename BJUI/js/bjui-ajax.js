@@ -201,7 +201,8 @@
 
     if (json.closeCurrent && !json.forward) {
       that.$element.navtab('closeCurrentTab')
-    } else if (json.tabid !== false) {
+    }
+    if (json.tabid !== false) {
       if (($.trim(json.tabid) === '') && json.statusCode === BJUI.statusCode.ok) {
         setTimeout(function() { that.$element.navtab('refresh') }, 100)
       } else if (json.tabid) {
