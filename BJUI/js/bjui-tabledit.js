@@ -68,12 +68,15 @@
 
             var suffix = $child.attr('data-suffix')
 
+            var arrayfix = $child.attr('data-arrayfix')
+
             if (name) $child.attr('name', name.replaceSuffix(i))
             if (fors) $child.attr('for', fors.replaceSuffix(i))
             if (id) $child.attr('id', id.replaceSuffix(i).replaceSuffix2(i))
             if (href) $child.attr('href', href.replaceSuffix(i))
             if (group) $child.attr('data-group', group.replaceSuffix(i))
             if (suffix) $child.attr('data-suffix', suffix.replaceSuffix(i))
+            if (arrayfix) $child.attr('data-arrayfix', arrayfix.replaceSuffix(i))
             if (val && val.indexOf('#index#') >= 0) $child.val(val.replace('#index#', i + 1))
             if ($child.hasClass('no')) {
               var prefix = $child.data('prefix') ? $child.data('prefix') : ''
