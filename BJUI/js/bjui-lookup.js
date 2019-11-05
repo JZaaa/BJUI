@@ -21,7 +21,7 @@
   // LOOKUP GLOBAL ELEMENTS
   // ======================
 
-  var group, suffix, $currentLookup
+  var group, suffix, $currentLookup, arrayfix
 
   // LOOKUP CLASS DEFINITION
   // ======================
@@ -40,7 +40,8 @@
     height: 400,
     title: 'Lookup',
     maxable: true,
-    resizable: true
+    resizable: true,
+    arrayfix: false
   }
 
   Lookup.EVENTS = {
@@ -66,6 +67,7 @@
 
     group = this.options.group || null
     suffix = this.options.suffix || null
+    arrayfix = this.options.arrayfix || null
     $currentLookup = this.$element
 
     if (suffix) suffix = suffix.trim()
@@ -100,6 +102,9 @@
   }
 
   Lookup.prototype.getField = function(key) {
+    if (arrayfix) {
+      key = '[' + key + ']'
+    }
     return (group ? (group + '.') : '') + (key) + (suffix || '')
   }
 

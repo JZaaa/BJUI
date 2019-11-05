@@ -26,6 +26,12 @@
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="t2.pid" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" name="t2.name" size="10"> &lt;a href="doc/form/mylookup.html" data-toggle="lookupbtn" data-group="t2">打开Lookup窗口&lt;/a>
                 </pre>
+                <span class="label label-default">DOM示例3：</span>　<label>PID:</label><input type="text" name="[pid]" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="[name]" class="doc_lookup" data-arrayfix="true" size="10"><br>
+                <p>示例代码：</p>
+                <pre class="brush: html">
+                    &lt;label>PID:&lt;/label>&lt;input type="text" name="[pid]" size="5">
+                    &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="[name]" data-arrayfix="true" size="10">
+                </pre>
             </li>
             <li>jQuery API：<br>
                 <pre class="brush: js">
@@ -61,6 +67,12 @@
                     <td>string</td>
                     <td>null</td>
                     <td>[可选] input的名称后缀，适用于input名称为"abcd[]"或"aa.bb[]"的形式，其中 suffix为：<code>[]</code>，<code>特别注意：</code>如果真实情况suffix为"[]"，请写为<code>" []"</code>，空格加"[]"，以防止被转义为空数组。</td>
+                </tr>
+                <tr>
+                    <td>arrayfix</td>
+                    <td>bool</td>
+                    <td>false</td>
+                    <td>[可选] input的名称后缀，适用于input名称为"[abcd]"的形式，一般用于<code>PHP</code>语言下可编辑表格数组拼接</td>
                 </tr>
                 <tr>
                     <td>id</td>
@@ -127,7 +139,7 @@
         <pre class="brush: js">
             $('mylookup - selector').on('afterchange.bjui.lookup', function(e, data) {
                 var myvalue = data.value
-                
+
                 // do something...
             })
         </pre>

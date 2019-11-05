@@ -3,6 +3,7 @@
 ## master 
 ### BugFixed
 - 修复`dialog`/`navtab`组件`[data-data]`未格式化问题
+- 新增`lookup`查找带回插件配置项
 -------------------------------------------
 ## v1.1.4
 ### BugFixed
