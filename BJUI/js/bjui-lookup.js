@@ -41,7 +41,7 @@
     title: 'Lookup',
     maxable: true,
     resizable: true,
-    arrayfix: false
+    arrayfix: null
   }
 
   Lookup.EVENTS = {
@@ -103,7 +103,7 @@
 
   Lookup.prototype.getField = function(key) {
     if (arrayfix) {
-      key = '[' + key + ']'
+      key = arrayfix + '[' + key + ']'
     }
     return (group ? (group + '.') : '') + (key) + (suffix || '')
   }
