@@ -45,6 +45,7 @@
     itemTemplate: FRAG.uploadTemp, // 上传队列显示的模板
     breakPoints: false, // 是否开启断点续传
     fileSplitSize: 1024 * 1024, // 断点续传的文件块大小，单位Byte，默认1M
+    onUploadBefore: null, // 上传开始前的动作, 返回true则开始上传，否则结束上传
     onUploadStart: null, // 上传开始时的动作
     onUploadSuccess: null, // 上传成功的动作
     onUploadComplete: null, // 上传完成的动作
@@ -363,6 +364,17 @@
     var that = this; var $element = that.$element; var options = that.options; var tools = that.tools
     var xhr = false; var originalFile = file
 
+    var next = true
+    if (options.onUploadBefore) {
+      if (typeof options.onUploadBefore === 'string') {
+        options.onUploadBefore = options.onUploadBefore.toFunc()
+      }
+      next = options.onUploadBefore()
+    }
+    if (!next) {
+      return
+    }
+
     // 校正进度条和上传比例的误差
     xhr = new XMLHttpRequest()
 
@@ -398,6 +410,11 @@
           if (upOver) {
             that.queueData.success++
             tools.successQueueItem(originalFile, xhr)
+            if (options.onUploadComplete) {
+              if (typeof options.onUploadComplete === 'string') {
+                options.onUploadComplete = options.onUploadComplete.toFunc()
+              }
+            }
             options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText)
           }
         } else {
@@ -537,6 +554,7 @@
         if (options.onUploadSuccess && typeof options.onUploadSuccess === 'string') { options.onUploadSuccess = options.onUploadSuccess.toFunc() }
         if (options.onUploadComplete && typeof options.onUploadComplete === 'string') { options.onUploadComplete = options.onUploadComplete.toFunc() }
         if (options.onUploadError && typeof options.onUploadError === 'string') { options.onUploadError = options.onUploadError.toFunc() }
+        if (options.onUploadBefore && typeof options.onUploadBefore === 'string') { options.onUploadBefore = options.onUploadBefore.toFunc() }
 
         $file.appendTo($element)
         if (!options.auto) {

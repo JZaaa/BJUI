@@ -8,23 +8,32 @@
         <script type="text/javascript">
             function doc_upload_success(file, data) {
                 var json = $.parseJSON(data)
-                
+
                 $(this).bjuiajax('ajaxDone', json)
                 if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
                     $('#doc_pic').val(json.filename)
                     $('#doc_span_pic').html('已上传图片：<img src="'+ json.filename +'" width="100">')
                 }
             }
+            function doc_upload_before() {
+              console.log('上传开始前!')
+              return true
+            }
+            function doc_upload_complete() {
+              console.log('上传完成！')
+            }
         </script>
         <ul>
             <li>Data属性：div添加属性<code>data-toggle="upload"</code>后可触发上传组件。<br>
                 <span class="label label-default">DOM示例：</span>
                     <div style="display:inline-block; vertical-align:middle;">
-                        <div id="doc_pic_up" data-toggle="upload" data-uploader="ajaxUpload.html" 
+                        <div id="doc_pic_up" data-toggle="upload" data-uploader="ajaxUpload.html"
                             data-file-size-limit="1024000000"
                             data-file-type-exts="*.jpg;*.png;"
                             data-multi="true"
                             data-on-upload-success="doc_upload_success"
+                             data-on-upload-before="doc_upload_before"
+                             data-on-upload-complete="doc_upload_complete"
                             data-icon="cloud-upload"></div>
                         <input type="hidden" name="doc.pic" value="" id="doc_pic">
                     </div>
@@ -35,7 +44,7 @@
                     &lt;script type="text/javascript">
                         function doc_upload_success(file, data) {
                             var json = $.parseJSON(data)
-                            
+
                             $(this).bjuiajax('ajaxDone', json)
                             if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
                                 $('#doc_pic').val(json.filename)
@@ -44,7 +53,7 @@
                         }
                     &lt;/script>
                     &lt;div style="display:inline-block; vertical-align:middle;">
-                        &lt;div id="doc_pic_up" data-toggle="upload" data-uploader="doc/form/ajaxPic.html" 
+                        &lt;div id="doc_pic_up" data-toggle="upload" data-uploader="doc/form/ajaxPic.html"
                             data-file-size-limit="1024000000"
                             data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
                             data-multi="true"
@@ -125,6 +134,18 @@
                     <td>function(file, data, $element)</td>
                     <td>null</td>
                     <td>[必选] 上传成功时的回调函数，data是服务端返回的JSON数据，$element是触发上传的jQuery对象。</td>
+                </tr>
+                <tr>
+                    <td>onUploadBefore</td>
+                    <td>function()</td>
+                    <td>null</td>
+                    <td>[可选] 上传操作前的回调函数，返回<code>false</code>则停止上传动作，返回<code>true</code>则继续上传动作</td>
+                </tr>
+                <tr>
+                    <td>onUploadComplete</td>
+                    <td>function()</td>
+                    <td>null</td>
+                    <td>[可选] 上传操作完成的回调函数</td>
                 </tr>
                 <tr>
                     <td>dragDrop</td>
