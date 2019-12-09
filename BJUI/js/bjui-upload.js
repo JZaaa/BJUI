@@ -364,14 +364,24 @@
     var that = this; var $element = that.$element; var options = that.options; var tools = that.tools
     var xhr = false; var originalFile = file
 
+    if (options.onUploadComplete) {
+      if (typeof options.onUploadComplete === 'string') {
+        options.onUploadComplete = options.onUploadComplete.toFunc()
+      }
+    }
+
     var next = true
     if (options.onUploadBefore) {
       if (typeof options.onUploadBefore === 'string') {
         options.onUploadBefore = options.onUploadBefore.toFunc()
       }
-      next = options.onUploadBefore()
+      next = options.onUploadBefore(options.formData || {})
+      if (next !== true) {
+        options.formData = next
+      }
     }
     if (!next) {
+      options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText)
       return
     }
 
@@ -410,11 +420,6 @@
           if (upOver) {
             that.queueData.success++
             tools.successQueueItem(originalFile, xhr)
-            if (options.onUploadComplete) {
-              if (typeof options.onUploadComplete === 'string') {
-                options.onUploadComplete = options.onUploadComplete.toFunc()
-              }
-            }
             options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText)
           }
         } else {

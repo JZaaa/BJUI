@@ -137,9 +137,9 @@
                 </tr>
                 <tr>
                     <td>onUploadBefore</td>
-                    <td>function()</td>
+                    <td>function(formData)</td>
                     <td>null</td>
-                    <td>[可选] 上传操作前的回调函数，返回<code>false</code>则停止上传动作，返回<code>true</code>则继续上传动作</td>
+                    <td>[可选] 上传操作前的回调函数，返回<code>false</code>则停止上传动作，返回<code>true</code>则继续上传动作,返回<code>obj</code>则覆盖formData数据</td>
                 </tr>
                 <tr>
                     <td>onUploadComplete</td>
