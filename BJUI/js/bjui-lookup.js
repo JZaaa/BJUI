@@ -21,7 +21,7 @@
   // LOOKUP GLOBAL ELEMENTS
   // ======================
 
-  var group, suffix, $currentLookup, arrayfix
+  var group, suffix, $currentLookup, arrayfix, beforeSelect
 
   // LOOKUP CLASS DEFINITION
   // ======================
@@ -41,7 +41,8 @@
     title: 'Lookup',
     maxable: true,
     resizable: true,
-    arrayfix: null
+    arrayfix: null,
+    beforeSelect: null // 选中目标赋值之前，返回false则停止赋值关闭窗口动作
   }
 
   Lookup.EVENTS = {
@@ -69,8 +70,14 @@
     suffix = this.options.suffix || null
     arrayfix = this.options.arrayfix || null
     $currentLookup = this.$element
-
     if (suffix) suffix = suffix.trim()
+    if (options.beforeSelect) {
+      if (typeof options.beforeSelect === 'string') {
+        this.options.beforeSelect = options.beforeSelect.toFunc()
+      }
+    }
+
+    beforeSelect = this.options.beforeSelect
 
     this.open(that.$element)
   }
@@ -142,12 +149,19 @@
     var $box = $currentLookup.closest('.unitBox')
     var newValue /* @description 增加 @author 小策一喋 */
 
+    if (beforeSelect) {
+      if (beforeSelect(args) === false) {
+        return
+      }
+    }
+
     // for datagrid
     if ($currentLookup.data('customEvent')) {
       $currentLookup.trigger('customEvent.bjui.lookup', [args])
     } else {
       $box.find(':input').each(function() {
-        var $input = $(this); var inputName = $input.attr('name')
+        var $input = $(this)
+        var inputName = $input.attr('name')
 
         for (var key in args) {
           if (args.hasOwnProperty(key)) {

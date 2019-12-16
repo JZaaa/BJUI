@@ -32,6 +32,19 @@
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="aa[pid]" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="aa[name]" data-arrayfix="aa" size="10">
                 </pre>
+                <script>
+                    function lookup_before_select(val) {
+                      console.log(val)
+                      $(this).alertmsg('error', '选择无效')
+                      return false
+                    }
+                </script>
+                <span class="label label-default">DOM示例4：</span>　<label>PID:</label><input type="text" name="bb[pid]" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="bb[name]" class="doc_lookup" data-arrayfix="bb" data-before-select="lookup_before_select" size="10"><br>
+                <p>示例代码：</p>
+                <pre class="brush: html">
+                    &lt;label>PID:&lt;/label>&lt;input type="text" name="bb[pid]" size="5">
+                    &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="bb[name]" data-arrayfix="bb" size="10" data-before-select="lookup_before_select">
+                </pre>
             </li>
             <li>jQuery API：<br>
                 <pre class="brush: js">
@@ -115,6 +128,12 @@
                     <td>boolean</td>
                     <td>true</td>
                     <td>[可选] 弹出窗口可以调整大小。</td>
+                </tr>
+                <tr>
+                    <td>beforeSelect</td>
+                    <td>function</td>
+                    <td>null</td>
+                    <td>[可选]  选中目标赋值之前，返回<code>false</code>则停止赋值关闭窗口动作。回调参数<code>val</code>为赋值参数</td>
                 </tr>
             </tbody>
         </table>
