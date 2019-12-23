@@ -1,12 +1,17 @@
 # 更新日志
 -------------------------------------------
-## master 
+## v1.1.5
 ### BugFixed
 - 修复`dialog`/`navtab`组件`[data-data]`未格式化问题
-- 新增`lookup`查找带回插件配置项
-- 新增`lookup`查找带回插件选择回调方法
-- 新增`upload`组件上传前与上传完成回调函数
+
+
+### Improvements
+- 新增`lookup`查找带回插件`arrayfix`配置项
+- 新增`lookup`查找带回插件`beforeSelect`选择回调方法
+- 新增`upload`组件上传前`onUploadBefore`与上传完成`onUploadComplete`回调函数
+
 -------------------------------------------
+
 ## v1.1.4
 ### BugFixed
 - 修复`doAjax`组件`[data-data]`格式化错误问题
@@ -72,7 +77,7 @@
 - 修复可编辑表格`upload`插件只读状态未隐藏问题
 - 修复`tags`插件输入为空时错误
 - 修复`uploadify`插件IE9下初始化错误
-- 修复`swfupload`与`uploadify`插件调用Flash错误 
+- 修复`swfupload`与`uploadify`插件调用Flash错误
 
 -------------------------------------------
 ## 2019-02-13
@@ -125,7 +130,7 @@
 - 项目瘦身
 - 修复bjui-lookup组件未实例化前添加newurl无效问题
 
-### Update 
+### Update
 - 删除DragSort拖拽插件
 - zTree 插件升级至 v3.5.39
 - kindeditor 升级至 v4.1.12, 添加IE11支持
@@ -143,7 +148,7 @@
 
 ------------------------------
 
-更新内容 : 
+更新内容 :
 - bootstrap与其相关icon等更新版本为3.3.7
 - colorpicker更新版本为2.5.1
 - nice-validator更新版本为1.0.10，请查看新版本文档
