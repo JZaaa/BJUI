@@ -37,7 +37,8 @@
     tagname: 'tag', // Appended "<input type='hidden'>" name attribute
     max: 0, // The maximum allowable number of tags(0=unlimited)
     clear: false, // If not found, clear the input characters
-    lightCls: 'tags-highlight'
+    lightCls: 'tags-highlight',
+    val: []
   }
 
   Tags.EVENTS = {
@@ -156,9 +157,11 @@
         }
       },
       query: function() {
-        if (that.timeout) clearTimeout(that.timeout)
+        if (options.url && options.url.length) {
+          if (that.timeout) clearTimeout(that.timeout)
 
-        that.timeout = setTimeout(that.tools.doQuery, 300)
+          that.timeout = setTimeout(that.tools.doQuery, 300)
+        }
       },
       doQuery: function() {
         if (options.max > 0 && that.$tagsArr.length >= options.max) return
@@ -288,8 +291,8 @@
     var options = this.options
 
     if (!(options.url)) {
-      BJUI.debug('Tags Plugin: Do query tags, url is undefined!')
-      return
+      // BJUI.debug('Tags Plugin: Do query tags, url is undefined!')
+      // return
     } else {
       options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
 
@@ -311,6 +314,13 @@
       .on('click', function() {
         $element.focus()
       })
+
+    if (typeof options.val === 'string') {
+      options.val = options.val.toObj()
+    }
+    $.each(options.val, function(key, val) {
+      that.tools.createTag(val, val)
+    })
 
     $element
     // .on('blur', $.proxy(this.tools.removeMenu, this))
