@@ -1,0 +1,90 @@
+<style>
+    .width-padding {
+        padding: 20px 10px;
+    }
+</style>
+<div class="bjui-pageContent">
+    <div class="bjui-doc">
+        <h1>使用建议</h1>
+        <div class="text-muted">BJUI相比其他非MVVM框架的不同在于所有页面由ajax加载而非iframe加载，这中架构解决了iframe之间难以通信的问题，但也在一定程度上对开发造成了影响，其中比较大的问题就是各页面之间的id与js参数/方法冲突。下面提供一些自己在日常使用中的规避这些问题的经验</div>
+        <hr/>
+        <blockquote>
+            <h4 class="text-info">页面ID冲突问题</h4>
+            <div>
+                页面ID冲突问题是使用此框架比较常见的问题之一，好在框架提供了两个参数可解决大部分ID冲突的情况:<br/>
+                <code>$.CurrentNavtab</code>为当前标签工作区DOM<br/>
+                <code>$.CurrentDialog</code>为当前弹窗DOM<br/>
+                开发者可用上述两个变量来查找所需ID，但依旧建议避免使用重复ID。非必要情况下可以用其他方式来代替ID查询元素：<br/>
+                可以约定使用<code>[data-filter]</code>属性来查找元素：
+                <pre class="brush: js">
+                    &lt;script>
+                    // 自定义一个公用查找方法
+                     $.fn.findFilter = function (filter) {
+                        if (filter) {
+                          return this.find('[data-filter="'+filter+'"]')
+                        }
+                        return undefined
+                    }
+
+                    // 当前弹窗中查找[data-filter="a"]的元素
+                    $.CurrentDialog.findFilter('a')
+
+                    &lt;/script>
+                </pre>
+            </div>
+        </blockquote>
+        <blockquote>
+            <h4 class="text-info">页面JS方法与参数冲突问题</h4>
+            <div>
+                与ID冲突一样，相似的页面开发同样会碰到JS方法与参数冲突问题<br>
+                建议开发者对使用回调的组件由jQuery方法来代替框架[data-toggle]方法实现，并在页面中使用<code>(function(){}())</code>来局部定义方法与参数，避免全局变量污染<br/>
+                例如navtab中的上传组件(建议所有上传组件使用jQuery方法实例化使用)：
+                <pre class="brush: html">
+                    &lt;div data-filter="uploadButton" class="text-center">&lt;/div>
+                </pre>
+                <pre class="brush: js">
+                    &lt;script>
+                         (function () {
+                            var $box = $.CurrentNavtab
+                            $box.findFilter('uploadButton').upload({
+                              uploader: '..',
+                              fileSizeLimit: 1024000000,
+                              auto: true,
+                              buttonText: '请选择导入文件',
+                              previewImg: false,
+                              fileTypeExts: '*.xls;*.xlsx;*.csv',
+                              onUploadSuccess: function (file, data, $element) {
+                                if (typeof data === 'string') {
+                                  try {
+                                    data = JSON.parse(data)
+                                  } catch (e) {
+                                    data = {
+                                      code: 300,
+                                      message: '未知错误'
+                                    }
+                                  }
+                                }
+                                if (data.statusCode === BJUI.statusCode.ok) {
+                                  $(this).alertmsg('ok', data.message)
+                                } else {
+                                  $(this).alertmsg('error', data.message)
+                                }
+                              },
+                              onUploadBefore: function (formData) {
+                                return true
+                              },
+                              onUploadComplete: function () {
+                              }
+                            })
+                        }())
+                    &lt;/script>
+                </pre>
+            </div>
+        </blockquote>
+    </div>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+    </ul>
+</div>
