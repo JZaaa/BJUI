@@ -29,7 +29,7 @@
         <script type="text/javascript">
             $('input[name="doc-check-t"]').on('ifChanged', function(e) {
                 var checked = $(this).is(':checked'), val = $(this).val()
-                
+
                 if (checked)
                     $(this).alertmsg('info', '你选择了'+ val)
                 else
@@ -41,7 +41,7 @@
             &lt;script type="text/javascript">
                 $('input[name="doc-check-t"]').on('ifChanged', function(e) {
                     var checked = $(this).is(':checked'), val = $(this).val()
-                    
+
                     if (checked)
                         $(this).alertmsg('info', '你选择了'+ val)
                     else
@@ -53,6 +53,24 @@
             &lt;input type="checkbox" name="doc-check-t" id="doc-check-t3" value="3000" data-toggle="icheck" data-label="3000">
             &lt;input type="checkbox" name="doc-check-t" id="doc-check-t4" value="4000" data-toggle="icheck" data-label="4000">
             &lt;input type="checkbox" name="doc-check-t" id="doc-check-t5" value="5000" data-toggle="icheck" data-label="5000">
+        </pre>
+        <blockquote class="point">
+            <p>checkbox根据状态返回0或1，选中返回1,非选中返回0</p>
+        </blockquote>
+        　　<div class="label label-default">示例：</div>　
+        <p>&nbsp;</p>
+        <div>
+            <label>
+                总是返回数据：
+                <input type="checkbox" name="bool" data-toggle="boolcheck">
+            </label>
+        </div>
+        <p>示例代码：</p>
+        <pre class="brush: js; html-script: true">
+            &lt;label>
+                总是返回数据：
+            &lt;input type="checkbox" name="bool" data-toggle="boolcheck">
+            &lt;/label>
         </pre>
     </div>
 </div>

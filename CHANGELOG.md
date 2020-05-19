@@ -1,7 +1,9 @@
 # 更新日志
 -------------------------------------------
 ## master
+### Improvements
 
+- 新增`boolcheck`插件，利用`[data-toggle="boolcheck"]`实例化，将会对check插件进行`icheck`组件实例化，并生成隐藏input，生成Input根据check组件状态返回1或0,该组件用于解决在`dialog/navtab`上check搜索选中后无法取消的问题
 
 -------------------------------------------
 ## v1.1.5

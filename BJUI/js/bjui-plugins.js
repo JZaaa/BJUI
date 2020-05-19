@@ -22,6 +22,35 @@
 
     // UI init begin...
 
+    var $boolCheck = $box.find('[data-toggle="boolcheck"]')
+
+    $boolCheck.each(function(i) {
+      var $element = $(this)
+      var name = $element.attr('name')
+      $element.removeAttr('name')
+      var $input
+      if (name) {
+        var value = $element.is(':checked') ? 1 : 0
+        $input = $('<input type="hidden" value="'+value+'" name="'+name+'">').appendTo($element.parent())
+      }
+      $element
+        .iCheck({
+          checkboxClass: 'icheckbox_minimal-purple',
+          radioClass: 'iradio_minimal-purple',
+          increaseArea: '20%' // optional
+        })
+        .on('ifChecked', function() {
+          if ($input) {
+            $input.val(1)
+          }
+        })
+        .on('ifUnchecked', function() {
+          if ($input) {
+            $input.val(0)
+          }
+        })
+    })
+
     /* i-check */
     var $icheck = $box.find('[data-toggle="icheck"]')
 
