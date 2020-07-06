@@ -44,6 +44,12 @@
                 </pre>
                 <pre class="brush: js">
                     &lt;script>
+                            // 在多弹窗情况下，可能出现非第一个弹窗$.CurrentDialog获取不正确问题，这种情况下可利用以下方式获取当前弹窗
+                            // $(document).one(BJUI.eventType.initUI, function(e) {
+                            //     var $box = $(e.target)
+                            //     ..其他代码
+                            // })
+
                          (function () {
                             var $box = $.CurrentNavtab
                             $box.findFilter('uploadButton').upload({
