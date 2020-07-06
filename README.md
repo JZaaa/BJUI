@@ -10,7 +10,7 @@ jQuery快速开发框架
 
 ## 主题
 本项目新增了一个主题，点击右上方树形按钮选择
-![Material-Blue](./images/theme01.png)
+![Teal](./images/theme01.png)
 
 ### 自定义主题
 可以配置`BJUI/themes/teal/variables.less` `@coreColor`色值配置自己颜色风格的页面
