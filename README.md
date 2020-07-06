@@ -58,10 +58,6 @@ npm install uglify-js -g
 ```
 
 - 压缩BJUI插件
-
-    `bin/bjui-js-optimize.bat`自动压缩文件
-    
-    或者 手动压缩文件
     
 ```
 
