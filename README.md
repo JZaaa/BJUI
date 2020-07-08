@@ -10,7 +10,7 @@ jQuery快速开发框架
 
 ## 主题
 本项目新增了一个主题，点击右上方树形按钮选择
-![Material-Blue](./images/theme01.png)
+![Teal](./images/theme01.png)
 
 ### 自定义主题
 可以配置`BJUI/themes/teal/variables.less` `@coreColor`色值配置自己颜色风格的页面
@@ -29,7 +29,8 @@ git clone git@github.com:JZaaa/BJUI.git
 
 ## 升级
 
-> **本项目不支持覆盖升级。** 若需要升级请在开发模式下测试后覆盖。
+> 本项目1.x版本与原bjui版本不兼容，请勿覆盖升级。
+> `1.1.x`版本一般情况下可直接覆盖升级，具体更新内容请查看更新日志。
 
 --------------------------------------------------
 
@@ -57,10 +58,6 @@ npm install uglify-js -g
 ```
 
 - 压缩BJUI插件
-
-    `bin/bjui-js-optimize.bat`自动压缩文件
-    
-    或者 手动压缩文件
     
 ```
 
