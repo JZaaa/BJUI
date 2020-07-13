@@ -82,7 +82,7 @@
           },
           // 添加 httpCode 401 无权限
           401: function(xhr, ajaxOptions, thrownError) {
-          	if (!BJUI.IS_DEBUG) {
+            if (!BJUI.IS_DEBUG) {
               $this.alertmsg('error', '无权限访问' || thrownError)
             }
           },
@@ -160,6 +160,9 @@
         if ($(this).closest('.tab-content').length) return
 
         var $box = $(this)
+        if ($box.is(':hidden')) {
+          return
+        }
 
         var $pageHeader = $box.find('> .bjui-pageHeader')
 
