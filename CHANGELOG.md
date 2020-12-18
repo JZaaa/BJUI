@@ -4,6 +4,7 @@
 ### Improvements
 
 - 新增内置工具集
+- 新增KindEditor全局配置
 
 ## v1.1.6
 ### Improvements

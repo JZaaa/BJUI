@@ -56,7 +56,12 @@
           },
           debug: true,    // [可选]调试模式 [true|false，默认false]
           theme: 'teal', // 若有Cookie['bjui_theme'],优先选择Cookie['bjui_theme']。皮肤[皮肤:default, orange, purple, blue, red, green, teal]
-          date: true // 是否显示时钟
+          date: true, // 是否显示时钟
+          // kindEditor插件全局配置
+          KindEditor: {
+            uploadJson: undefined,
+            fileManagerJson: undefined
+          }
         })
 
       })

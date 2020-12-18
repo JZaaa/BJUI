@@ -19,7 +19,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.1.4',
+    version: '1.1.6',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -33,6 +33,11 @@
       mask: false,
       width: 500,
       height: 300
+    },
+    // 编辑器统一配置
+    KindEditor: {
+      uploadJson: undefined,
+      fileManagerJson: undefined
     },
     keyCode: {
       ENTER: 13, ESC: 27, END: 35, HOME: 36,
@@ -100,6 +105,7 @@
       $.extend(BJUI.pageInfo, op.pageInfo)
       $.extend(BJUI.alertMsg, op.alertMsg)
       $.extend(BJUI.loginInfo, op.loginInfo)
+      $.extend(BJUI.KindEditor, op.KindEditor)
       $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
 
