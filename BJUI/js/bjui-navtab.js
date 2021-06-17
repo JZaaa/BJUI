@@ -618,6 +618,10 @@
   Navtab.prototype.getCurrentPanel = function() {
     return this.tools.getPanels().eq(currentIndex)
   }
+  
+  Navtab.prototype.closeOtherTab = function() {
+	  return this.tools.closeOtherTab()
+  }
 
   Navtab.prototype.checkTimeout = function() {
     var json = JSON.parse($currentPanel.html())

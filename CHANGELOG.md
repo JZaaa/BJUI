@@ -1,10 +1,11 @@
 # 更新日志
 -------------------------------------------
-## master
+## v1.1.7
 ### Improvements
 
 - 新增内置工具集
 - 新增KindEditor全局配置
+- `navtab`组件新增`closeOtherTab`方法
 
 ## v1.1.6
 ### Improvements
