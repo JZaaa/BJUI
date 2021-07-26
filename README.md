@@ -40,10 +40,6 @@ git clone git@github.com:JZaaa/BJUI.git
 - 本框架不适用于需要兼容IE8以下的开发者或使用者。
 
 
-## 其他
-
-- **已不再维护** 原框架地址:http://www.b-jui.com/
-
 
 ## 修改插件
 
