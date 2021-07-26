@@ -3,9 +3,11 @@
 ## v1.1.8
 ### Improvements
 
+- 新增ajax提交表单附加参数extra，**注意: 添加此设置请求contentType将会转换成application/json**
+  
 - 完善`lookup`查找带回插件`beforeSelect`选择回调方法，现在将返回三个参数，增强多选类型的个性化
 
-``` javascript
+``` js
 $(this).lookup({
   beforeSelect: function(val, valArray, type) {
     // 默认赋值数据，如：{pid: "1,2", name: "自由职业,工程师"}

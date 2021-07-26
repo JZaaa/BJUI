@@ -101,7 +101,18 @@
           $.extend(op, { data: $form.serializeArray(), files: $form.find(':file'), iframe: true, processData: false })
         }
       } else {
-        $.extend(op, { data: $form.serializeArray() })
+        var _extra = $form.data('extra')
+        var extra = undefined
+        if (_extra) {
+          if (typeof _extra === 'string') {
+            _extra = _extra.toObj()
+          }
+          if (typeof _extra === 'object') {
+            op.contentType = 'application/json'
+            extra = JSON.stringify($.extend(_extra, $form.serializeJson()))
+          }
+        }
+        $.extend(op, { data: extra ? extra : $form.serializeArray() })
       }
       $form.doAjax(op)
     }
