@@ -33,8 +33,10 @@
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="aa[name]" data-arrayfix="aa" size="10">
                 </pre>
                 <script>
-                    function lookup_before_select(val) {
+                    function lookup_before_select(val, valArray, type) {
                       console.log(val)
+                      console.log(valArray)
+                      console.log(type)
                       $(this).alertmsg('error', '选择无效')
                       return false
                     }
@@ -133,7 +135,18 @@
                     <td>beforeSelect</td>
                     <td>function</td>
                     <td>null</td>
-                    <td>[可选]  选中目标赋值之前，返回<code>false</code>则停止赋值关闭窗口动作。回调参数<code>val</code>为赋值参数</td>
+                    <td>
+                      [可选]  选中目标赋值之前，返回<code>false</code>则停止赋值关闭窗口动作。
+                      <div>
+                        function(val)
+                        回调参数<code>val</code>为赋值参数
+                      </div>
+                      <div>
+                        <span class="label label-success">1.1.8+</span>
+                        function(val, valArray, type)
+                        回调参数<code>val</code>为赋值参数,回调参数<code>valArray</code>选中数据的array集,<code>type</code>是否追加
+                      </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

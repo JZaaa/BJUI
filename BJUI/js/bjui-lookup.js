@@ -117,16 +117,23 @@
 
   Lookup.prototype.setSingle = function(args, type) {
     if (typeof args === 'string') { args = new Function('return ' + args)() }
-    this.setVal(args, type)
+
+    if (this.beforeSelect(args, [args], type)) {
+      this.setVal(args, type)
+    }
   }
 
   Lookup.prototype.setMult = function(id, type) {
     var args = {}
+    var argsArr = []
     var $unitBox = this.$element.closest('.unitBox')
 
     $unitBox.find('[name="' + id + '"]').filter(':checked').each(function() {
       var _args = new Function('return ' + $(this).val())()
 
+      if (typeof _args === 'object') {
+        argsArr.push(_args)
+      }
       for (var key in _args) {
         if (_args.hasOwnProperty(key)) {
           var value = args[key] ? args[key] + ',' : ''
@@ -141,19 +148,23 @@
       return
     }
 
-    this.setVal(args, type)
+    if (this.beforeSelect(args, argsArr, type)) {
+      this.setVal(args, type)
+    }
+  }
+
+  Lookup.prototype.beforeSelect = function(args, argsArray, type) {
+    if (beforeSelect) {
+      if (beforeSelect(args, argsArray, type) === false) {
+        return false
+      }
+    }
   }
 
   Lookup.prototype.setVal = function(args, type) {
     var that = this
     var $box = $currentLookup.closest('.unitBox')
     var newValue /* @description 增加 @author 小策一喋 */
-
-    if (beforeSelect) {
-      if (beforeSelect(args) === false) {
-        return
-      }
-    }
 
     // for datagrid
     if ($currentLookup.data('customEvent')) {
