@@ -1,5 +1,31 @@
 # 更新日志
 -------------------------------------------
+## v1.1.8
+### Improvements
+
+- 完善`lookup`查找带回插件`beforeSelect`选择回调方法，现在将返回三个参数，增强多选类型的个性化
+
+``` javascript
+$(this).lookup({
+  beforeSelect: function(val, valArray, type) {
+    // 默认赋值数据，如：{pid: "1,2", name: "自由职业,工程师"}
+    console.log(val)
+    
+    // 选中的数据Array格式，如： [{pid: "1", name: "自由职业"},{pid: "2", name: "工程师"}]
+    // 注意：单选也返回array类型，如[{pid: "1", name: "自由职业"}]
+    console.log(valArray)
+    
+    // 是否追加, 通过lookupType设置，!!type为false则不追加
+    console.log(type)
+    
+    // 若返回false，则本次选择无效，lookup不关闭，不默认赋值
+    return false
+  }
+})
+```
+
+-------------------------------------------
+
 ## v1.1.7
 ### Improvements
 
