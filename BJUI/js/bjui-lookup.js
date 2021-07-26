@@ -159,6 +159,7 @@
         return false
       }
     }
+    return true
   }
 
   Lookup.prototype.setVal = function(args, type) {
