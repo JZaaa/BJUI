@@ -22,7 +22,6 @@
   // ======================
 
   var group, suffix, $currentLookup, arrayfix, beforeSelect
-  var isInit = false
 
   // LOOKUP CLASS DEFINITION
   // ======================
@@ -81,6 +80,9 @@
     }
 
     beforeSelect = this.options.beforeSelect
+
+
+    var isInit = $currentLookup.data('bjui.lookupinit')
     if (!isInit) {
       if (options.addBtn) {
         this.addBtn()
@@ -88,9 +90,9 @@
       if (options.open) {
         this.open(that.$element)
       }
-      isInit = true
+      $currentLookup.data('bjui.lookupinit', true)
     } else {
-      isInit = true
+      $currentLookup.data('bjui.lookupinit', true)
       this.open(that.$element)
     }
   }
@@ -111,6 +113,7 @@
       $.each(that.options, function (key, val) {
         if (key !== 'toggle') that.$lookBtn.data(key, val)
       })
+      that.$lookBtn.data('bjui.lookupinit', true)
       this.$lookBtn.css({'height': height, 'lineHeight': height + 'px'}).appendTo($box)
       this.$lookBtn.on('selectstart', function () {
         return false
