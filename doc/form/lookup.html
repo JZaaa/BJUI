@@ -52,6 +52,38 @@
                 <pre class="brush: js">
                     $(input).lookup(options)
                 </pre>
+              <span class="label label-default">DOM示例：</span>　<label>PID:</label><input type="text" name="api[pid]" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input data-filter="lookup-api" type="text" data-url="doc/form/mylookup.html" name="api[name]" class="doc_lookup" data-arrayfix="api" size="10"><br>
+              <p>示例代码：</p>
+              <pre class="brush: html">
+                    &lt;label>PID:&lt;/label>&lt;input type="text" name="api[pid]" size="5">
+                    &lt;label>查找名称：&lt;/label>&lt;input type="text" data-filter="lookup-api" data-url="doc/form/mylookup.html" name="api[name]" data-arrayfix="api" size="10">
+                </pre>
+              <pre class="brush: js">
+               $.CurrentNavtab.findFilter('lookup-api').lookup({
+                    addBtn: true, // 实例化是否添加btn
+                    open: false, // 实例化是否直接打开
+                    beforeSelect: function (val, valArray, type) {
+                      console.log(val)
+                      console.log(valArray)
+                      console.log(type)
+                      $(this).alertmsg('info', '选择前回调')
+                    }
+                  })
+            </pre>
+              <script>
+                (function() {
+                  $.CurrentNavtab.findFilter('lookup-api').lookup({
+                    addBtn: true,
+                    open: false,
+                    beforeSelect: function (val, valArray, type) {
+                      console.log(val)
+                      console.log(valArray)
+                      console.log(type)
+                      $(this).alertmsg('info', '选择前回调')
+                    }
+                  })
+                }())
+              </script>
             </li>
         </ul>
         <h4>参数（options）</h4>
@@ -130,6 +162,24 @@
                     <td>boolean</td>
                     <td>true</td>
                     <td>[可选] 弹出窗口可以调整大小。</td>
+                </tr>
+                <tr>
+                    <td>open</td>
+                    <td>boolean</td>
+                    <td>true</td>
+                    <td>
+                      <span class="label label-success">1.1.9+</span>
+                      api实例化是否自动打开弹窗。
+                    </td>
+                </tr>
+                <tr>
+                    <td>addBtn</td>
+                    <td>boolean</td>
+                    <td>false</td>
+                    <td>
+                      <span class="label label-success">1.1.9+</span>
+                      api实例化是否新增图标点击。
+                    </td>
                 </tr>
                 <tr>
                     <td>beforeSelect</td>
