@@ -381,7 +381,10 @@
       }
     }
     if (!next) {
-      options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText)
+      $element
+        .find('#' + originalFile.id + ' > .info > .up_cancel')
+        .trigger('click.bjui.upload.cancel')
+      options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText, this.$file)
       return
     }
 
@@ -420,7 +423,7 @@
           if (upOver) {
             that.queueData.success++
             tools.successQueueItem(originalFile, xhr)
-            options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText)
+            options.onUploadComplete && options.onUploadComplete(originalFile, xhr.responseText, that.$file)
           }
         } else {
           that.queueData.error++
