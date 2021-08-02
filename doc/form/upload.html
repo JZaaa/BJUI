@@ -15,7 +15,10 @@
                     $('#doc_span_pic').html('已上传图片：<img src="'+ json.filename +'" width="100">')
                 }
             }
-            function doc_upload_before() {
+            function doc_upload_before(formData, $inputElement) {
+              var files = $inputElement[0].files
+              var file = files[0];
+              console.log(file)
               console.log('上传开始前!')
               return true
             }
@@ -137,9 +140,27 @@
                 </tr>
                 <tr>
                     <td>onUploadBefore</td>
-                    <td>function(formData)</td>
+                    <td>
+                      <p>
+                        function(formData)
+                      </p>
+                      <div>
+                        <span class="label label-success">1.1.10+</span>
+                        <p>
+                          function(formData, $fileElement)
+                        </p>
+                      </div>
+                    </td>
                     <td>null</td>
-                    <td>[可选] 上传操作前的回调函数，返回<code>false</code>则停止上传动作，返回<code>true</code>则继续上传动作,返回<code>obj</code>则覆盖formData数据</td>
+                    <td>
+                      <div>
+                        [可选] 上传操作前的回调函数，返回<code>false</code>则停止上传动作，返回<code>true</code>则继续上传动作,返回<code>obj</code>则覆盖formData数据
+                      </div>
+                      <div>
+                        <span class="label label-success">1.1.10+</span>
+                        回调参数<code>$fileElement</code>为隐藏input文件上传jQuery对象
+                      </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>onUploadComplete</td>

@@ -375,7 +375,7 @@
       if (typeof options.onUploadBefore === 'string') {
         options.onUploadBefore = options.onUploadBefore.toFunc()
       }
-      next = options.onUploadBefore(options.formData || {})
+      next = options.onUploadBefore(options.formData || {}, this.$file)
       if (next !== true) {
         options.formData = next
       }
