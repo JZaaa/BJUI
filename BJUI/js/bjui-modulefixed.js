@@ -24,7 +24,12 @@
       if (colorpicker.length) {
         colorpicker.colorpicker('destroy')
       }
-    } catch (e) {
+      var selectpicker = $selector.find('[data-toggle="selectpicker"]')
+      if (selectpicker.length) {
+        selectpicker.selectpicker('destroy')
+      }
+    }
+     catch (e) {
       BJUI.debug(e)
     }
   }

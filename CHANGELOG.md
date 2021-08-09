@@ -5,6 +5,7 @@
 ### Improvements
 
 - `upload`上传组件`onUploadBefore` 参数新增隐藏input文件上传jQuery对象回调
+- `dialog`/`navtab`关闭时，销毁selectpicker自动实例化的插件，手动实例化的插件仍然需要自行销毁
 
 -------------------------------------------
 ## v1.1.9
