@@ -37,17 +37,8 @@ yarn run build
 ├── postcss.config.js
 ├── webpack.config.js
 ├── src/
-│   ├── fonts/
-│   ├── img/
-│   ├── js/
-│   │   ├── modules/
-│   │   └── app.js
-│   └── scss/
 └── dist/
-    ├── css/
-    │   └── app.css
-    └── js/
-        └── app.js
+  
 ```
 
 
