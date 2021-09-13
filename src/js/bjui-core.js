@@ -15,6 +15,9 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { layoutHeaderSelector } from '@/utils/static'
+import screefull from 'screenfull'
+
 +(function($) {
   'use strict'
 
@@ -29,6 +32,10 @@
       shift: false
     },
     theme: 'blue',
+    menus: {
+      menusData: [],
+      callback: null
+    }, // 菜单数据
     dialog: {
       mask: false,
       width: 500,
@@ -69,7 +76,7 @@
     keys: { statusCode: 'statusCode', message: 'message' },
     ui: {
       windowWidth: 0,
-      showSlidebar: true, // 左侧导航栏锁定/隐藏
+      showSidebar: true, // 左侧导航栏锁定/隐藏
       clientPaging: true, // 是否在客户端响应分页及排序参数
       overwriteHomeTab: false // 当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
     },
@@ -108,6 +115,7 @@
       $.extend(BJUI.KindEditor, op.KindEditor)
       $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
+      $.extend(BJUI.menus, op.menus)
 
       if (op.JSPATH) this.JSPATH = op.JSPATH
       if (op.PLUGINPATH) this.PLUGINPATH = op.PLUGINPATH
@@ -115,11 +123,8 @@
       this.date = (op.date === undefined) ? this.date : op.date
 
       this.IS_DEBUG = op.debug || false
-      this.theme = $.cookie('bjui_theme') || op.theme
       this.initEnv()
       if (this.date) this.initDate()
-
-      $(this).theme('setTheme', this.theme)
     },
     initEnv: function() {
       $(window).resize(function() {
@@ -145,73 +150,9 @@
       }, 10)
     },
     initLayout: function(ww) {
-      var $header = $('#bjui-header')
-      var $navtab = $('#bjui-navtab')
-      var iContentW = ww - (BJUI.ui.showSlidebar ? $('#bjui-sidebar').width() + 6 : 6)
-
-      var iContentH = $(window).height() - $header.height() - $('#bjui-footer').outerHeight()
-
-      var navtabH = $navtab.find('.tabsPageHeader').height()
-
-      if (BJUI.ui.windowWidth) $('#bjui-window').width(ww)
-      BJUI.windowWidth = ww
-
-      $('#bjui-container').height(iContentH)
-      $navtab.width(iContentW)
-      $('#bjui-leftside, #bjui-sidebar, #bjui-sidebar-s, #bjui-splitBar, #bjui-splitBarProxy').css({ height: '100%' })
-      $('#bjui-navtab .tabsPageContent').height(iContentH - navtabH)
-
-      /* fixed pageFooter */
-      setTimeout(function() {
-        $('#bjui-navtab > .tabsPageContent > .navtabPage').resizePageH().find('.bjui-layout').resizePageH()
-      }, 10)
-
-      /* header navbar */
-      var navbarWidth = $('body').data('bjui.navbar.width')
-
-      var $toggle = $header.find('.bjui-navbar-toggle')
-      var $logo = $header.find('.bjui-navbar-logo')
-      var $navbar = $('#bjui-navbar-collapse')
-      var $nav = $navbar.find('.bjui-navbar-right')
-
-      if (!navbarWidth) {
-        navbarWidth = { logoW: $logo.outerWidth(), navW: $nav.outerWidth() }
-        $('body').data('bjui.navbar.width', navbarWidth)
-      }
-      if (navbarWidth) {
-        if (ww - navbarWidth.logoW < navbarWidth.navW) {
-          $toggle.show()
-          $navbar.addClass('collapse menu')
-        } else {
-          $toggle.hide()
-          $navbar.removeClass('collapse menu in')
-        }
-      }
-      /* horizontal navbar */
-      var $hnavbox = $('#bjui-hnav-navbar-box')
-
-      var $hnavbar = $hnavbox.find('> #bjui-hnav-navbar')
-
-      var $hmoreL = $hnavbox.prev()
-
-      var $hmoreR = $hnavbox.next()
-
-      var hboxWidth = $hnavbox.width()
-
-      var liW = 0
-
-      $hnavbar.find('> li').each(function(i) {
-        var $li = $(this)
-
-        liW += $li.outerWidth()
-
-        if (liW > hboxWidth) {
-          $hmoreR.show()
-          $hnavbox.data('hnav.move', true).data('hnav.liw', liW)
-        } else {
-          $hmoreL.hide()
-          $hmoreR.hide()
-          $hnavbox.removeData('hnav.move')
+      $(layoutHeaderSelector).find('.js-fullscreen').on('click', event => {
+        if (screefull.isEnabled) {
+          screefull.toggle()
         }
       })
     },

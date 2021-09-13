@@ -20,6 +20,9 @@
   $(document).on(BJUI.eventType.initUI, function(e) {
     var $box = $(e.target)
 
+    if (feather) {
+      feather.replace()
+    }
     // UI init begin...
 
     var $boolCheck = $box.find('[data-toggle="boolcheck"]')
@@ -31,7 +34,7 @@
       var $input
       if (name) {
         var value = $element.is(':checked') ? 1 : 0
-        $input = $('<input type="hidden" value="'+value+'" name="'+name+'">').appendTo($element.parent())
+        $input = $('<input type="hidden" value="' + value + '" name="' + name + '">').appendTo($element.parent())
       }
       $element
         .iCheck({
@@ -225,7 +228,7 @@
 
         if (typeof val === 'undefined') val = $obj.val()
         $.ajax({
-          type: 'POST',
+          type: 'get',
           dataType: 'json',
           url: refurl.replace('{value}', encodeURIComponent(val)),
           cache: false,

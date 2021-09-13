@@ -1,0 +1,290 @@
+[
+  {
+    "name": "表单元素",
+    "children": [
+      {
+        "name": "按钮",
+        "path": "views/basic/button.html"
+      },
+      {
+        "name": "文本框",
+        "path": "views/form/input.html"
+      },
+      {
+        "name": "下拉选择框",
+        "path": "views/form/select.html"
+      },
+      {
+        "name": "复选、单选框",
+        "path": "views/form/checkbox.html"
+      },
+      {
+        "name": "表单综合演示",
+        "path": "views/form/form.html"
+      }
+    ]
+  },
+  {
+    "name": "表格",
+    "children": [
+      {
+        "name": "普通表格",
+        "path": "table.html"
+      },
+      {
+        "name": "固定表头表格",
+        "path": "table-fixed.html"
+      },
+      {
+        "name": "可编辑表格",
+        "path": "table-edit.html"
+      }
+    ]
+  },
+  {
+    "name": "弹出窗口",
+    "children": [
+      {
+        "name": "弹出窗口",
+        "path": "dialog.html"
+      },
+      {
+        "name": "信息提示",
+        "path": "alert.html"
+      }
+    ]
+  },
+  {
+    "name": "框架组件",
+    "children": [
+      {
+        "name": "选项卡",
+        "path": "tabs.html"
+      }
+    ]
+  },
+  {
+    "name": "其他插件",
+    "children": [
+      {
+        "name": "zTree",
+        "path": "views/plugins/ztree/ztree.html"
+      },
+      {
+        "name": "zTree下拉选择",
+        "path": "ztree-select.html"
+      }
+    ]
+  },
+  {
+    "name": "综合应用",
+    "children": [
+      {
+        "name": "局部刷新1",
+        "path": "table-layout.html"
+      }
+    ]
+  },
+  {
+    "name": "文件列表",
+    "children": [
+      {
+        "name": "文件详解",
+        "path": "doc/base/filelist.html"
+      }
+    ]
+  },
+  {
+    "name": "框架介绍",
+    "children": [
+      {
+        "name": "页面结构",
+        "path": "doc/base/structure.html"
+      },
+      {
+        "name": "框架初始化",
+        "path": "doc/base/init.html"
+      },
+      {
+        "name": "横向导航菜单",
+        "path": "doc/base/hnav.html"
+      },
+      {
+        "name": "标签工作区(navtab)",
+        "path": "doc/base/navtab.html"
+      },
+      {
+        "name": "弹窗工作区(dialog)",
+        "path": "doc/base/dialog.html"
+      },
+      {
+        "name": "元素ID命名规范",
+        "path": "doc/base/idname.html"
+      },
+      {
+        "name": "data属性",
+        "path": "doc/base/data.html"
+      },
+      {
+        "name": "jQuery API调用",
+        "path": "doc/base/api.html"
+      },
+      {
+        "name": "事件",
+        "path": "doc/base/event.html"
+      },
+      {
+        "name": "URL动态赋值",
+        "path": "doc/base/url.html"
+      }
+    ]
+  },
+  {
+    "name": "标签navtab",
+    "children": [
+      {
+        "name": "创建navtab",
+        "path": "doc/navtab/navtab.html"
+      },
+      {
+        "name": "参数及方法",
+        "path": "doc/navtab/navtab-op.html"
+      }
+    ]
+  },
+  {
+    "name": "弹窗dialog",
+    "children": [
+      {
+        "name": "创建dialog",
+        "path": "doc/dialog/dialog.html"
+      },
+      {
+        "name": "参数及方法",
+        "path": "doc/dialog/dialog-op.html"
+      }
+    ]
+  },
+  {
+    "name": "信息提示alertmsg",
+    "children": [
+      {
+        "name": "提示框alertmsg",
+        "path": "doc/alertmsg/alertmsg.html"
+      }
+    ]
+  },
+  {
+    "name": "表单相关",
+    "children": [
+      {
+        "name": "日期选择器",
+        "path": "doc/form/datepicker.html"
+      },
+      {
+        "name": "微调器",
+        "path": "doc/form/spinner.html"
+      },
+      {
+        "name": "查找带回",
+        "path": "doc/form/lookup.html"
+      },
+      {
+        "name": "上传组件",
+        "path": "doc/form/upload.html"
+      }
+    ]
+  },
+  {
+    "name": "右键菜单",
+    "children": [
+      {
+        "name": "右键菜单",
+        "path": "doc/other/contextmenu.html"
+      }
+    ]
+  },
+  {
+    "name": "Ajax",
+    "children": [
+      {
+        "name": "回调函数",
+        "path": "doc/ajax/callback.html"
+      },
+      {
+        "name": "提交表单",
+        "path": "doc/ajax/form.html"
+      },
+      {
+        "name": "搜索表单",
+        "path": "doc/ajax/search.html"
+      },
+      {
+        "name": "加载(局部刷新)",
+        "path": "doc/ajax/load.html"
+      },
+      {
+        "name": "执行动作",
+        "path": "doc/ajax/action.html"
+      }
+    ]
+  },
+  {
+    "name": "普通表格",
+    "children": [
+      {
+        "name": "表格样式",
+        "path": "doc/table/style.html"
+      },
+      {
+        "name": "字段排序",
+        "path": "doc/table/order.html"
+      },
+      {
+        "name": "分页组件",
+        "path": "doc/table/paging.html"
+      },
+      {
+        "name": "行选中操作",
+        "path": "doc/table/selected.html"
+      },
+      {
+        "name": "固定表头",
+        "path": "doc/table/fixed.html"
+      },
+      {
+        "name": "可编辑表格",
+        "path": "doc/table/edit.html"
+      }
+    ]
+  },
+  {
+    "name": "其他插件",
+    "children": [
+      {
+        "name": "zTree",
+        "path": "doc/plugin/ztree.html"
+      },
+      {
+        "name": "复选/单选",
+        "path": "doc/plugin/checkbox.html"
+      },
+      {
+        "name": "下拉选择框",
+        "path": "doc/plugin/select.html"
+      },
+      {
+        "name": "表单验证",
+        "path": "doc/plugin/validate.html"
+      },
+      {
+        "name": "KindEditor",
+        "path": "doc/plugin/kindeditor.html"
+      },
+      {
+        "name": "Ajax Download",
+        "path": "doc/plugin/ajaxdownload.html"
+      }
+    ]
+  }
+]

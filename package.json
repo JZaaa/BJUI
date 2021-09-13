@@ -39,9 +39,12 @@
     "@popperjs/core": "^2.9.2",
     "@ztree/ztree_v3": "^3.5.46",
     "bootstrap-select": "^1.13.18",
+    "feather-icons": "^4.28.0",
     "js-cookie": "^3.0.1",
     "nice-validator": "^1.1.5",
-    "pretty-checkbox": "^3.0.3"
+    "pretty-checkbox": "^3.0.3",
+    "screenfull": "^5.1.0",
+    "smooth-scrollbar": "^8.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",

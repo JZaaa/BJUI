@@ -51,12 +51,12 @@
                         <tr>
                             <td align="right"><label class="label-control">联动(二维数组)：</label></td>
                             <td>
-                                <select name="province" data-toggle="selectpicker" data-nextselect="#j_form_city" data-refurl="ajax/city_{value}.html">
+                                <select name="province" data-toggle="selectpicker" data-nextselect="#j_form_city" data-refurl="ajax/city_{value}.json">
                                     <option value="all">--省市--</option>
                                     <option value="bj">北京</option>
                                     <option value="sh">上海</option>
                                 </select>
-                                <select name="city" id="j_form_city" data-toggle="selectpicker" data-nextselect="#j_form_area" data-refurl="ajax/area_{value}.html" data-emptytxt="--城市--">
+                                <select name="city" id="j_form_city" data-toggle="selectpicker" data-nextselect="#j_form_area" data-refurl="ajax/area_{value}.json" data-emptytxt="--城市--">
                                     <option value="all">--城市--</option>
                                 </select>
                                 <select name="area" id="j_form_area" data-toggle="selectpicker" data-emptytxt="--区县--">
@@ -68,12 +68,12 @@
                         <tr>
                             <td align="right"><label class="label-control">联动(有初始值)：</label></td>
                             <td>
-                                <select name="province1" data-toggle="selectpicker" data-nextselect="#j_form_city1" data-refurl="ajax/city_{value}.html">
+                                <select name="province1" data-toggle="selectpicker" data-nextselect="#j_form_city1" data-refurl="ajax/city_{value}.json">
                                     <option value="all">--省市--</option>
                                     <option value="bj" selected>北京</option>
                                     <option value="sh">上海</option>
                                 </select>
-                                <select name="city1" id="j_form_city1" data-toggle="selectpicker" data-nextselect="#j_form_area1" data-refurl="ajax/area_{value}.html" data-val="bj" data-emptytxt="--城市--">
+                                <select name="city1" id="j_form_city1" data-toggle="selectpicker" data-nextselect="#j_form_area1" data-refurl="ajax/area_{value}.json" data-val="bj" data-emptytxt="--城市--">
                                     <option value="all">--城市--</option>
                                 </select>
                                 <select name="area1" id="j_form_area1" data-toggle="selectpicker" data-val="朝阳" data-emptytxt="--区县--">
@@ -85,12 +85,12 @@
                         <tr>
                             <td align="right"><label class="label-control">联动(标准json)：</label></td>
                             <td>
-                                <select name="province" data-toggle="selectpicker" data-nextselect="#j_form_city2" data-refurl="ajax/json_city_{value}.html">
+                                <select name="province" data-toggle="selectpicker" data-nextselect="#j_form_city2" data-refurl="ajax/json_city_{value}.json">
                                     <option value="all">--省市--</option>
                                     <option value="bj">北京</option>
                                     <option value="sh">上海</option>
                                 </select>
-                                <select name="city" id="j_form_city2" data-toggle="selectpicker" data-nextselect="#j_form_area2" data-refurl="ajax/json_area_{value}.html" data-emptytxt="--城市--">
+                                <select name="city" id="j_form_city2" data-toggle="selectpicker" data-nextselect="#j_form_area2" data-refurl="ajax/json_area_{value}.json" data-emptytxt="--城市--">
                                     <option value="all">--城市--</option>
                                 </select>
                                 <select name="area" id="j_form_area2" data-toggle="selectpicker" data-emptytxt="--区县--">

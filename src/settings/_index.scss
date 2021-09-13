@@ -1,0 +1,15 @@
+// 配置项
+
+// 左右风格菜单样式
+$defaultMenuStyle: (
+  width: 210px, // 宽度
+  brandHeight: 60px, // brand 高度
+  brandFixed: true, // brand 是否浮动
+  siderBgColor: #001529, // 一级菜单未选中背景色
+  siderLightenBgColor: #0c2135, // 二级菜单未选中背景色
+  siderHoverBgColor: inherit, // 菜单hover背景色
+  siderTextColor: #ffffffb3, // 菜单默认文字颜色
+  siderHoverTextColor: #fff, // 菜单hover文字颜色
+  siderActiveBgColor: linear-gradient(90deg, rgba(59, 125, 221, 0.3) 0%, rgba(59, 125, 221, 0.2) 70%, rgba(0, 0, 0, 0.14) 100%), // 菜单选中背景色
+  siderActiveLeftBorderColor: #3B7DDD, // 菜单选中左侧border颜色
+)

@@ -1,0 +1,15 @@
+html {
+  // header
+  --header-bg-color: #394664;
+  --header-bg-hover-color: #273352;
+  --header-active-menu-bg-color: #273352;
+
+  // sider
+  --sider-bg-color: #{map-get($defaultMenuStyle, 'siderBgColor')};
+  --sider-lighten-bg-color: #{map-get($defaultMenuStyle, 'siderLightenBgColor')};
+  --sider-hover-bg-color: #{map-get($defaultMenuStyle, 'siderHoverBgColor')};
+  --sider-text-color: #{map-get($defaultMenuStyle, 'siderTextColor')};
+  --sider-hover-text-color: #{map-get($defaultMenuStyle, 'siderHoverTextColor')};
+  --sider-active-bg-color: #{map-get($defaultMenuStyle, 'siderActiveBgColor')};
+  --sider-active-leftBorder-color: #{map-get($defaultMenuStyle, 'siderActiveLeftBorderColor')};
+}

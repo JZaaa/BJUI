@@ -1,4 +1,21 @@
+// 变量
+@import "../settings/index";
+@import "variables/app";
+
+// 全局设置
+@import "./global/pulic";
+@import "./global/color";
+
+// 组件样式
+@import "../components/checkbox/checkbox";
+@import "../components/loading/loading";
+
+// 核心样式
 @import "./layout/bjui";
 @import "./layout/teal";
+@import "./layout/layout";
+@import "./layout/sidebar";
 
+
+// 插件样式
 @import "./plugins/ztree";

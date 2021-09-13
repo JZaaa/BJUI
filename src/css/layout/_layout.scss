@@ -1,0 +1,143 @@
+$layout-header-height: 50px;
+
+.bjui-app {
+  width: 100%;
+  height: 100%;
+}
+
+.bjui-app-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  background-color: #f4f7f9;
+  flex: auto;
+
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+
+
+.bjui-layout-main {
+  width: 0;
+  margin-left: 1px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+  background: #f0f2f5;
+  overflow: hidden;
+}
+
+.bjui-layout-multi-header-placeholder {
+  height: $layout-header-height;
+}
+.bjui-layout-multi-header {
+  height: $layout-header-height;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  width: 100%;
+  transition: $sidebar-transition;
+
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: $sidebar-width + 1px;
+    right: 0;
+    z-index: 505;
+    width: auto!important;
+  }
+
+  .bjui-layout-header {
+    background-color: #fff!important;
+    box-shadow: 0 0 2px 0 rgba(33, 37, 41, .1);
+
+    display: flex;
+    height: 48px;
+    padding: 0;
+    margin-left: -1px;
+    line-height: 48px;
+    color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto;
+  }
+
+  .bjui-layout-header-left {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+  .bjui-layout-header-right {
+    display: flex;
+    min-width: 180px;
+    align-items: center;
+    text-align: right;
+    .dropdown-toggle::after {
+      display: none;
+    }
+    img {
+      max-height: 32px;
+    }
+  }
+
+  .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    justify-content: flex-end;
+    padding-right: 10px;
+
+    .navbar-nav {
+      flex-direction: row;
+      display: flex;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      > .nav-item {
+        padding-left: 4px;
+        padding-right: 4px;
+        display: flex;
+        align-items: center;
+        > a {
+          text-align: center;
+          padding: 0 4px;
+          color: #000;
+          display: block;
+          text-decoration: none;
+          &:hover {
+            color: #2f64b1;
+          }
+        }
+      }
+    }
+
+    //.rounded-circle.position-absolute {
+    //  top: 15px;
+    //}
+  }
+
+}
+
+.bjui-layout-content {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.bjui-page-wrapper {
+  margin: 16px;
+  overflow: auto;
+}
+
+// 菜单收缩
+.menu-collapsed {
+  .bjui-layout-multi-header--fixed {
+    left: 0;
+  }
+}

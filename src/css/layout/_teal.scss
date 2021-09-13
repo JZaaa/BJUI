@@ -64,7 +64,7 @@ $danger: #d9534f;
   }
 }
 
-@import "../variables/shadow";
+@import "../mixin/shadow";
 
 body{
   background:#fff;
@@ -302,113 +302,11 @@ fieldset{border-color:#c3ced5;}
   left: 0;
   right: 0;
 }
-#bjui-window {
+.bjui-app {
   @include box-shadow($shadow-2)
 }
-#bjui-header{
-  background-color:$coreColor;
-  border-radius: 0;
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-
-  // logo
-  > .bjui-navbar-header > .bjui-navbar-toggle {
-    &:focus, &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  }
-  // 顶部功能按钮
-  #bjui-navbar-collapse > .bjui-navbar-right > li > a:hover {
-    background:rgba(255, 255, 255, 0.1);
-  }
-
-  // 顶部菜单样式
-  #bjui-hnav #bjui-hnav-navbar > li {
-    border: none;color: #fff;
-
-    > a {
-      color: #fff;height: 32px;
-    }
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-
-      a{
-        color: inherit; -webkit-transition:none; -moz-transition:none; -o-transition:none; transition:none;
-      }
-
-      .dropdown-menu{color: #222; }
-    }
-
-    &.open {
-      background-color: rgba(255, 255, 255, 0.1);
-      >a {
-        color:#fff !important;
-      }
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-    }
-
-    &.active {
-      background-color: rgba(255, 255, 255, 0.1);
-      a {
-        color: inherit;background-color: rgba(255, 255, 255, 0.1);
-      }
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-    }
-
-  }
-}
 
 
-// 左部菜单样式
-#bjui-sidebar {
-  background:#fff;
-  border-color:#c3ced5;
-  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-
-  &.shadown {
-    box-shadow:2px 0 5px rgba(22,102,158, 0.5);
-  }
-
-  > .toggleCollapse {
-
-    h2 {
-      display: none;
-    }
-
-    .lock {
-      width: 100%;
-      left: 0;
-      color:$coreColor;
-    }
-  }
-
-  .panel.last-child {
-    border-bottom: none;
-    @include box-shadow($shadow-0)
-  }
-
-}
-#bjui-sidebar-s {
-  > .collapse{
-    background:#f3f8fc;
-    border:1px #c3ced5 solid;
-
-    &:hover {
-      background:$coreColor;
-      border-color:$coreColor;
-    }
-  }
-}
 #bjui-splitBar{
   background:#f3f8fc;
 }
@@ -467,106 +365,6 @@ fieldset{border-color:#c3ced5;}
   .bjui-dialogBackground {
     background: rgba(0, 0, 0, 0.5);
   }
-}
-/* Navtab */
-#bjui-navtab {
-
-  -webkit-box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
-
-  > .tabsPageHeader {
-
-    color: rgba(0, 0, 0, 0.87);
-    @include box-shadow($shadow-2);
-
-
-    .tabsLeft, .tabsRight {
-      background-color: #f3f8fc;
-      border: 1px #c3ced5 solid;
-
-      &:hover {
-        color: #f3f8fc;
-        background-color: #222;
-      }
-
-      &.tabsLeftDisabled {
-        color: #999;
-        border-color: #c3ced5;
-        border-bottom-color: #c3ced5;
-
-        &:hover {
-          background: #f3f8fc;
-        }
-      }
-    }
-
-    .tabsMore {
-      background-color: #f3f8fc;
-      border: 1px #c3ced5 solid;
-
-      &:hover {
-        color: #f3f8fc;
-        background-color: #222;
-      }
-    }
-
-    > .tabsPageHeaderContent {
-
-      > .nav {
-        // 头部tab样式
-        > li {
-          color: rgba(0, 0, 0, 0.54);
-
-          > a {
-            color: #222;
-            border: none;
-            background-color: transparent;
-          }
-
-          // 选中tab样式
-          &.active {
-            border-bottom: 1px solid $coreColor;
-
-            > a {
-              color: $coreColor;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  > .tabsMoreList {
-    background:#fff;
-    border-color:#c3ced5;
-    @include box-shadow($shadow-2);
-
-    li {
-      a {
-        color: #222;
-        &:hover {
-          background:#d9e7f2;
-          color: $coreColor;
-        }
-      }
-
-      &.active > a {
-        background: #f3f8fc;
-        font-weight:bold;
-        color: $coreColor;
-      }
-    }
-  }
-
-  // tab内容样式
-  > .tabsPageContent {
-    background:#fff;
-    border: none;
-    margin-top: 4px;
-  }
-
 }
 
 /* Dialog */

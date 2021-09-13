@@ -15,66 +15,21 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { navTabSelector } from '@/utils/static'
+
 +(function($) {
   'use strict'
 
   // NAVTAB GLOBAL ELEMENTS
   // ======================
 
-  var currentIndex, $currentTab, $currentPanel, $box, $tabs, $panels, $prevBtn, $nextBtn, $moreBtn, $moreBox, $main, $mainLi
+  var currentIndex, $currentTab, $currentPanel, $box
   var autorefreshTimer
 
   $(function() {
     var INIT_NAVTAB = function() {
       currentIndex = 0
-      $box = $('#bjui-navtab')
-      $tabs = $box.find('.navtab-tab')
-      $panels = $box.find('.navtab-panel')
-      $prevBtn = $box.find('.tabsLeft')
-      $nextBtn = $box.find('.tabsRight')
-      $moreBtn = $box.find('.tabsMore')
-      $moreBox = $box.find('.tabsMoreList')
-      $main = $tabs.find('li:first')
-      $mainLi = $moreBox.find('li:first')
-
-      $prevBtn.click(function() { $(this).navtab('scrollPrev') })
-      $nextBtn.click(function() { $(this).navtab('scrollNext') })
-      $moreBtn.click(function() { $moreBox.show() })
-
-      $(document).on('click.bjui.navtab.switchtab', function(e) {
-        var $target = e.target.tagName === 'I' ? $(e.target).parent() : $(e.target)
-        if ($moreBtn[0] !== $target[0]) {
-          $moreBox.hide()
-        }
-      })
-
-      var mainTit, options
-
-      $main
-        .navtab('contextmenu', $main)
-        .click(function() { $(this).navtab('switchTab', 'main') })
-        .find('> a > span').html(function(n, c) { return (mainTit = c.replace('#maintab#', BJUI.regional.maintab)) })
-
-      options = $.extend({}, Navtab.DEFAULTS, $main.data(), { id: 'main', title: mainTit })
-
-      $main.data('initOptions', options).data('options', options)
-
-      if ($main.attr('data-url')) {
-        $(document).one(BJUI.eventType.initUI, function(e) {
-          $main.removeAttr('data-url').navtab('reload', options)
-        })
-      }
-
-      setTimeout(function() {
-        $main.navtab('switchTab', 'main')
-      }, 50)
-
-      $mainLi
-        .click(function() {
-          if ($(this).hasClass('active')) $moreBox.hide()
-          else $(this).navtab('switchTab', 'main')
-        })
-        .find('> a').html(function(n, c) { return c.replace('#maintab#', BJUI.regional.maintab) })
+      $box = $(navTabSelector)
     }
 
     INIT_NAVTAB()
@@ -90,7 +45,7 @@
   }
 
   Navtab.DEFAULTS = {
-    id: undefined,
+    id: 'main',
     title: 'New tab',
     url: undefined,
     type: 'GET',
@@ -108,208 +63,6 @@
     return {
       getDefaults: function() {
         return Navtab.DEFAULTS
-      },
-      getTabs: function() {
-        return $tabs.find('> li')
-      },
-      getPanels: function() {
-        return $panels.find('> div')
-      },
-      getMoreLi: function() {
-        return $moreBox.find('> li')
-      },
-      getTab: function(tabid) {
-        var index = this.indexTabId(tabid)
-
-        if (index >= 0) return this.getTabs().eq(index)
-      },
-      getPanel: function(tabid) {
-        var index = this.indexTabId(tabid)
-
-        if (index >= 0) return this.getPanels().eq(index)
-      },
-      getTabsW: function(iStart, iEnd) {
-        return this.tabsW(this.getTabs().slice(iStart, iEnd))
-      },
-      tabsW: function($tabs) {
-        var iW = 0
-        $tabs.each(function() {
-          iW += $(this).outerWidth(true)
-        })
-
-        return iW
-      },
-      indexTabId: function(tabid) {
-        if (!tabid) return -1
-
-        var iOpenIndex = -1
-
-        this.getTabs().each(function(index) {
-          if ($(this).data('initOptions').id === tabid) {
-            iOpenIndex = index
-          }
-        })
-        return iOpenIndex
-      },
-      getLeft: function() {
-        return $tabs.position().left
-      },
-      getScrollBarW: function() {
-        return $box.width() - 55
-      },
-      visibleStart: function() {
-        var iLeft = this.getLeft()
-        var iW = 0
-        var $tabs = this.getTabs()
-        for (var i = 0; i < $tabs.length; i++) {
-          if (iW + iLeft >= 0) return i
-          iW += $tabs.eq(i).outerWidth(true)
-        }
-
-        return 0
-      },
-      visibleEnd: function() {
-        var iLeft = this.getLeft()
-        var iW = 0
-        var $tabs = this.getTabs()
-
-        for (var i = 0; i < $tabs.length; i++) {
-          iW += $tabs.eq(i).outerWidth(true)
-          if (iW + iLeft > this.getScrollBarW()) return i
-        }
-
-        return $tabs.length
-      },
-      scrollPrev: function() {
-        var iStart = this.visibleStart()
-
-        if (iStart > 0) {
-          this.scrollTab(-this.getTabsW(0, iStart - 1))
-        }
-      },
-      scrollNext: function() {
-        var iEnd = this.visibleEnd()
-
-        if (iEnd < this.getTabs().length) {
-          this.scrollTab(-this.getTabsW(0, iEnd + 1) + this.getScrollBarW())
-        }
-      },
-      scrollTab: function(iLeft, isNext) {
-        $tabs.animate({ left: iLeft }, 200, function() {
-          that.tools.ctrlScrollBtn()
-        })
-      },
-      scrollCurrent: function() { // auto scroll current tab
-        var iW = this.tabsW(this.getTabs())
-        var scrollW = this.getScrollBarW()
-
-        if (iW <= scrollW) {
-          this.scrollTab(0)
-        } else if (this.getLeft() < scrollW - iW) {
-          this.scrollTab(scrollW - iW)
-        } else if (currentIndex < this.visibleStart()) {
-          this.scrollTab(-this.getTabsW(0, currentIndex))
-        } else if (currentIndex >= this.visibleEnd()) {
-          this.scrollTab(scrollW - this.getTabs().eq(currentIndex).outerWidth(true) - this.getTabsW(0, currentIndex))
-        }
-      },
-      ctrlScrollBtn: function() {
-        var iW = this.tabsW(this.getTabs())
-
-        if (this.getScrollBarW() > iW) {
-          $prevBtn.hide()
-          $nextBtn.hide()
-          $tabs.parent().removeClass('tabsPageHeaderMargin')
-        } else {
-          $prevBtn.show().removeClass('tabsLeftDisabled')
-          $nextBtn.show().removeClass('tabsRightDisabled')
-          $tabs.parent().addClass('tabsPageHeaderMargin')
-          if (this.getLeft() >= 0) {
-            $prevBtn.addClass('tabsLeftDisabled')
-          } else if (this.getLeft() <= this.getScrollBarW() - iW) {
-            $nextBtn.addClass('tabsRightDisabled')
-          }
-        }
-      },
-      switchTab: function(iTabIndex) {
-        var $tab = this.getTabs().removeClass('active').eq(iTabIndex).addClass('active')
-        var $panels = this.getPanels()
-        var $panel = $panels.eq(iTabIndex)
-        var onSwitch = that.options.onSwitch ? that.options.onSwitch.toFunc() : null
-
-        if ($tab.data('reloadFlag')) {
-          $panels.hide()
-          $panel.show()
-          that.refresh($tab.data('initOptions').id)
-        } else {
-          $panels.hide()
-          if ($panel.find('.bjui-ajax-mask').length) {
-            $panel.show()
-          } else {
-            $panel.addClass('fade').removeClass('in').show()
-            if ($.support.transition) {
-              $panel.one('bsTransitionEnd', function() {
-                $panel.addClass('in')
-              }).emulateTransitionEnd(10)
-            } else {
-              $panel.removeClass('fade')
-            }
-          }
-        }
-
-        this.getMoreLi().removeClass('active').eq(iTabIndex).addClass('active')
-        currentIndex = iTabIndex
-        this.scrollCurrent()
-        $currentTab = $tab
-        $.CurrentNavtab = $currentPanel = $panel
-
-        if (onSwitch) onSwitch.apply(that)
-
-        // events
-        $panel.trigger('bjui.navtab.switch')
-      },
-      closeTab: function(index, openTabid) {
-        var $tab = this.getTabs().eq(index)
-        var $more = this.getMoreLi().eq(index)
-        var $panel = this.getPanels().eq(index)
-        var options = $tab.data('options')
-        var beforeClose = options.beforeClose ? options.beforeClose.toFunc() : null
-        var onClose = options.onClose ? options.onClose.toFunc() : null
-        var canClose = true
-
-        if (beforeClose) canClose = beforeClose.apply(that, [$panel])
-        if (!canClose) {
-          that.tools.switchTab(index)
-          return
-        }
-        BJUI.ModuleFixed.destroyModules($panel)
-        $tab.remove()
-        $more.remove()
-        $panel.trigger(BJUI.eventType.beforeCloseNavtab).remove()
-
-        if (autorefreshTimer) clearInterval(autorefreshTimer)
-        if (onClose) onClose.apply(that)
-        if (currentIndex >= index) currentIndex--
-        if (openTabid) {
-          var openIndex = this.indexTabId(openTabid)
-
-          if (openIndex > 0) currentIndex = openIndex
-        }
-
-        this.scrollCurrent()
-        this.switchTab(currentIndex)
-      },
-      closeOtherTab: function(index) {
-        index = index || currentIndex
-
-        this.getTabs().each(function(i) {
-          if (i > 0 && index !== i) $(this).find('> .close').trigger('click')
-        })
-      },
-      loadUrlCallback: function($panel) {
-        $panel.find(':button.btn-close').click(function() {
-          that.closeCurrentTab()
-        })
       },
       reload: function($tab, flag) {
         flag = flag || $tab.data('reloadFlag')
@@ -345,7 +98,6 @@
             data: options.data || {},
             loadingmask: options.loadingmask,
             callback: function(response) {
-              that.tools.loadUrlCallback($panel)
               if (onLoad) onLoad.apply(that, [$panel])
               if (autorefreshTimer) clearInterval(autorefreshTimer)
               if (arefre) {
@@ -358,45 +110,6 @@
           })
       }
     }
-  }
-
-  Navtab.prototype.contextmenu = function($obj) {
-    var that = this
-    $obj.contextmenu({
-      id: 'navtabCM',
-      bindings: {
-        reload: function(t, m) {
-          that.refresh(t.data('initOptions').id)
-        },
-        closeCurrent: function(t, m) {
-          var tabId = t.data('initOptions').id
-
-          if (tabId) that.closeTab(tabId)
-          else that.closeCurrentTab()
-        },
-        closeOther: function(t, m) {
-          if (t.index() === 0) {
-            that.closeAllTab()
-          } else {
-            var index = that.tools.indexTabId(t.data('initOptions').id)
-
-            that.tools.closeOtherTab(index > 0 ? index : currentIndex)
-          }
-        },
-        closeAll: function(t, m) {
-          that.closeAllTab()
-        }
-      },
-      ctrSub: function(t, m) {
-        var mReload = m.find('[rel="reload"]')
-        var mCur = m.find('[rel="closeCurrent"]')
-
-        if (t.index() === 0) {
-          mCur.addClass('disabled')
-          if (!t.data('url')) mReload.addClass('disabled')
-        }
-      }
-    })
   }
 
   // if found tabid replace tab, else create a new tab.
@@ -422,80 +135,20 @@
       options.url = encodeURI(options.url)
     }
 
-    var iOpenIndex = options.id ? tools.indexTabId(options.id) : currentIndex
-
-    if (!options.id && !BJUI.ui.overwriteHomeTab && iOpenIndex === 0) {
-      options.id = 'navtab'
-      iOpenIndex = -1
+    if (!options.id) {
+      options.id = 'main'
     }
 
-    var $tab
     var $panel
-    if (iOpenIndex >= 0) {
-      if (!options.id) delete options.id
+    $panel = $('<div class="navtabPage unitBox bjui-navtab-content"></div>')
+    $box.empty()
+    $panel.appendTo($box)
 
-      $tab = tools.getTabs().eq(iOpenIndex)
-      $panel = tools.getPanels().eq(iOpenIndex)
-      var initOp = $tab.data('initOptions')
-      var op = $.extend({}, initOp, options)
-
-      if (initOp.fresh || options.fresh || initOp.url !== options.url) {
-        that.reload(op)
-      }
-
-      currentIndex = iOpenIndex
+    if (options.external || (options.url && options.url.isExternalUrl())) {
+      this.openExternal(options.url, $panel)
     } else {
-      var tabFrag = '<li><a href="javascript:" title="#title#"><span>#title#</span></a><span class="close">&times;</span></li>'
-      $tab = $(tabFrag.replaceAll('#title#', options.title))
-      $panel = $('<div class="navtabPage unitBox"></div>')
-      var $more = $('<li><a href="javascript:" title="#title#">#title#</a></li>'.replaceAll('#title#', options.title))
-
-      $tab.appendTo($tabs)
-      $panel.appendTo($panels)
-      $more.appendTo($moreBox)
-
-      $tab.data('options', options).data('initOptions', options)
-
-      if (options.external || (options.url && options.url.isExternalUrl())) {
-        $tab.addClass('external')
-        this.openExternal(options.url, $panel)
-      } else {
-        $tab.removeClass('external')
-        tools.reloadTab($panel, options)
-      }
-
-      currentIndex = tools.getTabs().length - 1
-      this.contextmenu($tab)
-
-      // events
-      $tab.on('click', function(e) {
-        var $target = $(e.target)
-
-        if ($target.hasClass('close')) { that.closeTab(options.id) } else if ($target.closest('li').hasClass('active')) { return false } else { that.switchTab(options.id) }
-      })
-      $more.on('click', function() {
-        that.switchTab(options.id)
-      })
+      tools.reloadTab($panel, options)
     }
-
-    tools.switchTab(currentIndex)
-    tools.scrollCurrent()
-  }
-
-  Navtab.prototype.closeTab = function(tabid) {
-    var index = this.tools.indexTabId(tabid)
-
-    if (index > 0) { this.tools.closeTab(index) }
-  }
-
-  Navtab.prototype.closeCurrentTab = function(openTabid) { // openTabid can be empty. close current tab by default, and open the last tab
-    if (currentIndex > 0) { this.tools.closeTab(currentIndex, openTabid) }
-  }
-
-  Navtab.prototype.closeAllTab = function() {
-    this.tools.getTabs().find('> .close').each(function() {
-      $(this).trigger('click')
-    })
   }
 
   Navtab.prototype.reloadFlag = function(tabids) {
@@ -509,20 +162,6 @@
         else $tab.data('reloadFlag', true)
       }
     }
-  }
-
-  Navtab.prototype.switchTab = function(tabid) {
-    var index = this.tools.indexTabId(tabid)
-
-    this.tools.switchTab(index)
-  }
-
-  Navtab.prototype.scrollPrev = function() {
-    this.tools.scrollPrev()
-  }
-
-  Navtab.prototype.scrollNext = function() {
-    this.tools.scrollNext()
   }
 
   Navtab.prototype.refresh = function(tabid) {
@@ -616,10 +255,6 @@
 
   Navtab.prototype.getCurrentPanel = function() {
     return this.tools.getPanels().eq(currentIndex)
-  }
-
-  Navtab.prototype.closeOtherTab = function() {
-	  return this.tools.closeOtherTab()
   }
 
   Navtab.prototype.checkTimeout = function() {

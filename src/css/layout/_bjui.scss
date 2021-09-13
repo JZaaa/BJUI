@@ -1,9 +1,6 @@
 .hide {
   display: none;
 }
-#bjui-navtab>.tabsPageHeader>.tabsPageHeaderContent>.nav>li>a {
-  display: inline-block;
-}
 // 原style 样式
 html, body, div, span, applet, object, iframe,
 p, blockquote, pre,
@@ -151,40 +148,7 @@ td[align=right] input{text-align:right;}
 .table.nowrap td,
 .table.nowrap th{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 /* Main */
-#bjui-window{margin:0 auto; overflow:hidden;}
-#bjui-header{position:relative; margin-bottom:0; height:70px; overflow:visible; border-width:0; border-radius:0;}
-#bjui-header > .bjui-navbar-header{float:left;}
-#bjui-header > .bjui-navbar-header > .bjui-navbar-logo{display:block; padding-left:6px; padding-top:1px;}
-#bjui-header > .bjui-navbar-header > .bjui-navbar-toggle{display:none; position:absolute; top:5px; right:5px;}
-#bjui-header > #bjui-navbar-collapse{float:right; margin-top:5px;}
-#bjui-header > #bjui-navbar-collapse.menu{position:absolute; top:35px; right:1px; z-index:999; border:1px solid #cccccc; border-radius:4px; box-shadow:0 6px 12px rgba(0, 0, 0, 0.175); background-clip:padding-box;}
-#bjui-header > #bjui-navbar-collapse.menu > .bjui-navbar-right > li,
-#bjui-header > #bjui-navbar-collapse.in > .bjui-navbar-right > li{float:none; border-bottom:1px #CCC solid; border-right:none;}
-#bjui-header > #bjui-navbar-collapse.in > .bjui-navbar-right > li:last-child a{border-radius:0 0 5px 5px;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right{float:right;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li{float:left; height:28px;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li:last-child{border-right:none;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > div{padding:0 10px; height:28px; line-height:28px; color:#FFF;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > div > span{}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a{display:block; padding:0 10px; height:28px; line-height:28px; text-decoration:none; color:#FFF !important; border-radius:5px;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a:hover{color:#FFF;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.bootstrap{background-color:#337ab7;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.default{background-color:#929292;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.orange{background-color:#FF6600;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.purple{background-color:#c000ff;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.blue{background-color:#16669e;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.red{background-color:#fc5555;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a.theme.green{background-color:#1ca61c;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > a >.badge{background:#FFF; color:#FF0000;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu{right:0; left:auto;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a{padding:3px 5px; width:auto;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_bootstrap{color:#428bca;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_default{color:#555;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_orange{color:#FF6600;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_purple{color:#7e00ff;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_blue{color:blue;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_red{color:#fc5555;}
-#bjui-header > #bjui-navbar-collapse > .bjui-navbar-right > li > .dropdown-menu > li > a.theme_green{color:green;}
+.bjui-app{margin:0 auto; overflow:hidden;}
 #bjui-hnav{position:absolute; top:38px; width:100%; height:32px; overflow:visible;}
 #bjui-hnav > .bjui-hnav-more-left{position:absolute; left:0; top:0; z-index:1; display:none;}
 #bjui-hnav > .bjui-hnav-more-right{position:absolute; right:0; top:0; z-index:1; display:none;}
@@ -211,22 +175,8 @@ td[align=right] input{text-align:right;}
 #bjui-hnav #bjui-hnav-navbar > li > .ztree{display:none;}
 #bjui-hnav #bjui-hnav-navbar > li.open{}
 #bjui-hnav #bjui-hnav-navbar > li.open > .dropdown-menu{position:absolute; top:32px; z-index:999;}
-#bjui-container{position:relative; margin-top:2px; width:100%; height:100%;}
-#bjui-leftside{position:absolute; top:0; left:0; z-index:1;}
-#bjui-sidebar{position:absolute; top:0; left:0; width:200px; overflow:hidden; background:#fff; border-style:solid; border-width:1px 1px 0 1px;}
-#bjui-sidebar-s{position:absolute; top:0; left:-10px; width:4px;}
-#bjui-sidebar > .toggleCollapse{display:block; height:25px; overflow:hidden; border-radius:2px 2px 0 0;}
-#bjui-sidebar > .toggleCollapse h2{margin:0; width:100%; font-size:14px; font-weight:bold; line-height:26px; text-align:center;}
-#bjui-sidebar > .toggleCollapse .lock{position:absolute; top:0; right:0; display:block; width:26px; height:24px; overflow:hidden; text-align:center; cursor:pointer;}
-#bjui-sidebar > .toggleCollapse .lock i{font-size:18px; font-weight:bold; line-height:28px;}
-#bjui-sidebar-s > .collapse{display:block; height:100%; cursor:pointer;}
-#bjui-sidebar-s > .collapse > .toggleCollapse{position:absolute; top:50%; left:-2px; display:none; margin-top:-12px; height:24px; border:0;}
-#bjui-sidebar-s > .collapse > .toggleCollapse div{width:100%; height:24px; line-height:1; text-align:center; cursor:pointer;}
-#bjui-sidebar-s > .collapse > .toggleCollapse div i{font-size:20px; font-weight:bold;}
-#bjui-navtab{position:absolute; top:0; left:204px; height:100%;}
 #bjui-splitBar{position:absolute; top:0; left:201px; display:block; width:3px; overflow:hidden; cursor:col-resize; float:left;}
 #bjui-splitBarProxy{position:absolute; top:0; left:201px; z-index:2; display:none; width:1px; overflow:hidden; border-style:solid; border-width:1px; cursor:col-resize; float:left;}
-#bjui-footer{position:absolute; bottom:0; left:0; padding-top:8px; width:100%; height:24px; text-align:center;}
 /* Left menus */
 .menu-items li{position:relative;}
 .menu-items li > a{display:block; padding-left:16px; height:26px; line-height:26px; font-size:14px; text-decoration:none;}
@@ -271,34 +221,6 @@ td[align=right] input{text-align:right;}
 .tab-content > .tab-pane .bjui-pageHeader,
 .tab-content > .tab-pane .bjui-pageContent,
 .tab-content > .tab-pane .bjui-pageFooter{position:static;}
-/* Navtab */
-#bjui-navtab > .tabsPageHeader{position:relative; display:block; width:100%; height:26px; border-style:solid; border-width:0;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent{position:relative; display:block; margin-right:20px; height:26px; overflow:hidden;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent.tabsPageHeaderMargin{margin:0 39px 0 20px;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent.tabsPageHeaderMargin > ul > li:first-child{margin-left:2px;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent.tabsPageHeaderMargin > ul > li:last-child{margin-right:4px;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > ul{position:absolute; height:26px; min-width:1000%;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > ul > li{position:relative; margin-bottom:1px;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > ul > li.active{border-bottom:none;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > .nav > li > a{padding:4px 18px 3px 12px; border-width:1px; border-style:solid; text-shadow:0 1px 0 #fff;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > .nav > li > a > span{font-size:14px;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > .nav > li > a > span > em{font-size:14px; font-style:normal;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > ul > li span.close{position:absolute; right:5px; top:1px; font-size:12px;}
-#bjui-navtab > .tabsPageHeader > .tabsPageHeaderContent > ul > li span.close:hover{color:#FF0000;}
-#bjui-navtab > .tabsPageHeader > .tabsLeft,
-#bjui-navtab > .tabsPageHeader > .tabsRight,
-#bjui-navtab > .tabsPageHeader > .tabsMore{position:absolute; display:block; width:20px; height:26px; font-size:16px; line-height:1.5; text-align:center; overflow:hidden; cursor:pointer;}
-#bjui-navtab > .tabsPageHeader > .tabsLeft{top:0; left:0; display:none;}
-#bjui-navtab > .tabsPageHeader > .tabsLeft.tabsLeftDisabled{top:0; left:0; cursor:default;}
-#bjui-navtab > .tabsPageHeader > .tabsRight{top:0; right:19px; display:none; border-right:none;}
-#bjui-navtab > .tabsPageHeader > .tabsRight.tabsRightDisabled{top:0; right:19px; cursor:default;}
-#bjui-navtab > .tabsPageHeader > .tabsMore{top:0; right:0; border-radius:4px 4px 0 0;}
-#bjui-navtab > .tabsMoreList{position:absolute; top:26px; right:0; z-index:2; display:none; padding:2px; width:170px; max-height:380px; overflow-x:hidden; overflow-y:auto; border-style:solid; border-width:1px;}
-#bjui-navtab > .tabsMoreList > li{display:block; height:23px; line-height:21px; overflow:hidden;}
-#bjui-navtab > .tabsMoreList > li a{display:block; padding:0 10px; height:21px; white-space:nowrap; line-height:21px;}
-#bjui-navtab > .tabsMoreList > li a:hover{text-decoration:none;}
-#bjui-navtab > .tabsPageContent{position:relative; display:block; overflow:hidden; border-style:solid; border-width:0 1px 1px 1px;}
-#bjui-navtab > .tabsPageContent > .navtabPage{height:100%; overflow:hidden;}
 /* Dialog */
 .bjui-dialog{position:absolute; display:block; text-align:left; border-radius:3px; box-shadow:0 2px 2px rgba(0, 0, 0, 0.3);}
 .bjui-dialog > .dialogHeader{position:relative; padding:0 5px; cursor:move;}
