@@ -15,7 +15,7 @@ class JCheckbox extends BaseComponents {
   // Private
 
   _create() {
-    const label = this._$element.data('label')
+    const label = this._$element.data('label') || ''
 
     const type = this._$element.data('switch') ? 'switch' : this._$element.attr('type')
 
