@@ -164,7 +164,13 @@
             $wrap.addClass('wrap').width(fW - (eL - fL) - offLeft - 8)
               .find('> .n-msg').width(fW - (eL - fL) - offLeft - 8 - 30)
           }
-          if ($wrap.hasClass('n-error')) { $icon.removeClass('n-icon').addClass('glyphicon glyphicon-remove-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' }) } else if ($wrap.hasClass('n-tip')) { $icon.removeClass('n-icon').addClass('glyphicon glyphicon-info-sign').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' }) } else if ($wrap.hasClass('n-ok')) { $icon.removeClass('n-icon').addClass('glyphicon glyphicon-ok-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' }) }
+          if ($wrap.hasClass('n-error')) {
+            $icon.removeClass('n-icon').addClass('bi-x-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' })
+          } else if ($wrap.hasClass('n-tip')) {
+            $icon.removeClass('n-icon').addClass('bi-info-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' })
+          } else if ($wrap.hasClass('n-ok')) {
+            $icon.removeClass('n-icon').addClass('bi-check-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' })
+          }
           if ($el.is(':animated')) return
           if (type === 'error') {
             $el.css({
