@@ -15,19 +15,19 @@
         "children": [
           {
             "name": "文本框",
-            "path": "views/form/input.html"
+            "path": "views/components/form/input.html"
           },
           {
             "name": "下拉选择框",
-            "path": "views/form/select.html"
+            "path": "views/components/form/select.html"
           },
           {
             "name": "复选、单选框",
-            "path": "views/form/checkbox.html"
+            "path": "views/components/form/checkbox.html"
           },
           {
             "name": "表单综合演示",
-            "path": "views/form/form.html"
+            "path": "views/components/form/form.html"
           }
         ]
       },
@@ -36,39 +36,25 @@
         "children": [
           {
             "name": "普通表格",
-            "path": "table.html"
+            "path": "views/components/table/table.html"
           },
           {
             "name": "固定表头表格",
-            "path": "table-fixed.html"
+            "path": "views/components/table/table-fixed.html"
           },
           {
             "name": "可编辑表格",
-            "path": "table-edit.html"
+            "path": "views/components/table/table-edit.html"
           }
         ]
       },
       {
-        "name": "弹出窗口",
-        "children": [
-          {
-            "name": "弹出窗口",
-            "path": "dialog.html"
-          },
-          {
-            "name": "信息提示",
-            "path": "alert.html"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "框架组件",
-    "children": [
+        "name": "消息提示",
+        "path": "views/components/alert/alert.html"
+      },
       {
         "name": "选项卡",
-        "path": "tabs.html"
+        "path": "views/components/tabs/tabs.html"
       }
     ]
   },
