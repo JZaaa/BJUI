@@ -159,8 +159,8 @@
     maskProgress: '<div class="bjui-maskProgress bjui-ajax-mask"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;#msg#<div class="progressBg"><div class="progress"></div></div></div>',
     progressBar_custom: '<div id="bjui-progressBar-custom" class="progressBar"><i class="fa fa-cog fa-spin"></i> <span></span></div>',
     dialogMask: '<div class="bjui-dialogBackground"></div>',
-    orderby: '<a href="javascript:;" class="order asc" data-order-direction="asc" title="#asc#"><i class="fa fa-angle-up"></i></a>' +
-                 '<a href="javascript:;" class="order desc" data-order-direction="desc" title="#desc#"><i class="fa fa-angle-down"></i></a>',
+    orderby: '<a href="javascript:;" class="order asc" data-order-direction="asc" title="#asc#"><i class="bi-chevron-up"></i></a>' +
+                 '<a href="javascript:;" class="order desc" data-order-direction="desc" title="#desc#"><i class="bi-chevron-down"></i></a>',
     slidePanel: '<div class="panel panel-default">' +
                     '    <div class="panel-heading">' +
                     '        <h4 class="panel-title"><a data-toggle="collapse" data-parent="#bjui-accordionmenu" href="##id#" class="#class#">#icon#&nbsp;#title#<b>#righticon#</b></a></h4>' +
@@ -171,75 +171,25 @@
                     '    </div>' +
                     '</div>',
     pagination: '<ul class="pagination">' +
-                    '    <li class="j-first">' +
-                    '        <a class="first" href="javascript:;"><i class="fa fa-step-backward"></i> #first#</a>' +
-                    '        <span class="first"><i class="fa fa-step-backward"></i> #first#</span>' +
+                    '    <li class="j-first page-item">' +
+                    '        <a class="first page-link" href="javascript:;"><i class="fa fa-step-backward"></i> #first#</a>' +
+                    '        <span class="first page-link"><i class="fa fa-step-backward"></i> #first#</span>' +
                     '    </li>' +
-                    '    <li class="j-prev">' +
-                    '        <a class="previous" href="javascript:;"><i class="fa fa-backward"></i> #prev#</a>' +
-                    '        <span class="previous"><i class="fa fa-backward"></i> #prev#</span>' +
+                    '    <li class="j-prev page-item">' +
+                    '        <a class="previous page-link" href="javascript:;"><i class="fa fa-backward"></i> #prev#</a>' +
+                    '        <span class="previous page-link"><i class="fa fa-backward"></i> #prev#</span>' +
                     '    </li>' +
                     '    #pageNumFrag#' +
-                    '    <li class="j-next">' +
-                    '        <a class="next" href="javascript:;">#next# <i class="fa fa-forward"></i></a>' +
-                    '        <span class="next">#next# <i class="fa fa-forward"></i></span>' +
+                    '    <li class="j-next page-item">' +
+                    '        <a class="next page-link" href="javascript:;">#next# <i class="fa fa-forward"></i></a>' +
+                    '        <span class="next page-link">#next# <i class="fa fa-forward"></i></span>' +
                     '    </li>' +
-                    '    <li class="j-last">' +
-                    '        <a class="last" href="javascript:;">#last# <i class="fa fa-step-forward"></i></a>' +
-                    '        <span class="last">#last# <i class="fa fa-step-forward"></i></span>' +
+                    '    <li class="j-last page-item">' +
+                    '        <a class="last page-link" href="javascript:;">#last# <i class="fa fa-step-forward"></i></a>' +
+                    '        <span class="last page-link">#last# <i class="fa fa-step-forward"></i></span>' +
                     '    </li>' +
-                    '    <li class="jumpto"><span class="p-input"><input class="form-control input-sm-pages" type="text" size="2.6" value="#pageCurrent#" title="#jumpto#"></span><a class="goto" href="javascript:;" title="#jump#"><i class="fa fa-chevron-right"></i></a></li>' +
+                    '    <li class="jumpto page-item"><span class="p-input"><input class="form-control input-sm-pages" type="text" size="2.6" value="#pageCurrent#" title="#jumpto#"></span><a class="goto" href="javascript:;" title="#jump#"><i class="bi-chevron-right"></i></a></li>' +
                     '</ul>',
-    gridPaging: '<ul class="pagination">' +
-                    '    <li class="page-total">' +
-                    '        <span title="#total#">#count#</span>' +
-                    '    </li>' +
-                    '    <li class="page-jumpto"><span class="page-input"><input class="form-control input-sm-pages" type="text" size="3.2" value="#pageCurrent#" title="#jumpto#"></span></li>' +
-                    '    <li class="page-first btn-nav">' +
-                    '        <a href="javascript:;" title="#first#"><i class="fa fa-step-backward"></i></a>' +
-                    '    </li>' +
-                    '    <li class="page-prev btn-nav">' +
-                    '        <a href="javascript:;" title="#prev#"><i class="fa fa-backward"></i></a>' +
-                    '    </li>' +
-                    '    <li class="page-next btn-nav">' +
-                    '        <a href="javascript:;" title="#next#"><i class="fa fa-forward"></i></a>' +
-                    '    </li>' +
-                    '    <li class="page-last btn-nav">' +
-                    '        <a href="javascript:;" title="#last#"><i class="fa fa-step-forward"></i></a>' +
-                    '    </li>' +
-                    '</ul>',
-    gridPageNum: '<li class="page-num#active#"><a href="javascript:;">#num#</a></li>',
-    gridMenu: '<div class="datagrid-menu-box">' +
-                 '    <ul>' +
-                 '        <li class="datagrid-li-asc"><a href="javascript:;"><span class="icon"><i class="fa fa-sort-amount-asc"></i></span><span class="title">#asc#</span></a></li>' +
-                 '        <li class="datagrid-li-desc"><a href="javascript:;"><span class="icon"><i class="fa fa-sort-amount-desc"></i></span><span class="title">#desc#</span></a></li>' +
-                 '        <li class="datagrid-li-filter"><a href="javascript:;"><span class="icon"><i class="fa fa-filter"></i></span><span class="title">#filter#</span><span class="arrow"></span></a></li>' +
-                 '        <li class="datagrid-li-showhide"><a href="javascript:;"><span class="icon"><i class="fa fa-check-square-o"></i></span><span class="title">#showhide#</span><span class="arrow"></span></a></li>' +
-                 '        <li class="datagrid-li-lock"><a href="javascript:;"><span class="icon"><i class="fa fa-lock"></i></span><span class="title">#lock#</span></a></li>' +
-                 '        <li class="datagrid-li-unlock disable"><a href="javascript:;"><span class="icon"><i class="fa fa-unlock"></i></span><span class="title">#unlock#</span></a></li>' +
-                 '    </ul>' +
-                 '</div>',
-    gridFilter: '<div class="datagrid-filter-box">' +
-                  '<fieldset>' +
-                  '<legend>#label#</legend>' +
-                  '<span class="filter-a"></span>' +
-                  '<span class="filter-and"><select data-toggle="selectpicker" data-container="true" data-width="100%"><option value="and">AND</option><option value="or">OR</option></select></span>' +
-                  '<span class="filter-b"></span>' +
-                  '<span class="filter-ok"><button type="button" class="btn-green ok" data-icon="check">#filter#</button><button type="button" class="btn-orange clear" data-icon="remove">#clear#</button></span>' +
-                  '</fieldset>' +
-                  '</div>',
-    gridShowhide: '<li data-index="#index#" class="datagrid-col-check"><a href="javascript:;"><i class="fa fa-check-square-o"></i>#label#</a></li>',
-    gridEditBtn: '<button type="button" class="btn-green edit" data-icon="edit">#edit#</button>' +
-                    '<button type="button" class="btn-green update" data-icon="edit">#update#</button>' +
-                    '<button type="button" class="btn-green save" data-icon="check">#save#</button>' +
-                    '<button type="button" class="btn-orange cancel" data-icon="undo">#cancel#</button>' +
-                    '<button type="button" class="btn-orange delete" data-icon="remove">#del#</button>',
-    gridDialogEditBtns: '<ul>' +
-                          '    <li class="pull-left"><button type="button" class="btn btn-orange prev" data-icon="arrow-up">#prev#</button></li>' +
-                          '    <li class="pull-left"><button type="button" class="btn btn-orange next" data-icon="arrow-down">#next#</button></li>' +
-                          '    <li><button type="button" class="btn btn-red cancel" data-icon="remove">#cancel#</button></li>' +
-                          '    <li><button type="button" class="btn btn-default save" data-icon="save">#save#</button></li>' +
-                          '</ul>',
     alertBoxFrag: '<div id="bjui-alertMsgBox" class="bjui-alert"><div class="alertContent"><div class="#type#"><div class="alertInner"><h1><i class="fa #fa#"></i>#title#</h1><div class="msg">#message#</div></div><div class="toolBar"><ul>#btnFragment#</ul></div></div></div></div>',
     alertBtnFrag: '<li><button class="btn btn-#class#" rel="#callback#" type="button">#btnMsg#</button></li>',
     calendarFrag: '<div id="bjui-calendar">' +

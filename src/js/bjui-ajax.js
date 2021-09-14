@@ -15,6 +15,8 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { navTabSelector } from '@/utils/static'
+
 +(function($) {
   'use strict'
 
@@ -70,7 +72,7 @@
         return form
       },
       getTarget: function() {
-        if (that.$element.closest('.navtab-panel').length) return Bjuiajax.NAVTAB
+        if (that.$element.closest(navTabSelector).length) return Bjuiajax.NAVTAB
         else return 'dialog'
       }
     }

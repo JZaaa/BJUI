@@ -15,6 +15,8 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { navTabSelector } from '@/utils/static'
+
 +(function($) {
   'use strict'
 
@@ -408,7 +410,9 @@
     var that = this
     var _resizeGrid = function() {
       $('div.bjui-resizeGrid').each(function() {
-        var $this = $(this); var $navtab = $this.closest('.navtabPage')
+        var $this = $(this)
+        var $navtab = $this.closest(navTabSelector)
+        console.log($navtab)
 
         var width = $this.width()
 

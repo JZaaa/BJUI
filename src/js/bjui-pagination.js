@@ -15,6 +15,8 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { navTabSelector } from '@/utils/static'
+
 +(function($) {
   'use strict'
 
@@ -34,7 +36,7 @@
     last: 'li.j-last',
     nums: 'li.j-num > a',
     jump: 'li.jumpto',
-    pageNumFrag: '<li class="#liClass#"><a href="javascript:;">#pageNum#</a></li>',
+    pageNumFrag: '<li class="#liClass#"><a class="page-link" href="javascript:;">#pageNum#</a></li>',
     total: 0,
     pageSize: 10,
     pageNum: 10,
@@ -83,7 +85,8 @@
     var pr = BJUI.regional.pagination
 
     for (var i = interval.start; i < interval.end; i++) {
-      pageNumFrag += options.pageNumFrag.replaceAll('#pageNum#', i).replaceAll('#liClass#', i === tools.getCurrentPage() ? 'selected j-num' : 'j-num')
+      pageNumFrag += options.pageNumFrag.replaceAll('#pageNum#', i)
+        .replaceAll('#liClass#', i === tools.getCurrentPage() ? 'selected j-num page-item' : 'j-num page-item')
     }
 
     pagination =
@@ -180,11 +183,16 @@
   }
 
   Pagination.prototype.getTarget = function() {
-    var that = this; var $target
+    const that = this
+    let $target
 
-    if (that.$element.closest('.bjui-layout').length) $target = that.$element.closest('.bjui-layout')
-    else if (that.$element.closest('.navtab-panel').length) $target = $.CurrentNavtab
-    else $target = $.CurrentDialog
+    if (that.$element.closest('.bjui-layout').length) {
+      $target = that.$element.closest('.bjui-layout')
+    } else if (that.$element.closest(navTabSelector).length) {
+      $target = $.CurrentNavtab
+    } else {
+      $target = $.CurrentDialog
+    }
 
     return $target
   }
