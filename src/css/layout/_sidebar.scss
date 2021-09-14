@@ -4,8 +4,14 @@
   transition: $sidebar-transition;
   direction: ltr;
   background: $sidebar-bg;
-  position: relative;
   z-index: $layout-sider-z-index;
+
+  &__fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
 
   $brand-fixed: map-get($defaultMenuStyle, 'brandFixed');
   $brand-height: map-get($defaultMenuStyle, 'brandHeight');

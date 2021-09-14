@@ -34,6 +34,7 @@ import { layoutHeaderSelector, menuContentSelector, menuSelector } from '@/utils
       this._appElement = document.querySelector('#bjui-app')
       this._$menuElement = $(menuContentSelector)
       this._baseUrl = XEUtils.getBaseURL()
+      this._initDom()
 
       this._loadMenu()
     }
@@ -50,10 +51,16 @@ import { layoutHeaderSelector, menuContentSelector, menuSelector } from '@/utils
     toggleCollapse() {
       this._sidebarElement.classList.toggle('collapsed')
       this._appElement.classList.toggle('menu-collapsed')
+      this._$placeholder.toggleClass('collapsed')
 
       this._sidebarElement.addEventListener('transitionend', () => {
-        window.dispatchEvent(new Event('resize'))
+        $(window).trigger(BJUI.eventType.resizeGrid)
       })
+    }
+
+    _initDom() {
+      this._$placeholder = $(`<div class="bjui-sidebar"></div>`)
+      $(this._sidebarElement).before(this._$placeholder)
     }
 
     _loadMenu() {
