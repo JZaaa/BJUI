@@ -19,7 +19,7 @@ yarn watch
 ```
 
 ```sh
-yarn run build
+yarn build
 ```
 
 ## 项目结构
