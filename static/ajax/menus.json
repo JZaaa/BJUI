@@ -1,56 +1,65 @@
 [
   {
-    "name": "表单元素",
+    "name": "首页",
+    "path": "views/home.html"
+  },
+  {
+    "name": "组件",
     "children": [
       {
         "name": "按钮",
         "path": "views/basic/button.html"
       },
       {
-        "name": "文本框",
-        "path": "views/form/input.html"
+        "name": "表单元素",
+        "children": [
+          {
+            "name": "文本框",
+            "path": "views/form/input.html"
+          },
+          {
+            "name": "下拉选择框",
+            "path": "views/form/select.html"
+          },
+          {
+            "name": "复选、单选框",
+            "path": "views/form/checkbox.html"
+          },
+          {
+            "name": "表单综合演示",
+            "path": "views/form/form.html"
+          }
+        ]
       },
       {
-        "name": "下拉选择框",
-        "path": "views/form/select.html"
+        "name": "表格",
+        "children": [
+          {
+            "name": "普通表格",
+            "path": "table.html"
+          },
+          {
+            "name": "固定表头表格",
+            "path": "table-fixed.html"
+          },
+          {
+            "name": "可编辑表格",
+            "path": "table-edit.html"
+          }
+        ]
       },
-      {
-        "name": "复选、单选框",
-        "path": "views/form/checkbox.html"
-      },
-      {
-        "name": "表单综合演示",
-        "path": "views/form/form.html"
-      }
-    ]
-  },
-  {
-    "name": "表格",
-    "children": [
-      {
-        "name": "普通表格",
-        "path": "table.html"
-      },
-      {
-        "name": "固定表头表格",
-        "path": "table-fixed.html"
-      },
-      {
-        "name": "可编辑表格",
-        "path": "table-edit.html"
-      }
-    ]
-  },
-  {
-    "name": "弹出窗口",
-    "children": [
       {
         "name": "弹出窗口",
-        "path": "dialog.html"
-      },
-      {
-        "name": "信息提示",
-        "path": "alert.html"
+        "children": [
+          {
+            "name": "弹出窗口",
+            "path": "dialog.html"
+          },
+          {
+            "name": "信息提示",
+            "path": "alert.html"
+          }
+        ]
       }
     ]
   },

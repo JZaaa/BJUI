@@ -141,8 +141,29 @@ const getGUID = (len = 32, firstU = true, radix = null) => {
     return uuid.join('')
   }
 }
+
+/**
+ * 去除指定字符
+ * @param string 字符串
+ * @param char 待去除字符
+ * @param type 类型, left/right/undefined
+ * @return {*}
+ */
+const trim = (string, char, type) => {
+  if (char) {
+    if (type === 'left') {
+      return string.replace(new RegExp('^\\' + char + '+', 'g'), '')
+    } else if (type === 'right') {
+      return string.replace(new RegExp('\\' + char + '+$', 'g'), '')
+    }
+    return string.replace(new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'), '')
+  }
+  return string.replace(/^\s+|\s+$/g, '')
+}
+
 export {
   executeAfterTransition,
   defineJQueryPlugin,
-  getGUID
+  getGUID,
+  trim
 }

@@ -8,8 +8,6 @@
     </div>
 </div>
 <div class="bjui-pageContent">
-    <div class="alert alert-warning form-inline"><i class="fa fa-warning"></i> 最新文档请参见<a href="index.html">宽版页面</a></div>
-    <p>&nbsp;</p>
     <div class="panel panel-default">
         <div class="panel-heading">
             项目简介
@@ -25,21 +23,5 @@
             </ul>
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            更新日志
-        </div>
-        <div id="bjui-changelog" class="markdown-body panel-body" style="height: 400px;overflow: auto"></div>
-    </div>
 </div>
-<script>
-  $.ajax({
-    url: 'CHANGELOG.md',
-    type: 'get',
-    cache: false,
-    dataType: 'text',
-    success: function(data) {
-      $.CurrentNavtab.find('#bjui-changelog').html(markdownit().render(data))
-    }
-  })
-</script>
+

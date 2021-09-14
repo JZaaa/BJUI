@@ -1,12 +1,12 @@
 /*!
- * B-JUI  v1.2 (http://b-jui.com)
+ * B-JUI   (http://b-jui.com)
  * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
  * Copyright 2014 K'naan (xknaan@163.com).
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  */
 
 /* ========================================================================
- * B-JUI: bjui-navtab.js  v1.2
+ * B-JUI: bjui-navtab.js
  * @author K'naan (xknaan@163.com)
  * -- Modified from dwz.navTab.js (author:ZhangHuihua@msn.com)
  * http://git.oschina.net/xknaan/B-JUI/blob/master/BJUI/js/bjui-navtab.js
@@ -114,7 +114,6 @@ import { navTabSelector } from '@/utils/static'
 
   // if found tabid replace tab, else create a new tab.
   Navtab.prototype.openTab = function() {
-    var that = this
     var $element = this.$element
     var options = this.options
     var tools = this.tools
@@ -149,19 +148,7 @@ import { navTabSelector } from '@/utils/static'
     } else {
       tools.reloadTab($panel, options)
     }
-  }
-
-  Navtab.prototype.reloadFlag = function(tabids) {
-    var arr = tabids.split(',')
-
-    for (var i = 0; i < arr.length; i++) {
-      var $tab = this.tools.getTab(arr[i].trim())
-
-      if ($tab) {
-        if (this.tools.indexTabId(arr[i]) === currentIndex) this.tools.reload($tab, true)
-        else $tab.data('reloadFlag', true)
-      }
-    }
+    $.CurrentNavtab = $panel
   }
 
   Navtab.prototype.refresh = function(tabid) {

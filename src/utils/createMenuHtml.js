@@ -1,7 +1,12 @@
 import { menuSelector } from '@/utils/static'
 import { getGUID } from './index'
+import { trim } from './index'
+import getBaseURL from 'xe-utils/getBaseURL'
+import startsWith from 'xe-utils/startsWith'
 
-const createMenuHtml = (treeData) => {
+const BaseUrl = getBaseURL()
+
+const createMenuHtml = (treeData, parentSelector = menuSelector) => {
   let html = ''
   treeData.forEach(val => {
     html += '<li class="sidebar-item">'
@@ -19,11 +24,18 @@ const createMenuHtml = (treeData) => {
                 ${val.name}
               </span>
         </a>`
-      html += `<ul id="${id}" class="sidebar-dropdown list-unstyled collapse" data-parent="${menuSelector}">`
-      html += createMenuHtml(val.children)
+      html += `<ul id="${id}" class="sidebar-dropdown list-unstyled collapse" data-parent="${parentSelector}">`
+      html += createMenuHtml(val.children, '#' + id)
       html += `</ul>`
     } else {
-      const path = val.path && val.path.length ? (`href="${val.path}"`) : ''
+      let path = ''
+      if (val.path && val.path.length) {
+        let hash = trim(val.path, BaseUrl, 'left')
+        if (!startsWith(hash, '/')) {
+          hash = '/' + hash
+        }
+        path = (`href="${val.path}" data-hash="#${hash}" `)
+      }
       html +=
         `<a class="sidebar-link" ${path}>
             ${icon}
