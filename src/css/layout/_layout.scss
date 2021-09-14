@@ -73,8 +73,8 @@ $layout-header-height: 50px;
   }
   .bjui-layout-header-right {
     display: flex;
-    min-width: 180px;
     align-items: center;
+    padding-right: 4px;
     text-align: right;
     .dropdown-toggle::after {
       display: none;
@@ -82,42 +82,27 @@ $layout-header-height: 50px;
     img {
       max-height: 32px;
     }
-  }
 
-  .navbar-collapse {
-    display: flex!important;
-    flex-basis: auto;
-    justify-content: flex-end;
-    padding-right: 10px;
-
-    .navbar-nav {
-      flex-direction: row;
+    &__item {
+      height: $layout-header-height;
       display: flex;
-      padding-left: 0;
-      margin-bottom: 0;
-      list-style: none;
-
-      > .nav-item {
-        padding-left: 4px;
-        padding-right: 4px;
-        display: flex;
-        align-items: center;
-        > a {
-          text-align: center;
-          padding: 0 4px;
-          color: #000;
-          display: block;
-          text-decoration: none;
-          &:hover {
-            color: #2f64b1;
-          }
+      align-items: center;
+      padding: 0 4px;
+      cursor: pointer;
+      > a {
+        text-align: center;
+        padding: 0 4px;
+        color: #000;
+        display: block;
+        text-decoration: none;
+        &:hover {
+          color: #2f64b1;
         }
       }
+      .rounded-circle {
+        top: 15px;
+      }
     }
-
-    //.rounded-circle.position-absolute {
-    //  top: 15px;
-    //}
   }
 
 }
@@ -128,6 +113,12 @@ $layout-header-height: 50px;
   min-height: 0;
   opacity: 1;
   transition: opacity .3s;
+  display: flex;
+}
+.bjui-navtab-content {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .bjui-page-wrapper {

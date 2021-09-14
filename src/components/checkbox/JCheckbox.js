@@ -19,23 +19,22 @@ class JCheckbox extends BaseComponents {
 
     const type = this._$element.data('switch') ? 'switch' : this._$element.attr('type')
 
-    let typeClass = ''
-
+    let box = ''
+    let icon = ''
     switch (type) {
       case 'checkbox':
-        typeClass = ''
+        box = '<div class="pretty p-icon"></div>'
+        icon = '<i class="icon bi-check-lg"></i>'
         break
       case 'radio':
-        typeClass = 'p-round'
+        box = '<div class="pretty p-default p-round"></div>'
         break
       case 'switch':
-        typeClass = 'p-switch'
+        box = '<div class="pretty p-default p-switch"></div>'
         break
     }
 
-    const $box = $(`
-        <div class="pretty p-default ${typeClass}"></div>
-      `)
+    const $box = $(box)
 
     this._$element.wrap($box)
 
@@ -43,6 +42,7 @@ class JCheckbox extends BaseComponents {
 
     this._$checkbox.append(`
      <div class="state p-primary-o">
+        ${icon}
         <label>${label}</label>
      </div>
     `)
