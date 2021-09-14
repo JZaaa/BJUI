@@ -1,19 +1,6 @@
-.hide {
-  display: none;
-}
+
 // 原style 样式
-html, body, div, span, applet, object, iframe,
-p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, input, textarea, select, button, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td{font-family:"Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif; font-size:12px; line-height:1;}
-h1, h2, h3, h4, h5, h6{font-family:"Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif; line-height:1;}
 *:focus{outline:0 !important;}
-html{height:100%;}
-body{overflow:hidden;}
 ul, ol{margin:0; padding:0; list-style:none;}
 fieldset{margin-bottom:10px; padding:5px; border:1px #a3a3a3 solid; border-radius:4px;}
 legend{display:inline-block; margin-left:20px; margin-bottom:5px; padding:0 5px; width:auto; font-size:14px; font-weight:700; line-height:inherit; color:#333333; border:0;}
@@ -209,7 +196,6 @@ td[align=right] input{text-align:right;}
 .bjui-pageFooter > .pagination-box > ul > li.jumpto .goto{margin-left:-1px; height:25px; line-height:17px;}
 .bjui-pageHeader li .btn,
 .bjui-pageFooter li .btn{height:25px;}
-.bjui-pageContent{position:absolute; top:0; bottom:0; padding:10px; width:100%; overflow:auto;}
 .bjui-pageContent.tableContent{padding:0;}
 .bjui-pageContent p{line-height:1.5;}
 .bjui-pageFormContent{position:relative; display:block; padding:10px 5px; overflow:auto;}
@@ -267,156 +253,7 @@ td[align=right] input{text-align:right;}
 #bjui-taskbar > .taskbarRight:hover{cursor:pointer;}
 #bjui-taskbar > .taskbarLeft.disabled:hover,
 #bjui-taskbar > .taskbarRight.disabled:hover{cursor:default;}
-/*  datagrid */
-.bjui-datagrid{position:relative; overflow:hidden; border-width:1px; border-style:solid; border-color:#ddd; border-radius:5px;}
-.bjui-datagrid .datagrid-title{height:30px; line-height:30px; text-indent:5px; font-weight:bold; border-bottom:1px #ddd solid;}
-.bjui-datagrid .datagrid-toolbar{padding:5px 0; min-height:34px; border-bottom:1px #ccc solid;}
-.bjui-datagrid .datagrid-toolbar .btn-group{margin:0 5px;}
-.bjui-datagrid .table{table-layout:fixed; border-top-width:0; border-left-width:0 !important;}
-.bjui-datagrid .table > thead > tr > th{padding:0 1px; height:100%;}
-.bjui-datagrid .table > thead > tr > th.single-row{height:25px;}
-.bjui-datagrid .table > tbody > tr > td:first-child{border-left-color:transparent;}
-.bjui-datagrid .table > tbody > tr > td{padding-left:1px; padding-right:1px; overflow-x:hidden;}
-.bjui-datagrid .datagrid-box-h,
-.bjui-datagrid .datagrid-box-b,
-.bjui-datagrid .datagrid-box-f{position:relative;}
-.bjui-datagrid .datagrid-box-h{overflow:hidden; border-bottom-style:solid; border-bottom-width:1px;}
-.bjui-datagrid .datagrid-box-f{overflow:hidden; border-top:1px #ddd solid; border-bottom:1px #ddd solid;}
-.bjui-datagrid .datagrid-box-f thead > tr > th{border-bottom-color:#ddd;}
-.bjui-datagrid .datagrid-box-b{overflow:auto;}
-.bjui-datagrid .datagrid-box-h .table > thead > tr:first-child > th{border-top-width:0;}
-.bjui-datagrid .datagrid-box-h .table > thead > tr > th{overflow:hidden; border-bottom-width:0; white-space:nowrap;}
-.bjui-datagrid .datagrid-box-h .table{border-bottom-width:0;}
-.bjui-datagrid .datagrid-box-h .table > thead > tr > th:last-child{border-right-color:#ddd;}
-.bjui-datagrid .datagrid-box-b .table > tbody > tr:first-child > td{border-top-color:#f1f1f1;}
-.bjui-datagrid .datagrid-box-f .table > thead > tr > th{padding:0; text-align:center; font-weight:normal; border-bottom-color:transparent; overflow:visible;}
-.bjui-datagrid .datagrid-box-f .table > thead > tr > th div{white-space:nowrap;}
-.bjui-datagrid .datagrid-box-f .table > thead > tr > th .datagrid-calcbox{padding:3px 0 2px; border-bottom:1px #ddd solid;}
-.bjui-datagrid .datagrid-wrap-h{overflow:hidden;}
-.bjui-datagrid .datagrid-wrap-b{position:relative;}
-.bjui-datagrid .datagrid-box-l{position:absolute; top:0; left:0; z-index:1; max-width:75%; overflow:hidden;}
-.bjui-datagrid .datagrid-box-l .datagrid-box-h{overflow:hidden;}
-.bjui-datagrid .datagrid-box-l .datagrid-box-b{overflow:hidden; background-color:#fff;}
-.bjui-datagrid .datagrid-box-l .datagrid-box-h .table > thead > tr > th:last-child{border-right:none;}
-.bjui-datagrid .datagrid-box-m{position:absolute; left:0; display:none; width:100%;}
-.bjui-datagrid .datagrid-hidden{display:none;}
-.bjui-datagrid .table > thead > tr > th.datagrid-checkbox{width:27px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-linenumber-td,
-.bjui-datagrid .table > tbody > tr > td.datagrid-linenumber-td{background-color:#f0f0f0;}
-.bjui-datagrid .table > thead > tr > th > div{height:100%;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell{position:relative; float:right; width:0px; height:100%; overflow:visible;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-space{display:inline-block; height:100%; vertical-align:middle;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-label{display:inline-block; width:100%; vertical-align:middle; overflow:hidden;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell > .datagrid-column-resizemark{position:absolute; top:0; right:-3px; display:block; width:6px; height:100%; cursor:col-resize;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell > .datagrid-column-menu-btn{position:absolute; top:50%; left:-20px; margin-top:-10px; height:20px;}
-.bjui-datagrid .table > thead > tr > th.single-row > div > .datagrid-cell > .datagrid-column-menu-btn{margin-top:-9px;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell > .datagrid-column-menu-btn > .btn{padding:0 3px; height:20px; color:#ccc; border-width:0; background-color:transparent; background-color:rgba(255,255,255,.2); opacity:.2;}
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell > .datagrid-column-menu-btn > .btn.active,
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell > .datagrid-column-menu-btn > .btn:hover,
-.bjui-datagrid .table > thead > tr > th:hover > div > .datagrid-cell > .datagrid-column-menu-btn > .btn:hover,
-.bjui-datagrid .table > thead > tr > th > div > .datagrid-cell > .datagrid-column-menu-btn > .btn:focus{color:#fff; opacity:.7;}
-.bjui-datagrid .table > thead > tr > th:hover > div > .datagrid-cell > .datagrid-column-menu-btn > .btn{opacity:1;}
-.bjui-datagrid .table > thead > tr > th.filter-active > div > .datagrid-cell > .datagrid-column-menu-btn > .btn{color:#fff; opacity:.6;}
-.bjui-datagrid .table > thead > tr > th.datagrid-quicksort-th{cursor:pointer;}
-.bjui-datagrid > .datagrid-menu-box{z-index:4; padding:3px 0; background-color:#fff; border-width:1px; border-style:solid; border-color:#ccc; border-color:rgba(0, 0, 0, 0.15); border-radius:4px; -webkit-box-shadow:0 6px 12px rgba(0, 0, 0, 0.175); box-shadow:0 6px 12px rgba(0, 0, 0, 0.175);}
-.bjui-datagrid > .datagrid-menu-box > ul{}
-.bjui-datagrid > .datagrid-menu-box > ul > li{position:relative; clear:both;}
-.bjui-datagrid > .datagrid-menu-box > ul > li > a > .icon{display:inline-block; width:18px; vertical-align:middle;}
-.bjui-datagrid > .datagrid-menu-box > ul > li > a > .title{display:inline-block; vertical-align:middle;}
-.bjui-datagrid > .datagrid-menu-box > ul > li > a > .arrow{float:right; display:inline-block; margin-top:2px; margin-left:8px; width:0; height:0; vertical-align:middle; border-width:4px 0 4px 4px; border-style:solid; border-color:transparent transparent transparent #777;}
-.bjui-datagrid > .datagrid-menu-box > ul > li.active > a > .arrow,
-.bjui-datagrid > .datagrid-menu-box > ul > li > a:hover > .arrow{border-left-color:#fff;}
-.bjui-datagrid > .datagrid-menu-box > ul > li > a{display:block; padding:5px 9px; white-space:nowrap;}
-.bjui-datagrid > .datagrid-menu-box > ul > li > a:hover,
-.bjui-datagrid > .datagrid-menu-box > ul > li.active > a{color:#fff; text-decoration:none;}
-.bjui-datagrid > .datagrid-menu-box > ul > li.datagrid-li-desc,
-.bjui-datagrid > .datagrid-menu-box > ul > li.datagrid-li-filter,
-.bjui-datagrid > .datagrid-menu-box > ul > li.datagrid-li-showhide{border-bottom:1px #ddd solid;}
-.bjui-datagrid > .datagrid-menu-box > ul > li.sort-active a{font-weight:bold;}
-.bjui-datagrid > .datagrid-menu-box > ul > li.disable a{color:#ccc; cursor:default;}
-.bjui-datagrid > .datagrid-menu-box > ul > li.disable a:hover{color:#ccc; background-color:transparent;}
-.bjui-datagrid .datagrid-filter-box fieldset{margin-bottom:1px; border-color:#ccc !important;}
-.bjui-datagrid .datagrid-filter-box fieldset > legend{margin-left:0; margin-bottom:0; text-align:center; font-size:12px;}
-.bjui-datagrid .datagrid-filter-box fieldset > span{display:block; margin:3px 0; white-space:nowrap;}
-.bjui-datagrid .datagrid-filter-box fieldset > span .wrap_bjui_btn_box > a{height:22px !important; line-height:22px !important;}
-.bjui-datagrid .datagrid-filter-box fieldset > span input,
-.bjui-datagrid .datagrid-filter-box fieldset > span .bootstrap-select{margin-left:1px;}
-.bjui-datagrid .datagrid-filter-box fieldset > span.filter-ok{text-align:center;}
-.bjui-datagrid .datagrid-filter-box fieldset > span.filter-ok .btn{width:49%;}
-.bjui-datagrid .datagrid-filter-box fieldset > span.filter-ok .btn-green{float:left;}
-.bjui-datagrid .datagrid-filter-box fieldset > span.filter-ok .btn-orange{float:right;}
-.bjui-datagrid .datagrid-filter-box fieldset > span .btn,
-.bjui-datagrid .datagrid-filter-box fieldset > span input{font-size:12px;}
-.bjui-datagrid .datagrid-filter-box,
-.bjui-datagrid .datagrid-menu-box.position-right .datagrid-filter-box,
-.datagrid-showhide-box{position:absolute; top:0; left:50%; display:none; margin-top:-3px; padding:2px 0; min-width:60px; background-color:#fff; opacity:.2; border-width:1px; border-style:solid; border-color:#ccc; border-color:rgba(0, 0, 0, 0.15); border-radius:4px; -webkit-box-shadow:0 6px 12px rgba(0, 0, 0, 0.175); box-shadow:0 6px 12px rgba(0, 0, 0, 0.175);}
-.bjui-datagrid .datagrid-menu-box.position-right .datagrid-showhide-box{left:auto; right:50%}
-.datagrid-showhide-box > li > a{display:block; clear:both; padding:1px 5px; line-height:1.4; text-decoration:none; white-space:nowrap;}
-.datagrid-showhide-box > li > a:hover{color:#fff; text-decoration:none;}
-.datagrid-showhide-box > li.disable > a{color:#ccc; cursor:default;}
-.datagrid-showhide-box > li > a > i{width:16px;}
-.bjui-datagrid .datagrid-filter-box{padding:2px 3px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-col-field{padding:0;}
-.bjui-datagrid .table > thead > tr > th > .datagrid-col{position:relative; padding:2px 1px; height:25px; line-height:22px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.bjui-datagrid .table > thead > tr > th .datagrid-column-resizemark{position:absolute; top:0; right:-3px; display:block; width:6px; height:100%; cursor:col-resize;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable a.sort{position:absolute; right:4px; display:none; width:14px; height:11px; font-size:18px; font-weight:bold; text-align:center; color:#c000ff; border-radius:2px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable a.sort i{position:absolute; top:-3px; left:1px; height:11px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable a.sort.asc{top:2px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable a.sort.asc i{top:-4px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable a.sort.desc{top:12px;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable:hover a{display:block;}
-.bjui-datagrid .table > thead > tr > th.datagrid-sortable:hover a:hover{color:#fff;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th{padding-left:0; padding-right:0; height:32px; background-color:#f1f1f1;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th > div{height:auto;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th .bootstrap-select > button{margin-left:1px;}
-.bjui-datagrid .table > tbody > tr > td.datagrid-edit-td{padding-left:0; padding-right:0;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th .form-control,
-.bjui-datagrid .table > tbody > tr > td.datagrid-edit-td .form-control{padding-left:1px; padding-right:1px; width:100%; font-size:12px; border-color:#bbb;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th .bootstrap-select,
-.bjui-datagrid .table > tbody > tr > td.datagrid-edit-td .bootstrap-select{width:100% !important;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th,
-.bjui-datagrid .table > tbody > tr > td.datagrid-edit-td{overflow:visible;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th .wrap_bjui_btn_box,
-.bjui-datagrid .table > tbody > tr > td.datagrid-edit-td .wrap_bjui_btn_box{width:100%;}
-.bjui-datagrid .datagrid-edit-btngroup-box{position:relative; float:right; width:0; overflow:visible;}
-.bjui-datagrid .datagrid-edit-btngroup-box > .datagrid-edit-btngroup{position:absolute; top:-26px; right:0; white-space:nowrap;}
-.bjui-datagrid .datagrid-edit-btngroup-box.bottom > .datagrid-edit-btngroup{top:26px;}
-.bjui-datagrid .datagrid-edit-btngroup-box > .datagrid-edit-btngroup .btn{margin-left:5px; height:22px; font-size:12px;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th .btn.ok,
-.bjui-datagrid .table > thead > tr.datagrid-filter th .btn.clear{margin-left:4px; padding-left:5px; width:50px; height:22px; font-size:12px;}
-.bjui-datagrid .table > thead > tr.datagrid-filter th .btn.clear{margin-left:2px;}
-.bjui-datagrid .table > tbody > tr > td.datagrid-column-edit{}
-.bjui-datagrid .table > tbody > tr > td.datagrid-column-edit .btn{padding-left:5px; width:50px; height:22px; font-size:12px;}
-.bjui-datagrid .table > tbody > tr > td.datagrid-column-edit .btn.save,
-.bjui-datagrid .table > tbody > tr > td.datagrid-column-edit .btn.update,
-.bjui-datagrid .table > tbody > tr > td.datagrid-column-edit .btn.cancel{display:none; margin-left:2px;}
-.bjui-datagrid .table > tbody > tr > td.datagrid-column-edit .btn.delete{margin-left:2px;}
-.bjui-datagrid .table > tbody > tr > td.datagrid-td-selected{border-style:solid; border-width:2px;}
-.bjui-datagrid .table > tbody > tr > td.datagrid-td-selected-drag{border-style:solid; border-width:2px;}
-.bjui-datagrid > .datagrid-paging-box{padding:5px; min-height:27px;}
-.bjui-datagrid > .datagrid-paging-box span,
-.bjui-datagrid > .datagrid-paging-box .bootstrap-select{display:inline-block;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content{text-align:center;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging{display:inline-block; min-height:27px; vertical-align:middle;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination{margin:0;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li > a,
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li > span{padding:3px 8px;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li > span:hover{/*background-color:#fff;*/}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li.btn-nav > a{width:26px; text-align:center;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li.btn-nav.page-prev > a{padding-left:5px;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li > span.page-input{padding:1px;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li > span.page-input > input{padding:0; height:21px; font-size:12px; text-align:center;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li.active > a,
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li.active > a:focus,
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-paging > .pagination > li.active > a:hover{color:#fff; border-color:#ddd;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-pagesize{display:inline-block; margin-right:1px; min-height:27px; vertical-align:middle;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-pagesize > .btn-refresh{margin-right:1px; padding:2px 8px; height:25px; border-color:#ccc; border-radius:3px;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-pagesize > .btn-group > .btn{padding:2px; height:25px; border-color:#ccc; border-radius:4px;}
-.bjui-datagrid > .datagrid-paging-box > .paging-content > .datagrid-pagesize > .btn-group > .btn > .filter-option{text-align:center; padding-right:8px;}
-.bjui-datagrid > .resizeProxy{position:absolute; z-index:5; top:0; display:block; width:1px; overflow:hidden;}
-.datagrid-dialog-column-span{display:inline-block;}
-.datagrid-dialog-edit-form{padding:10px;}
-.datagrid-dialog-edit-form > p{margin-bottom:5px;}
+
 /* TableFixed */
 .bjui-tablefixed{clear:both;}
 .bjui-tablefixed .table{border:0; table-layout:fixed;}

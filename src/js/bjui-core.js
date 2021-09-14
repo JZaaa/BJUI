@@ -15,9 +15,6 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
-import { layoutHeaderSelector } from '@/utils/static'
-import screefull from 'screenfull'
-
 +(function($) {
   'use strict'
 
@@ -149,12 +146,7 @@ import screefull from 'screenfull'
         $(document).initui()
       }, 10)
     },
-    initLayout: function(ww) {
-      $(layoutHeaderSelector).find('.js-fullscreen').on('click', event => {
-        if (screefull.isEnabled) {
-          screefull.toggle()
-        }
-      })
+    initLayout: function() {
     },
     regional: {},
     setRegional: function(key, value) {

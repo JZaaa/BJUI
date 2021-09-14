@@ -164,25 +164,28 @@
           return
         }
 
-        var $pageHeader = $box.find('> .bjui-pageHeader')
-
-        var $pageContent = $box.find('> .bjui-pageContent')
+        // var $pageHeader = $box.find('> .bjui-pageHeader')
+        // var $pageContent = $box.find('> .bjui-pageContent')
 
         var $pageFooter = $box.find('> .bjui-pageFooter')
 
-        var headH = $pageHeader.outerHeight() || 0
+        // var headH = $pageHeader.outerHeight() || 0
 
         var footH = $pageFooter.outerHeight() || 0
 
         if ($box.hasClass('navtabPage') && $box.is(':hidden')) {
           $box.show()
-          headH = $pageHeader.outerHeight() || 0
+          // headH = $pageHeader.outerHeight() || 0
           footH = $pageFooter.outerHeight() || 0
           $box.hide()
         }
         if ($pageFooter.css('bottom')) footH += parseInt($pageFooter.css('bottom')) || 0
-        if (footH === 0 && $box.hasClass('dialogContent')) footH = 5
-        $pageContent.css({ top: headH, bottom: footH })
+        if (footH === 0 && $box.hasClass('dialogContent')) {
+          footH = 5
+        }
+        if (footH) {
+          $box.css({ paddingBottom: footH })
+        }
       })
     },
     getMaxIndexObj: function($elements) {
@@ -259,8 +262,21 @@
     includeChinese: function() {
       return (new RegExp(/[\u4E00-\u9FA5]/).test(this))
     },
-    trim: function() {
-      return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
+    /**
+     * 去除指定字符
+     * @param char 待去除字符
+     * @param type 类型, left/right/undefined
+     */
+    trim: function(char, type) {
+      if (char) {
+        if (type === 'left') {
+          return this.replace(new RegExp('^\\' + char + '+', 'g'), '')
+        } else if (type === 'right') {
+          return this.replace(new RegExp('\\' + char + '+$', 'g'), '')
+        }
+        return this.replace(new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'), '')
+      }
+      return this.replace(/^\s+|\s+$/g, '')
     },
     startsWith: function(pattern) {
       return this.indexOf(pattern) === 0
