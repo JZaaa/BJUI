@@ -28,7 +28,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
 })
 </script>
 <div class="bjui-pageHeader">
-    <form id="pagerForm" data-toggle="ajaxsearch" action="table-edit.html" method="post">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="views/components/table/table-edit.html" method="post">
         <input type="hidden" name="pageNum" value="${model.pageNum}">
         <input type="hidden" name="numPerPage" value="${model.numPerPage}">
         <input type="hidden" name="orderField" value="${param.orderField}">
@@ -47,7 +47,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                         <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
                         <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
                         <li class="divider"></li>
-                        <li><a href="ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                        <li><a href="ajax/ajaxDone2.json" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,8 +57,8 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
     </form>
 </div>
 <div class="bjui-pageContent tableContent">
-    <form action="ajaxDone4.html" id="j_custom_form" class="pageForm" data-toggle="validate" method="post">
-        <table id="tabledit1" class="table table-bordered table-hover table-striped table-top" data-toggle="tabledit" data-initnum="0" data-action="ajaxDone3.html" data-single-noindex="true">
+    <form action="ajax/ajaxDone4.json" id="j_custom_form" class="pageForm" data-toggle="validate" method="post">
+        <table id="tabledit1" class="table table-bordered table-hover table-striped table-top" data-toggle="tabledit" data-initnum="0" data-action="ajax/ajaxDone3.json" data-single-noindex="true">
             <thead>
                 <tr data-idname="customList[#index#].id">
                     <th title="No."><input type="text" name="customList[#index#].no" class="no" data-rule="required" value="1" size="2"></th>
@@ -90,7 +90,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     </th>
                     <th title="" data-addtool="true" width="100">
                         <a href="javascript:;" class="btn btn-green" data-toggle="dosave">保存</a>
-                        <a href="ajaxDone2.html" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
+                        <a href="ajax/ajaxDone2.json" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
                     </th>
                 </tr>
             </thead>
@@ -115,7 +115,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td></td>
                     <td data-noedit="true">
                         <button type="button" class="btn-green" data-toggle="doedit">编辑</button>
-                        <a href="ajaxDone2.html" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
+                        <a href="ajax/ajaxDone2.json" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
                     </td>
                 </tr>
                 <tr data-id="2">
@@ -138,7 +138,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td></td>
                     <td data-noedit="true">
                         <button type="button" class="btn-green" data-toggle="doedit">编辑</button>
-                        <a href="ajaxDone2.html" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
+                        <a href="ajax/ajaxDone2.json" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
                     </td>
                 </tr>
                 <tr data-id="3">
@@ -161,7 +161,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td></td>
                     <td data-noedit="true">
                         <button type="button" class="btn-green" data-toggle="doedit">编辑</button>
-                        <a href="ajaxDone2.html" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
+                        <a href="ajax/ajaxDone2.json" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
                     </td>
                 </tr>
                 <tr data-id="4">
@@ -184,7 +184,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
                     <td data-val="pic-id-4"><img src="assets/img/icons/icon-96x96.png" height="30"></td>
                     <td data-noedit="true">
                         <button type="button" class="btn-green" data-toggle="doedit">编辑</button>
-                        <a href="ajaxDone2.html" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
+                        <a href="ajax/ajaxDone2.json" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删</a>
                     </td>
                 </tr>
             </tbody>

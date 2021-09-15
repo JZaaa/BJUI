@@ -157,8 +157,22 @@ module.exports = {
       }
 
       devServer.app.post('**', function(req, res) {
-        const content = fs.readFileSync(Path.resolve(__dirname, 'static' + req.originalUrl), 'utf8')
-        res.send(content)
+        let url = req.originalUrl
+        if (url.indexOf('?') !== -1) {
+          url = url.split('?')[0]
+        }
+        let content
+        try {
+          content = fs.readFileSync(Path.resolve(__dirname, 'static' + url), 'utf8')
+        } catch (e) {
+          content = { code: 404 }
+        }
+        const extend = url.split('.')[1]
+        if (extend === 'json') {
+          res.json(JSON.parse(content))
+        } else {
+          res.send(content)
+        }
       })
     }
   }
