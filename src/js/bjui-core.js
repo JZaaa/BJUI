@@ -34,7 +34,7 @@
       callback: null
     }, // 菜单数据
     dialog: {
-      mask: false,
+      mask: true,
       width: 500,
       height: 300
     },

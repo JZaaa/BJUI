@@ -128,10 +128,10 @@
   window.FRAG = {
     dialog: '<div class="bjui-dialog bjui-dialog-container" style="top:150px; left:300px;">' +
                 '    <div class="dialogHeader" onselectstart="return false;" oncopy="return false;" onpaste="return false;" oncut="return false;">' +
-                '        <a class="close" href="#close" title="#close#"><i class="fa fa-times-circle"></i></a>' +
-                '        <a class="maximize" href="#maximize" title="#maximize#"><i class="fa fa-plus-circle"></i></a>' +
-                '        <a class="restore" href="#restore" title="#restore#"><i class="fa fa-history"></i></a>' +
-                '        <a class="minimize" href="#minimize" title="#minimize#"><i class="fa fa-minus-circle"></i></a>' +
+                '        <a class="close" href="#close" title="#close#"><i class="bi-x-circle-fill"></i></a>' +
+                '        <a class="maximize" href="#maximize" title="#maximize#"><i class="bi-plus-circle-fill"></i></a>' +
+                '        <a class="restore" href="#restore" title="#restore#"><i class="bi-clock-history"></i></a>' +
+                '        <a class="minimize" href="#minimize" title="#minimize#"><i class="bi-dash-circle-fill"></i></a>' +
                 '        <h1><span><i class="fa fa-th-large"></i></span> <span class="title">#title#</span></h1>' +
                 '    </div>' +
                 '    <div class="dialogContent unitBox"></div>' +
@@ -194,7 +194,7 @@
     alertBtnFrag: '<li><button class="btn btn-#class#" rel="#callback#" type="button">#btnMsg#</button></li>',
     calendarFrag: '<div id="bjui-calendar">' +
                       '    <div class="main">' +
-                      '        <a class="close" href="javascript:;" title="#close#"><i class="fa fa-times-circle"></i></a>' +
+                      '        <a class="close" href="javascript:;" title="#close#"><i class="bi-x-circle-fill"></i></a>' +
                       '        <div class="head">' +
                       '            <table width="100%" border="0" cellpadding="0" cellspacing="2">' +
                       '                <tr>' +
@@ -294,7 +294,7 @@
     externalFrag: '<iframe src="{url}" style="width:100%;height:{height};" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>',
     uploadTemp: '<div id="{fileId}" class="item">' +
                     '    <div class="info">' +
-                    '        <span class="up_filename">{fileName}</span><span class="up_confirm" title="#upConfirm#"><i class="fa fa-play-circle-o"></i></span><span class="up_pause" title="#upPause#"><span class="glyphicon glyphicon-pause"></span></span><span class="up_cancel" title="#upCancel#"><i class="fa fa-times-circle-o"></i></span>' +
+                    '        <span class="up_filename">{fileName}</span><span class="up_confirm" title="#upConfirm#"><i class="fa fa-play-circle-o"></i></span><span class="up_pause" title="#upPause#"><span class="glyphicon glyphicon-pause"></span></span><span class="up_cancel" title="#upCancel#"><i class="bi-x-circle-fill-o"></i></span>' +
                     '    </div>' +
                     '    <div class="preview"><span class="img"></span></div>' +
                     '    <div class="progress"><div class="bar"></div></div>' +

@@ -163,6 +163,10 @@
         if ($box.is(':hidden')) {
           return
         }
+        // dialog暂不处理
+        if ($box.hasClass('dialogContent')) {
+          return
+        }
 
         const $pageHeader = $box.find('> .bjui-pageHeader')
         const $pageContent = $box.find('> .bjui-pageContent')

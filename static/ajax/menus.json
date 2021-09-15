@@ -53,6 +53,19 @@
         "path": "views/components/alert/alert.html"
       },
       {
+        "name": "弹窗dialog",
+        "children": [
+          {
+            "name": "创建dialog",
+            "path": "views/components/dialog/dialog.html"
+          },
+          {
+            "name": "参数及方法",
+            "path": "views/components/dialog/dialog-op.html"
+          }
+        ]
+      },
+      {
         "name": "选项卡",
         "path": "views/components/tabs/tabs.html"
       }
@@ -144,19 +157,6 @@
       {
         "name": "参数及方法",
         "path": "doc/navtab/navtab-op.html"
-      }
-    ]
-  },
-  {
-    "name": "弹窗dialog",
-    "children": [
-      {
-        "name": "创建dialog",
-        "path": "doc/dialog/dialog.html"
-      },
-      {
-        "name": "参数及方法",
-        "path": "doc/dialog/dialog-op.html"
       }
     ]
   },

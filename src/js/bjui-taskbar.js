@@ -67,7 +67,7 @@
 
     this.show()
     if (!$task.length) {
-      var taskFrag = '<li id="#taskid#"><div class="taskbutton"><span><i class="fa fa-th-large"></i></span> <span class="title">#title#</span></div><div class="close"><i class="fa fa-times-circle"></i></div></li>'
+      var taskFrag = '<li id="#taskid#"><div class="taskbutton"><span><i class="fa fa-th-large"></i></span> <span class="title">#title#</span></div><div class="close"><i class="bi-x-circle-fill"></i></div></li>'
 
       $task = $(taskFrag.replace('#taskid#', this.options.id).replace('#title#', this.options.title))
       $task.appendTo($taskList)

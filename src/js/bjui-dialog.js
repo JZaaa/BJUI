@@ -65,7 +65,7 @@
     onClose: null
   }
 
-  Dialog.ZINDEX = 30
+  Dialog.ZINDEX = 533
 
   Dialog.prototype.TOOLS = function() {
     var that = this
@@ -256,7 +256,6 @@
       }).on('mouseup.bjui.dialog.resize', 'div[class^="resizable"]', function(e) {
         e.preventDefault()
       })
-
       $body.data(options.id, $dialog)
       this.tools.reload($dialog, options)
     }
@@ -271,7 +270,10 @@
     $dialog.find('> .dialogHeader > a.minimize').hide()
     if (!$mask || !$mask.length) {
       $mask = $(FRAG.dialogMask)
-      $mask.css('zIndex', 1).show().insertBefore($dialog)
+      $mask.css({
+        'zIndex': 1,
+        display: 'block'
+      }).insertBefore($dialog)
       $dialog.data('bjui.dialog.mask', $mask)
     }
   }
