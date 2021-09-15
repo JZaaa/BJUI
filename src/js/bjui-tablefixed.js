@@ -412,7 +412,6 @@ import { navTabSelector } from '@/utils/static'
       $('div.bjui-resizeGrid').each(function() {
         var $this = $(this)
         var $navtab = $this.closest(navTabSelector)
-        console.log($navtab)
 
         var width = $this.width()
 

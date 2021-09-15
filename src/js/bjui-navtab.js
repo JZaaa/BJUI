@@ -64,16 +64,14 @@ import { navTabSelector } from '@/utils/static'
       getDefaults: function() {
         return Navtab.DEFAULTS
       },
-      reload: function($tab, flag) {
-        flag = flag || $tab.data('reloadFlag')
+      reload: function($panel, flag) {
+        flag = flag || $panel.data('reloadFlag')
 
-        var options = $tab.data('options')
+        var options = $panel.data('options')
 
         if (flag) {
-          $tab.data('reloadFlag', false)
-          var $panel = that.tools.getPanel(options.id)
-
-          if ($tab.hasClass('external')) {
+          $panel.data('reloadFlag', false)
+          if ($panel.hasClass('external')) {
             that.openExternal(options.url, $panel)
           } else {
             that.tools.reloadTab($panel, options)
@@ -140,6 +138,7 @@ import { navTabSelector } from '@/utils/static'
 
     var $panel
     $panel = $('<div class="navtabPage unitBox bjui-navtab-content"></div>')
+    $panel.data('options', options).data('initOptions', options)
     $box.empty()
     $panel.appendTo($box)
 
@@ -152,64 +151,41 @@ import { navTabSelector } from '@/utils/static'
   }
 
   Navtab.prototype.refresh = function(tabid) {
-    var $tab, $panel
+    const $panel = $.CurrentNavtab
+    $panel.removeData('bjui.clientPaging')
 
-    if (!tabid) {
-      $tab = $currentTab
-    } else if (typeof tabid === 'string') {
-      $tab = this.tools.getTab(tabid)
-    } else {
-      $tab = tabid
-    }
-
-    if ($tab && $tab.length) {
-      $panel = this.tools.getPanel($tab.data('initOptions').id)
-      $panel.removeData('bjui.clientPaging')
-
-      this.reload($tab.data('initOptions'))
-    }
+    this.reload($panel.data('initOptions'))
   }
 
   Navtab.prototype.reload = function(option, initOptionFlag) {
-    var that = this
-    var options = $.extend({}, typeof option === 'object' && option)
-    var $tab = options.id ? this.tools.getTab(options.id) : this.tools.getTabs().eq(currentIndex)
+    const that = this
+    const $panel = $.CurrentNavtab
+    const options = $.extend({}, typeof option === 'object' && option)
+    var initOptions = $panel.data('initOptions') || {}
+    var op = $.extend({}, initOptions, options)
+    var _reload = function() {
+      if (!initOptionFlag) $panel.data('initOptions', op)
+      $panel.data('options', op)
+      that.tools.reload($panel, true)
+    }
 
-    if ($tab) {
-      var initOptions = $tab.data('initOptions') || {}
-      var op = $.extend({}, initOptions, options)
-      var _reload = function() {
-        if (initOptions.title !== op.title) $tab.find('> a').attr('title', op.title).find('> span').html(op.title)
-        if (!initOptionFlag) $tab.data('initOptions', op)
-        $tab.data('options', op)
-        that.tools.reload($tab, true)
-      }
-
-      if (options.reloadWarn) {
-        this.$element.alertmsg('confirm', options.reloadWarn, {
-          okCall: function() {
-            _reload()
-          }
-        })
-      } else {
-        _reload()
-      }
+    if (options.reloadWarn) {
+      this.$element.alertmsg('confirm', options.reloadWarn, {
+        okCall: function() {
+          _reload()
+        }
+      })
+    } else {
+      _reload()
     }
   }
 
   Navtab.prototype.reloadForm = function(clearQuery, option) {
     var options = $.extend({}, typeof option === 'object' && option)
-    var $tab, $panel
+    const $panel = $.CurrentNavtab
 
-    if (typeof option === 'string') {
-      $tab = this.tools.getTab(option)
-      $panel = this.tools.getPanel(option)
-    } else {
-      $tab = options.id ? this.tools.getTab(options.id) : this.tools.getTabs().eq(currentIndex)
-      $panel = options.id ? this.tools.getPanel(options.id) : this.tools.getPanels().eq(currentIndex)
-    }
-    if ($tab && $panel) {
-      if (!$tab.hasClass('external')) {
+    if ($panel.length) {
+      if (!$panel.hasClass('external')) {
         var $pagerForm = $panel.find('#pagerForm'); var data = {}; var pageData = {}
 
         if ($pagerForm.attr('action')) options.url = $pagerForm.attr('action')
@@ -238,10 +214,6 @@ import { navTabSelector } from '@/utils/static'
       }
       this.reload(options, true)
     }
-  }
-
-  Navtab.prototype.getCurrentPanel = function() {
-    return this.tools.getPanels().eq(currentIndex)
   }
 
   Navtab.prototype.checkTimeout = function() {
@@ -297,7 +269,10 @@ import { navTabSelector } from '@/utils/static'
   // ==============
 
   $(document).on('click.bjui.navtab.data-api', '[data-toggle="navtab"]', function(e) {
-    var $this = $(this); var href = $this.attr('href'); var data = $this.data(); var options = data.options
+    var $this = $(this)
+    var href = $this.attr('href')
+    var data = $this.data()
+    var options = data.options
     if (options) {
       if (typeof options === 'string') options = options.toObj()
       if (typeof options === 'object') { $.extend(data, options) }

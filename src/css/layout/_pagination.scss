@@ -1,0 +1,61 @@
+.bjui-pageFooter {
+  .pagination {
+    justify-content: flex-end;
+  }
+
+  > .pages{
+    float:left;
+    padding:1px 5px 0;
+    display: flex;
+    align-items: center;
+
+    > span{
+      float:left;
+      line-height:24px;
+    }
+
+    > .selectPagesize{
+      float:left;
+      display:inline-block;
+      padding-top:1px;
+
+      > .btn-group {
+        > .btn {
+          padding:2px;
+          height:21px;
+          border-radius:2px;
+
+          > .filter-option{
+            line-height:1.278;
+          }
+        }
+      }
+    }
+  }
+
+  > .pagination-box  > ul > li {
+    > a, > span {
+      position:relative;
+      float:left;
+      margin-left:-1px;
+      padding:3px 8px;
+      line-height:1.428571429;
+      text-decoration:none;
+    }
+
+    > .p-input {
+      padding:1px;
+
+      >.input-sm-pages{
+        padding:0;
+        height:21px;
+      }
+    }
+
+    &.jumpto .goto {
+      margin-left:-1px;
+      height:25px;
+      line-height:17px;
+    }
+  }
+}

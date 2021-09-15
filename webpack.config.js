@@ -144,7 +144,9 @@ module.exports = {
     jquery: 'jQuery'
   },
   devServer: {
-    contentBase: Path.join(__dirname, 'static'),
+    static: {
+      directory: Path.join(__dirname, 'static')
+    },
     compress: true,
     port: 9529,
     open: true

@@ -164,18 +164,18 @@
           return
         }
 
-        // var $pageHeader = $box.find('> .bjui-pageHeader')
-        // var $pageContent = $box.find('> .bjui-pageContent')
+        const $pageHeader = $box.find('> .bjui-pageHeader')
+        const $pageContent = $box.find('> .bjui-pageContent')
 
-        var $pageFooter = $box.find('> .bjui-pageFooter')
+        const $pageFooter = $box.find('> .bjui-pageFooter')
 
-        // var headH = $pageHeader.outerHeight() || 0
+        let headH = $pageHeader.outerHeight() || 0
 
-        var footH = $pageFooter.outerHeight() || 0
+        let footH = $pageFooter.outerHeight() || 0
 
         if ($box.hasClass('navtabPage') && $box.is(':hidden')) {
           $box.show()
-          // headH = $pageHeader.outerHeight() || 0
+          headH = $pageHeader.outerHeight() || 0
           footH = $pageFooter.outerHeight() || 0
           $box.hide()
         }
@@ -183,8 +183,25 @@
         if (footH === 0 && $box.hasClass('dialogContent')) {
           footH = 5
         }
-        if (footH) {
-          $box.css({ paddingBottom: footH })
+        // 如果存在pageHeader与pageFooter
+        if (headH) {
+          $pageContent.css({
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: headH,
+            bottom: footH,
+            overflowY: 'auto'
+          })
+        } else if (footH) {
+          $box.css({
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: footH,
+            overflowY: 'auto'
+          })
         }
       })
     },

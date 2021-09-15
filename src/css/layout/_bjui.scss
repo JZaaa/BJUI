@@ -171,41 +171,6 @@ td[align=right] input{text-align:right;}
 .menu-items .menu-items-children{display:none;}
 .menu-items li.open .menu-items-children{display:block;}
 .menu-items .menu-items-children > li > a{padding-left:30px;}
-/* Pages */
-.bjui-pageHeader{position:relative; padding:2px 5px;}
-.bjui-pageHeader:before, .bjui-pageHeader:after{display:table; content:" ";}
-.bjui-pageHeader:after{clear:both;}
-.bjui-pageHeader label, .bjui-pageFooter label{margin-bottom:0;}
-.bjui-pageFooter{position:absolute; bottom:0; padding:1px 5px; width:100%; min-height:28px;}
-.bjui-pageFooter > ul > li{float:right; margin-left:5px;}
-.bjui-pageFooter > ul > li.left{float:left; margin-left:0; margin-right:5px;}
-.bjui-dialog .bjui-pageContent,
-.bjui-dialog .bjui-pageFooter{bottom:5px;}
-.bjui-pageFooter > .pages{float:left; padding:1px 5px 0;}
-.bjui-pageFooter > .pages > span{float:left; line-height:24px;}
-.bjui-pageFooter > .pages > .selectPagesize{float:left; display:inline-block; padding-top:1px;}
-.bjui-pageFooter > .pages > .selectPagesize > .btn-group > .btn{padding:2px; height:21px; border-radius:2px;}
-.bjui-pageFooter > .pages > .selectPagesize > .btn-group > .btn > .filter-option{line-height:1.278;}
-//.bjui-pageFooter > .pagination-box{float:right;}
-.bjui-pageFooter > .pagination-box > ul{display:inline;}
-.bjui-pageFooter > .pagination-box > ul > li > a,
-.bjui-pageFooter > .pagination-box > ul > li > span{position:relative; float:left; margin-left:-1px; padding:3px 8px; line-height:1.428571429; text-decoration:none; /*background-color:#ffffff; border:1px solid #dddddd;*/}
-.bjui-pageFooter > .pagination-box > ul > li > .p-input{padding:1px;}
-.bjui-pageFooter > .pagination-box > ul > li > .p-input > .input-sm-pages{padding:0; height:21px;}
-.bjui-pageFooter > .pagination-box > ul > li.jumpto .goto{margin-left:-1px; height:25px; line-height:17px;}
-.bjui-pageHeader li .btn,
-.bjui-pageFooter li .btn{height:25px;}
-.bjui-pageContent.tableContent{padding:0;}
-.bjui-pageContent p{line-height:1.5;}
-.bjui-pageFormContent{position:relative; display:block; padding:10px 5px; overflow:auto;}
-.bjui-searchBar > .showMoreSearch{padding:0 3px; font-size:22px; line-height:1; color:red; background:none;}
-.bjui-searchBar > .showMoreSearch:hover{border:1px red solid; border-radius:3px;}
-.bjui-pageHeader .bjui-moreSearch{position:absolute; top:1px; left:0; z-index:1; display:none; padding:5px; width:100%; background:#f7f7f7; box-shadow:0 3px 7px rgba(0,0,0,0.5);}
-.bjui-pageHeader .bjui-moreSearch label{display:inline-block; margin-bottom:0; vertical-align:middle;}
-.bjui-layout{position:relative; overflow:auto;}
-.tab-content > .tab-pane .bjui-pageHeader,
-.tab-content > .tab-pane .bjui-pageContent,
-.tab-content > .tab-pane .bjui-pageFooter{position:static;}
 /* Dialog */
 .bjui-dialog{position:absolute; display:block; text-align:left; border-radius:3px; box-shadow:0 2px 2px rgba(0, 0, 0, 0.3);}
 .bjui-dialog > .dialogHeader{position:relative; padding:0 5px; cursor:move;}
