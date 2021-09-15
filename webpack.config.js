@@ -1,5 +1,6 @@
 const Webpack = require('webpack')
 const Path = require('path')
+const fs = require('fs')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
@@ -149,6 +150,16 @@ module.exports = {
     },
     compress: true,
     port: 9529,
-    open: true
+    open: true,
+    onBeforeSetupMiddleware: function(devServer) {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined')
+      }
+
+      devServer.app.post('**', function(req, res) {
+        const content = fs.readFileSync(Path.resolve(__dirname, 'static' + req.originalUrl), 'utf8')
+        res.send(content)
+      })
+    }
   }
 }
