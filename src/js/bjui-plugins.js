@@ -113,10 +113,10 @@
 
         if (!$element.hasClass('btn')) { $element.removeClass().addClass('btn').addClass(oldClass) }
         if (icon) {
-          _icon = 'fa-' + icon.replace('fa-', '')
+          _icon = 'bi-' + icon.replace('bi-', '')
 
           if (!$element.data('bjui.icon')) {
-            $element.html('<i class="fa ' + _icon + '"></i> ' + $element.html())
+            $element.html('<i class="' + _icon + '"></i> ' + $element.html())
               .data('bjui.icon', true)
           }
         }
@@ -125,10 +125,10 @@
         icon = $element.data('icon')
 
         if (icon) {
-          _icon = 'fa-' + icon.replace('fa-', '')
+          _icon = 'bi-' + icon.replace('bi-', '')
 
           if (!$element.data('bjui.icon')) {
-            $element.html('<i class="fa ' + _icon + '"></i> ' + $element.html())
+            $element.html('<i class="' + _icon + '"></i> ' + $element.html())
               .data('bjui.icon', true)
           }
         }
@@ -188,10 +188,10 @@
         }
         $more.css('top', $parent.outerHeight() - 1)
         if ($more.is(':visible')) {
-          $element.html('<i class="fa fa-angle-double-down"></i>')
+          $element.html('<i class="bi-chevron-double-down"></i>')
           if (name) $('body').data('moresearch.' + name, false)
         } else {
-          $element.html('<i class="fa fa-angle-double-up"></i>')
+          $element.html('<i class="bi-chevron-double-down"></i>')
           if (name) $('body').data('moresearch.' + name, true)
         }
         $more.fadeToggle('slow', 'linear')
@@ -201,7 +201,7 @@
 
       if (name && $('body').data('moresearch.' + name)) {
         $more.css('top', $parent.outerHeight() - 1).fadeIn()
-        $element.html('<i class="fa fa-angle-double-up"></i>')
+        $element.html('<i class="bi-angle-double-up"></i>')
       }
     })
 
@@ -272,7 +272,7 @@
 
       $element.addClass('show-tick')
       if (!options.style) $element.data('style', 'btn-default')
-      if (!options.width) $element.data('width', 'auto')
+      // if (!options.width) $element.data('width', 'auto')
       if (!options.container) $element.data('container', 'body')
       else if (options.container === true) $element.attr('data-container', 'false').data('container', false)
 
@@ -391,7 +391,7 @@
           if (!$a.data('faicon')) {
             $a.data('faicon', true)
               .addClass('faicon')
-              .find('> span.button').append('<i class="fa fa-' + treeNode.faicon + '"></i>')
+              .find('> span.button').append('<i class="bi-' + treeNode.faicon + '"></i>')
           }
         }
         if (op.onNodeCreated) {
@@ -401,7 +401,7 @@
       // onCollapse
       function _onCollapse(event, treeId, treeNode) {
         if (treeNode.faiconClose) {
-          $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'fa fa-' + treeNode.faiconClose)
+          $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'bi-' + treeNode.faiconClose)
         }
         if (op.onCollapse) {
           op.onCollapse.toFunc().call(this, event, treeId, treeNode)
@@ -410,7 +410,7 @@
       // onExpand
       function _onExpand(event, treeId, treeNode) {
         if (treeNode.faicon && treeNode.faiconClose) {
-          $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'fa fa-' + treeNode.faicon)
+          $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'bi-' + treeNode.faicon)
         }
         if (op.onExpand) {
           op.onExpand.toFunc().call(this, event, treeId, treeNode)
