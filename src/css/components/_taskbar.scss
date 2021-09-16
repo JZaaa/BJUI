@@ -1,0 +1,99 @@
+#bjui-taskbar {
+  position: fixed;
+  bottom: 0;
+  z-index: 30;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  left: $sidebar-width;
+  transition: $sidebar-transition;
+
+  > .taskbarContent {
+    position: relative;
+    display: block;
+    height: 20px;
+    overflow: hidden;
+
+    &.taskbarMargin {
+      margin: 0 20px;
+    }
+
+    > ul {
+      position: absolute;
+      width: 10000px;
+
+      > li {
+        position: relative;
+        float: left;
+        margin-left: 2px;
+        padding-left: 5px;
+        height: 20px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        > .taskbutton {
+          float: left;
+          padding: 0 25px 0 5px;
+          height: 20px;
+          overflow: hidden;
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        > .taskbutton span {
+          line-height: 20px;
+        }
+
+        > .close {
+          position: absolute;
+          top: 1px;
+          right: 3px;
+          display: block;
+          padding: 0;
+          width: 14px;
+          height: 14px;
+          overflow: hidden;
+          font-size: 14px;
+          opacity: 1;
+          filter: alpha(opacity=100);
+        }
+
+      }
+    }
+  }
+
+  > .taskbarLeft, .taskbarRight {
+    position: absolute;
+    top: 0;
+    width: 19px;
+    height: 20px;
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.disabled:hover {
+      cursor: default;
+    }
+  }
+
+  > .taskbarLeft {
+    left: 0;
+    display: none;
+  }
+
+  > .taskbarRight {
+    right: 0;
+    display: none;
+  }
+}
+
+.menu-collapsed {
+  #bjui-taskbar{
+    left: 0;
+  }
+}

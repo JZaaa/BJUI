@@ -1,0 +1,11 @@
+.bjui-navtab-content {
+  .bjui-pageFooter {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - #{$sidebar-width});
+    background: #fff;
+    z-index: 10;
+    transition: $sidebar-transition;
+  }
+}
