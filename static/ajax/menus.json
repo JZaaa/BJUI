@@ -98,6 +98,19 @@
         "path": "views/components/alert/alert.html"
       },
       {
+        "name": "NavTab",
+        "children": [
+          {
+            "name": "创建navtab",
+            "path": "views/components/navtab/navtab.html"
+          },
+          {
+            "name": "参数及方法",
+            "path": "views/components/navtab/navtab-op.html"
+          }
+        ]
+      },
+      {
         "name": "弹窗dialog",
         "children": [
           {
@@ -144,19 +157,6 @@
       {
         "name": "文件详解",
         "path": "views/frame/filelist.html"
-      }
-    ]
-  },
-  {
-    "name": "标签navtab",
-    "children": [
-      {
-        "name": "创建navtab",
-        "path": "doc/navtab/navtab.html"
-      },
-      {
-        "name": "参数及方法",
-        "path": "doc/navtab/navtab-op.html"
       }
     ]
   },

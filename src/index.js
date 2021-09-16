@@ -7,3 +7,5 @@ import './components/checkbox'
 import './components/loading'
 
 import './bjui'
+
+import './bindEvent'

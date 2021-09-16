@@ -18,6 +18,7 @@
 import createMenuHtml from '@/utils/createMenuHtml'
 import Scrollbar from 'smooth-scrollbar'
 import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/utils/static'
+import { getAppHashUrl } from '@/utils/url'
 
 (function($) {
   'use strict'
@@ -33,7 +34,6 @@ import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/ut
       this._sidebarElement = document.querySelector(sidebarSelector)
       this._appElement = document.querySelector('#bjui-app')
       this._$menuElement = $(menuContentSelector)
-      this._baseUrl = XEUtils.getBaseURL()
       this._initDom()
 
       this._loadMenu()
@@ -41,11 +41,11 @@ import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/ut
 
     /**
      * 修改活动菜单
-     * @param $a
-     * @param {undefined|string} url
+     * @param url url
      */
-    changeActiveMenu($a, url) {
-      this._handleMenuChange($a, url)
+    changeActiveMenu(url) {
+      this._changeMenuActive(null, url)
+      this._changeHashRouter(null, url)
     }
 
     toggleCollapse() {
@@ -100,7 +100,6 @@ import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/ut
 
       this._initLoad()
 
-      this._bindRouter()
       this._bindEventClick()
     }
 
@@ -129,52 +128,75 @@ import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/ut
       })
     }
 
-    _handleMenuChange($a, url) {
+    /**
+     * 修改活动菜单
+     * @param $a 选中菜单，若无则查找url
+     * @param url 当a为空时，需设置url
+     * @return {*}
+     * @private
+     */
+    _changeMenuActive($a, url) {
+      if (!($a && $a.length)) {
+        if (url && url.length) {
+          const hashUrl = getAppHashUrl(url)
+          if (this._hashUrl === hashUrl) {
+            return null
+          }
+          $a = this._$menuElement.find(`a[data-hash="${hashUrl}"]`)
+        } else {
+          return null
+        }
+      }
+      if (!($a && $a.length)) {
+        return null
+      }
       if ($a.length > 1) {
         $a = $a.first()
       }
       this._$menuElement.find('li').removeClass('active')
       $a.parentsUntil(this._$menuElement, 'li').addClass('active')
       $a.parentsUntil(this._$menuElement, '.collapse').collapse('show')
-      const navUrl = url || $a.attr('href')
-      $a.navtab({
-        url: navUrl
-      })
-      this._changeHashRouter(navUrl)
+      return $a
+    }
+
+    /**
+     * 菜单变化处理
+     * @param $a
+     * @param url
+     * @private
+     */
+    _handleMenuChange($a, url) {
+      $a = this._changeMenuActive($a, url)
+      if ($a && $a.length) {
+        const navUrl = url || $a.attr('href')
+        $a.navtab({
+          url: navUrl
+        })
+        this._changeHashRouter($a, navUrl)
+      }
     }
 
     /**
      * 修改hash
+     * @param $a
      * @param navUrl
      * @private
      */
-    _changeHashRouter(navUrl) {
-      let hash = navUrl
-      if (XEUtils.startsWith(hash, 'http')) {
-        hash = hash.trim(this._baseUrl, 'left')
+    _changeHashRouter($a, navUrl) {
+      let hash
+      if ($a && $a.length) {
+        hash = $a.data('hash')
       }
-      if (!XEUtils.startsWith(hash, '/')) {
-        hash = '/' + hash
+      if (!(hash && hash.length)) {
+        hash = getAppHashUrl(navUrl)
       }
-      hash = '#' + hash
-      this._hashUrl = hash
-      location.hash = hash
-    }
-
-    /**
-     * 监听router变化
-     * @private
-     */
-    _bindRouter() {
-      window.addEventListener('hashchange', () => {
-        const hash = location.hash
-        if (this._hashUrl && this._hashUrl !== hash) {
-          const $a = this._$menuElement.find(`a[data-hash="${hash}"]`)
-          if ($a.length) {
-            this._handleMenuChange($a)
-          }
-        }
-      })
+      if (this._hashUrl === hash) {
+        return
+      }
+      if (hash && hash.length) {
+        this._hashUrl = hash
+        location.hash = hash
+      }
     }
 
     _initLoad() {
@@ -216,8 +238,11 @@ import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/ut
 
       if (typeof property === 'string' && $.isFunction(data[property])) {
         [].shift.apply(args)
-        if (!args) data[property]()
-        else data[property].apply(data, args)
+        if (!args) {
+          data[property]()
+        } else {
+          data[property].apply(data, args)
+        }
       }
     })
   }

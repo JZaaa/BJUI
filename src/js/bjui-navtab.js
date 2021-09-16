@@ -15,7 +15,7 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
-import { navTabContainerSelect } from '@/utils/static'
+import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
 
 +(function($) {
   'use strict'
@@ -23,7 +23,7 @@ import { navTabContainerSelect } from '@/utils/static'
   // NAVTAB GLOBAL ELEMENTS
   // ======================
 
-  var currentIndex, $currentTab, $currentPanel, $box
+  var currentIndex, $currentPanel, $box
   var autorefreshTimer
 
   $(function() {
@@ -47,6 +47,7 @@ import { navTabContainerSelect } from '@/utils/static'
   Navtab.DEFAULTS = {
     id: 'main',
     title: 'New tab',
+    history: true, // 是否记录路由器hash值
     url: undefined,
     type: 'GET',
     data: {},
@@ -96,6 +97,9 @@ import { navTabContainerSelect } from '@/utils/static'
             data: options.data || {},
             loadingmask: options.loadingmask,
             callback: function(response) {
+              if (options.history) {
+                $(menuContentSelector).sidebar('changeActiveMenu', options.url)
+              }
               if (onLoad) onLoad.apply(that, [$panel])
               if (autorefreshTimer) clearInterval(autorefreshTimer)
               if (arefre) {
