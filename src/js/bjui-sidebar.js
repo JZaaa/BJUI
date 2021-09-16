@@ -17,7 +17,7 @@
 
 import createMenuHtml from '@/utils/createMenuHtml'
 import Scrollbar from 'smooth-scrollbar'
-import { layoutHeaderSelector, menuContentSelector, menuSelector } from '@/utils/static'
+import { layoutHeaderSelector, menuContentSelector, sidebarSelector } from '@/utils/static'
 
 (function($) {
   'use strict'
@@ -30,7 +30,7 @@ import { layoutHeaderSelector, menuContentSelector, menuSelector } from '@/utils
   class Sidebar {
     constructor(options) {
       this._options = $.extend({}, Default, options || {})
-      this._sidebarElement = document.querySelector(menuSelector)
+      this._sidebarElement = document.querySelector(sidebarSelector)
       this._appElement = document.querySelector('#bjui-app')
       this._$menuElement = $(menuContentSelector)
       this._baseUrl = XEUtils.getBaseURL()

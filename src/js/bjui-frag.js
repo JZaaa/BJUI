@@ -128,10 +128,10 @@
   window.FRAG = {
     dialog: '<div class="bjui-dialog bjui-dialog-container" style="top:150px; left:300px;">' +
                 '    <div class="dialogHeader" onselectstart="return false;" oncopy="return false;" onpaste="return false;" oncut="return false;">' +
-                '        <a class="close" href="#close" title="#close#"><i class="bi-x-circle-fill"></i></a>' +
-                '        <a class="maximize" href="#maximize" title="#maximize#"><i class="bi-plus-circle-fill"></i></a>' +
-                '        <a class="restore" href="#restore" title="#restore#"><i class="bi-clock-history"></i></a>' +
-                '        <a class="minimize" href="#minimize" title="#minimize#"><i class="bi-dash-circle-fill"></i></a>' +
+                '        <a class="close" href="javascript:" title="#close#"><i class="bi-x-circle-fill"></i></a>' +
+                '        <a class="maximize" href="javascript:" title="#maximize#"><i class="bi-plus-circle-fill"></i></a>' +
+                '        <a class="restore" href="javascript:" title="#restore#"><i class="bi-clock-history"></i></a>' +
+                '        <a class="minimize" href="javascript:" title="#minimize#"><i class="bi-dash-circle-fill"></i></a>' +
                 '        <h1><span><i class="fa fa-th-large"></i></span> <span class="title">#title#</span></h1>' +
                 '    </div>' +
                 '    <div class="dialogContent unitBox"></div>' +
@@ -144,7 +144,7 @@
                 '    <div class="resizable_f_r" tar="se"></div>' +
                 '    <div class="resizable_f_c" tar="s"></div>' +
                 '</div>',
-    taskbar: '<div id="bjui-taskbar" style="left:0px; display:none;">' +
+    taskbar: '<div id="bjui-taskbar" style="display:none;">' +
                  '    <div class="taskbarContent">' +
                  '        <ul></ul>' +
                  '    </div>' +

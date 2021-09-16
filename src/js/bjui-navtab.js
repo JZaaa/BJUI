@@ -15,7 +15,7 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
-import { navTabSelector } from '@/utils/static'
+import { navTabContainerSelect } from '@/utils/static'
 
 +(function($) {
   'use strict'
@@ -29,7 +29,7 @@ import { navTabSelector } from '@/utils/static'
   $(function() {
     var INIT_NAVTAB = function() {
       currentIndex = 0
-      $box = $(navTabSelector)
+      $box = $(navTabContainerSelect)
     }
 
     INIT_NAVTAB()

@@ -1,4 +1,4 @@
-import { menuSelector } from '@/utils/static'
+import { sidebarSelector } from '@/utils/static'
 import { getGUID } from './index'
 import { trim } from './index'
 import getBaseURL from 'xe-utils/getBaseURL'
@@ -6,7 +6,7 @@ import startsWith from 'xe-utils/startsWith'
 
 const BaseUrl = getBaseURL()
 
-const createMenuHtml = (treeData, parentSelector = menuSelector) => {
+const createMenuHtml = (treeData, parentSelector = sidebarSelector) => {
   let html = ''
   treeData.forEach(val => {
     html += '<li class="sidebar-item">'
