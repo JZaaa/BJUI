@@ -1,0 +1,104 @@
+$green: green;
+$blue: #428bca;
+$black: #000;
+$red: #e10050;
+$orange: #FF6600;
+/* bootstrap color */
+$success: #5cb85c;
+$info: #5bc0de;
+$primary: darken(#428bca, 6.5%);
+$warning: #f0ad4e;
+$danger: #d9534f;
+
+// button 样式
+@mixin button-variant($color, $background) {
+  color: $color;
+  background-color: $background;
+  border-color: rgba($color, .5);
+
+  &:active, &.active, &:hover {
+    border-color: $color;
+    background-color: rgba($color, .08);
+  }
+
+  &:focus, &.focus {
+    box-shadow: 0 0 0 0 rgba(lighten($color, .1), .5);
+  }
+}
+
+@mixin button-variant-bs($color) {
+  color: #fff;
+  background-color: $color;
+  border-color:rgba($color, .5);
+
+  &:active, &.active, &:hover {
+    border-color: $color;
+    background-color: darken($color, .08);
+  }
+
+  &:focus, &.focus {
+    box-shadow: 0 0 0 0 rgba(lighten($color, 10%), .5);
+  }
+}
+
+
+/* button */
+.btn {
+
+  &.btn-tag {
+    position: relative;
+    padding: 3px 6px;
+    text-shadow: 0 1px 0 #FFF;
+  }
+
+  &.btn-default {
+    &:active, &.active, &:hover, &:focus {
+      background-color: fade($black, 8%);
+    }
+  }
+
+  &.btn-close, &.btn-red {
+    @include button-variant($red, #fff);
+  }
+
+  &.btn-green {
+    @include button-variant($green, #fff);
+  }
+
+  &.btn-blue {
+    @include button-variant($blue, #fff);
+  }
+
+  &.btn-orange {
+    @include button-variant($orange, #fff);
+  }
+
+  &.btn-success {
+    @include button-variant-bs($success);
+  }
+
+  &.btn-info {
+    @include button-variant-bs($info);
+  }
+
+  &.btn-primary {
+    @include button-variant-bs($primary);
+  }
+
+  &.btn-danger {
+    @include button-variant-bs($danger);
+  }
+
+  &.btn-warning {
+    @include button-variant-bs($warning);
+  }
+
+  &[b-shadow] {
+    @include box-shadow($shadow-button);
+
+    &:active, &.active, &:hover, &:focus {
+      @include box-shadow($shadow-button-hover);
+    }
+  }
+
+}

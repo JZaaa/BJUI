@@ -29,27 +29,6 @@ legend{display:inline-block; margin-left:20px; margin-bottom:5px; padding:0 5px;
 .panel-main .panel-default:last-child{border-bottom:1px #ddd solid;}
 .panel-main .panel + .panel {margin-top:0px;}
 .label{font-size:12px;}
-.btn-tag{position:relative; padding:3px 6px; text-shadow:0 1px 0 #FFF;}
-.btn-close, .btn-red{color:red; background:#FFFFFF; border-color:red;}
-.btn-close:active, .btn-red:active,
-.btn-close.active, .btn-red.active,
-.btn-close:hover, .btn-red:hover,
-.btn-close:focus, .btn-red:focus{color:#FFF; background-color:red;}
-.btn-green{color:green; background:#FFFFFF; border-color:green;}
-.btn-green:active,
-.btn-green.active,
-.btn-green:hover,
-.btn-green:focus{color:#FFF; background-color:green;}
-.btn-blue{color:#428bca; background:#FFFFFF; border-color:#428bca;}
-.btn-blue:active,
-.btn-blue.active,
-.btn-blue:hover,
-.btn-blue:focus{color:#FFF; background-color:#428bca; border-color:#428bca;}
-.btn-orange{color:#FF6600; background:#FFFFFF; border-color:#FF6600;}
-.btn-orange:active,
-.btn-orange.active,
-.btn-orange:hover,
-.btn-orange:focus{color:#FFF; background-color:#FF6600;}
 .dropdown-menu{min-width:50px;}
 .dropdown-menu > li  > a{padding:3px 8px;}
 .dropdown-menu.right{right:0px; left:auto;}
