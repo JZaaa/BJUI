@@ -55,47 +55,15 @@
     var $icheck = $box.find('[data-toggle="icheck"]')
 
     $icheck.each(function(i) {
-      var $element = $(this)
-
-      var id = $element.attr('id')
-
-      var name = $element.attr('name')
-
-      var label = $element.data('label')
-
-      $element.Checkbox()
-
-      // if (label) $element.after('<label for="' + id + '" class="ilabel">' + label + '</label>')
-
-      // $element
-      //   .on('ifCreated', function(e) {
-      //     /* Fixed validate msgbox position */
-      //     var $parent = $(this).closest('div')
-      //
-      //     var $ilabel = $parent.next('[for="' + id + '"]')
-      //
-      //     $parent.attr('data-icheck', name)
-      //     $ilabel.attr('data-icheck', name)
-      //   })
-      //   .iCheck({
-      //     checkboxClass: 'icheckbox_minimal-purple',
-      //     radioClass: 'iradio_minimal-purple',
-      //     increaseArea: '20%' // optional
-      //   })
-      //   .on('ifChanged', function() {
-      //     /* Trigger validation */
-      //     $(this).trigger('validate')
-      //   })
-
-      // if ($element.prop('disabled')) $element.iCheck('disable')
+      $(this).Checkbox()
     })
-    /* i-check check all */
-    // $icheck.filter('.checkboxCtrl').on('ifChanged', function(e) {
-    //   var checked = e.target.checked === true ? 'check' : 'uncheck'
-    //   var group = $(this).data('group')
-    //
-    //   $box.find(':checkbox[name="' + group + '"]').iCheck(checked)
-    // })
+    /* check check all */
+    $icheck.filter('.checkboxCtrl').on('change', function(e) {
+      var checked = e.target.checked
+      var group = $(this).data('group')
+
+      $box.find(':checkbox[name="' + group + '"]').prop('checked', checked)
+    })
 
     /* fixed ui style */
     $box.find(':text, :password, textarea, :button, a.btn').each(function() {

@@ -65,7 +65,7 @@
     onClose: null
   }
 
-  Dialog.ZINDEX = 533
+  Dialog.ZINDEX = 550
 
   Dialog.prototype.TOOLS = function() {
     var that = this

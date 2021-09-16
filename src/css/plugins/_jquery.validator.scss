@@ -14,3 +14,11 @@
 .n-red .n-tip .n-arrow b,.n-red .n-ok .n-arrow b,.n-red .n-loading .n-arrow b{color:#ddd;text-shadow:0 0 2px #ccc}
 .n-red .n-tip .n-arrow i,.n-red .n-ok .n-arrow i,.n-red .n-loading .n-arrow i{color:#f8fdff}
 .n-red .n-tip .n-icon{display:none}
+
+.pretty {
+  .msg-box {
+    position: absolute;
+    right: 0;
+    top: -6px;
+  }
+}
