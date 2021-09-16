@@ -23,7 +23,6 @@
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
-    date: true,
     KeyPressed: { // key press state
       ctrl: false,
       shift: false
@@ -117,11 +116,9 @@
       if (op.JSPATH) this.JSPATH = op.JSPATH
       if (op.PLUGINPATH) this.PLUGINPATH = op.PLUGINPATH
       if (op.ajaxTimeout) this.ajaxTimeout = op.ajaxTimeout
-      this.date = (op.date === undefined) ? this.date : op.date
 
       this.IS_DEBUG = op.debug || false
       this.initEnv()
-      if (this.date) this.initDate()
     },
     initEnv: function() {
       $(window).resize(function() {
@@ -173,15 +170,6 @@
       })
 
       return frag
-    },
-    initDate: function() {
-      // 时钟
-      var today = new Date()
-      $('#bjui-date').html(today.formatDate('yyyy/MM/dd'))
-      setInterval(function() {
-        today = new Date(today.setSeconds(today.getSeconds() + 1))
-        $('#bjui-clock').html(today.formatDate('HH:mm:ss'))
-      }, 1000)
     },
     // 清除遮罩层
     removeProgress: function() {
