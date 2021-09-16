@@ -43,12 +43,12 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
             <div class="pull-right">
                 <div class="btn-group">
                     <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">批量操作<span class="caret"></span></button>
-                    <ul class="dropdown-menu right" role="menu">
-                        <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
-                        <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="ajax/ajaxDone2.json" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
-                    </ul>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a>
+                      <a class="dropdown-item" href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a>
+                      <div class="dropdown-divide"></div>
+                      <a class="dropdown-item" href="ajax/ajaxDone2.json" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a>
+                    </div>
                 </div>
             </div>
             <button type="button" class="btn-green" data-toggle="tableditadd" data-target="#tabledit1" data-num="1" data-icon="plus">添加编辑行</button>&nbsp;
@@ -193,7 +193,7 @@ $('#tabledit1').on('afterdelete.bjui.tabledit', function(e) {
 </div>
 <div class="bjui-pageFooter">
     <ul>
-        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
-        <li><button type="submit" class="btn-default" data-icon="save">全部保存</button></li>
+        <li><button type="button" class="btn-close">取消</button></li>
+        <li><button type="submit" class="btn-default">全部保存</button></li>
     </ul>
 </div>

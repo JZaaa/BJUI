@@ -180,8 +180,16 @@ $layout-header-height: 50px;
 }
 
 .bjui-pageHeader li .btn,
-.bjui-pageFooter li .btn {
-  height: 25px;
+.bjui-pageFooter {
+  .pages {
+    button {
+      height: 25px;
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 .bjui-pageContent.tableContent {

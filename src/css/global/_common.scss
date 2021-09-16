@@ -1,0 +1,63 @@
+.bj-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bj-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.bj-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.bj-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.bj-col-center {
+  align-items: center;
+}
+
+.bj-col-top {
+  align-items: flex-start;
+}
+
+.bj-col-bottom {
+  align-items: flex-end;
+}
+
+.bj-row-center {
+  justify-content: center;
+}
+
+.bj-row-left {
+  justify-content: flex-start;
+}
+
+.bj-row-right {
+  justify-content: flex-end;
+}
+
+.bj-row-between {
+  justify-content: space-between;
+}
+
+.bj-row-around {
+  justify-content: space-around;
+}
+
+@for $i from 0 through 12 {
+  .bj-flex-#{$i} {
+    flex: $i;
+  }
+}
+
+// 定义字体12~24px
+@for $i from 12 to 24 {
+  .bj-font-#{$i} {
+    font-size: $i + px;
+  }
+}

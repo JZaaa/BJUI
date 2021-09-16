@@ -82,8 +82,7 @@
     }
   }
 
-  .sidebar-item.active > .sidebar-link,
-  .sidebar-item.active .sidebar-link:hover {
+  .sidebar-item.active > .sidebar-link {
     color: $sidebar-link-active-color;
 
     &:not([data-toggle="collapse"]) {
