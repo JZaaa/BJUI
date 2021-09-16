@@ -16,6 +16,8 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { appSelector } from '@/utils/static'
+
 +(function($) {
   'use strict'
 
@@ -37,7 +39,7 @@
       taskSelected = 'selected'
       taskMargin = 'taskbarMargin'
 
-      $('body').append('<!-- dialog task bar -->').append($taskBar)
+      $(appSelector).append('<!-- dialog task bar -->').append($taskBar)
 
       // events
       $prevBtn.click(function(e) { $(this).taskbar('scrollLeft') })
@@ -110,11 +112,9 @@
         if (iW > this.getTaskBarW()) {
           var $tools = this
           var lTask = $taskList.find('> li:last-child')
-          var left = this.getTaskBarW() - lTask.position().left - lTask.outerWidth(true)
-
-          $taskList.animate({ left: left }, 200, function() {
+          if (lTask.length) {
             $tools.ctrlScrollBtn()
-          })
+          }
         } else {
           this.ctrlScrollBtn()
         }
@@ -334,11 +334,11 @@
   }
 
   Taskbar.prototype.show = function() {
-    if ($taskBar.is(':hidden')) $taskBar.show().animate({ bottom: 0 }, 500)
+    if ($taskBar.is(':hidden')) $taskBar.show()
   }
 
   Taskbar.prototype.hide = function() {
-    if ($taskBar.is(':visible')) $taskBar.animate({ bottom: -50 }, 500, function() { $taskBar.hide() })
+    if ($taskBar.is(':visible')) $taskBar.hide()
   }
 
   // TASKBAR PLUGIN DEFINITION

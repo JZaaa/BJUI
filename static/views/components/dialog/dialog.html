@@ -17,6 +17,7 @@
 </script>
 <div class="bjui-pageContent bj-page-wrapper-content">
   <div class="bj-p-20 bg-white">
+
     <h3 class="page-header">创建dialog</h3>
     <blockquote>
       <p>创建一个dialog有以下两种方式：</p>
@@ -24,20 +25,26 @@
 
     <ul>
       <li>Data属性：DOM添加属性<code>data-toggle="dialog"</code>后，单击触发。<br>
-        <span class="label label-default">DOM示例1：</span>　<a href="doc/dialog/mydialog.html"
-                                                            data-toggle="dialog" data-id="mydialog1"
-                                                            data-title="我的业务弹窗1">打开dialog</a><br>
+        <span class="label label-default">DOM示例1：</span>　
+        <a
+          href="views/components/dialog/mydialog.html"
+          data-toggle="dialog" data-id="mydialog1"
+          data-title="我的业务弹窗1"
+        >
+          打开dialog
+        </a>
+        <br>
         <pre class="line-numbers">
           <code class="language-html">
             <template>
-              <a href="mydialog.html" data-toggle="dialog" data-id="mydialog1"
+              <a href="views/components/dialog/mydialog.html" data-toggle="dialog" data-id="mydialog12"
                  data-title="我的业务弹窗1">打开dialog</a>
             </template>
           </code>
         </pre>
         <span class="label label-default">DOM示例2：</span>　
         <button type="button" class="btn-green" data-toggle="dialog" data-id="mydialog2"
-                data-url="doc/dialog/mydialog.html" data-title="我的业务弹窗2">打开dialog
+                data-url="views/components/dialog/mydialog.html" data-title="我的业务弹窗2">打开dialog
         </button>
         <pre class="line-numbers">
           <code class="language-html">
@@ -49,7 +56,7 @@
         </pre>
         <span class="label label-default">DOM示例3(参数集合)：</span>　
         <button type="button" class="btn-green" data-toggle="dialog"
-                data-options="{id:'mydialog2', url:'doc/dialog/mydialog.html', title:'我的业务弹窗2(参数集合)'}">
+                data-options="{id:'mydialog2', url:'views/components/dialog/mydialog.html', title:'我的业务弹窗2(参数集合)'}">
           打开dialog(参数集合)
         </button>
         <pre class="line-numbers">
@@ -83,7 +90,8 @@
                 <div data-noinit="true" class="hide">
                   <p><input type="checkbox" data-toggle="icheck" data-label="测试Checkbox"></p>
                   <p><label>文本框：</label><input type="text" placeholder="文本框1" size="25"></p>
-                  <p><label>下拉框：</label><select data-toggle="selectpicker"><option value="1">选项一</option><option value="2">选项二</option></select></p>
+                  <p><label>下拉框：</label><select data-toggle="selectpicker"><option
+                    value="1">选项一</option><option value="2">选项二</option></select></p>
                 </div>
               </template>
             </code>
@@ -95,11 +103,11 @@
                 data-on-load="doc_dialog_onLoad" data-before-close="doc_dialog_beforeClose"
                 data-on-close="doc_dialog_onClose">打开dialog
         </button>
-        <div data-noinit="true" class="hide">
+        <div data-noinit="true" class="hide" id="doc-dialog-target-callback">
           <div class="text-center">
             <h3>dialog回调函数示例</h3>
             <hr>
-            <p><label>工号：</label><input type="text" name="code"></p>
+            <p><label>工号：</label><input id="doc-dialog-code" type="text" name="code"></p>
           </div>
         </div>
         <div>
@@ -112,7 +120,7 @@
                 }
 
                 function doc_dialog_beforeClose($dialog) {
-                  var code = $dialog.find('#doc-dialog-code').val()
+                  var code = $dialog.find('#doc-dialog-code1').val()
                   if (code) return true
                   $dialog.alertmsg('error', 'beforeClose回调：关闭弹窗前请先填入你的工号。')
                   return false
@@ -123,15 +131,15 @@
                 }
               </script>
               <button type="button" class="btn-green" data-toggle="dialog"
-                      data-id="mydialog4" data-target="#doc-dialog-target-callback"
+                      data-id="mydialog4" data-target="#doc-dialog-target-callback1"
                       data-title="回调函数示例" data-on-load="doc_dialog_onLoad"
                       data-before-close="doc_dialog_beforeClose"
                       data-on-close="doc_dialog_onClose">打开dialog</button>
-              <div id="doc-dialog-target-callback" data-noinit="true" class="hide">
+              <div id="doc-dialog-target-callback1" data-noinit="true" class="hide">
                 <div class="text-center">
                   <h3>dialog回调函数示例</h3>
                   <hr>
-                  <p><label>工号：</label><input type="text" name="code" id="doc-dialog-code"></p>
+                  <p><label>工号：</label><input type="text" name="code" id="doc-dialog-code1"></p>
                 </div>
               </div>
             </template>
@@ -144,7 +152,7 @@
           function openMydialog(obj) {
             $(obj).dialog({
               id: 'mydialog',
-              url: 'doc/dialog/mydialog.html',
+              url: 'views/components/dialog/mydialog.html',
               title: '我的业务弹窗-jQuery API'
             })
           }
@@ -164,7 +172,8 @@
                       })
                     }
                 </script>
-                <button type="button" class="btn-default" onclick="openMydialog(this)">打开dialog</button>
+                <button type="button" class="btn-default"
+                        onclick="openMydialog(this)">打开dialog</button>
               </template>
             </code>
         </pre>
