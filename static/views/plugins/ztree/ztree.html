@@ -5,35 +5,35 @@ function changeZtree(t) {
         $span  = $('#ztree-'+ t),
         $log   = $('#ztree-log'),
         op     = $t.data()
-    
+
     if (t != 7)
         $.fn.zTree.destroy('ztree1')
-    
+
     switch(t) {
         case 1:
             var edit   = op.showRenameBtn ? false : true,
                 rename = op.showRenameBtn ? false : true,
                 remove = op.showRemoveBtn ? false : true
-                
+
             $t.data('editEnable', edit).data('showRenameBtn', rename).data('showRemoveBtn', remove)
-            
+
             $log.val('data-edit-enable="'+ edit +'"\r\n' + 'data-show-rename-btn="'+ rename +'"\r\n' + 'data-show-remove-btn="'+ remove +'"')
             $span.text(($span.text() == '无') ? '显示' : '无')
             break
         case 2:
             var add    = op.addHoverDom ? null : 'edit',
                 remove = op.removeHoverDom ? null : 'edit'
-            
+
             $t.data('addHoverDom', add).data('removeHoverDom', remove)
-            
+
             $log.val('data-add-hover-dom="'+ add +'"\r\n' + 'data-remove-hover-dom="'+ remove +'"')
             $span.text(($span.text() == '无') ? '显示' : '无')
             break
         case 3:
             var check = op.checkEnable ? false : true
-            
+
             $t.data('checkEnable', check)
-            
+
             $log.val('data-check-enable="'+ check +'"')
             $span.text(($span.text() == '无') ? '显示' : '无')
             break
@@ -42,9 +42,9 @@ function changeZtree(t) {
                 bDrag  = op.beforeDrag ? '' : 'M_BeforeNodeDrag',
                 bDrop  = op.beforeDrop ? '' : 'M_BeforeNodeDrop',
                 onDrop = op.onDrop ? '' : 'M_NodeDrop'
-            
+
             $t.data('editEnable', edit).data('beforeDrag', bDrag).data('beforeDrop', bDrop).data('onDrop', onDrop)
-            
+
             $log.val('data-edit-enable="'+ edit +'"\r\n' + 'data-before-drag="'+ bDrag +'"\r\n' + 'data-before-drop="'+ bDrop +'"\r\n' + 'data-on-drop="'+ onDrop +'"')
             $span.text(($span.text() == '无') ? 'M_BeforeNodeDrag、M_BeforeNodeDrop、M_NodeDrop' : '无')
             break
@@ -53,18 +53,18 @@ function changeZtree(t) {
                 remove = op.beforeRemove ? null : 'edit',
                 bR     = op.beforeRemove ? null : 'M_BeforeRemove'
                 oR     = op.onRemove ? null : 'M_NodeRemove'
-            
+
             $t.data('addHoverDom', add).data('removeHoverDom', remove).data('beforeRemove', bR).data('onRemove', oR)
-            
+
             $log.val('data-add-hover-dom="'+ add +'"\r\n' + 'data-remove-hover-dom="'+ remove +'"\r\n' + 'data-before-remove="'+ bR +'"\r\n' + 'data-on-remove="'+ oR +'"')
             $('#ztree-2').text(($('#ztree-2').text() == '无') ? '显示' : '无')
             $span.text(($span.text() == '无') ? 'M_BeforeRemove、M_NodeRemove' : '无')
             break
         case 6:
             var diy = op.addDiyDom ? null : 'M_AddDiyDom'
-            
+
             $t.data('addDiyDom', diy)
-            
+
             $log.val('data-add-diy-dom="'+ diy +'"')
             $span.text(($span.text() == '无') ? 'M_AddDiyDom' : '无')
             break
@@ -79,9 +79,9 @@ function changeZtree(t) {
 //单击事件
 function ZtreeClick(event, treeId, treeNode) {
     event.preventDefault()
-    
+
     var $detail = $('#ztree-detail')
-    
+
     if ($detail.attr('tid') == treeNode.tId) return
 	if (treeNode.name) $('#j_menu_name').val(treeNode.name)
 	if (treeNode.url) {
@@ -109,13 +109,13 @@ function M_Ts_Menu() {
 	var url    = $('#j_menu_url').val()
 	var tabid  = $('#j_menu_tabid').val()
 	var target = $('#j_menu_target').val()
-	
+
 	if ($.trim(name).length == 0) {
 		alertMsg.error('菜单名称不能为空！')
 		return;
 	}
 	var upNode = zTree.getSelectedNodes()[0]
-	
+
 	if (!upNode) {
 		alertMsg.error('未选中任何菜单！')
         return
@@ -145,7 +145,7 @@ function M_BeforeNodeDrop(treeId, treeNodes, targetNode, moveType, isCopy) {
         var zTree = $.fn.zTree.getZTreeObj("ztree1")
         var nodes = zTree.transformToArray(treeNodes)
         var level = nodes[0].level
-        
+
         for (var i = 1; i < nodes.length; i++) {
             if (nodes[i].level == (level + 1)) {
                 maxlevel++
@@ -177,7 +177,7 @@ function M_NodeRemove(event, treeId, treeNode) {
 //自定义DOM
 function M_AddDiyDom(treeId, treeNode) {
     var aObj = $('#' + treeNode.tId + '_a')
-    
+
 	if ($('#diyBtn_'+ treeNode.id).length > 0) return
 	aObj.append('<button type="button" class="diyBtn1" id="diyBtn_' + treeNode.id +'" title="'+ treeNode.name +'" onfocus="this.blur();"><i class="fa fa-plane"></i></button>')
 	$('#diyBtn_'+ treeNode.id).bind('click', function() {$(this).alertmsg('info', (treeNode.name +' 的飞机！'))})
@@ -190,7 +190,7 @@ function returnJSON() {
     <div style="padding:20px;">
         <div class="clearfix">
             <div style="float:left; width:220px; height:240px; overflow:auto;">
-                <ul id="ztree1" class="ztree" data-toggle="ztree" 
+                <ul id="ztree1" class="ztree" data-toggle="ztree"
                     data-options="{
                         expandAll: true,
                         onClick: 'ZtreeClick'

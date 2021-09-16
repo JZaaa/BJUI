@@ -4,7 +4,7 @@ function S_NodeCheck(e, treeId, treeNode) {
     var zTree = $.fn.zTree.getZTreeObj(treeId),
         nodes = zTree.getCheckedNodes(true)
     var ids = '', names = ''
-    
+
     for (var i = 0; i < nodes.length; i++) {
         ids   += ','+ nodes[i].id
         names += ','+ nodes[i].name
@@ -12,17 +12,17 @@ function S_NodeCheck(e, treeId, treeNode) {
     if (ids.length > 0) {
         ids = ids.substr(1), names = names.substr(1)
     }
-    
+
     var $from = $('#'+ treeId).data('fromObj')
-    
+
     if ($from && $from.length) $from.val(names)
 }
 //单击事件
 function S_NodeClick(event, treeId, treeNode) {
     var zTree = $.fn.zTree.getZTreeObj(treeId)
-    
+
     zTree.checkNode(treeNode, !treeNode.checked, true, true)
-    
+
     event.preventDefault()
 }
 </script>

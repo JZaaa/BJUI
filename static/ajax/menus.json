@@ -4,6 +4,51 @@
     "path": "views/home.html"
   },
   {
+    "name": "框架介绍",
+    "children": [
+      {
+        "name": "页面结构",
+        "path": "views/frame/structure.html"
+      },
+      {
+        "name": "框架初始化",
+        "path": "views/frame/init.html"
+      },
+      {
+        "name": "横向导航菜单",
+        "path": "views/frame/hnav.html"
+      },
+      {
+        "name": "标签工作区(navtab)",
+        "path": "views/frame/navtab.html"
+      },
+      {
+        "name": "弹窗工作区(dialog)",
+        "path": "views/frame/dialog.html"
+      },
+      {
+        "name": "元素ID命名规范",
+        "path": "views/frame/idname.html"
+      },
+      {
+        "name": "data属性",
+        "path": "views/frame/data.html"
+      },
+      {
+        "name": "jQuery API调用",
+        "path": "views/frame/api.html"
+      },
+      {
+        "name": "事件",
+        "path": "views/frame/event.html"
+      },
+      {
+        "name": "URL动态赋值",
+        "path": "views/frame/url.html"
+      }
+    ]
+  },
+  {
     "name": "组件",
     "children": [
       {
@@ -98,52 +143,7 @@
     "children": [
       {
         "name": "文件详解",
-        "path": "doc/base/filelist.html"
-      }
-    ]
-  },
-  {
-    "name": "框架介绍",
-    "children": [
-      {
-        "name": "页面结构",
-        "path": "doc/base/structure.html"
-      },
-      {
-        "name": "框架初始化",
-        "path": "doc/base/init.html"
-      },
-      {
-        "name": "横向导航菜单",
-        "path": "doc/base/hnav.html"
-      },
-      {
-        "name": "标签工作区(navtab)",
-        "path": "doc/base/navtab.html"
-      },
-      {
-        "name": "弹窗工作区(dialog)",
-        "path": "doc/base/dialog.html"
-      },
-      {
-        "name": "元素ID命名规范",
-        "path": "doc/base/idname.html"
-      },
-      {
-        "name": "data属性",
-        "path": "doc/base/data.html"
-      },
-      {
-        "name": "jQuery API调用",
-        "path": "doc/base/api.html"
-      },
-      {
-        "name": "事件",
-        "path": "doc/base/event.html"
-      },
-      {
-        "name": "URL动态赋值",
-        "path": "doc/base/url.html"
+        "path": "views/frame/filelist.html"
       }
     ]
   },

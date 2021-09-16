@@ -1,4 +1,3 @@
-
 (function() {
   $(document).on(BJUI.eventType.initUI, function(e) {
     var $box = $(e.target)
@@ -9,9 +8,13 @@
         const template = $that.find('template')
         if (template.length) {
           $(this).text(template.html())
-          Prism.highlightElement(this)
+          // Prism.highlightElement(this)
         }
       })
+      Prism.highlightAll()
+      // $box.find('prism-html-markup').each(function() {
+      // Prism.highlightElement(this)
+      // })
     }
   })
 }())
