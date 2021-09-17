@@ -7,5 +7,6 @@ import './components/checkbox'
 import './components/loading'
 
 import './bjui'
+import './extends'
 
 import './bindEvent'

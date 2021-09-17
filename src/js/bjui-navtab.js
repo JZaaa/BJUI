@@ -30,7 +30,6 @@ import { getAppHashUrl } from '@/utils/url'
   $(function() {
     var INIT_NAVTAB = function() {
       $box = $(navTabContainerSelect)
-      console.log($box)
     }
 
     INIT_NAVTAB()
