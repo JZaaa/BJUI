@@ -317,7 +317,7 @@
     var $uploadFrag = $(FRAG.uploadFrag
       .replaceAll('#multi#', options.multi ? 'multiple' : '')
       .replaceAll('#accept#', that.tools.getAcceptString(options.fileTypeExts))
-      .replaceAll('#btnTxt#', (options.icon ? '<i class="fa fa-' + options.icon + '">&nbsp;&nbsp;' : '') + options.buttonText))
+      .replaceAll('#btnTxt#', (options.icon ? '<i class="bi-' + options.icon + '" style="font-style: normal">&nbsp;&nbsp;' : '') + options.buttonText))
 
     $element
       .addClass('bjui-upload')
@@ -566,7 +566,7 @@
 
         $file.appendTo($element)
         if (!options.auto) {
-          var $upBtn = $('<button class="btn btn-orange" data-icon="cloud-upload">开始上传</button>')
+          var $upBtn = $('<button class="btn btn-orange" data-icon="cloud-upload-fill">开始上传</button>')
 
           $upBtn
             .hide()
