@@ -421,7 +421,7 @@ import { navTabContainerSelect } from '@/utils/static'
 
         var fixedH = $fixed.find('.fixedtableThead').height()
 
-        var newWidth = that.options.newWidth
+        // var newWidth = that.options.newWidth
 
         var realWidth
 
@@ -438,12 +438,17 @@ import { navTabContainerSelect } from '@/utils/static'
           $this.find('.bjui-tablefixed').each(function() {
             var $fixed = $(this)
 
-            if (!$fixed.data('resizeGrid')) realWidth = width
-            else realWidth = newWidth
+            // if (!$fixed.data('resizeGrid')) realWidth = width
+            // else realWidth = newWidth
+            realWidth = width
 
             $fixed.width(realWidth)
-            $fixed.find('.table').width(realWidth - Tablefixed.SCROLLW)
-            $fixed.find('.fixedtableHeader').width(realWidth - Tablefixed.SCROLLW)
+            const tableWidth = realWidth - Tablefixed.SCROLLW
+            $fixed.find('.table').css({
+              width: tableWidth,
+              maxWidth: tableWidth
+            })
+            $fixed.find('.fixedtableHeader').width(tableWidth)
             $fixed.find('.fixedtableScroller').width(realWidth)
           })
         }
