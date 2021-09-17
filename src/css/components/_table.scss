@@ -1,0 +1,61 @@
+.table{
+  background-color: #fff;
+
+  thead, tbody, tfoot {
+    td, th {
+      vertical-align:middle;
+    }
+  }
+  &.table-striped tbody tr:nth-of-type(even) {
+    background-color: #fafafa;
+  }
+  &.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fff;
+  }
+
+  thead {
+    tr {
+      th {
+        background-color: #fafafa;
+      }
+    }
+  }
+}
+
+.bjui-tablefixed {
+  table {
+    margin-bottom: 0;
+  }
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th{background-color:#eee;}
+.table > thead > tr > th.orderby a.order{color:#CCC;}
+.table > thead > tr > th.orderby.asc a.order.asc,
+.table > thead > tr > th.orderby.desc a.order.desc,
+.table > thead > tr > th.orderby a.order:hover{color:#fff!important; background: #009688;}
+.table > tbody > tr.selected > td{background-color:#d9e7f2;}
+
+//.table > thead > tr > th,
+//.table > tbody > tr > th,
+//.table > tfoot > tr > th,
+//.table > thead > tr > td,
+//.table > tbody > tr > td,
+//.table > tfoot > tr > td{padding:2px 3px; }
+//.table > thead > tr > th{border-bottom-width:1px;}
+//.table > thead > tr > th.center,
+//.table > tbody > tr > td.center{text-align:center;}
+//.table > thead > tr > th.left,
+//.table > tbody > tr > td.left{text-align:left;}
+//.table > thead > tr > th.right,
+//.table > tbody > tr > td.right{text-align:right;}
+//.table > tbody > tr > td{height:30px;}
+//.table.table-condensed > tbody > tr > td{height:auto;}
+//.table.table-top{border-top:none;}
+//th[align=left]{text-align:left;}
+//th[align=center]{text-align:center;}
+//th[align=right]{text-align:right;}
+//td[align=center] input{text-align:center;}
+//td[align=right] input{text-align:right;}
+//.table.nowrap td,
+//.table.nowrap th{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}

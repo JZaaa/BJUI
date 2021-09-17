@@ -1,14 +1,3 @@
-$green: green;
-$blue: #428bca;
-$black: #000;
-$red: #e10050;
-$orange: #FF6600;
-/* bootstrap color */
-$success: #5cb85c;
-$info: #5bc0de;
-$primary: darken(#428bca, 6.5%);
-$warning: #f0ad4e;
-$danger: #d9534f;
 
 // button 样式
 @mixin button-variant($color, $background) {
@@ -71,26 +60,6 @@ $danger: #d9534f;
 
   &.btn-orange {
     @include button-variant($orange, #fff);
-  }
-
-  &.btn-success {
-    @include button-variant-bs($success);
-  }
-
-  &.btn-info {
-    @include button-variant-bs($info);
-  }
-
-  &.btn-primary {
-    @include button-variant-bs($primary);
-  }
-
-  &.btn-danger {
-    @include button-variant-bs($danger);
-  }
-
-  &.btn-warning {
-    @include button-variant-bs($warning);
   }
 
   &[b-shadow] {

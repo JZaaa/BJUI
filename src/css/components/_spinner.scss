@@ -1,0 +1,29 @@
+.bjui-spinner {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  margin: 0 !important;
+  width: 11px;
+  list-style: none !important;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #ccc;
+}
+.wrap_bjui_btn_box {
+  display: inline-block;
+}
+
+.bjui-spinner .up, .bjui-spinner .down {
+  color: $coreColor;
+  float: left;
+  width: 11px;
+  height: 50%;
+  line-height: 1 !important;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background: #222;
+  }
+}

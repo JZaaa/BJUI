@@ -104,7 +104,7 @@
       if ($element.isTag('textarea')) {
         var toggle = $element.data('toggle')
 
-        if (toggle && toggle === 'autoheight' && $.fn.autosize) $element.addClass('autosize').autosize()
+        if (toggle && toggle === 'autoheight' && window.autosize) autosize($element.addClass('autosize'))
       }
       if (!$tabledit.length) {
         // 添加size%支持

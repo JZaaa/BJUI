@@ -55,6 +55,7 @@ $enable-negative-margins: true !default;
 $transition-base: all .35s ease-in-out !default;
 
 // Theme colors
+$coreColor: #009688;
 $blue:    #3B7DDD !default;
 $indigo:  #0a0a0a !default;
 $purple:  #6f42c1 !default;
@@ -86,6 +87,7 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         #f5f7fb !default;
 $dark:          $gray-900 !default;
+
 
 $theme-colors: (
   "primary": $primary,
