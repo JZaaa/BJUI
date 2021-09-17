@@ -211,48 +211,6 @@ fieldset{border-color:#c3ced5;}
   }
 }
 
-/* Dialog */
-.bjui-dialog {
-  background:#fff;
-
-  &.dialogShadow {
-    @include box-shadow($shadow-3)
-  }
-
-  > .dialogHeader {
-
-    a {
-      color:#222 !important;
-
-      &:hover {
-        color:$coreColor !important;
-      }
-    }
-
-    h1 {
-      color:#222;
-    }
-  }
-
-  > .dialogContent {
-    margin: 0;
-    .bjui-pageHeader {
-      margin-bottom:0;
-      border:none;
-    }
-    .bjui-pageContent {
-      background-color:#fff;
-    }
-
-    .bjui-pageFooter {
-      bottom: 0;
-      padding-bottom: 0;
-      border:none;
-    }
-  }
-
-}
-
 /* Dialog resizable */
 .bjui-resizable{border-color:#c3ced5; background:#f3f8fc;}
 /* Taskbar */

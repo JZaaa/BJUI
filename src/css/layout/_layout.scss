@@ -154,7 +154,7 @@ $layout-header-height: 50px;
   bottom: 0;
   padding: 1px 5px;
   width: 100%;
-  min-height: 28px;
+  min-height: 30px;
 }
 
 .bjui-pageFooter > ul > li {
@@ -166,11 +166,6 @@ $layout-header-height: 50px;
     margin-left: 0;
     margin-right: 5px;
   }
-}
-
-.bjui-dialog .bjui-pageContent,
-.bjui-dialog .bjui-pageFooter {
-  bottom: 5px;
 }
 
 .bjui-pageHeader li .btn,

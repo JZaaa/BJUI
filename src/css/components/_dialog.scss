@@ -7,4 +7,42 @@
       }
     }
   }
+
+  background:#fff;
+
+  &.dialogShadow {
+    @include box-shadow($shadow-3)
+  }
+
+  > .dialogHeader {
+
+    a {
+      color:#222 !important;
+
+      &:hover {
+        color:$coreColor !important;
+      }
+    }
+
+    h1 {
+      color:#222;
+    }
+  }
+
+  > .dialogContent {
+    margin: 0;
+    overflow: auto;
+    .bjui-pageHeader {
+      margin-bottom:0;
+      border:none;
+    }
+    .bjui-pageContent {
+      background-color:#fff;
+    }
+
+    .bjui-pageFooter {
+      padding-bottom: 0;
+      border:none;
+    }
+  }
 }

@@ -165,10 +165,6 @@
         if ($box.is(':hidden')) {
           return
         }
-        // dialog暂不处理
-        if ($box.hasClass('dialogContent')) {
-          return
-        }
 
         const $pageHeader = $box.find('> .bjui-pageHeader')
         const $pageContent = $box.find('> .bjui-pageContent')
@@ -194,6 +190,16 @@
         // 如果存在pageHeader与pageFooter
         if ($box.hasClass('bjui-layout')) {
           // 局部加载处理
+          $pageContent.css({
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: headH,
+            bottom: footH,
+            overflowY: 'auto'
+          })
+        } else if ($box.hasClass('dialogContent')) {
+          // dialog处理
           $pageContent.css({
             position: 'absolute',
             left: 0,

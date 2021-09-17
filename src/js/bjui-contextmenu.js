@@ -146,7 +146,7 @@
     $.each(items, function(i, n) {
       var icon = ''
 
-      if (n.icon) icon = '<i class="fa fa-' + n.icon + '"></i>'
+      if (n.icon) icon = '<i class="bi-' + n.icon + '"></i>'
       if (n.title === 'diver') {
         $li = $('<li class="diver"></li>')
       } else {

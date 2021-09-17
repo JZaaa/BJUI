@@ -87,6 +87,10 @@
             "path": "views/components/form/upload.html"
           },
           {
+            "name": "表单验证",
+            "path": "views/components/form/validate.html"
+          },
+          {
             "name": "表单综合演示",
             "path": "views/components/form/form.html"
           }
@@ -96,16 +100,46 @@
         "name": "Table",
         "children": [
           {
-            "name": "普通表格",
-            "path": "views/components/table/table.html"
+            "name": "基本示例",
+            "children": [
+              {
+                "name": "普通表格",
+                "path": "views/components/table/table.html"
+              },
+              {
+                "name": "固定表头表格",
+                "path": "views/components/table/table-fixed.html"
+              },
+              {
+                "name": "可编辑表格",
+                "path": "views/components/table/table-edit.html"
+              }
+            ]
           },
           {
-            "name": "固定表头表格",
-            "path": "views/components/table/table-fixed.html"
-          },
-          {
-            "name": "可编辑表格",
-            "path": "views/components/table/table-edit.html"
+            "name": "表格参数",
+            "children": [
+              {
+                "name": "表格样式",
+                "path": "views/components/table/op/style.html"
+              },
+              {
+                "name": "字段排序",
+                "path": "views/components/table/op/order.html"
+              },
+              {
+                "name": "行选中操作",
+                "path": "views/components/table/op/selected.html"
+              },
+              {
+                "name": "固定表头",
+                "path": "views/components/table/op/fixed.html"
+              },
+              {
+                "name": "可编辑表格",
+                "path": "views/components/table/op/edit.html"
+              }
+            ]
           }
         ]
       },
@@ -137,7 +171,20 @@
       },
       {
         "name": "消息提示",
-        "path": "views/components/alert/alert.html"
+        "children": [
+          {
+            "name": "创建消息提示",
+            "path": "views/components/alert/alert.html"
+          },
+          {
+            "name": "参数及方法",
+            "path": "views/components/alert/alertmsg-op.html"
+          }
+        ]
+      },
+      {
+        "name": "分页组件",
+        "path": "views/components/table/op/paging.html"
       },
       {
         "name": "局部刷新",
@@ -146,11 +193,40 @@
       {
         "name": "选项卡",
         "path": "views/components/tabs/tabs.html"
+      },
+      {
+        "name": "右键菜单",
+        "path": "views/components/contextmenu/contextmenu.html"
       }
     ]
   },
   {
-    "name": "插件",
+    "name": "Ajax",
+    "children": [
+      {
+        "name": "回调函数",
+        "path": "views/components/ajax/callback.html"
+      },
+      {
+        "name": "提交表单",
+        "path": "views/components/ajax/form.html"
+      },
+      {
+        "name": "搜索表单",
+        "path": "views/components/ajax/search.html"
+      },
+      {
+        "name": "加载(局部刷新)",
+        "path": "views/components/ajax/load.html"
+      },
+      {
+        "name": "执行动作",
+        "path": "views/components/ajax/action.html"
+      }
+    ]
+  },
+  {
+    "name": "可选插件",
     "children": [
       {
         "name": "zTree",
@@ -162,109 +238,16 @@
           {
             "name": "zTree下拉选择",
             "path": "views/plugins/ztree/ztree-select.html"
+          },
+          {
+            "name": "参数方法",
+            "path": "views/plugins/ztree/ztree-op.html"
           }
         ]
-      }
-    ]
-  },
-  {
-    "name": "文件列表",
-    "children": [
-      {
-        "name": "文件详解",
-        "path": "views/frame/filelist.html"
-      }
-    ]
-  },
-  {
-    "name": "右键菜单",
-    "children": [
-      {
-        "name": "右键菜单",
-        "path": "doc/other/contextmenu.html"
-      }
-    ]
-  },
-  {
-    "name": "Ajax",
-    "children": [
-      {
-        "name": "回调函数",
-        "path": "doc/ajax/callback.html"
-      },
-      {
-        "name": "提交表单",
-        "path": "doc/ajax/form.html"
-      },
-      {
-        "name": "搜索表单",
-        "path": "doc/ajax/search.html"
-      },
-      {
-        "name": "加载(局部刷新)",
-        "path": "doc/ajax/load.html"
-      },
-      {
-        "name": "执行动作",
-        "path": "doc/ajax/action.html"
-      }
-    ]
-  },
-  {
-    "name": "普通表格",
-    "children": [
-      {
-        "name": "表格样式",
-        "path": "doc/table/style.html"
-      },
-      {
-        "name": "字段排序",
-        "path": "doc/table/order.html"
-      },
-      {
-        "name": "分页组件",
-        "path": "doc/table/paging.html"
-      },
-      {
-        "name": "行选中操作",
-        "path": "doc/table/selected.html"
-      },
-      {
-        "name": "固定表头",
-        "path": "doc/table/fixed.html"
-      },
-      {
-        "name": "可编辑表格",
-        "path": "doc/table/edit.html"
-      }
-    ]
-  },
-  {
-    "name": "其他插件",
-    "children": [
-      {
-        "name": "zTree",
-        "path": "doc/plugin/ztree.html"
-      },
-      {
-        "name": "复选/单选",
-        "path": "doc/plugin/checkbox.html"
-      },
-      {
-        "name": "下拉选择框",
-        "path": "doc/plugin/select.html"
-      },
-      {
-        "name": "表单验证",
-        "path": "doc/plugin/validate.html"
       },
       {
         "name": "KindEditor",
-        "path": "doc/plugin/kindeditor.html"
-      },
-      {
-        "name": "Ajax Download",
-        "path": "doc/plugin/ajaxdownload.html"
+        "path": "views/plugins/kindeditor/kindeditor.html"
       }
     ]
   }
