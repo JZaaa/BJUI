@@ -48,7 +48,7 @@ import { getAppHashUrl } from '@/utils/url'
   Navtab.DEFAULTS = {
     id: 'main',
     title: 'New tab',
-    // history: true, // 是否记录路由器hash值
+    history: true, // 是否记录路由器hash值
     url: undefined,
     type: 'GET',
     data: {},
@@ -99,6 +99,9 @@ import { getAppHashUrl } from '@/utils/url'
             loadingmask: options.loadingmask,
             callback: function(response) {
               $(menuContentSelector).sidebar('changeActiveMenu', options.url)
+              if (history) {
+                location.hash = getAppHashUrl(options.url)
+              }
               if (onLoad) onLoad.apply(that, [$panel])
               if (autorefreshTimer) clearInterval(autorefreshTimer)
               if (arefre) {

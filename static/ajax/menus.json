@@ -130,15 +130,20 @@
     ]
   },
   {
-    "name": "其他插件",
+    "name": "插件",
     "children": [
       {
         "name": "zTree",
-        "path": "views/plugins/ztree/ztree.html"
-      },
-      {
-        "name": "zTree下拉选择",
-        "path": "ztree-select.html"
+        "children": [
+          {
+            "name": "演示",
+            "path": "views/plugins/ztree/ztree.html"
+          },
+          {
+            "name": "zTree下拉选择",
+            "path": "views/plugins/ztree/ztree-select.html"
+          }
+        ]
       }
     ]
   },
