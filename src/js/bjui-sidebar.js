@@ -42,10 +42,12 @@ import { getAppHashUrl } from '@/utils/url'
     /**
      * 修改活动菜单
      * @param url url
+     * @param $a
      */
-    changeActiveMenu(url) {
-      this._changeMenuActive(null, url)
-      this._changeHashRouter(null, url)
+    changeActiveMenu(url, $a) {
+      this._handleMenuChange($a, url)
+      // this._changeMenuActive(null, url)
+      // this._changeHashRouter(null, url)
     }
 
     toggleCollapse() {

@@ -149,7 +149,7 @@ module.exports = {
       directory: Path.join(__dirname, 'static')
     },
     compress: true,
-    port: 9529,
+    port: 9129,
     open: true,
     onBeforeSetupMiddleware: function(devServer) {
       if (!devServer) {
@@ -161,12 +161,8 @@ module.exports = {
         if (url.indexOf('?') !== -1) {
           url = url.split('?')[0]
         }
-        let content
-        try {
-          content = fs.readFileSync(Path.resolve(__dirname, 'static' + url), 'utf8')
-        } catch (e) {
-          content = { code: 404 }
-        }
+        const content = fs.readFileSync(Path.resolve(__dirname, 'static' + url), 'utf8')
+
         const extend = url.split('.')[1]
         if (extend === 'json') {
           res.json(JSON.parse(content))

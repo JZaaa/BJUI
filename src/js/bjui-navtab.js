@@ -16,6 +16,7 @@
  * ======================================================================== */
 
 import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
+import { getAppHashUrl } from '@/utils/url'
 
 +(function($) {
   'use strict'
@@ -23,12 +24,11 @@ import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
   // NAVTAB GLOBAL ELEMENTS
   // ======================
 
-  var currentIndex, $currentPanel, $box
+  var $currentPanel, $box
   var autorefreshTimer
 
   $(function() {
     var INIT_NAVTAB = function() {
-      currentIndex = 0
       $box = $(navTabContainerSelect)
     }
 
@@ -40,6 +40,7 @@ import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
 
   var Navtab = function(element, options) {
     this.$element = $(element)
+    options.hash = getAppHashUrl(options.url)
     this.options = options
     this.tools = this.TOOLS()
   }
@@ -47,7 +48,7 @@ import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
   Navtab.DEFAULTS = {
     id: 'main',
     title: 'New tab',
-    history: true, // 是否记录路由器hash值
+    // history: true, // 是否记录路由器hash值
     url: undefined,
     type: 'GET',
     data: {},
@@ -97,9 +98,7 @@ import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
             data: options.data || {},
             loadingmask: options.loadingmask,
             callback: function(response) {
-              if (options.history) {
-                $(menuContentSelector).sidebar('changeActiveMenu', options.url)
-              }
+              $(menuContentSelector).sidebar('changeActiveMenu', options.url)
               if (onLoad) onLoad.apply(that, [$panel])
               if (autorefreshTimer) clearInterval(autorefreshTimer)
               if (arefre) {
@@ -190,7 +189,9 @@ import { menuContentSelector, navTabContainerSelect } from '@/utils/static'
 
     if ($panel.length) {
       if (!$panel.hasClass('external')) {
-        var $pagerForm = $panel.find('#pagerForm'); var data = {}; var pageData = {}
+        var $pagerForm = $panel.find('#pagerForm')
+        var data = {}
+        var pageData = {}
 
         if ($pagerForm.attr('action')) options.url = $pagerForm.attr('action')
         if ($pagerForm && $pagerForm.length) {
