@@ -650,7 +650,7 @@
           X_afterSelect: options.confirmSelect,
           htmlTags: htmlTags,
           cssPath: [
-            BJUI.PLUGINPATH + 'kindeditor/editor-content.css',
+            // BJUI.PLUGINPATH + 'kindeditor/editor-content.css',
             BJUI.PLUGINPATH + 'kindeditor/plugins/code/prettify.css'
           ],
           afterBlur: function() { this.sync() }
