@@ -2,7 +2,7 @@
 export const appSelector = '#bjui-app'
 
 // navTab DOM id
-export const navTabContainerSelect = '#bjui-layout-content'
+export const navTabContainerSelect = '#bjui-app-layout-content'
 
 // sidebar DOM id
 export const sidebarSelector = '#bjui-menu'
@@ -11,7 +11,7 @@ export const sidebarSelector = '#bjui-menu'
 export const menuContentSelector = '#bjui-menu-nav'
 
 // header DOM id
-export const layoutHeaderSelector = '#bjui-layout-header'
+export const layoutHeaderSelector = '#bjui-app-layout-header'
 
 // 非菜单区 DOM id
-export const layoutMainSelector = '#bjui-layout-main'
+export const layoutMainSelector = '#bjui-app-layout-main'

@@ -19,7 +19,7 @@ $layout-header-height: 50px;
   }
 }
 
-.bjui-layout-main {
+.bjui-app-layout-main {
   width: 0;
   margin-left: 1px;
   display: flex;
@@ -31,11 +31,11 @@ $layout-header-height: 50px;
   overflow: hidden;
 }
 
-.bjui-layout-multi-header-placeholder {
+.bjui-app-layout-multi-header-placeholder {
   height: $layout-header-height;
 }
 
-.bjui-layout-multi-header {
+.bjui-app-layout-multi-header {
   height: $layout-header-height;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -52,7 +52,7 @@ $layout-header-height: 50px;
     width: auto !important;
   }
 
-  .bjui-layout-header {
+  .bjui-app-layout-header {
     background-color: #fff !important;
     box-shadow: 0 0 2px 0 rgba(33, 37, 41, .1);
 
@@ -67,13 +67,13 @@ $layout-header-height: 50px;
     flex: 0 0 auto;
   }
 
-  .bjui-layout-header-left {
+  .bjui-app-layout-header-left {
     display: flex;
     height: 100%;
     align-items: center;
   }
 
-  .bjui-layout-header-right {
+  .bjui-app-layout-header-right {
     display: flex;
     align-items: center;
     padding-right: 4px;
@@ -114,7 +114,7 @@ $layout-header-height: 50px;
 
 }
 
-.bjui-layout-content {
+.bjui-app-layout-content {
   position: relative;
   flex: 1 1 auto;
   min-height: 0;
@@ -253,7 +253,7 @@ $layout-header-height: 50px;
 
 // 菜单收缩
 .menu-collapsed {
-  .bjui-layout-multi-header--fixed {
+  .bjui-app-layout-multi-header--fixed {
     left: 0;
   }
 

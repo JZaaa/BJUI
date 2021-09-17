@@ -187,8 +187,11 @@
         if (footH === 0 && $box.hasClass('dialogContent')) {
           footH = 5
         }
+        // 撑开
+        const fullPage = $pageContent.hasClass('full-page')
         // 如果存在pageHeader与pageFooter
-        if (headH) {
+        if ($box.hasClass('bjui-layout')) {
+          // 局部加载处理
           $pageContent.css({
             position: 'absolute',
             left: 0,
@@ -197,15 +200,27 @@
             bottom: footH,
             overflowY: 'auto'
           })
-        } else if (footH) {
-          $box.css({
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: headH,
-            bottom: footH,
-            overflowY: 'auto'
-          })
+        } else {
+          // navtab处理
+          if (headH || fullPage) {
+            $pageContent.css({
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: headH,
+              bottom: footH,
+              overflowY: 'auto'
+            })
+          } else if (footH) {
+            $box.css({
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: headH,
+              bottom: footH,
+              overflowY: 'auto'
+            })
+          }
         }
       })
     },
