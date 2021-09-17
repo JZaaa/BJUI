@@ -56,7 +56,7 @@
         "path": "views/basic/button.html"
       },
       {
-        "name": "表单元素",
+        "name": "表单组件",
         "children": [
           {
             "name": "文本框",
@@ -71,13 +71,29 @@
             "path": "views/components/form/checkbox.html"
           },
           {
+            "name": "日期选择器",
+            "path": "views/components/form/datepicker.html"
+          },
+          {
+            "name": "微调器",
+            "path": "views/components/form/spinner.html"
+          },
+          {
+            "name": "查找带回",
+            "path": "views/components/form/lookup.html"
+          },
+          {
+            "name": "上传组件",
+            "path": "views/components/form/upload.html"
+          },
+          {
             "name": "表单综合演示",
             "path": "views/components/form/form.html"
           }
         ]
       },
       {
-        "name": "表格",
+        "name": "Table",
         "children": [
           {
             "name": "普通表格",
@@ -92,10 +108,6 @@
             "path": "views/components/table/table-edit.html"
           }
         ]
-      },
-      {
-        "name": "消息提示",
-        "path": "views/components/alert/alert.html"
       },
       {
         "name": "NavTab",
@@ -122,6 +134,10 @@
             "path": "views/components/dialog/dialog-op.html"
           }
         ]
+      },
+      {
+        "name": "消息提示",
+        "path": "views/components/alert/alert.html"
       },
       {
         "name": "局部刷新",
@@ -157,36 +173,6 @@
       {
         "name": "文件详解",
         "path": "views/frame/filelist.html"
-      }
-    ]
-  },
-  {
-    "name": "信息提示alertmsg",
-    "children": [
-      {
-        "name": "提示框alertmsg",
-        "path": "doc/alertmsg/alertmsg.html"
-      }
-    ]
-  },
-  {
-    "name": "表单相关",
-    "children": [
-      {
-        "name": "日期选择器",
-        "path": "doc/form/datepicker.html"
-      },
-      {
-        "name": "微调器",
-        "path": "doc/form/spinner.html"
-      },
-      {
-        "name": "查找带回",
-        "path": "doc/form/lookup.html"
-      },
-      {
-        "name": "上传组件",
-        "path": "doc/form/upload.html"
       }
     ]
   },
