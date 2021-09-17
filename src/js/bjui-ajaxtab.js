@@ -66,7 +66,8 @@
     var $element = this.$element
     var options = this.options
 
-    $(options.target).ajaxUrl({
+    $($element).bjuiajax('doLoad', {
+      target: $(options.target),
       url: options.url,
       data: {},
       callback: function() {

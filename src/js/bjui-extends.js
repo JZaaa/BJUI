@@ -103,7 +103,9 @@
       $(this).ajaxUrl({ url: url, data: data, callback: callback })
     },
     doAjax: function(op) {
-      var $this = $(this); var $target; var $ajaxMask
+      var $this = $(this)
+      var $target
+      var $ajaxMask
 
       if (!op.url) {
         BJUI.debug('The ajax url is undefined!')
