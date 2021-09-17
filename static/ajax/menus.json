@@ -124,6 +124,10 @@
         ]
       },
       {
+        "name": "局部刷新",
+        "path": "views/components/layout/layout.html"
+      },
+      {
         "name": "选项卡",
         "path": "views/components/tabs/tabs.html"
       }
@@ -144,15 +148,6 @@
             "path": "views/plugins/ztree/ztree-select.html"
           }
         ]
-      }
-    ]
-  },
-  {
-    "name": "综合应用",
-    "children": [
-      {
-        "name": "局部刷新1",
-        "path": "table-layout.html"
       }
     ]
   },
