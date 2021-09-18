@@ -149,7 +149,7 @@ module.exports = {
       directory: Path.join(__dirname, 'static')
     },
     compress: true,
-    port: 9129,
+    port: 8129,
     open: true,
     onBeforeSetupMiddleware: function(devServer) {
       if (!devServer) {

@@ -1,1 +1,31 @@
 @import "~pretty-checkbox/src/pretty-checkbox.scss";
+
+.custom-control-inline {
+  .pretty {
+    .state {
+      height: 100%;
+
+      .icon {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      label {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 1.5em;
+
+        &::before {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &::after {
+          top: 50%;
+          transform: scale(0.6) translateY(-84%);
+        }
+      }
+    }
+  }
+}

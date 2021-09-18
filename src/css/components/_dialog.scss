@@ -8,7 +8,7 @@
     }
   }
 
-  background:#fff;
+  background: #fff;
 
   &.dialogShadow {
     @include box-shadow($shadow-3)
@@ -17,32 +17,44 @@
   > .dialogHeader {
 
     a {
-      color:#222 !important;
+      color: #222 !important;
 
       &:hover {
-        color:$coreColor !important;
+        color: $coreColor !important;
       }
     }
 
     h1 {
-      color:#222;
+      color: #222;
     }
   }
 
   > .dialogContent {
     margin: 0;
     overflow: auto;
+
     .bjui-pageHeader {
-      margin-bottom:0;
-      border:none;
+      margin-bottom: 0;
+      border: none;
     }
+
     .bjui-pageContent {
-      background-color:#fff;
+      background-color: #fff;
     }
 
     .bjui-pageFooter {
       padding-bottom: 0;
-      border:none;
+      border: none;
     }
   }
+}
+
+/* Lookup */
+.bjui-lookup {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  display: block;
+  width: 32px;
+  text-align: center;
 }
