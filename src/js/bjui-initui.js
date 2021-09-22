@@ -157,9 +157,9 @@
     }
 
     // progress
-    $box.find('.bjui-maskProgress').find('.progress').stop().animate({ width: '100%' }, 'fast', function() {
-      $box.find('.bjui-ajax-mask').fadeOut('normal', function() { $(this).remove() })
-    })
+    if ($box.data('bj.loading')) {
+      $box.Loading('close')
+    }
   })
 
   /* Lateral Navigation */
@@ -172,7 +172,7 @@
   })
 
   /* ajaxStatus */
-  var bjui_ajaxStatus = function($target) {
+  var bjui_ajaxStatus = function($target, func) {
     var $this = $target
     var $offset = $this
     var position = $this.css('position')
@@ -180,29 +180,17 @@
     if (position === 'static') $offset = $this.offsetParent()
 
     var zIndex = parseInt($offset.css('zIndex')) || 0
-    var $ajaxBackground = $this.find('> .bjui-maskBackground')
-    var $ajaxProgress = $this.find('> .bjui-maskProgress')
 
-    if (!$ajaxBackground.length) {
-      $ajaxBackground = $(FRAG.maskBackground)
-      $ajaxProgress = $(FRAG.maskProgress.replace('#msg#', BJUI.regional.progressmsg))
-      $this.prepend($ajaxBackground).prepend($ajaxProgress)
-    }
-
-    $ajaxBackground.css('zIndex', zIndex + 1)
-    $ajaxProgress.css('zIndex', zIndex + 2)
-
-    return { $bg: $ajaxBackground, $pr: $ajaxProgress }
+    return $this.Loading({
+      zIndex: zIndex + 1,
+      absolute: true,
+      tip: BJUI.regional.progressmsg
+    }, func)
   }
 
   $(document)
     .on('bjui.ajaxStart', function(e, timeout, callback) {
-      var ajaxMask = bjui_ajaxStatus($(e.target))
-
-      ajaxMask.$bg.fadeIn()
-      ajaxMask.$pr.fadeIn()
-      ajaxMask.$pr.find('.progress').animate({ width: '80%' }, timeout || 500)
-
+      bjui_ajaxStatus($(e.target), 'open')
       if (callback) {
         setTimeout(function() {
           callback.toFunc().call(this)
@@ -210,38 +198,24 @@
       }
     })
     .on('bjui.ajaxStop', function(e) {
-      var ajaxMask = bjui_ajaxStatus($(e.target))
-
-      ajaxMask.$pr.find('.progress').animate({ width: '100%' }, 'fast', function() {
-        ajaxMask.$bg.remove()
-        ajaxMask.$pr.remove()
-      })
+      bjui_ajaxStatus($(e.target), 'close')
     })
     .on('bjui.ajaxError', function(e) {
-      var ajaxMask = bjui_ajaxStatus($(e.target))
-
-      ajaxMask.$bg.remove()
-      ajaxMask.$pr.remove()
+      bjui_ajaxStatus($(e.target), 'close')
     })
 
   $(document).on(BJUI.eventType.ajaxStatus, function(e) {
-    var $target = $(e.target); var ajaxMask = bjui_ajaxStatus($target)
-
+    var $target = $(e.target)
+    var loadingWrap = bjui_ajaxStatus($target, 'open')
     $target
       .one('ajaxStart', function() {
-        ajaxMask.$bg.fadeIn()
-        ajaxMask.$pr.fadeIn()
-
-        ajaxMask.$pr.find('.progress').animate({ width: '10%' }, 'fast')
+        loadingWrap.Loading('open')
       })
       .one('ajaxStop', function() {
-        // ajaxMask.$bg.fadeOut()
-        // ajaxMask.$pr.fadeOut()
-        // ajaxMask.$pr.find('.progress').animate({width:'80%'}, 'fast')
+        loadingWrap.Loading('close')
       })
       .one('ajaxError', function() {
-        ajaxMask.$bg.remove()
-        ajaxMask.$pr.remove()
+        loadingWrap.Loading('close')
       })
   })
 

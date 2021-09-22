@@ -1,12 +1,12 @@
 /*!
- * B-JUI  v1.2 (http://b-jui.com)
+ * B-JUI  v2.0 (http://b-jui.com)
  * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
  * Copyright 2014 K'naan (xknaan@163.com).
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  */
 
 /* ========================================================================
- * B-JUI: bjui-extends.js  v1.2
+ * B-JUI: bjui-extends.js  v2.0
  * @author K'naan (xknaan@163.com)
  * -- Modified from dwz.core.js (author:ZhangHuihua@msn.com)
  * http://git.oschina.net/xknaan/B-JUI/blob/master/BJUI/js/bjui-extends.js
@@ -40,9 +40,8 @@
         timeout: BJUI.ajaxTimeout,
         success: function(response) {
           var json = response.toJson()
-          var $ajaxMask = $this.find('> .bjui-ajax-mask')
           if (!json[BJUI.keys.statusCode]) {
-            $this.empty().html(response).append($ajaxMask).initui()
+            $this.empty().html(response).initui()
             if ($.isFunction(op.callback)) op.callback(response)
           } else {
             if (json[BJUI.keys.statusCode] === BJUI.statusCode.error) {
@@ -58,9 +57,6 @@
               $('body').alertmsg('info', (json[BJUI.keys.message] || BJUI.regional.sessiontimeout))
               BJUI.loadLogin()
             }
-            $ajaxMask.fadeOut('normal', function() {
-              $(this).remove()
-            })
           }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -117,10 +113,11 @@
       } else {
         op.callback = op.callback.toFunc()
       }
+      console.log(op)
       if (op.loadingmask) {
         $target = $this.getPageTarget()
         $target.trigger(BJUI.eventType.ajaxStatus)
-        $ajaxMask = $target.find('> .bjui-ajax-mask')
+        $ajaxMask = $target.data('bj.loading')
       }
       if (!op.type) op.type = 'POST'
       if (!op.dataType) op.dataType = 'json'

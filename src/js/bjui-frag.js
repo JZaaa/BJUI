@@ -161,8 +161,6 @@
     splitBarProxy: '<div id="bjui-splitBarProxy"></div>',
     resizable: '<div id="bjui-resizable" class="bjui-resizable"></div>',
     alertBackground: '<div class="bjui-alertBackground"></div>',
-    maskBackground: '<div class="bjui-maskBackground bjui-ajax-mask"></div>',
-    maskProgress: '<div class="bjui-maskProgress bjui-ajax-mask"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;#msg#<div class="progressBg"><div class="progress"></div></div></div>',
     progressBar_custom: '<div id="bjui-progressBar-custom" class="progressBar"><i class="fa fa-cog fa-spin"></i> <span></span></div>',
     dialogMask: '<div class="bjui-dialogBackground"></div>',
     orderby: '<a href="javascript:;" class="order asc" data-order-direction="asc" title="#asc#"><i class="bi-chevron-up"></i></a>' +

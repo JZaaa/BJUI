@@ -25,7 +25,7 @@ class Loading extends BaseComponents {
   open() {
     const node = this._getNode()
     if (!node) {
-      this._element.appendChild(this._$dom[0])
+      this._$element.prepend(this._$dom)
     }
   }
 
@@ -77,7 +77,7 @@ class Loading extends BaseComponents {
     return NAME
   }
 
-  static jQueryInterface(config, relatedTarget) {
+  static jQueryInterface(config, action) {
     return this.each(function() {
       const $element = $(this)
       let data = $element.data(DATA_KEY)
@@ -89,6 +89,8 @@ class Loading extends BaseComponents {
 
       if (typeof config === 'string') {
         data[config](this)
+      } else if (action) {
+        data[action](this)
       } else {
         data.open()
       }

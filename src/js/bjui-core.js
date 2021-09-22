@@ -170,13 +170,6 @@
       })
 
       return frag
-    },
-    // 清除遮罩层
-    removeProgress: function() {
-      var $box = $(document)
-      $box.find('.bjui-maskProgress').find('.progress').stop().animate({ width: '100%' }, 'fast', function() {
-        $box.find('.bjui-ajax-mask').fadeOut('normal', function() { $(this).remove() })
-      })
     }
   }
 
