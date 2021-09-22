@@ -79,7 +79,9 @@
         icon = $element.data('icon')
         var oldClass = $element.attr('class')
 
-        if (!$element.hasClass('btn')) { $element.removeClass().addClass('btn').addClass(oldClass) }
+        if (!$element.hasClass('btn')) {
+          $element.removeClass().addClass('btn').addClass(oldClass)
+        }
         if (icon) {
           _icon = 'bi-' + icon.replace('bi-', '')
 
@@ -189,7 +191,8 @@
       }
 
       if (($next && $next.length) && refurl) {
-        var val = $obj.data('val'); var nextVal = $next.data('val')
+        var val = $obj.data('val')
+        var nextVal = $next.data('val')
 
         if (typeof val === 'undefined') val = $obj.val()
         $.ajax({
@@ -201,7 +204,8 @@
           success: function(json) {
             if (!json) return
 
-            var html = ''; var selected = ''
+            var html = ''
+            var selected = ''
 
             $.each(json, function(i) {
               var value, label
@@ -241,12 +245,15 @@
       $element.addClass('show-tick')
       if (!options.style) $element.data('style', 'btn-default')
       // if (!options.width) $element.data('width', 'auto')
-      if (!options.container) $element.data('container', 'body')
-      else if (options.container === true) $element.attr('data-container', 'false').data('container', false)
+      if (!options.container) {
+        $element.data('container', 'body')
+      } else if (options.container === true) $element.attr('data-container', 'false').data('container', false)
 
       $element.selectpicker()
 
-      if ($next && $next.length && (typeof $next.data('val') !== 'undefined')) { bjui_select_linkage($element, $next) }
+      if ($next && $next.length && (typeof $next.data('val') !== 'undefined')) {
+        bjui_select_linkage($element, $next)
+      }
     })
 
     /* bootstrap - select - linkage && Trigger validation */
@@ -264,7 +271,10 @@
 
     /* zTree - plugin */
     $box.find('[data-toggle="ztree"]').each(function() {
-      var $this = $(this); var op = $this.data(); var options = op.options; var _setting
+      var $this = $(this)
+      var op = $this.data()
+      var options = op.options
+      var _setting
 
       if (options && typeof options === 'string') options = options.toObj()
       if (options) $.extend(op, typeof options === 'object' && options)
@@ -366,6 +376,7 @@
           op.onNodeCreated.toFunc().call(this, event, treeId, treeNode)
         }
       }
+
       // onCollapse
       function _onCollapse(event, treeId, treeNode) {
         if (treeNode.faiconClose) {
@@ -375,6 +386,7 @@
           op.onCollapse.toFunc().call(this, event, treeId, treeNode)
         }
       }
+
       // onExpand
       function _onExpand(event, treeId, treeNode) {
         if (treeNode.faicon && treeNode.faiconClose) {
@@ -384,6 +396,7 @@
           op.onExpand.toFunc().call(this, event, treeId, treeNode)
         }
       }
+
       // add button, del button
       function _addHoverDom(treeId, treeNode) {
         var level = treeNode.level
@@ -518,7 +531,15 @@
           zindex = dialog.css('zIndex') + 1
         }
         $box = $('<div id="' + treeid + '_select_box" class="tree-box"></div>')
-          .css({ position: 'absolute', 'zIndex': zindex, 'min-width': options.width, height: options.height, overflow: 'auto', background: '#FAFAFA', border: '1px #EEE solid' })
+          .css({
+            position: 'absolute',
+            'zIndex': zindex,
+            'min-width': options.width,
+            height: options.height,
+            overflow: 'auto',
+            background: '#FAFAFA',
+            border: '1px #EEE solid'
+          })
           .hide()
           .appendTo($('body'))
 
@@ -584,9 +605,12 @@
           })
 
           $this.on('hidden.bs.collapse', function(e) {
-            var $last = $(this).find('> .panel:last'); var $a = $last.find('> .panel-heading > h4 > a')
+            var $last = $(this).find('> .panel:last')
+            var $a = $last.find('> .panel-heading > h4 > a')
 
-            if ($a.hasClass('collapsed')) { $last.css('border-bottom', '1px #ddd solid') }
+            if ($a.hasClass('collapsed')) {
+              $last.css('border-bottom', '1px #ddd solid')
+            }
           })
         }
       }
@@ -595,9 +619,12 @@
     /* Kindeditor */
     if (window.KindEditor) {
       $box.find('[data-toggle="kindeditor"]').each(function() {
-        var $editor = $(this); var options = $editor.data()
+        var $editor = $(this)
+        var options = $editor.data()
 
-        if (options.items && typeof options.items === 'string') { options.items = options.items.replaceAll('\'', '').replaceAll(' ', '').split(',') }
+        if (options.items && typeof options.items === 'string') {
+          options.items = options.items.replaceAll('\'', '').replaceAll(' ', '').split(',')
+        }
         if (options.afterUpload) options.afterUpload = options.afterUpload.toFunc()
         if (options.afterSelectFile) options.afterSelectFile = options.afterSelectFile.toFunc()
         if (options.confirmSelect) options.confirmSelect = options.confirmSelect.toFunc()
@@ -653,7 +680,9 @@
             // BJUI.PLUGINPATH + 'kindeditor/editor-content.css',
             BJUI.PLUGINPATH + 'kindeditor/plugins/code/prettify.css'
           ],
-          afterBlur: function() { this.sync() }
+          afterBlur: function() {
+            this.sync()
+          }
         })
       })
     }
@@ -692,7 +721,10 @@
 
     /* fixed dropdown-menu width */
     $box.find('[data-toggle="dropdown"]').parent().on('show.bs.dropdown', function(e) {
-      var $this = $(this); var width = $this.outerWidth(); var $menu = $this.find('> .dropdown-menu'); var menuWidth = $menu.outerWidth()
+      var $this = $(this)
+      var width = $this.outerWidth()
+      var $menu = $this.find('> .dropdown-menu')
+      var menuWidth = $menu.outerWidth()
 
       if (width > menuWidth) {
         $menu.css('min-width', width)
