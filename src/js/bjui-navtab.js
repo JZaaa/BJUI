@@ -85,7 +85,6 @@ import { getAppHashUrl } from '@/utils/url'
 
         var arefre = options.autorefresh && (isNaN(String(options.autorefresh)) ? 15 : options.autorefresh)
 
-        BJUI.ModuleFixed.destroyModules($panel)
         if (options.data) {
           options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
         }
@@ -141,7 +140,7 @@ import { getAppHashUrl } from '@/utils/url'
     if (!options.id) {
       options.id = 'main'
     }
-
+    BJUI.ModuleFixed.destroyModules($.CurrentNavtab)
     var $panel
     $panel = $('<div class="navtabPage unitBox bjui-navtab-content"></div>')
     $panel.data('options', options).data('initOptions', options)

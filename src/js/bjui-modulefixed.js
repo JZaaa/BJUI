@@ -13,27 +13,31 @@
    * @param $selector 需处理的dialog/navtab jquery对象
    */
   ModuleFixed.prototype.destroyModules = function($selector) {
-    try {
-      // ie9 uploadify 销毁
-      var uploadify = $selector.find('.bjui-upload > .uploadify')
-      if (uploadify.length) {
-        uploadify.uploadify('destroy')
+    if ($selector && $selector.length) {
+      try {
+        // ie9 uploadify 销毁
+        var uploadify = $selector.find('.bjui-upload > .uploadify')
+        if (uploadify.length) {
+          uploadify.uploadify('destroy')
+        }
+        // colorpicker 销毁
+        var colorpicker = $selector.find('[data-toggle="colorpicker"]')
+        if (colorpicker.length) {
+          colorpicker.colorpicker('destroy')
+        }
+        var selectpicker = $selector.find('[data-toggle="selectpicker"]')
+        if (selectpicker.length) {
+          selectpicker.selectpicker('destroy')
+        }
+        var datepicker = $selector.find('[data-toggle="datepicker"]')
+        if (datepicker.length) {
+          datepicker.datepicker('destroy')
+        }
+      } catch (e) {
+        BJUI.debug(e)
       }
-      // colorpicker 销毁
-      var colorpicker = $selector.find('[data-toggle="colorpicker"]')
-      if (colorpicker.length) {
-        colorpicker.colorpicker('destroy')
-      }
-      var selectpicker = $selector.find('[data-toggle="selectpicker"]')
-      if (selectpicker.length) {
-        selectpicker.selectpicker('destroy')
-      }
-    }
-     catch (e) {
-      BJUI.debug(e)
     }
   }
 
   BJUI.ModuleFixed = new ModuleFixed()
-
 })(jQuery)
