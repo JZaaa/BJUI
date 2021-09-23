@@ -25,7 +25,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --config webpack.config.js",
     "watch": "webpack --progress --config webpack.config.js --watch",
     "start": "webpack serve --config webpack.config.js --progress",
-    "dev": "webpack serve --config webpack.config.js --mode development --env development"
+    "dev": "webpack serve --config webpack.config.js --mode development --env development",
+    "build:all": "cross-env NODE_ENV=production webpack --progress --config webpack.all.config.js"
   },
   "browserslist": [
     "> 0.25%",
@@ -57,6 +58,7 @@
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "bootstrap": "^4.6.0",
+    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",

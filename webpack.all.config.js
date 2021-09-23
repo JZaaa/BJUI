@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FileManagerPlugin = require('filemanager-webpack-plugin')
+const PluginPatterns = require('./plugin-patterns')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 function resolve(dir) {
@@ -48,9 +49,7 @@ module.exports = {
     runtimeChunk: false
   },
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['!plugins*', '!plugins/*']
-    }),
+    new CleanWebpackPlugin(),
     new Webpack.DefinePlugin({
       __VERSION__: JSON.stringify(process.env.npm_package_version)
     }),
@@ -61,23 +60,32 @@ module.exports = {
     }),
     // Copy fonts and images to dist
     new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/assets', to: 'assets' }
-      ]
+      patterns: PluginPatterns
     }),
     // Speed up webpack build
     // new HardSourceWebpackPlugin(),
     // Copy dist folder to static
     new FileManagerPlugin({
       events: {
-        onEnd: {
-          delete: ['./static/css/', './static/assets/', './static/js/'],
-          copy: [
-            { source: './dist/css', destination: './static/css' },
-            { source: './dist/assets', destination: './static/assets' },
-            { source: './dist/js', destination: './static/js' }
-          ]
-        }
+        onEnd: [
+          {
+            move: [
+              { source: './static/plugins/kindeditor', destination: './static/kindeditor' }
+            ]
+          },
+          {
+            delete: ['./static/css/', './static/assets/', './static/js/'],
+            copy: [
+              { source: './dist/css', destination: './static/css' },
+              { source: './dist/assets', destination: './static/assets' },
+              { source: './dist/js', destination: './static/js' },
+              { source: './dist/plugins', destination: './static/plugins' }
+            ],
+            move: [
+              { source: './static/kindeditor', destination: './static/plugins/kindeditor' }
+            ]
+          }
+        ]
       }
     })
   ],

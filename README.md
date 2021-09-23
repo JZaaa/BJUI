@@ -8,19 +8,28 @@
 ### 构建
 
 ```sh
+# 安装依赖
 yarn install
 ```
 
 ```sh
-yarn start
-```
-```sh
-yarn watch
+# 开发模式
+yarn dev
 ```
 
 ```sh
+# 打包(不包含依赖插件)
 yarn build
 ```
+
+```sh
+# 全部打包(包含依赖插件)
+yarn build:all
+```
+
+## 使用
+
+- 基础模板可复制`static`文件夹下的`js、css、plugins、index.html`使用
 
 ## 当前进度
 
