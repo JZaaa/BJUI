@@ -30,7 +30,6 @@
     init() {
       const $this = this._$element
       let $picker
-      $this.removeAttr('data-toggle')
       const op = this._options
 
       if ($this.isTag('input') && !op.wrap) {
@@ -62,6 +61,10 @@
         }
       }
       this._flatpickr = $picker.flatpickr(op)
+    }
+
+    destroy() {
+      this._flatpickr.destroy()
     }
   }
 
