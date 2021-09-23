@@ -1,38 +1,17 @@
 <div class="bjui-pageContent bj-page-wrapper-content">
   <div class="bg-white bj-p-20">
-        <h3 class="page-header">标签工作区(navtab)</h3>
-        <blockquote>
-            <p>B-JUI框架的整个工作区部分就是一个navtab组件，本组件位于主页面的"<code>#bjui-container</code>"容器内，固定的html结构如下：</p>
-        </blockquote>
-        <script type="text/plain" class="language-markup line-numbers">
-            <div id="bjui-navtab" class="tabsPage">
-                <div class="tabsPageHeader">
-                    <div class="tabsPageHeaderContent">
-                        <ul class="navtab-tab nav nav-tabs">
-                            <li><a href="javascript:;"><span>我的主页</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="tabsLeft"><i class="fa fa-angle-double-left"></i></div>
-                    <div class="tabsRight"><i class="fa fa-angle-double-right"></i></div>
-                    <div class="tabsMore"><i class="fa fa-angle-double-down"></i></div>
-                </div>
-                <ul class="tabsMoreList">
-                    <li><a href="javascript:;">我的主页</a></li>
-                </ul>
-                <div class="navtab-panel tabsPageContent">
-                    <div class="page unitBox">
-                        <!-- 主页内容 -->
-                    </div>
-                    <!-- 各页片内容区域 -->
-                </div>
-            </div>
-        </script>
-        <blockquote class="point">
-            <p><strong>注意：</strong>可为主页指定载入的页面url及自动刷新等参数，如：</p>
-            <script type="text/plain" class="language-markup line-numbers">
-                <li><a href="javascript:;" data-url="index_layout.html" data-autorefresh="true"><span>我的主页</span></a></li>
-            </script>
-        </blockquote>
-    </div>
+    <h3 class="page-header">标签工作区(navtab)</h3>
+    <blockquote>
+      <p>B-JUI框架的整个工作区部分就是一个navtab组件，本组件位于主页面的"<code>#bjui-app-layout-content</code>"容器内，固定的html结构如下：
+      </p>
+    </blockquote>
+    <script type="text/plain" class="language-markup line-numbers">
+            <main id="bjui-app-layout-content" class="bjui-app-layout-content">
+              <div class="navtabPage unitBox bjui-navtab-content">
+                 <!-- 主页内容 -->
+              </div>
+            </main>
+    </script>
+  </div>
 </div>
 
