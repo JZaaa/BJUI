@@ -231,9 +231,20 @@ import { getAppHashUrl } from '@/utils/url'
   }
 
   Navtab.prototype.openExternal = function(url, $panel) {
-    var ih = $panel.closest('.navtab-panel').height()
-
-    $panel.html(FRAG.externalFrag.replaceAll('{url}', url).replaceAll('{height}', ih + 'px'))
+    const ih = $panel.height() - 5
+    $panel.Loading({
+      absolute: false,
+      tip: BJUI.regional.progressmsg
+    }, 'open')
+    const iframe = document.createElement('iframe')
+    iframe.style.width = '100%'
+    iframe.style.height = `${ih}px`
+    iframe.src = url
+    iframe.style.border = 'none'
+    iframe.onload = function() {
+      $panel.Loading('close')
+    }
+    $panel.after(iframe)
   }
 
   // NAVTAB PLUGIN DEFINITION
@@ -252,14 +263,18 @@ import { getAppHashUrl } from '@/utils/url'
 
       if (typeof property === 'string' && $.isFunction(data[property])) {
         [].shift.apply(args)
-        if (!args) data[property]()
-        else data[property].apply(data, args)
+        if (!args) {
+          data[property]()
+        } else {
+          data[property].apply(data, args)
+        }
       } else {
         data = new Navtab(this, options)
         data.openTab()
       }
     })
   }
+
   var old = $.fn.navtab
 
   $.fn.navtab = Plugin
@@ -283,7 +298,9 @@ import { getAppHashUrl } from '@/utils/url'
     var options = data.options
     if (options) {
       if (typeof options === 'string') options = options.toObj()
-      if (typeof options === 'object') { $.extend(data, options) }
+      if (typeof options === 'object') {
+        $.extend(data, options)
+      }
     }
 
     if (!data.title) data.title = $this.text()
