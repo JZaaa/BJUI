@@ -295,7 +295,6 @@
       '    <li rel="closeOther"><span class="icon"><i class="fa fa-remove"></i></span><span class="title">#closeother#</span></li>' +
       '    <li rel="closeAll"><span class="icon"><i class="fa fa-remove"></i></span><span class="title">#closeall#</span></li>' +
       '</ul>',
-    externalFrag: '<iframe src="{url}" style="width:100%;height:{height};" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>',
     uploadTemp: '<div id="{fileId}" class="item">' +
       '    <div class="info">' +
       '        <span class="up_filename">{fileName}</span><span class="up_confirm" title="#upConfirm#"><i class="bi-play-circle"></i></span><span class="up_pause" title="#upPause#"><span class="bi-pause-circle"></span></span><span class="up_cancel" title="#upCancel#"><i class="bi-x-circle"></i></span>' +

@@ -1,0 +1,92 @@
+<div class="bjui-pageContent bj-page-wrapper-content">
+  <div class="bg-white bj-p-20">
+    <h3 class="page-header">导航菜单(nav)</h3>
+    <blockquote>
+      <p>本节介绍B-JUI框架的导航菜单，菜单项类型：</p>
+    </blockquote>
+    <script type="text/plain" class="language-json line-numbers">
+      export interface Menu {
+        //  菜单名
+        name: string;
+        // 菜单图标
+        icon?: string;
+        // 菜单路径
+        path?: string;
+        // 子菜单
+        children?: Menu[];
+        // 是否是外部页面, 可选 inner(内嵌), outer(外链)
+        iframe?: string;
+      }
+    </script>
+    <blockquote>
+      <p>例：</p>
+    </blockquote>
+    <script type="text/plain" class="language-json line-numbers">
+        [
+          {
+            "name": "首页", // 菜单名称
+            "icon": "bi-house", // 图标
+            "path": "views/home.html" // 菜单路径
+          },
+          // 子菜单，可以多层嵌套
+          {
+            "name": "框架介绍",
+            "children": [
+              {
+                "name": "页面结构",
+                "path": "views/frame/structure.html"
+              }
+             ]
+          },
+          // 外部页面
+          {
+            "name": "外部页面",
+            "icon": "bi-window",
+            "children": [
+              {
+                "name": "flatpickr文档(内嵌)",
+                "path": "https://flatpickr.js.org/",
+                "iframe": "inner"
+              },
+              {
+                "name": "项目github(外链)",
+                "path": "https://github.com/JZaaa/BJUI",
+                "iframe": "outer"
+              }
+            ]
+          }
+        ]
+
+    </script>
+    <blockquote>
+      <p>菜单初始化配置如下：</p>
+    </blockquote>
+    <script type="text/plain" class="language-js line-numbers">
+       $(function() {
+          BJUI.init({
+            menus: {
+              menusData: 'ajax/menus.json',
+
+              // 回调处理函数，若无需处理请设置为 null
+              callback: function (success, res) {
+                // success 返回 true则请求成功
+                // res 为返回内容，若返回非数据结构格式，请在此处处理后返回正确格式
+
+                // *必须返回正确的菜单格式
+                return []
+              }
+            },
+            ....
+          })
+        })
+
+    </script>
+
+    <blockquote class="point">
+      <p><strong>说明：</strong></p>
+      <ul>
+        <li>在框架初始化时需要设置菜单数据，支持json与接口两种方式，接口需要传递同json格式的内容</li>
+      </ul>
+    </blockquote>
+  </div>
+</div>

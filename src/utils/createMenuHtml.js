@@ -12,7 +12,7 @@ const createMenuHtml = (treeData, parentSelector = sidebarSelector) => {
     html += '<li class="sidebar-item">'
     let icon = ''
     if (val.icon && val.icon.length) {
-      icon = `<i class="align-middle" data-feather="${val.icon}"></i>`
+      icon = `<i class="sidebar-item__icon align-middle ${val.icon}"></i>`
     }
     if (val.children && val.children.length) {
       const id = getGUID()
@@ -30,11 +30,17 @@ const createMenuHtml = (treeData, parentSelector = sidebarSelector) => {
     } else {
       let path = ''
       if (val.path && val.path.length) {
-        let hash = trim(val.path, BaseUrl, 'left')
-        if (!startsWith(hash, '/')) {
-          hash = '/' + hash
+        let _attr = ''
+        if (val.iframe) {
+          _attr += `data-iframe="${val.iframe === 'inner' ? 'inner' : 'outer'}" `
+        } else {
+          let hash = trim(val.path, BaseUrl, 'left')
+          if (!startsWith(hash, '/')) {
+            hash = '/' + hash
+          }
+          _attr += `data-hash="#${hash}" `
         }
-        path = (`href="${val.path}" data-hash="#${hash}" `)
+        path = (`href="${val.path}" ${_attr}`)
       }
       html +=
         `<a class="sidebar-link" ${path}>

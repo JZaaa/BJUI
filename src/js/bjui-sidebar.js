@@ -79,7 +79,9 @@ import { getAppHashUrl } from '@/utils/url'
           url: menusData,
           dataType: 'json',
           success: (res) => {
-            callback && callback(true, res)
+            if (callback) {
+              res = callback(true, res) || res
+            }
             this._initMenu(res)
           },
           error: function() {
@@ -171,10 +173,18 @@ import { getAppHashUrl } from '@/utils/url'
       $a = this._changeMenuActive($a, url)
       if ($a && $a.length) {
         const navUrl = url || $a.attr('href')
+        const iframe = $a.data('iframe')
+        if (iframe === 'outer') {
+          window.open(navUrl, '_blank')
+          return
+        }
         $a.navtab({
-          url: navUrl
+          url: navUrl,
+          external: !!iframe
         })
-        this._changeHashRouter($a, navUrl)
+        if (!iframe) {
+          this._changeHashRouter($a, navUrl)
+        }
       }
     }
 

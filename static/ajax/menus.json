@@ -1,10 +1,12 @@
 [
   {
     "name": "首页",
-    "path": "views/home.html"
+    "path": "views/home.html",
+    "icon": "bi-house"
   },
   {
     "name": "框架介绍",
+    "icon": "bi-star",
     "children": [
       {
         "name": "页面结构",
@@ -15,8 +17,8 @@
         "path": "views/frame/init.html"
       },
       {
-        "name": "横向导航菜单",
-        "path": "views/frame/hnav.html"
+        "name": "导航菜单",
+        "path": "views/frame/nav.html"
       },
       {
         "name": "标签工作区(navtab)",
@@ -50,6 +52,7 @@
   },
   {
     "name": "组件",
+    "icon": "bi-layers",
     "children": [
       {
         "name": "按钮",
@@ -202,6 +205,7 @@
   },
   {
     "name": "Ajax",
+    "icon": "bi-globe",
     "children": [
       {
         "name": "回调函数",
@@ -227,6 +231,7 @@
   },
   {
     "name": "可选插件",
+    "icon": "bi-lightbulb",
     "children": [
       {
         "name": "zTree",
@@ -248,6 +253,22 @@
       {
         "name": "KindEditor",
         "path": "views/plugins/kindeditor/kindeditor.html"
+      }
+    ]
+  },
+  {
+    "name": "外部页面",
+    "icon": "bi-window",
+    "children": [
+      {
+        "name": "flatpickr文档(内嵌)",
+        "path": "https://flatpickr.js.org/",
+        "iframe": "inner"
+      },
+      {
+        "name": "项目github(外链)",
+        "path": "https://github.com/JZaaa/BJUI",
+        "iframe": "outer"
       }
     ]
   }

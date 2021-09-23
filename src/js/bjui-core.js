@@ -71,10 +71,7 @@
     statusCode: { ok: 200, error: 300, timeout: 301 },
     keys: { statusCode: 'statusCode', message: 'message' },
     ui: {
-      windowWidth: 0,
-      showSidebar: true, // 左侧导航栏锁定/隐藏
-      clientPaging: true, // 是否在客户端响应分页及排序参数
-      overwriteHomeTab: false // 当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
+      clientPaging: true // 是否在客户端响应分页及排序参数
     },
     debug: function(msg) {
       if (this.IS_DEBUG) {
@@ -109,7 +106,6 @@
       $.extend(BJUI.alertMsg, op.alertMsg)
       $.extend(BJUI.loginInfo, op.loginInfo)
       $.extend(BJUI.KindEditor, op.KindEditor)
-      $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
       $.extend(BJUI.menus, op.menus)
 
@@ -124,20 +120,12 @@
       $(window).resize(function() {
         var ww = $(this).width()
 
-        if (BJUI.ui.windowWidth) {
-          if (BJUI.ui.windowWidth > 600 && BJUI.ui.windowWidth < ww) { ww = BJUI.ui.windowWidth }
-        }
-
         BJUI.initLayout(ww)
         setTimeout(function() { $(this).trigger(BJUI.eventType.resizeGrid) }, 30)
       })
 
       setTimeout(function() {
         var ww = $(window).width()
-
-        if (BJUI.ui.windowWidth) {
-          if (BJUI.ui.windowWidth > 600 && BJUI.ui.windowWidth < ww) { ww = BJUI.ui.windowWidth }
-        }
 
         BJUI.initLayout(ww)
         $(document).initui()
