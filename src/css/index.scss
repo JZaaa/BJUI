@@ -4,7 +4,6 @@
 
 @import "./layout/bjui";
 @import "./layout/teal";
-@import "./layout/pagination";
 
 
 // 全局设置
@@ -22,6 +21,9 @@
 @import "./components/tabs";
 @import "./components/table";
 @import "./components/spinner";
+@import "./components/pagination";
+@import "./components/sidebar";
+
 
 // 组件样式
 @import "../components/checkbox/checkbox";
@@ -29,7 +31,6 @@
 
 // 核心样式
 @import "./layout/layout";
-@import "./layout/sidebar";
 
 
 // 插件样式

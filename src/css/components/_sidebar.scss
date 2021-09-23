@@ -29,6 +29,10 @@
     }
   }
 
+  .sidebar-item__icon {
+    font-size: 1.2rem;
+  }
+
   .sidebar-content {
     transition: $sidebar-transition;
     display: flex;
