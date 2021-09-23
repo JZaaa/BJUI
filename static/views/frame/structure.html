@@ -18,31 +18,58 @@
     </script>
     <h4>主页面结构(仅body部分)</h4>
     <blockquote>
-      <p>主页面由上（页头）、中左（导航菜单）、中右（工作区）、下（页脚）四部分组成，其中左侧导航菜单可收缩。结构如下：</p>
+      <p>主页面由导航菜单、工作区、header组成。结构如下：</p>
     </blockquote>
     <script type="text/plain" class="language-markup line-numbers">
-            <header id="bjui-header">
-      <!-- logo --><!-- 快捷菜单(消息、用户信息、切换皮肤) -->
-                <div id="bjui-hnav">
-      <!-- 横向菜单 -->
-                </div>
-            </header>
-            <div id="bjui-container" class="clearfix">
-                <div id="bjui-leftside">
-      <!-- 导航栏 -->
-                </div>
-                <div id="bjui-navtab" class="tabsPage">
-      <!-- 工作区(navtab) -->
-                </div>
+    <!-- 主框架 -->
+   <section class="bjui-app-layout">
+      <!-- 导航栏区 -->
+      <aside id="bjui-menu" class="bjui-sidebar bjui-sidebar__fixed">
+        <div class="sidebar-content">
+          <!-- Logo区 -->
+          <a class="sidebar-brand text-center" href="index.html">
+            <span class="align-middle">BJUI NEXT</span>
+          </a>
+          <!-- 菜单内容区 -->
+          <div id="bjui-menu-nav">
+          </div>
+
+        </div>
+      </aside>
+      <!-- 主要内容区 -->
+      <section id="bjui-app-layout-main" class="bjui-app-layout-main">
+        <!-- header区 -->
+        <div id="bjui-app-layout-header" class="bjui-app-layout-multi-header bjui-app-layout-multi-header--fixed">
+          <header class="bjui-app-layout-header">
+            <!-- header左侧 -->
+            <div class="bjui-app-layout-header-left">
+              <a class="bjui-sidebar-toggle">
+                <i class="bi-list"></i>
+              </a>
             </div>
-            <footer id="bjui-footer">
-      <!-- 页脚 -->
-            </footer>
+
+            <!-- header右侧 -->
+            <div class="bjui-app-layout-header-right">
+              <!-- header右侧具体内容 -->
+              <div class="bjui-app-layout-header-right__item dropdown">
+                ...
+              </div>
+            </div>
+          </header>
+        </div>
+        <!-- header占位区 -->
+        <div class="bjui-app-layout-multi-header-placeholder"></div>
+        <!-- 工作区(navtab) -->
+        <main id="bjui-app-layout-content" class="bjui-app-layout-content">
+
+        </main>
+      </section>
+  </section>
 
     </script>
     <h4>子页面（即页面片段[后面简称：页片]）标准结构</h4>
     <blockquote>
-      <p>页片通常由三部分组成，也可以只保留bjui-pageContent部分，或者自定义内容。一个标准的页片结构如下：</p>
+      <p>页片通常由三部分组成，也可以只保留bjui-pageContent部分。一个标准的页片结构如下：</p>
     </blockquote>
     <script type="text/plain" class="language-markup line-numbers">
             <div class="bjui-pageHeader">
@@ -59,8 +86,7 @@
     <blockquote class="point">
       <p><strong>注意1：</strong>在标准结构中，<code>bjui-pageHeader</code> 和 <code>bjui-pageFooter</code>
         部分是固定在页片中的，<code>bjui-pageContent</code>中的内容溢出会出现滚动条。</p>
-      <p><strong>注意2：</strong><code>bjui-pageContent</code>默认padding
-        10px，像表格之类的布局不需要padding的，需要再添加个Class: <code>tableContent</code>。</p>
+      <p><strong>注意2：</strong>仅存在<code>bjui-pageContent</code>，内容将会静态定位。添加<code>[class="full-page"]</code>将会使内容全屏，并切换为 absolute 定位</p>
     </blockquote>
   </div>
 </div>
