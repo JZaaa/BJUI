@@ -1,14 +1,9 @@
 <script type="text/javascript">
 //自动有效日期
-$(document).on('afterchange.bjui.datepicker', '.j_custom_issuedate', function(e, data) {
-    var pattern = 'yyyy-MM-dd'
-    var start   = end = data.value
+$(document).on('afterchange.bjui.datepicker', '.j_custom_issuedate', function(e, selectedDates, dateStr, instance) {
     var $end    = $(this).closest('tr').find('.j_custom_indate')
-
     if ($end.length) {
-        end.setFullYear(start.getFullYear() + 10)
-        end.setDate(start.getDate() - 1)
-        $end.val(end.formatDate(pattern))
+        $end.val(dateStr)
     }
 })
 //上传图片完成回调
