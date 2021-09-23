@@ -43,7 +43,6 @@ module.exports = {
         }
       }),
       new CssMinimizerPlugin()
-      // new OptimizeCSSAssetsPlugin({})
     ],
     runtimeChunk: false
   },

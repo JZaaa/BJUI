@@ -20,6 +20,13 @@
  */
 
 /*!
+ * B-JUI  v2.0 (http://b-jui.com)
+ * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
+ * Copyright 2014 K'naan (xknaan@163.com).
+ * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
+ */
+
+/*!
 * screenfull
 * v5.1.0 - 2020-12-24
 * (c) Sindre Sorhus; MIT License
@@ -39,5 +46,3 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-
-/*! js-cookie v3.0.1 | MIT */
