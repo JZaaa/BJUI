@@ -22,25 +22,6 @@ yarn watch
 yarn build
 ```
 
-## 项目结构
-
-```
-/
-├── .babelrc
-├── .editorconfig
-├── .eslintignore
-├── .eslintrc
-├── .gitignore
-├── .nvmrc
-├── README.md
-├── package.json
-├── postcss.config.js
-├── webpack.config.js
-├── src/
-└── dist/
-  
-```
-
 ## 当前进度
 
 ### 组件迁移与重构
@@ -63,7 +44,7 @@ yarn build
 - [x] 颜色选择器迁移
 - [x] 选项卡迁移优化
 - [x] 富文本编辑器迁移
-- [ ] 演示文档迁移
+- [x] 演示文档迁移
 
 ### 新增组件
 
