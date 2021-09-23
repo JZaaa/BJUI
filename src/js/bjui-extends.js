@@ -47,12 +47,10 @@
             if (json[BJUI.keys.statusCode] === BJUI.statusCode.error) {
               if (json[BJUI.keys.message]) $this.alertmsg('error', json[BJUI.keys.message])
               if (!$this.closest('.bjui-layout').length) {
-                if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
-                else $this.dialog('closeCurrent')
+                if ($this.hasClass('dialogContent')) $this.dialog('closeCurrent')
               }
             } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout) {
-              if ($this.closest('.bjui-dialog').length) $this.dialog('closeCurrent')
-              if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
+              if ($this.hasClass('dialogContent')) $this.dialog('closeCurrent')
 
               $('body').alertmsg('info', (json[BJUI.keys.message] || BJUI.regional.sessiontimeout))
               BJUI.loadLogin()
@@ -62,8 +60,7 @@
         error: function(xhr, ajaxOptions, thrownError) {
           $this.bjuiajax('ajaxError', xhr, ajaxOptions, thrownError)
           if (!$this.closest('.bjui-layout').length) {
-            if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
-            else $this.dialog('closeCurrent')
+            if ($this.hasClass('dialogContent')) $this.dialog('closeCurrent')
           }
           $this.trigger('bjui.ajaxError')
         },
@@ -149,7 +146,7 @@
       var $target
 
       if (this.closest('.bjui-layout').length) $target = this.closest('.bjui-layout')
-      else if (this.closest('.navtab-panel').length) $target = $.CurrentNavtab
+      else if (this.hasClass('navtabPage')) $target = $.CurrentNavtab
       else $target = $.CurrentDialog
 
       return $target
