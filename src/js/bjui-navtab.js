@@ -223,12 +223,6 @@ import { getAppHashUrl } from '@/utils/url'
     }
   }
 
-  Navtab.prototype.checkTimeout = function() {
-    var json = JSON.parse($currentPanel.html())
-
-    if (json && json[BJUI.keys.statusCode] === BJUI.statusCode.timeout) this.closeCurrentTab()
-  }
-
   Navtab.prototype.openExternal = function(url, $panel) {
     const ih = $panel.height() - 5
     $panel.Loading({

@@ -22,3 +22,8 @@
     top: -6px;
   }
 }
+.is-invalid {
+  +.dropdown-toggle {
+    border-color: var(--danger);
+  }
+}

@@ -110,7 +110,6 @@
       } else {
         op.callback = op.callback.toFunc()
       }
-      console.log(op)
       if (op.loadingmask) {
         $target = $this.getPageTarget()
         $target.trigger(BJUI.eventType.ajaxStatus)
@@ -144,9 +143,8 @@
     },
     getPageTarget: function() {
       var $target
-
       if (this.closest('.bjui-layout').length) $target = this.closest('.bjui-layout')
-      else if (this.hasClass('navtabPage')) $target = $.CurrentNavtab
+      else if (this.closest('.navtabPage')) $target = $.CurrentNavtab
       else $target = $.CurrentDialog
 
       return $target

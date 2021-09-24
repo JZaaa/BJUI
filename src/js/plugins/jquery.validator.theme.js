@@ -165,11 +165,23 @@
               .find('> .n-msg').width(fW - (eL - fL) - offLeft - 8 - 30)
           }
           if ($wrap.hasClass('n-error')) {
-            $icon.removeClass('n-icon').addClass('bi-x-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' })
+            $icon.removeClass('n-icon').addClass('bi-x-circle').css({
+              top: -3,
+              'font-size': '14px',
+              'vertical-align': 'middle'
+            })
           } else if ($wrap.hasClass('n-tip')) {
-            $icon.removeClass('n-icon').addClass('bi-info-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' })
+            $icon.removeClass('n-icon').addClass('bi-info-circle').css({
+              top: -3,
+              'font-size': '14px',
+              'vertical-align': 'middle'
+            })
           } else if ($wrap.hasClass('n-ok')) {
-            $icon.removeClass('n-icon').addClass('bi-check-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' })
+            $icon.removeClass('n-icon').addClass('bi-check-circle').css({
+              top: -3,
+              'font-size': '14px',
+              'vertical-align': 'middle'
+            })
           }
           if ($el.is(':animated')) return
           if (type === 'error') {
@@ -224,7 +236,25 @@
                   .find('> .n-msg').width(fW - (eL - fL) - offLeft - 8 - 30)
           }*/
 
-          if ($wrap.hasClass('n-error')) { $icon.removeClass('n-icon').addClass('glyphicon glyphicon-remove-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' }) } else if ($wrap.hasClass('n-tip')) { $icon.removeClass('n-icon').addClass('glyphicon glyphicon-info-sign').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' }) } else if ($wrap.hasClass('n-ok')) { $icon.removeClass('n-icon').addClass('glyphicon glyphicon-ok-circle').css({ top: -3, 'font-size': '14px', 'vertical-align': 'middle' }) }
+          if ($wrap.hasClass('n-error')) {
+            $icon.removeClass('n-icon').addClass('glyphicon glyphicon-remove-circle').css({
+              top: -3,
+              'font-size': '14px',
+              'vertical-align': 'middle'
+            })
+          } else if ($wrap.hasClass('n-tip')) {
+            $icon.removeClass('n-icon').addClass('glyphicon glyphicon-info-sign').css({
+              top: -3,
+              'font-size': '14px',
+              'vertical-align': 'middle'
+            })
+          } else if ($wrap.hasClass('n-ok')) {
+            $icon.removeClass('n-icon').addClass('glyphicon glyphicon-ok-circle').css({
+              top: -3,
+              'font-size': '14px',
+              'vertical-align': 'middle'
+            })
+          }
           if ($el.is(':animated')) return
           if (type === 'error') {
             $el.css({
@@ -255,12 +285,47 @@
             $msgbox.hide()
           })
         }
+      },
+      'bootstrap': {
+        msgClass: 'invalid-feedback',
+        invalidClass: 'is-invalid',
+        target: (elem) => {
+          let $msgbox
+          const $el = $(elem)
+          let $content = $el.closest('.bj-form-item-content')
+          if (!$content.length) {
+            $content = $el.parent()
+          }
+          $msgbox = $content.find('.msg-box')
+          if (!$msgbox.length) {
+            $msgbox = $('<div class="msg-box"></div>').appendTo($content)
+          }
+          return $msgbox
+        },
+        msgMaker: (opt) => {
+          return opt.msg
+        },
+        msgShow: ($msgbox) => {
+          $msgbox.delay(100).show().stop().animate({
+            opacity: 1
+          }, 200, function() {
+            $msgbox.show()
+          })
+        },
+        msgHide: ($msgbox) => {
+          $msgbox.stop().delay(100).show().animate({
+            opacity: 0
+          }, 200, function() {
+            $msgbox.hide()
+          })
+        }
       }
     })
 
     $.validator.config({
-      theme: 'red_right_effect',
-      formClass: 'n-red'
+      theme: 'bootstrap',
+      formClass: 'n-red',
+      msgWrapper: 'div'
     })
   }
 }(jQuery))

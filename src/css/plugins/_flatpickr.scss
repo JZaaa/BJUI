@@ -61,4 +61,9 @@
   }
 
 }
+.flatpickr-input {
+  &.is-invalid {
+    background-image: none;
+  }
+}
 

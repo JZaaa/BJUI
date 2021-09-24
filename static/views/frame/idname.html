@@ -7,5 +7,12 @@
       <p>或<code>$.CurrentNavtab.find('#dom-id')</code>，在当前标签工作区中查找指定ID的元素。</p>
       <p> 或 <code>$.CurrentDialog.find('#dom-id')</code>，在当前弹窗中查找指定ID的元素。</p>
     </blockquote>
+    <p> 若不确定当前内容是弹窗还是工作区中，可用以下方法</p>
+    <script type="text/plain" class="language-js line-numbers">
+       $(document).one(BJUI.eventType.initUI, function(e) {
+        var $box = $(e.target)
+        $box.findFilter('test')
+      })
+    </script>
   </div>
 </div>

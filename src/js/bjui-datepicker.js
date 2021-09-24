@@ -57,6 +57,9 @@
       }
       if (!op.onChange) {
         op.onChange = (selectedDates, dateStr, instance) => {
+          if ($.validator) {
+            $this.trigger('validate')
+          }
           $this.trigger('afterchange.bjui.datepicker', [selectedDates, dateStr, instance])
         }
       }

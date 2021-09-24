@@ -1,0 +1,103 @@
+
+// 80~230 px label大小
+@for $i from 80 through 230 {
+  // 能被5除尽的数
+  @if $i % 5 == 0 {
+    .bj-form-label-w#{$i} {
+      .bj-form-item-label {
+        width: $i + px !important;
+      }
+    }
+  }
+}
+
+.bj-form-item {
+  margin-bottom: 18px;
+  display: flex;
+
+}
+.bj-form-item-label {
+  flex: 0 0 auto;
+  text-align: right;
+  line-height: 40px;
+  padding: 0 12px 0 0;
+  box-sizing: border-box;
+  margin-bottom: 0;
+
+  &.is-required {
+    &::before {
+      content: "*";
+      color: var(--danger);
+      margin-right: 4px;
+    }
+  }
+}
+
+.bj-form-item-content {
+  flex: 1;
+  line-height: 40px;
+  position: relative;
+  font-size: 14px;
+  min-width: 0;
+
+  &.textarea {
+    padding-top: 6px;
+    line-height: 1.5;
+  }
+
+  input, select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    vertical-align: top;
+    width: 100%;
+  }
+
+  .msg-box {
+    opacity: 0;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    &.invalid-feedback {
+      display: block;
+    }
+  }
+}
+
+// label-left 布局
+.bj-form-label-left {
+  .bj-form-item-label {
+    text-align: left;
+  }
+}
+// label-top 布局
+.bj-form-label-top {
+  .bj-form-item {
+    display: block;
+  }
+  .bj-form-item-label {
+    line-height: 1.5;
+    display: block;
+    text-align: left;
+    padding: 0;
+    width: auto!important;
+  }
+}
+
+// 行内表单
+.bj-form {
+  &-inline {
+    .bj-form-item {
+      display: inline-flex;
+      margin-right: 10px;
+    }
+  }
+}
