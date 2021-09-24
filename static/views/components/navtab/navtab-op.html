@@ -84,18 +84,6 @@
                     <td>null</td>
                     <td>[可选] navtab加载完成后的事件回调，回调函数的参数<code>$navtab</code>为该navtab内容区的jQuery对象。</td>
                 </tr>
-                <tr>
-                    <td>beforeClose</td>
-                    <td>function($navtab)</td>
-                    <td>null</td>
-                    <td>[可选] <b>返回值: boolean</b>。 navtab关闭前的事件回调，返回true则关闭，返回false不关闭。</td>
-                </tr>
-                <tr>
-                    <td>onClose</td>
-                    <td>function()</td>
-                    <td>null</td>
-                    <td>[可选] navtab关闭后的事件回调。</td>
-                </tr>
             </tbody>
         </table>
         <h4>方法</h4>
@@ -110,52 +98,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>switchTab(tabid)</td>
+                    <td>refresh()</td>
                     <td>string</td>
-                    <td>标签ID</td>
-                    <td>切换到某个标签。</td>
-                </tr>
-                <tr>
-                    <td>refresh(tabid)</td>
-                    <td>string</td>
-                    <td>标签ID，<code>ID为空</code>则刷新当前标签</td>
-                    <td>刷新某个标签。</td>
-                </tr>
-                <tr>
-                    <td>reloadFlag(tabids)</td>
-                    <td>string</td>
-                    <td>一个或多个标签ID，多个ID以<code>,</code>分隔</td>
-                    <td>为某(几)个标签设定重载标记(当切换到该标签时重新载入)。</td>
+                    <td>刷新当前标签</td>
+                    <td>刷新当前标签。</td>
                 </tr>
                 <tr>
                     <td>reload(options)</td>
                     <td>object</td>
                     <td>同navtab默认参数</td>
-                    <td>重新载入某个标签，如果未指定ID，则默认重载入当前标签。</td>
-                </tr>
-                <tr>
-                    <td>closeTab(tabid)</td>
-                    <td>string</td>
-                    <td>标签ID</td>
-                    <td>关闭某个标签。</td>
-                </tr>
-                <tr>
-                    <td>closeCurrentTab([tabid])</td>
-                    <td>string</td>
-                    <td>标签ID，可选。</td>
-                    <td>关闭当前标签。</td>
-                </tr>
-                <tr>
-                    <td>closeAllTab()</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>关闭所有标签。</td>
-                </tr>
-                <tr>
-                    <td> closeOtherTab()</td>
-                    <td>--</td>
-                    <td><span class="label label-success">1.1.7+</span></td>
-                    <td>关闭所有非活动标签。</td>
+                    <td>重新载入，则默认重载入当前标签。</td>
                 </tr>
             </tbody>
         </table>

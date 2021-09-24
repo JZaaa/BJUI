@@ -24,7 +24,7 @@ import { getAppHashUrl } from '@/utils/url'
   // NAVTAB GLOBAL ELEMENTS
   // ======================
 
-  var $currentPanel, $box
+  var $box
   var autorefreshTimer
 
   $(function() {
@@ -55,9 +55,7 @@ import { getAppHashUrl } from '@/utils/url'
     loadingmask: true,
     fresh: false,
     autorefresh: false,
-    onLoad: null,
-    beforeClose: null,
-    onClose: null
+    onLoad: null
   }
 
   Navtab.prototype.TOOLS = function() {
