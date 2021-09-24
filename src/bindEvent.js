@@ -28,13 +28,11 @@ import { menuContentSelector, appSelector } from '@/utils/static'
     if (width < 900) {
       if (!menuCollapsed && !$(appSelector).hasClass('menu-collapsed')) {
         menuCollapsed = true
-        console.log(1)
         $(menuContentSelector).sidebar('toggleCollapse')
       }
     } else {
       if (menuCollapsed && $(appSelector).hasClass('menu-collapsed')) {
         menuCollapsed = false
-        console.log(2)
         $(menuContentSelector).sidebar('toggleCollapse')
       }
     }
