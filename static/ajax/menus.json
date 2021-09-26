@@ -234,6 +234,16 @@
     ]
   },
   {
+    "name": "功能",
+    "icon": "bi-bounding-box-circles",
+    "children": [
+      {
+        "name": "xe-utils",
+        "path": "views/feat/xe-utils/xe-utils.html"
+      }
+    ]
+  },
+  {
     "name": "可选插件",
     "icon": "bi-lightbulb",
     "children": [
@@ -272,6 +282,11 @@
       {
         "name": "项目github(外链)",
         "path": "https://github.com/JZaaa/BJUI",
+        "iframe": "outer"
+      },
+      {
+        "name": "xe-utils(外链)",
+        "path": "https://x-extends.gitee.io/xe-utils",
         "iframe": "outer"
       }
     ]

@@ -129,71 +129,12 @@ fieldset{border-color:#c3ced5;}
 #bjui-contextmenu li.disabled:hover{cursor:default; background-color:transparent;}
 #bjui-contextmenu li.diver{ border-left:none; border-right:none;}
 #bjui-contextmenu li.diver:hover{background-color:transparent !important; cursor:default;}
-/* Calendar */
-#bjui-calendar{
-  border:1px solid #c3ced5;
-  @include box-shadow($shadow-1);
-  > .main {
-    > a.close {
-      color:#c3ced5;
-      &:hover {
-        color:#ff0000;
-      }
-    }
-
-    > .head {
-    }
-
-    > .body {
-
-      >.days > dd {
-        &.slt {
-          background:#d9e7f2; border:1px solid #c3ced5;
-        }
-
-        &:hover {
-          border:1px solid #c3ced5;
-        }
-        &.other {
-          color:#c3ced5;
-        }
-      }
-
-    }
-
-    > .foot {
-      background:#f3f8fc;
-
-      > .time {
-        td {
-          border:1px solid #c3ced5;
-        }
-        .up:hover,.down:hover {
-          color:#fff; background:#222;
-        }
-      }
-    }
-
-    >.tm > ul {
-      background-color:#f3f8fc; border:1px solid #c3ced5;
-
-      > li:hover {
-        background:#d9e7f2;
-      }
-    }
-  }
-}
 /* Lookup */
 .bjui-lookup:hover{color:#fff; background:#222;}
 /* Upload */
 .bjui-upload > .queue > .item{background-color:#f3f8fc;}
 
 /* ------- plugins ------- */
-/* iCheck */
-.icheckbox_minimal-purple,
-//.iradio_minimal-purple{background:url(purple.png) no-repeat;}
-.icheckbox_minimal-purple{background-position:0 0;} .icheckbox_minimal-purple.hover{background-position:-20px 0;} .icheckbox_minimal-purple.checked{background-position:-40px 0;} .icheckbox_minimal-purple.disabled{background-position:-60px 0; cursor:default;} .icheckbox_minimal-purple.checked.disabled{background-position:-80px 0;}
-.iradio_minimal-purple{background-position:-100px 0;} .iradio_minimal-purple.hover{background-position:-120px 0;} .iradio_minimal-purple.checked{background-position:-140px 0;} .iradio_minimal-purple.disabled{background-position:-160px 0; cursor:default;} .iradio_minimal-purple.checked.disabled{background-position:-180px 0;}
 /* zTree */
 .ztree li a.faicon{color:#222;}
 .ztree li a:hover{color:$coreColor;}

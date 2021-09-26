@@ -222,39 +222,6 @@ label.x150{display:inline-block; width:150px; padding-right:5px;}
 #bjui-contextmenu li.diver{margin:4px 0; height:0px; border-top:1px solid #bbb; border-bottom:1px solid #fff;}
 #bjui-contextmenu li.diver:hover{background:transparent !important; cursor:default;}
 #bjui-contextmenuShadow{position:absolute; z-index:999; display:none; opacity:0.2; filter:alpha(opacity=20); background-color:#000; border-radius:4px;}
-/* Calendar */
-#bjui-calendar{position:absolute; z-index:1001; display:none; margin:0; width:208px; border-radius:2px;}
-#bjui-calendar > .main{position:relative; margin:auto; padding:2px; text-align:center; background:#ffffff;}
-#bjui-calendar > .main > a.close{position:absolute; top:-12px; right:-10px; float:none; width:20px; height:20px; font-size:20px; opacity:1; filter:alpha(opacity=100);}
-#bjui-calendar > .main > .head > table .prev,
-#bjui-calendar > .main > .head > table .next{display:block; width:30px; height:19px; font-size:16px; text-align:center;}
-#bjui-calendar > .main > .body{margin:2px 0; padding:2px;}
-#bjui-calendar > .main > .foot{padding:2px; text-align:right;}
-#bjui-calendar > .main > .foot .btn{padding:2px 10px;}
-#bjui-calendar > .main > .body > dl{clear:both;}
-#bjui-calendar > .main > .body > dl > dt,
-#bjui-calendar > .main > .body > dl > dd{float:left; width:28px; height:20px; overflow:hidden; line-height:20px; border:1px solid #fff; cursor:pointer;}
-#bjui-calendar > .main > .body > dl > dt{margin-top:4px; font-weight:bold; color:#666666; border-bottom:1px #EEE solid;}
-#bjui-calendar > .main > .body > .days > dd.other{color:#f7f7f7;}
-#bjui-calendar > .main > .body > .days > dd.disabled{color:#FAFAFA !important; background:#ddd;}
-#bjui-calendar > .main > .foot > .time{float:left; display:none; background-color:#fff; border-collapse:collapse;}
-#bjui-calendar > .main > .foot > .time td{line-height:21px; vertical-align:center;}
-#bjui-calendar > .main > .foot > .time .hh,
-#bjui-calendar > .main > .foot > .time .mm,
-#bjui-calendar > .main > .foot > .time .ss{padding:0; width:18px; height:21px; font-size:12px; text-align:center; border:none;}
-#bjui-calendar > .main > .foot > .time .form-control{-webkit-box-shadow:none; box-shadow:none;}
-#bjui-calendar > .main > .foot > .time .up,
-#bjui-calendar > .main > .foot > .time .down{height:11px; font-size:8pt; line-height:100%; cursor:pointer;}
-#bjui-calendar > .main > .foot > .time .slt{background:#EEE;}
-#bjui-calendar > .main > .tm{text-align:center;}
-#bjui-calendar > .main > .tm > .hh,
-#bjui-calendar > .main > .tm > .mm,
-#bjui-calendar > .main > .tm > .ss{position:absolute; left:4px; bottom:34px; display:none; width:124px;}
-#bjui-calendar > .main > .tm > .hh > li,
-#bjui-calendar > .main > .tm > .mm > li,
-#bjui-calendar > .main > .tm > .ss > li{float:left; width:20px; line-height:21px; cursor:pointer;}
-#bjui-calendar > .main.nodate > .head,
-#bjui-calendar > .main.nodate > .body{display:none;}
 /* Upload */
 .bjui-upload > .bjui-upload-select{font-size:12px; line-height:1.486;}
 .bjui-upload > .queue{display:none; padding:10px; width:100%;}
