@@ -186,6 +186,10 @@
         ]
       },
       {
+        "name": "Loading",
+        "path": "views/components/loading/loading.html"
+      },
+      {
         "name": "分页组件",
         "path": "views/components/table/op/paging.html"
       },

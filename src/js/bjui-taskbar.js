@@ -3,18 +3,8 @@
  * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
  * Copyright 2014 K'naan (xknaan@163.com).
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
+ * 普通弹窗任务栏
  */
-
-/* ========================================================================
- * B-JUI: bjui-taskbar.js  v1.2
- * reference: bjui-dialog.js
- * @author K'naan (xknaan@163.com)
- * -- Modified from dwz.taskBar.js (author:Roger Wu)
- * http://git.oschina.net/xknaan/B-JUI/blob/master/BJUI/js/bjui-taskbar.js
- * ========================================================================
- * Copyright 2014 K'naan.
- * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
- * ======================================================================== */
 
 import { appSelector } from '@/utils/static'
 

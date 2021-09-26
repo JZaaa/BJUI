@@ -1,4 +1,26 @@
 #bjui-taskbar {
+  background: $coreColor;
+
+  .taskbarLeft, .taskbarRight {
+    background: #f3f8fc;
+  }
+
+  .taskbarLeft:hover, .taskbarRight:hover {
+    color: #fff;
+    background: #222;
+  }
+
+  .taskbarLeft.disabled, .taskbarRight.disabled {
+    color: #999;
+    background: #f3f8fc;
+  }
+
+  .taskbarLeft.disabled:hover, .taskbarRight.disabled:hover {
+    color: #999;
+    background: #f3f8fc;
+  }
+
+
   position: fixed;
   bottom: 0;
   z-index: 30;
@@ -22,6 +44,7 @@
       position: absolute;
       width: 10000px;
 
+
       > li {
         position: relative;
         float: left;
@@ -30,8 +53,10 @@
         height: 20px;
         border-radius: 3px;
         cursor: pointer;
+        background: #f3f8fc;
 
         > .taskbutton {
+          color: #222;
           float: left;
           padding: 0 25px 0 5px;
           height: 20px;
@@ -56,6 +81,19 @@
           font-size: 14px;
           opacity: 1;
           filter: alpha(opacity=100);
+          color: #c3ced5;
+
+          :hover {
+            color: #ff0000;
+          }
+        }
+
+        &.selected, &:hover {
+          background: #d9e7f2;
+
+          .taskbutton {
+            color: $coreColor;
+          }
         }
 
       }
@@ -93,7 +131,7 @@
 }
 
 .menu-collapsed {
-  #bjui-taskbar{
+  #bjui-taskbar {
     left: 0;
   }
 }

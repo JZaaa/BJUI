@@ -1,89 +1,9 @@
 
 @import "../mixin/shadow";
 
-body{
-  background:#fff;
-  -webkit-transition: background 1s cubic-bezier(.075, .82, .165, 1);
-  transition: background 1s cubic-bezier(.075, .82, .165, 1);
-}
 a{text-decoration:none;}
 a:hover{text-decoration:underline;}
 fieldset{border-color:#c3ced5;}
-
-/* 滚动条 */
-::-webkit-scrollbar {
-  height: 10px;
-  width: 10px;
-}
-
-::-webkit-scrollbar-button {
-  height: 0;
-  width: 0
-}
-
-::-webkit-scrollbar-button:start:decrement,
-::-webkit-scrollbar-button:end:increment {
-  display: block
-}
-
-::-webkit-scrollbar-button:vertical:start:increment,
-::-webkit-scrollbar-button:vertical:end:decrement {
-  display: none
-}
-
-::-webkit-scrollbar-track:vertical,
-::-webkit-scrollbar-track:horizontal,
-::-webkit-scrollbar-thumb:vertical,
-::-webkit-scrollbar-thumb:horizontal,
-::-webkit-scrollbar-track:vertical,
-::-webkit-scrollbar-track:horizontal,
-::-webkit-scrollbar-thumb:vertical,
-::-webkit-scrollbar-thumb:horizontal {
-  border-style: solid;
-  border-color: transparent
-}
-
-::-webkit-scrollbar-track:vertical::-webkit-scrollbar-track:horizontal {
-  background-clip: padding-box;
-  background-color: #fff;
-}
-
-::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
-  background-clip: padding-box;
-  background-color: rgba(0, 0, 0, .2);
-  border-radius: 5px;
-  min-height: 28px;
-  padding-top: 100px
-}
-
-::-webkit-scrollbar-thumb:hover {
-  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .25);
-  background-color: rgba(0, 0, 0, .4)
-}
-
-::-webkit-scrollbar-thumb:active {
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .35);
-  background-color: rgba(0, 0, 0, .5)
-}
-
-::-webkit-scrollbar-track:vertical,
-::-webkit-scrollbar-track:horizontal,
-::-webkit-scrollbar-thumb:vertical,
-::-webkit-scrollbar-thumb:horizontal {
-  border-width: 0;
-}
-
-::-webkit-scrollbar-track:hover {
-  -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
-  background-color: rgba(0, 0, 0, .05)
-}
-
-::-webkit-scrollbar-track:active {
-  -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, .14), inset -1px -1px 0 rgba(0, 0, 0, .07);
-  background-color: rgba(0, 0, 0, .05)
-}
-
 
 /* ------------- bootstrap ------------- */
 .btn-default {
@@ -169,67 +89,8 @@ fieldset{border-color:#c3ced5;}
   }
 }
 
-/* Pages */
-.bjui-pageHeader{
-  .bjui-moreSearch{
-    background: #fff;
-  }
-  .showMoreSearch:hover{color:$coreColor;}
-}
-.bjui-pageContent {
-  padding-top: 5px;
-}
-.bjui-pageFooter > .pagination-box > ul > .selected > a,
-.bjui-pageFooter > .pagination-box > ul > .selected > span{color:#ffffff; background-color:$coreColor; border-color:$coreColor;}
-/* MaskProgress */
-.bjui-maskProgress{color:#222; background:#fafafa; border:2px solid #c3ced5;}
-/* 遮罩 */
-.bjui-dialog-wrap {
-  .bjui-dialogBackground {
-    background: rgba(0, 0, 0, 0.5);
-  }
-}
-
 /* Dialog resizable */
 .bjui-resizable{border-color:#c3ced5; background:#f3f8fc;}
-/* Taskbar */
-
-#bjui-taskbar {
-  background:$coreColor;
-
-  > .taskbarContent {
-    > ul > li {
-      background:#f3f8fc;
-
-      > .taskbutton {
-        color:#222;
-      }
-
-      &.selected, &:hover {
-        background:#d9e7f2;
-
-        .taskbutton {
-          color:$coreColor;
-        }
-      }
-
-      .close {
-        color:#c3ced5;
-
-        :hover {
-          color:#ff0000;
-        }
-      }
-
-    }
-  }
-
-  .taskbarLeft, .taskbarRight{background:#f3f8fc;}
-  .taskbarLeft:hover, .taskbarRight:hover{color:#fff; background:#222;}
-  .taskbarLeft.disabled,  .taskbarRight.disabled{color:#999; background:#f3f8fc;}
-  .taskbarLeft.disabled:hover,.taskbarRight.disabled:hover {color:#999; background:#f3f8fc;}
-}
-
 /* Tablefixed */
 .bjui-tablefixed > .resizeMarker,
 .bjui-tablefixed > .resizeProxy{background:#c3ced5;}

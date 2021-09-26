@@ -1,0 +1,70 @@
+<div class="bjui-pageContent">
+  <div class="bj-p-20 bg-white">
+    <h3 class="page-header">Loading组件示例</h3>
+  </div>
+  <div class="bj-m-t-10 bj-p-20 bg-white">
+    <button type="button" data-filter="body" class="btn btn-primary">全屏Loading</button>
+    <button type="button" data-filter="navtab" class="btn btn-primary">NavTab Loading</button>
+    <button type="button" data-filter="loadingBoxBtn" data-action="open" class="btn btn-primary">open开启指定容器Loading</button>
+    <button type="button" data-filter="loadingBoxBtn" data-action="close" class="btn btn-primary">close关闭指定容器Loading</button>
+    <button type="button" data-filter="loadingBoxBtn" data-action="dispose" class="btn btn-primary">dispose销毁指定容器Loading</button>
+  </div>
+
+  <div class="bj-m-10 bj-p-20 bg-white position-relative" data-filter="loadingBox">
+    加载容器，必须使用 relative 定位
+  </div>
+
+  <script type="text/plain" class="language-js line-numbers">
+    $(function() {
+      var loadingFunc = function($target) {
+        $target.Loading()
+        setTimeout(() => {
+          $target.Loading('close')
+        }, 2000)
+      }
+
+      $.CurrentNavtab.findFilter('body', 'button').click(function() {
+        // 全屏加载
+        loadingFunc($('body'))
+      })
+
+      $.CurrentNavtab.findFilter('navtab', 'button').click(function() {
+        // 当前navtab加载
+        loadingFunc($.CurrentNavtab)
+      })
+
+      $.CurrentNavtab.findFilter('loadingBoxBtn', 'button').click(function() {
+        var action = $(this).data('action') // open (打开) | close (关闭) | dispose (销毁)
+        // 指定容器加载，指定容器必须为 relative, 并设置Loading组件absolute参数为true
+        $.CurrentNavtab.findFilter('loadingBox').Loading({
+          absolute: true
+        }, action)
+      })
+    })
+  </script>
+</div>
+<script>
+  $(function() {
+    var loadingFunc = function($target) {
+      $target.Loading()
+      setTimeout(() => {
+        $target.Loading('close')
+      }, 2000)
+    }
+
+    $.CurrentNavtab.findFilter('body', 'button').click(function() {
+      loadingFunc($('body'))
+    })
+
+    $.CurrentNavtab.findFilter('navtab', 'button').click(function() {
+      loadingFunc($.CurrentNavtab)
+    })
+
+    $.CurrentNavtab.findFilter('loadingBoxBtn', 'button').click(function() {
+      var action = $(this).data('action')
+      $.CurrentNavtab.findFilter('loadingBox').Loading({
+        absolute: true
+      }, action)
+    })
+  })
+</script>

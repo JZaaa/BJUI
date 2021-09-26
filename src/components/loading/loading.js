@@ -24,14 +24,14 @@ class Loading extends BaseComponents {
 
   open() {
     const node = this._getNode()
-    if (!node) {
+    if (!node.length) {
       this._$element.prepend(this._$dom)
     }
   }
 
   close() {
     const node = this._getNode()
-    if (node) {
+    if (node.length) {
       node.remove()
     }
   }
@@ -49,7 +49,7 @@ class Loading extends BaseComponents {
   }
 
   _getNode() {
-    return this._element.querySelector('.bj-full-loading')
+    return this._$element.children('.bj-full-loading')
   }
 
   _createNode() {

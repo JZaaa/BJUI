@@ -1,3 +1,4 @@
+
 .bjui-pageFooter {
   .pagination {
     //justify-content: flex-end;
@@ -33,30 +34,37 @@
       }
     }
   }
-
-  > .pagination-box  > ul > li {
-    > a, > span {
-      position:relative;
-      float:left;
-      margin-left:-1px;
-      padding:3px 8px;
-      line-height:1.428571429;
-      text-decoration:none;
-    }
-
-    > .p-input {
-      padding:1px;
-
-      >.input-sm-pages{
-        padding:0;
-        height:21px;
+  > .pagination-box  > ul {
+    .selected {
+      > a , > span {
+        color:#ffffff; background-color:$coreColor; border-color:$coreColor;
       }
     }
 
-    &.jumpto .goto {
-      margin-left:-1px;
-      height:25px;
-      line-height:17px;
+    > li {
+      > a, > span {
+        position:relative;
+        float:left;
+        margin-left:-1px;
+        padding:3px 8px;
+        line-height:1.428571429;
+        text-decoration:none;
+      }
+
+      > .p-input {
+        padding:1px;
+
+        >.input-sm-pages{
+          padding:0;
+          height:21px;
+        }
+      }
+
+      &.jumpto .goto {
+        margin-left:-1px;
+        height:25px;
+        line-height:17px;
+      }
     }
   }
 }

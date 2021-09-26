@@ -195,7 +195,6 @@ $layout-header-height: 50px;
   padding: 10px 5px;
   overflow: auto;
 }
-
 .bjui-searchBar > .showMoreSearch {
   padding: 0 3px;
   font-size: 22px;
@@ -217,8 +216,7 @@ $layout-header-height: 50px;
   display: none;
   padding: 5px;
   width: 100%;
-  background: #f7f7f7;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+  background: #fff;
 }
 
 .bjui-pageHeader .bjui-moreSearch label {
@@ -253,4 +251,9 @@ $layout-header-height: 50px;
   }
 }
 
-
+/* 遮罩 */
+.bjui-dialog-wrap {
+  .bjui-dialogBackground {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
