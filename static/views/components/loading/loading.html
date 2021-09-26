@@ -11,7 +11,7 @@
   </div>
 
   <div class="bj-m-10 bj-p-20 bg-white position-relative" data-filter="loadingBox">
-    加载容器，必须使用 relative 定位
+    加载容器，必须使用 relative|absolute 定位
   </div>
 
   <script type="text/plain" class="language-js line-numbers">
@@ -35,7 +35,7 @@
 
       $.CurrentNavtab.findFilter('loadingBoxBtn', 'button').click(function() {
         var action = $(this).data('action') // open (打开) | close (关闭) | dispose (销毁)
-        // 指定容器加载，指定容器必须为 relative, 并设置Loading组件absolute参数为true
+        // 指定容器加载，指定容器必须为 relative|absolute, 并设置Loading组件absolute参数为true
         $.CurrentNavtab.findFilter('loadingBox').Loading({
           absolute: true
         }, action)
