@@ -1,8 +1,5 @@
 # BJUI-next
 
-- 开发中请勿使用
-
-
 ## 开始
 
 ### 构建
@@ -27,11 +24,23 @@ yarn build
 yarn build:all
 ```
 
+## 演示文档
+
+- 运行`yarn dev`通过 webpack-dev-server 预览
+- 自行搭建服务器，通过http服务访问`static`文件夹
+
 ## 使用
 
-- 基础模板可复制`static`文件夹下的`js、css、plugins、index.html`使用
+- 基础模板可复制`static`文件夹下的`index.html`进行修改
+- 相关资源可复制`dist`文件夹
 
-## 当前进度
+## 其他
+
+### 浏览器兼容
+
+- 不支持IE浏览器
+
+## 进度
 
 ### 组件迁移与重构
 
