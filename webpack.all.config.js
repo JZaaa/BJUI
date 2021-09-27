@@ -70,7 +70,7 @@ module.exports = {
         onEnd: [
           {
             move: [
-              { source: './static/plugins/kindeditor', destination: './static/kindeditor' }
+              { source: './static/plugins/kindeditor', destination: './dist/plugins/kindeditor' }
             ]
           },
           {
@@ -80,9 +80,6 @@ module.exports = {
               { source: './dist/assets', destination: './static/assets' },
               { source: './dist/js', destination: './static/js' },
               { source: './dist/plugins', destination: './static/plugins' }
-            ],
-            move: [
-              { source: './static/kindeditor', destination: './static/plugins/kindeditor' }
             ]
           }
         ]
