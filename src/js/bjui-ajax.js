@@ -140,7 +140,6 @@ import { navTabContainerSelect } from '@/utils/static'
   }
 
   Bjuiajax.prototype.ajaxError = function(xhr, ajaxOptions, thrownError) {
-    BJUI.removeProgress()
     var msg = xhr.responseText.trim()
 
     if (msg.startsWith('{')) {
