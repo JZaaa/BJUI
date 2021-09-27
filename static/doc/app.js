@@ -1,7 +1,7 @@
 (function() {
   $(document).on(BJUI.eventType.initUI, function(e) {
 
-    const wrapPrismFixed = ($element) => {
+    const wrapPrismFixed = function($element) {
       $element.wrap('<div class="bj-doc-code-grid"><div class="bj-doc--code-content"></div></div>')
     }
     var $box = $(e.target)
