@@ -7,6 +7,7 @@ import './plugins/flatpickr'
 
 import './components/checkbox'
 import './components/loading'
+import './components/toast'
 
 import './bjui'
 import './extends'

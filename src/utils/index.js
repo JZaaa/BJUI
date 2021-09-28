@@ -88,19 +88,29 @@ const onDOMContentLoaded = callback => {
 /**
  * 注册为jQuery方法
  * @param plugin
+ * @param noFn 是否成员函数, 默认为成员函数
+ * @param customName 自定义name
  */
-const defineJQueryPlugin = plugin => {
+const defineJQueryPlugin = (plugin, noFn, customName) => {
   onDOMContentLoaded(() => {
     const $ = window.jQuery
     /* istanbul ignore if */
     if ($) {
-      const name = plugin.NAME.replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
-      const JQUERY_NO_CONFLICT = $.fn[name]
-      $.fn[name] = plugin.jQueryInterface
-      $.fn[name].Constructor = plugin
-      $.fn[name].noConflict = () => {
-        $.fn[name] = JQUERY_NO_CONFLICT
-        return plugin.jQueryInterface
+      const name = customName || plugin.NAME.replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
+      if (noFn) {
+        if (!$[name]) {
+          $[name] = plugin.jQueryInterface
+        } else {
+          console.error(`$${name}已经被定义`)
+        }
+      } else {
+        const JQUERY_NO_CONFLICT = $.fn[name]
+        $.fn[name] = plugin.jQueryInterface
+        $.fn[name].Constructor = plugin
+        $.fn[name].noConflict = () => {
+          $.fn[name] = JQUERY_NO_CONFLICT
+          return plugin.jQueryInterface
+        }
       }
     }
   })

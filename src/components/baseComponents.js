@@ -6,6 +6,9 @@ import $ from 'jquery'
  */
 class BaseComponents {
   constructor(element) {
+    if (!element) {
+      return
+    }
     element = $(element)
     if (!element.length) {
       return

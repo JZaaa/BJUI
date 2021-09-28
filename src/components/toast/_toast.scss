@@ -1,0 +1,125 @@
+.bjui-toast-wrap {
+  .bjui-toast-wrap__content {
+    position: fixed;
+    z-index: 999;
+    min-width: 260px;
+
+    > .toast {
+      background: #fff;
+      box-shadow: 0 0.5rem 1rem rgba(0,0, 0, .15);
+      pointer-events: auto;
+      border-color: #eee;
+
+      .toast-header {
+        position: relative;
+        padding-right: 2rem;
+        background-color: inherit;
+        border-bottom: none;
+
+        .close {
+          position: absolute;
+          right: 8px;
+          top: 0;
+        }
+
+        &.with-body {
+          &.toast-header {
+            font-size: 1rem;
+          }
+
+          .close {
+            top: 4px;
+          }
+        }
+
+        &.without-body {
+          padding: .75rem;
+
+          &.toast-header {
+            font-size: 1rem;
+            word-wrap: break-word;
+          }
+          .close {
+            top: 8px;
+          }
+        }
+      }
+
+      .toast-header__title {
+        color: #000000d9;
+      }
+
+      .toast-header__title-sub {
+        color: #6c757d;
+      }
+
+
+      @mixin typeColor($color, $background, $borderColor) {
+        color: $color;
+        background: $background;
+        border-color: $borderColor;
+
+        .toast-header__title, .toast-header__title-sub, .close {
+          color: $color;
+        }
+        .close {
+          opacity: .9;
+        }
+      }
+
+      &.info {
+        @include typeColor(#909399, #edf2fc, #EBEEF5);
+      }
+      &.error {
+        @include typeColor(#F56C6C ,#fef0f0, #fde2e2);
+      }
+      &.warning {
+        @include typeColor(#E6A23C, #fdf6ec, #faecd8);
+      }
+      &.success {
+        @include typeColor(#67C23A, #f0f9eb, #e1f3d8);
+      }
+    }
+  }
+  > .top-left {
+    top: 0;
+    left: 0;
+  }
+
+  > .top-center {
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .toast {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  > .top-right {
+    top: 0;
+    right: 0;
+  }
+
+  > .bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+
+  > .bottom-center {
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .toast {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  > .bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+}
