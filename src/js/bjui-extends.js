@@ -143,9 +143,13 @@
     },
     getPageTarget: function() {
       var $target
-      if (this.closest('.bjui-layout').length) $target = this.closest('.bjui-layout')
-      else if (this.closest('.navtabPage')) $target = $.CurrentNavtab
-      else $target = $.CurrentDialog
+      if (this.closest('.bjui-layout').length) {
+        $target = this.closest('.bjui-layout')
+      } else if (this.closest('.navtabPage')) {
+        $target = $.CurrentNavtab
+      } else {
+        $target = $.CurrentDialog
+      }
 
       return $target
     },
@@ -225,7 +229,8 @@
       })
     },
     getMaxIndexObj: function($elements) {
-      var zIndex = 0; var index = 0
+      var zIndex = 0
+      var index = 0
 
       $elements.each(function(i) {
         var newZIndex = parseInt($(this).css('zIndex')) || 1
@@ -239,8 +244,8 @@
       return $elements.eq(index)
     },
     /**
-         * 将表单数据转成JSON对象 用法：$(form).serializeJson() Author: K'naan
-         */
+     * 将表单数据转成JSON对象 用法：$(form).serializeJson() Author: K'naan
+     */
     serializeJson: function() {
       var o = {}
       var a = this.serializeArray()
@@ -304,15 +309,15 @@
      * @param type 类型, left/right/undefined
      */
     trim: function(char, type) {
-      if (char) {
-        if (type === 'left') {
-          return this.replace(new RegExp('^\\' + char + '+', 'g'), '')
-        } else if (type === 'right') {
-          return this.replace(new RegExp('\\' + char + '+$', 'g'), '')
-        }
-        return this.replace(new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'), '')
+      if (!char) {
+        char = 's'
       }
-      return this.replace(/^\s+|\s+$/g, '')
+      if (type === 'left') {
+        return this.replace(new RegExp('^\\' + char + '+', 'g'), '')
+      } else if (type === 'right') {
+        return this.replace(new RegExp('\\' + char + '+$', 'g'), '')
+      }
+      return this.replace(new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'), '')
     },
     startsWith: function(pattern) {
       return this.indexOf(pattern) === 0
@@ -402,8 +407,11 @@
 
       try {
         if (typeof json === 'object') json = json.toString()
-        if (!json.trim().match('^\{(.+:.+,*){1,}\}$')) return this
-        else return JSON.parse(this)
+        if (!json.trim().match('^\{(.+:.+,*){1,}\}$')) {
+          return this
+        } else {
+          return JSON.parse(this)
+        }
       } catch (e) {
         return this
       }
@@ -420,10 +428,10 @@
       return obj
     },
     /**
-         * String to Function
-         * 参数(方法字符串或方法名)： 'function(){...}' 或 'getName' 或 'USER.getName' 均可
-         * Author: K'naan
-         */
+     * String to Function
+     * 参数(方法字符串或方法名)： 'function(){...}' 或 'getName' 或 'USER.getName' 均可
+     * Author: K'naan
+     */
     toFunc: function() {
       if (!this || this.length === 0) return undefined
       // if ($.isFunction(this)) return this
@@ -444,6 +452,15 @@
       }
 
       return undefined
+    },
+    setUrlParams: function(obj) {
+      let url = this
+      for (const i in obj) {
+        if (obj.hasOwnProperty(i)) {
+          url = url.setUrlParam(i, obj[i])
+        }
+      }
+      return url
     },
     setUrlParam: function(key, value) {
       var url = this
@@ -467,12 +484,12 @@
     /**
      * 获取url参数
      * @param name 参数名称，为空则返回所有参数Object集合
-     * @param url 目标url，默认为当前url
      * @returns {*}
      */
-    getQuery: function(name, url) {
+    getUrlParams: function(name) {
       var $location
       var $params = {}
+      const url = this
       if (url) {
         $location = document.createElement('a')
         $location.href = url
@@ -503,8 +520,11 @@
   /* Array */
   $.extend(Array.prototype, {
     remove: function(index) {
-      if (index < 0) return this
-      else return this.slice(0, index).concat(this.slice(index + 1, this.length))
+      if (index < 0) {
+        return this
+      } else {
+        return this.slice(0, index).concat(this.slice(index + 1, this.length))
+      }
     },
     unique: function() {
       var temp = []
