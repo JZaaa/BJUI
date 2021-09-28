@@ -1,0 +1,49 @@
+<div class="bjui-pageContent">
+  <div class="bj-p-20 bg-white">
+    <h3 class="page-header">Toast组件示例</h3>
+  </div>
+  <div class="bj-m-t-10 bj-p-20 bg-white">
+    <button type="button" data-filter="toast" data-type="normal" class="btn btn-primary">普通消息</button>
+    <button type="button" data-filter="toast" data-type="info" class="btn btn-primary">提示消息</button>
+    <button type="button" data-filter="toast" data-type="success" class="btn btn-primary">成功消息</button>
+    <button type="button" data-filter="toast" data-type="error" class="btn btn-primary">失败消息</button>
+    <button type="button" data-filter="toast" data-type="warning" class="btn btn-primary">警告消息</button>
+
+    <div>
+      <script type="text/plain" class="language-js line-numbers">
+        var toast = $.toast({
+            position: 'top-center', // 加载文本
+            autohide: true, // 自动关闭
+            delay: 2000, // 自动关闭时间
+            type: $this.data('type'), // 类型，normal | info | success | warning | error
+            closeBtn: false,
+            title: null, // 标题
+            subTitle: null, // 副标题
+            content: $this.text() // 内容
+          })
+          // toast.hide() // 手动隐藏
+      </script>
+    </div>
+  </div>
+
+
+</div>
+<script>
+  $(function() {
+
+    $.CurrentNavtab.findFilter('toast', 'button').click(function() {
+      var $this = $(this)
+      var toast = $.toast({
+        position: 'top-center', // 加载文本
+        autohide: true, // 自动关闭
+        delay: 2000, // 自动关闭时间
+        type: $this.data('type'), // 类型，normal | info | success | warning | error
+        closeBtn: false,
+        title: null,
+        subTitle: null,
+        content: $this.text()
+      })
+    })
+
+  })
+</script>

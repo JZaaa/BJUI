@@ -16,10 +16,10 @@ const Selector = {
 
 const Default = {
   position: 'top-center', // 加载文本
-  autohide: false, // 自动关闭
+  autohide: true, // 自动关闭
   delay: 2000, // 自动关闭时间
   type: 'normal', // 类型，normal | info | success | warning | error
-  closeBtn: true,
+  closeBtn: false,
   title: null,
   subTitle: null,
   content: null
@@ -34,7 +34,7 @@ class Toast extends BaseComponents {
   }
 
   hide() {
-    this._BsToast.hide()
+    this.dispose()
   }
 
   dispose() {

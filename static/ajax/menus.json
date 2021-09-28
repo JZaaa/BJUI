@@ -186,6 +186,10 @@
         ]
       },
       {
+        "name": "Toast",
+        "path": "views/components/toast/toast.html"
+      },
+      {
         "name": "Loading",
         "path": "views/components/loading/loading.html"
       },
