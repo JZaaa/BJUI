@@ -238,6 +238,10 @@
     "icon": "bi-bounding-box-circles",
     "children": [
       {
+        "name": "jQuery 拓展",
+        "path": "views/feat/extend/jquery.html"
+      },
+      {
         "name": "xe-utils",
         "path": "views/feat/xe-utils/xe-utils.html"
       }

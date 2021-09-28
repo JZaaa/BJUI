@@ -1,0 +1,90 @@
+<div class="bjui-pageContent">
+  <div class="bj-p-20 bg-white">
+    <h3 class="page-header">jQuery 拓展</h3>
+    <div>
+      系统新增了一些常用功能
+    </div>
+  </div>
+  <div class="bj-page-wrapper-content">
+    <div class="card bj-m-b-20">
+      <div class="card-header">
+        全局方法
+      </div>
+      <div class="card-body">
+        <div>
+          <strong class="text-primary">getGUID 获取随机GUID</strong>
+          <script type="text/plain" class="language-js line-numbers">
+            $.getGUID() // uPPkfncpEMLZ0KP0kd1jsQNdPqOwQmjm
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="card bj-m-b-20">
+      <div class="card-header">
+        成员函数 fn
+      </div>
+      <div class="card-body">
+        <div>
+          <strong class="text-primary">findFilter 查询指定[data-filter]元素</strong>
+          <script type="text/plain" class="language-js line-numbers">
+            $.CurrentNavtab.findFilter('test') // 查找当前navtab中 [data-fitler="test"]的元素
+            $.CurrentNavtab.findFilter('test', 'span') // 查找当前navtab中 span[data-fitler="test"]的元素
+          </script>
+        </div>
+        <div>
+          <strong>serializeJson 表单数据转成JSON对象</strong>
+          <script type="text/plain" class="language-js line-numbers">
+            $(form).serializeJson() // object
+          </script>
+        </div>
+        <div>
+          <strong>isTag 判断是否是指定html标签</strong>
+          <script type="text/plain" class="language-js line-numbers">
+            $(selector).isTag('span') // bool, 判断selector是否为span标签
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="card bj-m-b-20">
+      <div class="card-header">
+        String 拓展
+      </div>
+      <div class="card-body">
+        <div>
+          <strong class="">trim 去除指定字符</strong>
+          <script type="text/plain" class="language-js line-numbers">
+            /**
+             * 去除指定字符 String.trim(char, type)
+             * @param char 待去除字符
+             * @param type 类型, left/right/undefined
+             */
+            ' bjui next '.trim() // "bjui next"
+            ' bjui next '.trim(undefined, 'right') // " bjui next"
+            ' bjui next '.trim(undefined, 'left') // "bjui next "
+            '/bjui next/'.trim('/') // "bjui next"
+          </script>
+        </div>
+        <div>
+          <strong class="">toFunc 字符串转function</strong>
+          <script type="text/plain" class="language-js line-numbers">
+            var aFunc = "function() {console.log('a')}".toFunc()
+            aFunc() // "a"
+          </script>
+        </div>
+        <div>
+          <strong class="">setUrlParams 设置Url参数</strong>
+          <script type="text/plain" class="language-js line-numbers">
+           "http://localhost:8129/jquery.html".setUrlParams({a:1, b:2}) // "http://localhost:8129/jquery.html?a=1&b=3"
+          </script>
+        </div>
+        <div>
+          <strong class="">getUrlParams 获取Url参数</strong>
+          <script type="text/plain" class="language-js line-numbers">
+          "http://localhost:8129/jquery.html?a=1&b=3".getUrlParams('a') // "1"
+          "http://localhost:8129/jquery.html?a=1&b=3".getUrlParams() // {a: "1", b: "3"}
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
