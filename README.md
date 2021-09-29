@@ -38,7 +38,10 @@ yarn build:all
 
 ### 浏览器兼容
 
-- 不支持IE浏览器
+| Edge | Firefox | Chrome | Safari | iOS Safari |
+| --------- | --------- | --------- | --------- | --------- |
+| last version| last 2 versions| last 2 versions| last 2 versions| last 2 versions
+
 
 ## 进度
 
@@ -64,8 +67,12 @@ yarn build:all
 - [x] 富文本编辑器迁移
 - [x] 演示文档迁移
 
-### 新增组件
+### RoadMap
 
 - [x] 加载组件
-- [ ] 消息提示拓展
+- [x] 消息提示拓展
+- [ ] 项目说明与v1升级迁移
+- [ ] Descriptions 描述列表功能
+- [ ] 第三方上传组件封装
+- [ ] 第三方表格组件封装
 
