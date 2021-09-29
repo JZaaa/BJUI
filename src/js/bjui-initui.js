@@ -183,7 +183,7 @@
 
     return $this.Loading({
       zIndex: zIndex + 1,
-      absolute: true,
+      absolute: false,
       tip: BJUI.regional.progressmsg
     }, func)
   }
