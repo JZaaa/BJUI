@@ -26,6 +26,7 @@ yarn build:all
 
 ## 演示文档
 
+- [jzaaa.github.io/bjui-next-doc/](jzaaa.github.io/bjui-next-doc/)
 - 运行`yarn dev`通过 webpack-dev-server 预览
 - 自行搭建服务器，通过http服务访问`static`文件夹
 
