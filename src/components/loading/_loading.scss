@@ -30,3 +30,10 @@
     margin-bottom: 10px;
   }
 }
+.bjui-dialog {
+  > .bj-full-loading {
+    &.absolute {
+      top: 28px;
+    }
+  }
+}
