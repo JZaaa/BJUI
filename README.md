@@ -1,5 +1,11 @@
 # BJUI-next
 
+## 演示文档
+
+- [https://jzaaa.github.io/bjui-next-doc](https://jzaaa.github.io/bjui-next-doc)
+- 运行`yarn dev`通过 webpack-dev-server 预览
+- 自行搭建服务器，通过http服务访问`static`文件夹
+
 ## 开始
 
 ### 构建
@@ -23,12 +29,6 @@ yarn build
 # 全部打包(包含依赖插件)
 yarn build:all
 ```
-
-## 演示文档
-
-- [https://jzaaa.github.io/bjui-next-doc](https://jzaaa.github.io/bjui-next-doc)
-- 运行`yarn dev`通过 webpack-dev-server 预览
-- 自行搭建服务器，通过http服务访问`static`文件夹
 
 ## 使用
 
