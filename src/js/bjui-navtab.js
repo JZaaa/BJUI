@@ -1,5 +1,5 @@
 /*!
- * B-JUI   (http://b-jui.com)
+ * B-JUI
  * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
  * Copyright 2014 K'naan (xknaan@163.com).
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)

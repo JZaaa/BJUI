@@ -1,5 +1,5 @@
 /*!
- * B-JUI  v1.2 (http://b-jui.com)
+ * B-JUI  v1.2
  * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
  * Copyright 2014 K'naan (xknaan@163.com).
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
@@ -15,7 +15,7 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
-+(function ($) {
++(function($) {
   'use strict'
 
   // LOOKUP GLOBAL ELEMENTS
@@ -26,7 +26,7 @@
   // LOOKUP CLASS DEFINITION
   // ======================
 
-  var Lookup = function (element, options) {
+  var Lookup = function(element, options) {
     this.$element = $(element)
     this.options = options
     this.$lookBtn = null
@@ -51,7 +51,7 @@
     afterChange: 'afterchange.bjui.lookup'
   }
 
-  Lookup.prototype.init = function () {
+  Lookup.prototype.init = function() {
     var that = this
     var options = this.options
 
@@ -81,7 +81,6 @@
 
     beforeSelect = this.options.beforeSelect
 
-
     var isInit = $currentLookup.data('bjui.lookupinit')
     if (!isInit) {
       if (options.addBtn) {
@@ -97,31 +96,31 @@
     }
   }
 
-  Lookup.prototype.addBtn = function () {
-    var that = this;
+  Lookup.prototype.addBtn = function() {
+    var that = this
     var $element = that.$element
 
     if (!this.$lookBtn && !$element.parent().hasClass('wrap_bjui_btn_box')) {
       this.$lookBtn = $(FRAG.lookupBtn)
-      this.$element.css({'paddingRight': '34px'}).wrap('<span class="wrap_bjui_btn_box"></span>')
+      this.$element.css({ 'paddingRight': '34px' }).wrap('<span class="wrap_bjui_btn_box"></span>')
 
       var $box = this.$element.parent()
       var height = this.$element.addClass('form-control').innerHeight()
 
-      $box.css({'position': 'relative', 'display': 'inline-block'})
+      $box.css({ 'position': 'relative', 'display': 'inline-block' })
 
-      $.each(that.options, function (key, val) {
+      $.each(that.options, function(key, val) {
         if (key !== 'toggle') that.$lookBtn.data(key, val)
       })
       that.$lookBtn.data('bjui.lookupinit', true)
-      this.$lookBtn.css({'height': height, 'lineHeight': height + 'px'}).appendTo($box)
-      this.$lookBtn.on('selectstart', function () {
+      this.$lookBtn.css({ 'height': height, 'lineHeight': height + 'px' }).appendTo($box)
+      this.$lookBtn.on('selectstart', function() {
         return false
       })
     }
   }
 
-  Lookup.prototype.open = function ($obj) {
+  Lookup.prototype.open = function($obj) {
     var options = this.options
 
     $obj.dialog({
@@ -136,14 +135,14 @@
     })
   }
 
-  Lookup.prototype.getField = function (key) {
+  Lookup.prototype.getField = function(key) {
     if (arrayfix) {
       key = arrayfix + '[' + key + ']'
     }
     return (group ? (group + '.') : '') + (key) + (suffix || '')
   }
 
-  Lookup.prototype.setSingle = function (args, type) {
+  Lookup.prototype.setSingle = function(args, type) {
     if (typeof args === 'string') {
       args = new Function('return ' + args)()
     }
@@ -153,12 +152,12 @@
     }
   }
 
-  Lookup.prototype.setMult = function (id, type) {
+  Lookup.prototype.setMult = function(id, type) {
     var args = {}
     var argsArr = []
     var $unitBox = this.$element.closest('.unitBox')
 
-    $unitBox.find('[name="' + id + '"]').filter(':checked').each(function () {
+    $unitBox.find('[name="' + id + '"]').filter(':checked').each(function() {
       var _args = new Function('return ' + $(this).val())()
 
       if (typeof _args === 'object') {
@@ -183,7 +182,7 @@
     }
   }
 
-  Lookup.prototype.beforeSelect = function (args, argsArray, type) {
+  Lookup.prototype.beforeSelect = function(args, argsArray, type) {
     if (beforeSelect) {
       if (beforeSelect(args, argsArray, type) === false) {
         return false
@@ -192,7 +191,7 @@
     return true
   }
 
-  Lookup.prototype.setVal = function (args, type) {
+  Lookup.prototype.setVal = function(args, type) {
     var that = this
     var $box = $currentLookup.closest('.unitBox')
     var newValue /* @description 增加 @author 小策一喋 */
@@ -201,7 +200,7 @@
     if ($currentLookup.data('customEvent')) {
       $currentLookup.trigger('customEvent.bjui.lookup', [args])
     } else {
-      $box.find(':input').each(function () {
+      $box.find(':input').each(function() {
         var $input = $(this)
         var inputName = $input.attr('name')
 
@@ -219,7 +218,7 @@
 
               $input
                 .val(newValue) /* @description 修改 args[key] 为 newValue @author 小策一喋 */
-                .trigger(Lookup.EVENTS.afterChange, {value: args[key]})
+                .trigger(Lookup.EVENTS.afterChange, { value: args[key] })
 
               break
             }
@@ -238,7 +237,7 @@
     var args = arguments
     var property = option
 
-    return this.each(function () {
+    return this.each(function() {
       var $this = $(this)
       var options = $.extend({}, Lookup.DEFAULTS, $this.data(), typeof option === 'object' && option)
       var data = $this.data('bjui.lookup')
@@ -271,7 +270,7 @@
   // LOOKUP NO CONFLICT
   // =================
 
-  $.fn.lookup.noConflict = function () {
+  $.fn.lookup.noConflict = function() {
     $.fn.lookup = old
     return this
   }
@@ -279,7 +278,7 @@
   // LOOKUP DATA-API
   // ==============
 
-  $(document).on(BJUI.eventType.initUI, function (e) {
+  $(document).on(BJUI.eventType.initUI, function(e) {
     var $this = $(e.target).find('[data-toggle="lookup"]')
 
     if (!$this.length) return
@@ -287,7 +286,7 @@
     Plugin.call($this, 'addBtn')
   })
 
-  $(document).on('click.bjui.lookup.data-api', '[data-toggle="lookupbtn"]', function (e) {
+  $(document).on('click.bjui.lookup.data-api', '[data-toggle="lookupbtn"]', function(e) {
     var $this = $(this)
 
     if ($this.attr('href') && !$this.data('url')) $this.attr('data-url', $this.attr('href'))
@@ -298,7 +297,7 @@
     e.preventDefault()
   })
 
-  $(document).on('click.bjui.lookupback.data-api', '[data-toggle="lookupback"]', function (e) {
+  $(document).on('click.bjui.lookupback.data-api', '[data-toggle="lookupback"]', function(e) {
     var $this = $(this)
     var args = $this.data('args')
     var mult = $this.data('lookupid')

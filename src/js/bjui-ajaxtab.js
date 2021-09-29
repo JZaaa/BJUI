@@ -1,10 +1,3 @@
-/*!
- * B-JUI  v2.0 (http://b-jui.com)
- * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
- * Copyright 2014 K'naan (xknaan@163.com).
- * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
- */
-
 /* ========================================================================
  * B-JUI: bjui-ajaxtab.js  v2.0
  * @author K'naan (xknaan@163.com)

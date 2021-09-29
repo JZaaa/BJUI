@@ -1,12 +1,5 @@
-/*!
- * B-JUI  v1.2 (http://b-jui.com)
- * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
- * Copyright 2014 K'naan (xknaan@163.com).
- * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
- */
-
 /* ========================================================================
- * B-JUI: bjui-ajax.js  v1.2
+ * B-JUI: bjui-ajax.js  v2
  * @author K'naan (xknaan@163.com)
  * -- Modified from dwz.ajax.js (author:ZhangHuihua@msn.com)
  * http://git.oschina.net/xknaan/B-JUI/blob/master/BJUI/js/bjui-ajax.js
@@ -114,7 +107,7 @@ import { navTabContainerSelect } from '@/utils/static'
             extra = JSON.stringify($.extend(_extra, $form.serializeJson()))
           }
         }
-        $.extend(op, { data: extra ? extra : $form.serializeArray() })
+        $.extend(op, { data: extra || $form.serializeArray() })
       }
       $form.doAjax(op)
     }
@@ -180,9 +173,13 @@ import { navTabContainerSelect } from '@/utils/static'
     if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
     if (that.options.reload) {
       var form = that.tools.getPagerForm($target)
-      var url = null; var type = null
+      var url = null
+      var type = null
 
       if (form) {
+        if (!(form instanceof $)) {
+          form = $(form)
+        }
         url = form.attr('action')
         type = form.attr('method') || 'GET'
       } else {

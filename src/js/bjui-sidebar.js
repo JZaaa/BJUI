@@ -1,18 +1,5 @@
-/*!
- * B-JUI  v1.2 (http://b-jui.com)
- * Git@OSC (http://git.oschina.net/xknaan/B-JUI)
- * Copyright 2014 K'naan (xknaan@163.com).
- * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
- */
-
 /* ========================================================================
- * B-JUI: bjui-sidebar.js  v1.2
- * @author K'naan (xknaan@163.com)
- * -- Modified from dwz.barDrag.js (author:Roger Wu)
- * http://git.oschina.net/xknaan/B-JUI/blob/master/BJUI/js/bjui-sidebar.js
- * ========================================================================
- * Copyright 2014 K'naan.
- * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
+ * B-JUI: bjui-sidebar.js  v2
  * ======================================================================== */
 
 import createMenuHtml from '@/utils/createMenuHtml'
