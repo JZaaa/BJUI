@@ -140,7 +140,7 @@ import { navTabContainerSelect } from '@/utils/static'
   }
 
   Bjuiajax.prototype.ajaxError = function(xhr, ajaxOptions, thrownError) {
-    var msg = xhr.responseText.trim()
+    var msg = xhr.responseText && xhr.responseText.trim() || '请求失败'
 
     if (msg.startsWith('{')) {
       this.ajaxDone(msg.toObj())

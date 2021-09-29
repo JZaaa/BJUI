@@ -134,21 +134,22 @@
       }
       op.error = op.error || function(xhr, ajaxOptions, thrownError) {
         $this.bjuiajax('ajaxError', xhr, ajaxOptions, thrownError)
+      }
+
+      $.ajax(op).fail(() => {
         if ($ajaxMask) {
           $target.trigger('bjui.ajaxError')
         }
-      }
-
-      $.ajax(op)
+      })
     },
     getPageTarget: function() {
       var $target
       if (this.closest('.bjui-layout').length) {
         $target = this.closest('.bjui-layout')
-      } else if (this.closest('.navtabPage')) {
-        $target = $.CurrentNavtab
-      } else {
+      } else if (this.closest('.dialogContent').length) {
         $target = $.CurrentDialog
+      } else {
+        $target = $.CurrentNavtab
       }
 
       return $target
