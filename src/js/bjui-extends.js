@@ -15,6 +15,8 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+import { navTabContainerSelect } from '@/utils/static'
+
 +(function($) {
   'use strict'
 
@@ -146,10 +148,10 @@
       var $target
       if (this.closest('.bjui-layout').length) {
         $target = this.closest('.bjui-layout')
-      } else if (this.closest('.dialogContent').length) {
-        $target = $.CurrentDialog
-      } else {
+      } else if (this.closest(navTabContainerSelect).length) {
         $target = $.CurrentNavtab
+      } else {
+        $target = $.CurrentDialog
       }
 
       return $target
