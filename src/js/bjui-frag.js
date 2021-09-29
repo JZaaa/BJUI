@@ -51,36 +51,6 @@
     jump: 'Jump'
   })
 
-  BJUI.setRegional('datagrid', {
-    asc: 'ASC',
-    desc: 'DESC',
-    showhide: 'Show/Hide columns',
-    filter: 'Filter',
-    clear: 'Clear',
-    lock: 'Lock',
-    unlock: 'Unlock',
-    add: 'Add',
-    edit: 'Edit',
-    save: 'Save',
-    update: 'Update',
-    cancel: 'Cancel',
-    del: 'Delete',
-    prev: 'Prev',
-    next: 'Next',
-    refresh: 'Refresh',
-    query: 'Query',
-    'import': 'Import',
-    'export': 'Export',
-    all: 'All',
-    'true': 'True',
-    'false': 'False',
-    selectMsg: 'Not selected any rows!',
-    saveMsg: 'No rows need to save!',
-    editMsg: 'Please save the edited row!',
-    delMsg: 'Sure you want to delete this row?',
-    delMsgM: 'Sure you want to delete selected rows?'
-  })
-
   BJUI.setRegional('progressmsg', 'Data loading, please waiting...')
 
   BJUI.setRegional('datepicker', {
