@@ -1,0 +1,50 @@
+<div class="bjui-pageContent">
+  <div class="bj-p-20 bg-white">
+    <h3>迁移说明</h3>
+    <span class="badge badge-info">由于Bootstrap与表单组件存在不兼容更新，已稳定使用B-JUI 1.x的项目不建议升级</span>
+    <div class="mb-2">bjui next是以B-JUI框架为基础，升级修改了部分布局与组件，框架<span class="text-danger">不支持IE等低版本浏览器</span>，若有浏览器支持需要请使用B-JUI 1.x</div>
+  </div>
+  <div class="bj-page-wrapper-content">
+    <div class="card">
+      <div class="card-body">
+        <div class="bj-m-b-20">
+          <strong class="bj-font-20 bj-m-b-10 d-block">升级说明 </strong>
+          <div class="text-muted">框架大部分组件实例化已做兼容处理</div>
+          <ol style="list-style: decimal" class="bj-p-l-15">
+            <li>框架基于jQuery v3 与 Bootstrap 4 开发，请将项目中的jQuery与Bootstrap升级到指定版本，并进行相关迁移</li>
+            <li>更新基础框架结构</li>
+            <li>修改以下不兼容更新内容</li>
+          </ol>
+        </div>
+        <div class="bj-m-b-20">
+          <strong class="bj-font-20 bj-m-b-10 d-block">废弃组件 </strong>
+          <div>以下组件已废弃，请删除组件内容</div>
+          <ol class="small text-muted">
+            <li>自动完成标签 <code>Tags</code></li>
+            <li><code>Datagrid</code></li>
+          </ol>
+        </div>
+        <div class="bj-m-b-20">
+          <strong class="bj-font-20 bj-m-b-10 d-block">组件重构 </strong>
+          <div>以下组件已重构，请根据组件文档修改相关组件</div>
+          <ol class="small text-muted">
+            <li>侧边栏组件 <code>sidebar</code>，组件已重构，需要在初始化框架时传递菜单数据</li>
+            <li>日期选择器组件 <code>datapicker</code>，用第三方组件替换，监听回调与参数有变化</li>
+            <li>单选复选框 <code>iCheck</code>，原iCheck组件大量实例化下存在性能问题，现在用css实现，监听事件请用jQuery或原生事件代替</li>
+            <li>标签页 <code>NavTab</code>，现在不支持多标签页功能，删除所有关闭标签页操作</li>
+            <li>验证主题 <code>nice validator theme</code>，现在验证提示主题已重构，表单结构请参考【综合表单演示】</li>
+          </ol>
+        </div>
+        <div class="bj-m-b-20">
+          <strong class="bj-font-20 bj-m-b-10 d-block">新增组件 </strong>
+          <div>新增以下组件，具体请查看相关说明文档</div>
+          <ol class="small text-muted">
+            <li>加载组件 <code>Loading</code></li>
+            <li>消息提示拓展 <code>Toast</code></li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

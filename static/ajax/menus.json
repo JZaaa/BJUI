@@ -298,5 +298,15 @@
         "iframe": "outer"
       }
     ]
+  },
+  {
+    "name": "迁移说明",
+    "icon": "bi-info-circle",
+    "path": "views/migrating.html"
+  },
+  {
+    "name": "感谢名单",
+    "icon": "bi-emoji-sunglasses",
+    "path": "views/contribution.html"
   }
 ]
