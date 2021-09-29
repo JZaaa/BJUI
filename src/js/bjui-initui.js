@@ -183,7 +183,7 @@
 
     return $this.Loading({
       zIndex: zIndex + 1,
-      absolute: $this.hasClass('bjui-dialog') || $this.hasClass('dialogContent'),
+      absolute: !($this.hasClass('navtabPage')),
       tip: BJUI.regional.progressmsg
     }, func)
   }
