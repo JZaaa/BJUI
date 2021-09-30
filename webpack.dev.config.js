@@ -73,9 +73,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: 'defaults' }]
-            ]
+            cacheDirectory: true
           }
         }
       },
@@ -89,33 +87,19 @@ module.exports = {
           'sass-loader'
         ]
       },
-      // Load fonts
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '/[name].[ext]',
-              outputPath: 'assets/fonts/',
-              publicPath: '../assets/fonts/'
-            }
-          }
-        ]
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
       },
-      // Load images
       {
         test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/img/',
-              publicPath: '../assets/img/'
-            }
-          }
-        ]
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[name][ext]'
+        }
       }
     ]
   },
