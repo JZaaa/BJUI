@@ -96,9 +96,6 @@ import { getAppHashUrl } from '@/utils/url'
             loadingmask: options.loadingmask,
             callback: function(response) {
               $(menuContentSelector).sidebar('changeActiveMenu', options.url)
-              if (history) {
-                location.hash = getAppHashUrl(options.url)
-              }
               if (onLoad) onLoad.apply(that, [$panel])
               if (autorefreshTimer) clearInterval(autorefreshTimer)
               if (arefre) {
