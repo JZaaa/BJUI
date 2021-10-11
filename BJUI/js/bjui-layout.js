@@ -101,7 +101,7 @@
         icon = '<i class="sidebar-item__icon align-middle ' + val.icon + '"></i>'
       }
       if (val.children && val.children.length) {
-        const id = $.getGUID()
+        var id = $.getGUID()
 
         html +=
           '<a data-target="#' + id + '" data-toggle="collapse" class="sidebar-link collapsed">' + icon +

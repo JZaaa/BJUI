@@ -440,7 +440,7 @@
             realWidth = width
 
             $fixed.width(realWidth)
-            const tableWidth = realWidth - Tablefixed.SCROLLW
+            var tableWidth = realWidth - Tablefixed.SCROLLW
             $fixed.find('.table').css({
               width: tableWidth,
               maxWidth: tableWidth
