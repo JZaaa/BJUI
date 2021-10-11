@@ -73,6 +73,16 @@
       clientPaging: true, // 是否在客户端响应分页及排序参数
       overwriteHomeTab: false // 当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
     },
+    layout: {
+      mode: 'default',
+      // style: {
+      //   headerBg: '#009688', // 顶部头颜色
+      //   sidebarBg: '#001529', // 菜单栏背景色
+      //   sidebarLightBg: '#0c2135', // 非一级菜单背景色
+      //   activeLinkBg: 'linear-gradient(90deg,rgba(59,125,221,.3) 0,rgba(59,125,221,.2) 70%,rgba(0,0,0,.14) 100%)', // 选中的链接背景色
+      //   activeLinkBorderLeftColor: '#3B7DDD' // 选中的链接左border颜色
+      // }
+    },
     debug: function(msg) {
       if (this.IS_DEBUG) {
         if (typeof (console) !== 'undefined') console.log(msg)
@@ -108,6 +118,10 @@
       $.extend(BJUI.KindEditor, op.KindEditor)
       $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
+
+      if (op.layout) {
+        this.layout = op.layout
+      }
 
       if (op.JSPATH) this.JSPATH = op.JSPATH
       if (op.PLUGINPATH) this.PLUGINPATH = op.PLUGINPATH
