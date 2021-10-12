@@ -1,0 +1,249 @@
+<div class="bjui-pageContent bj-page-wrapper-content">
+  <div class="bg-white bj-p-20 bj-m-b-10">
+    <div data-filter="custom-options" class="bj-form-inline bj-form">
+      <div class="bj-form-item">
+        <label class="bj-form-item-label">行内表单：</label>
+        <div class="bj-form-item-content">
+          <select class="custom-select">
+            <option value="">否</option>
+            <option value="bj-form-inline">是</option>
+          </select>
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label">对齐方式：</label>
+        <div class="bj-form-item-content">
+          <select class="custom-select">
+            <option value="">Right</option>
+            <option value="bj-form-label-left">Left</option>
+            <option value="bj-form-label-top">Top</option>
+          </select>
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label">Label宽度：</label>
+        <div class="bj-form-item-content">
+          <select class="custom-select">
+            <option value="bj-form-label-w80">80px</option>
+            <option value="bj-form-label-w85">85px</option>
+            <option value="bj-form-label-w90">90px</option>
+            <option value="bj-form-label-w110" selected>110px</option>
+            <option value="bj-form-label-w230">230px</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white bj-p-40">
+    <form class="bj-form bj-form-label-w110" style="max-width: 660px;margin: auto" action="ajaxDone2.html" data-toggle="validate" data-theme="bootstrap" data-alertmsg="false">
+      <div class="bj-form-item">
+        <label class="bj-form-item-label is-required">出生地：</label>
+        <div class="bj-form-item-content">
+          <input type="text" name="custom.birthplace" value="" data-rule="required;">
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label">开启：</label>
+        <div class="bj-form-item-content">
+          <input type="checkbox" name="custom.switch" data-switch="true" data-toggle="icheck" value="">
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label is-required">所属业务：</label>
+        <div class="bj-form-item-content">
+          <select name="custom.sale" id="j_custom_sale" data-toggle="selectpicker"
+                  data-rule="required">
+            <option value="">全部</option>
+            <option value="1">业务1</option>
+            <option value="2">业务2</option>
+          </select>
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label is-required">性别：</label>
+        <div class="bj-form-item-content">
+          <input type="radio" name="custom.isshow" data-toggle="icheck"
+                 value="true" data-rule="checked" data-label="男">
+          <input type="radio" name="custom.isshow" data-toggle="icheck"
+                 value="false" data-label="女">
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label is-required">选择：</label>
+        <div class="bj-form-item-content">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="true" data-rule="checked" data-label="选择1">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="false" data-label="选择2">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="true" data-rule="checked" data-label="选择3">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="false" data-label="选择4">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="true" data-rule="checked" data-label="选择5">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="false" data-label="选择6">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="true" data-rule="checked" data-label="选择7">
+          <input type="checkbox" name="custom.check" data-toggle="icheck"
+                 value="false" data-label="选择8">
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label">日期：</label>
+        <div class="bj-form-item-content">
+          <div class="bj-flex">
+            <div>
+              <input type="text" name="custom.date" data-toggle="datepicker" value="" placeholder="开始日期">
+            </div>
+            <div class="bj-p-l-5 bj-p-r-5">-</div>
+            <div>
+              <input type="text" name="custom.date_end" data-toggle="datepicker" value="" placeholder="结束日期">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label">客人照片：</label>
+        <div class="bj-form-item-content">
+          <div id="j_custom_pic_up" data-toggle="upload"
+               data-uploader="ajax/ajaxUpload.json"
+               data-file-size-limit="1024000000"
+               data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+               data-multi="true"
+               data-on-upload-success="pic_upload_success"
+               data-icon="cloud-upload"></div>
+          <input type="hidden" name="custom.pic" value="" id="j_custom_pic">
+          <span id="j_custom_span_pic"></span>
+        </div>
+      </div>
+      <div class="bj-form-item">
+        <label class="bj-form-item-label is-required">备注：</label>
+        <div class="bj-form-item-content textarea">
+          <textarea class="form-control" name="custom.note" id="j_custom_note"
+                      data-toggle="autoheight" cols="60"
+                      rows="5" data-rule="required"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="bg-white bj-p-20 bj-m-t-20">
+    <h5>基础结构</h5>
+    <div>
+     <pre class="brush: html">
+&lt;form class="bj-form bj-form-label-w110" style="max-width: 660px;margin: auto" action="ajax/ajaxDone2.json" data-toggle="validate" data-alertmsg="false" data-theme="bootstrap">
+  &lt;div class="bj-form-item">
+       &lt;label class="bj-form-item-label is-required">出生地：&lt;/label>
+       &lt;input type="text" name="custom.birthplace" value="" data-rule="required;">
+  &lt;/div>
+  &lt;div class="bj-form-item">
+      &lt;label class="bj-form-item-label is-required">出生地：&lt;/label>
+       &lt;div class="bj-form-item-content textarea">
+       &lt;textarea
+       class="form-control"
+       name="custom.note"
+       data-toggle="autoheight"
+       data-rule="required">&lt;/textarea>
+    &lt;/div>
+  &lt;/div>
+&lt;/form>
+      </pre>
+    </div>
+    <h5>form可添加[class]:</h5>
+    <div class="alert alert-info">
+      <ul>
+        <li>
+          <strong>必须：</strong><code>bj-form</code>
+        </li>
+        <li>
+          <strong>表单布局(默认bj-form-item占一行)：</strong>
+          <p>行内表单<code>bj-form-inline</code></p>
+        </li>
+        <li>
+          <strong> Label对齐方式(默认右对齐)：</strong>
+          <p>
+            左对齐：<code>bj-form-label-left</code>
+          </p>
+          <p>
+            上对齐：<code>bj-form-label-top</code>
+          </p>
+        </li>
+        <li>
+          <strong> Label宽度(默认自动)：</strong>
+          <p>支持80px~230px所有可被5整除的：<code>bj-form-label-w[80~230]</code></p>
+          <p>
+            80px：<code>bj-form-label-w80</code>
+          </p>
+          <p>
+            85px：<code>bj-form-label-w85</code>
+          </p>
+          <p>
+            90px：<code>bj-form-label-w90</code>
+          </p>
+          <p>
+            230px：<code>bj-form-label-w230</code>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <h5>label可添加[class]:</h5>
+    <div class="alert alert-info">
+      <ul>
+        <li>
+          <strong>必须：</strong><code>bj-form-item-label</code>
+        </li>
+        <li>
+          <strong>显示必填*：</strong>
+          <code>is-required</code>
+        </li>
+      </ul>
+    </div>
+    <h5>.bj-form-item-content可添加[class]:</h5>
+    <div class="alert alert-info">
+      <ul>
+        <li>
+          <strong>必须：</strong><code>bj-form-item-content</code>
+        </li>
+        <li>
+          <strong>包裹textarea：</strong>
+          <code>textarea</code>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div class="bjui-pageFooter">
+  <ul>
+    <li>
+      <button type="submit" class="btn btn-default">保存</button>
+    </li>
+  </ul>
+</div>
+<script>
+  function pic_upload_success(file, data) {
+    var json = $.parseJSON(data)
+
+    $(this).bjuiajax('ajaxDone', json)
+    if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
+      $('#j_custom_pic').val(json.filename).trigger('validate')
+      $('#j_custom_span_pic').html('<img src="' + json.filename + '" width="100" />')
+    }
+  }
+  $(document).one(BJUI.eventType.initUI, function(e) {
+    var $box = $(e.target)
+    $box.findFilter('custom-options').on('change', 'select', function() {
+      var $this = $(this)
+      var val = $this.val()
+      var $options = $this.find('option')
+      var classArr = []
+      $options.each(function() {
+        var valueItem = $(this).attr('value')
+        if (valueItem && valueItem.length && val !== valueItem) {
+          classArr.push(valueItem)
+        }
+      })
+      $box.find('form').removeClass(classArr.join(' ')).addClass(val)
+    })
+  })
+</script>
