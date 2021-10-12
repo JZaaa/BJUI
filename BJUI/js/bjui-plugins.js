@@ -63,7 +63,13 @@
 
       var label = $element.data('label')
 
-      if (label) $element.after('<label for="' + id + '" class="ilabel">' + label + '</label>')
+      if (label) {
+        if (!id) {
+          id = $.getGUID()
+          $element.attr('id', id)
+        }
+        $element.after('<label for="' + id + '" class="ilabel">' + label + '</label>')
+      }
 
       $element
         .on('ifCreated', function(e) {
@@ -138,7 +144,7 @@
       }
       if (!$tabledit.length) {
         // 添加size%支持
-        var size = $element.attr('size') || $element.attr('cols')
+        var size = $element.attr('size')
         if (!size) return
         var width = 0
         if (size.charAt(size.length - 1) !== '%') {
@@ -161,7 +167,7 @@
             $(form).bjuiajax('ajaxForm', $(form).data())
           },
           validClass: 'ok',
-          theme: 'red_right_effect'
+          theme: $element.data('theme') || 'red_right_effect'
         })
         .on('invalid.form', function(e, form, errors) {
           if (alertmsg) $(form).alertmsg('error', FRAG.validateErrorMsg.replace('#validatemsg#', BJUI.regional.validatemsg).replaceMsg(errors.length))
