@@ -8,3 +8,33 @@
 @shadow-button: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 @shadow-button-hover: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
 .box-shadow(@shadow) {box-shadow: @shadow;  -webkit-box-shadow: @shadow;-moz-box-shadow: @shadow;-ms-box-shadow: @shadow;}
+
+// label遍历
+.bj-form-label-loop(@i)when(@i < 235){
+  .bj-form-label-w@{i}{
+    .bj-form-item-label {
+      width: @i * 1px !important;
+    }
+    .bj-form-item-content {
+      margin-left: @i * 1px;
+    }
+  }// 每次调用时产生的样式代码
+  .bj-form-label-loop((@i + 5));// 递归调用自身
+}
+
+// flex遍历
+.bj-flex-loop(@i)when (@i<12) {
+  .bj-flex-@{i} {
+    flex: @i;
+  }
+  .bj-flex-loop((@i + 1));// 递归调用自身
+}
+
+// 字体大小遍历
+.bj-font-loop(@i)when (@i<25) {
+  .bj-font-@{i} {
+    font-size: @i * 1px;
+  }
+  .bj-font-loop((@i + 1));// 递归调用自身
+}
+
