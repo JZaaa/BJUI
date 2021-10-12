@@ -26,16 +26,10 @@
 
 }
 
-// 原style 样式
-html, body, div, span, applet, object, iframe,
-p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, input, textarea, select, button, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td{font-family:"Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif; font-size:12px; line-height:1;}
-h1, h2, h3, h4, h5, h6{font-family:"Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif; line-height:1;}
+html, body {
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+}
+h1, h2, h3, h4, h5, h6{line-height:1;}
 *:focus{outline:0 !important;}
 html{height:100%;}
 body{overflow:hidden;}
@@ -249,7 +243,7 @@ td[align=right] input{text-align:right;}
 #bjui-navtab{position:absolute; top:0; left:204px; height:100%;}
 #bjui-splitBar{position:absolute; top:0; left:201px; display:block; width:3px; overflow:hidden; cursor:col-resize; float:left;}
 #bjui-splitBarProxy{position:absolute; top:0; left:201px; z-index:2; display:none; width:1px; overflow:hidden; border-style:solid; border-width:1px; cursor:col-resize; float:left;}
-#bjui-footer{position:absolute; bottom:0; left:0; padding-top:8px; width:100%; height:24px; text-align:center;}
+#bjui-footer{position:absolute; bottom:0; left:0; padding-top:5px; width:100%; height:24px; text-align:center;font-size: 12px;}
 /* Left menus */
 .menu-items li{position:relative;}
 .menu-items li > a{display:block; padding-left:16px; height:26px; line-height:26px; font-size:14px; text-decoration:none;}
@@ -693,7 +687,7 @@ ul.selectpicker > li{height:24px; line-height:24px;}
 .iradio_minimal-purple{display:inline-block; *display:inline; vertical-align:middle; margin:0; padding:0; width:18px; height:18px; border:none; cursor:pointer;}
 /* zTree */
 .ztree{margin:0; padding:5px; color:#333;}
-.ztree li{margin:0; padding:0; list-style:none; text-align:left; white-space:nowrap; outline:0;}
+.ztree li{margin:0; padding:0; list-style:none; text-align:left; white-space:nowrap; outline:0;line-height: 1;}
 .ztree li ul{margin:0; padding:0 0 0 21px;}
 .ztree li ul.line{background:url(./img/line_conn.png) 0 0 repeat-y;}
 .ztree li a{display:inline-block; margin:0; padding:0px 3px 0 0; cursor:pointer; height:18px; color:#333; background-color:transparent; text-decoration:none; vertical-align:middle;}
@@ -770,11 +764,6 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
       text-align: center;
     }
   }
-}
-
-/* bootstrap select */
-.bootstrap-select .dropdown-toggle .filter-option {
-  line-height: 1.625;
 }
 /* codemirror */
 .CodeMirror {
