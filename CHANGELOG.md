@@ -1,5 +1,13 @@
 # 更新日志
 -------------------------------------------
+## master
+
+### fixed
+- 修复bjui-slidebar tooltip 插件销毁错误问题
+
+### Update
+- 升级Bootstrap为 v3.4.1
+
 ## v1.4.0
 
 ### Improvements
