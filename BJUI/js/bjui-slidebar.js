@@ -119,11 +119,15 @@
   }
 
   Slidebar.prototype.tipLock = function () {
-    this.$lock.tooltip('destroy').tooltip({title: '保持锁定，始终显示导航栏', container: 'body'})
+    if (this.$lock.data('bs.tooltip')) {
+      this.$lock.tooltip('destroy').tooltip({title: '保持锁定，始终显示导航栏', container: 'body'})
+    }
   }
 
   Slidebar.prototype.tipUnLock = function () {
-    this.$lock.tooltip('destroy').tooltip({title: '解除锁定，自动隐藏导航栏', container: 'body'})
+    if (this.$lock.data('bs.tooltip')) {
+      this.$lock.tooltip('destroy').tooltip({title: '解除锁定，自动隐藏导航栏', container: 'body'})
+    }
   }
 
   Slidebar.prototype.faLock = function () {
