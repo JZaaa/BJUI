@@ -41,7 +41,6 @@
             msgClass: 'n-right',
             msgShow: function($msgbox, type) {
                 var $el   = $msgbox.children()
-                var $el   = $msgbox.children()
                 var $form   = $msgbox.closest('form'),
                     fW      = $form.width(),
                     fL      = $form.offset().left,
@@ -77,7 +76,6 @@
             msgArrow: TPL_ARROW,
             msgShow: function($msgbox, type) {
                 var $el   = $msgbox.children()
-                var $el   = $msgbox.children()
                 var $form   = $msgbox.closest('form'),
                     fW      = $form.width(),
                     fL      = $form.offset().left,
@@ -103,7 +101,6 @@
             msgClass: 'n-right',
             msgArrow: TPL_ARROW,
             msgShow: function($msgbox, type) {
-                var $el   = $msgbox.children()
                 var $el   = $msgbox.children()
                 var $form   = $msgbox.closest('form'),
                     fW      = $form.width(),
@@ -261,13 +258,48 @@
                     $msgbox.hide()
                 })
             }
+        },
+        'bootstrap': {
+            msgClass: 'invalid-feedback',
+            invalidClass: 'is-invalid',
+            target: function(elem) {
+                var $msgbox
+                var $el = $(elem)
+                var $content = $el.closest('.bj-form-item-content')
+                if (!$content.length) {
+                    $content = $el.parent()
+                }
+                $msgbox = $content.find('.msg-box')
+                if (!$msgbox.length) {
+                    $msgbox = $('<div class="msg-box"></div>').appendTo($content)
+                }
+                return $msgbox
+            },
+            msgMaker: function(opt) {
+                return opt.msg
+            },
+            msgShow: function($msgbox) {
+                $msgbox.delay(100).show().stop().animate({
+                    opacity: 1
+                }, 200, function() {
+                    $msgbox.show()
+                })
+            },
+            msgHide: function($msgbox) {
+                $msgbox.stop().delay(100).show().animate({
+                    opacity: 0
+                }, 200, function() {
+                    $msgbox.hide()
+                })
+            }
         }
     })
 
 
     $.validator.config({
         theme     : 'red_right_effect',
-        formClass : 'n-red'
+        formClass : 'n-red',
+        msgWrapper: 'div'
     })
 
 }(jQuery);
