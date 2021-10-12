@@ -5,21 +5,11 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  */
 
-/* ========================================================================
- * B-JUI: bjui-core.js  v1.2
- * @author K'naan (xknaan@163.com)
- * -- Modified from dwz.core.js (author:ZhangHuihua@msn.com)
- * http://git.oschina.net/xknaan/B-JUI/blob/master/BJUI/js/bjui-core.js
- * ========================================================================
- * Copyright 2014 K'naan.
- * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
- * ======================================================================== */
-
 +(function($) {
   'use strict'
 
   var BJUI = {
-    version: '1.3.1',
+    version: '1.4.0',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
