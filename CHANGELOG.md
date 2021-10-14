@@ -2,6 +2,9 @@
 -------------------------------------------
 ## master
 
+### Improvements
+- 样式布局优化
+
 ### fixed
 - 修复bjui-slidebar tooltip 插件销毁错误问题
 
