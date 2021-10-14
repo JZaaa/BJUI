@@ -86,6 +86,9 @@
   var Navtab = function(element, options) {
     this.$element = $(element)
     this.options = options
+    if (BJUI.layout && !BJUI.layout.tags) {
+      this.options.id = 'main'
+    }
     this.tools = this.TOOLS()
   }
 
@@ -618,7 +621,7 @@
   Navtab.prototype.getCurrentPanel = function() {
     return this.tools.getPanels().eq(currentIndex)
   }
-  
+
   Navtab.prototype.closeOtherTab = function() {
 	  return this.tools.closeOtherTab()
   }

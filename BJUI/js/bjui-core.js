@@ -65,6 +65,7 @@
     },
     layout: {
       mode: 'default',
+      tags: true, // 是否显示标签页
       // style: {
       //   headerBg: '#009688', // 顶部头颜色
       //   sidebarBg: '#001529', // 菜单栏背景色
@@ -110,7 +111,7 @@
       $.extend(BJUI.dialog, op.dialog)
 
       if (op.layout) {
-        this.layout = op.layout
+        $.extend(BJUI.layout, op.layout)
       }
 
       if (op.JSPATH) this.JSPATH = op.JSPATH
@@ -158,7 +159,14 @@
 
       var iContentH = $(window).height() - $header.height() - $('#bjui-footer').outerHeight()
 
-      var navtabH = $navtab.find('.tabsPageHeader').height()
+      var navtabH = 0
+
+      if (BJUI.layout && !BJUI.layout.tags) {
+        $navtab.find('.tabsPageHeader').hide()
+        $navtab.find('.tabsPageContent').css('margin-top', 0)
+      } else {
+        navtabH = $navtab.find('.tabsPageHeader').height()
+      }
 
       if (BJUI.ui.windowWidth) $('#bjui-window').width(ww)
       BJUI.windowWidth = ww
