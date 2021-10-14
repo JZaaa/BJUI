@@ -9,9 +9,11 @@
 html, body {
   font-size: 14px;
 }
+
 .align-middle {
-  vertical-align: middle!important;
+  vertical-align: middle !important;
 }
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 8px;
@@ -41,20 +43,26 @@ html, body {
 #bjui-container {
   margin-top: 0;
 }
+
 #bjui-navtab {
   left: 201px;
 }
+
 #bjui-header {
- height: 40px;
+  height: 40px;
+  box-shadow: none;
 }
+
 #bjui-leftside {
   width: @sidebar-width;
 }
+
 #bjui-sidebar {
   background: @sidebar-bg;
   border: none;
   overflow-y: auto;
 }
+
 .bjui-sidebar {
   min-width: @sidebar-width;
   max-width: @sidebar-width;
@@ -73,18 +81,18 @@ html, body {
   @brand-fixed: true;
   @brand-height: 60px;
 
-//@if @brand-fixed {
-//  .sidebar-brand {
-//    position: fixed;
-//    height: @brand-height;
-//    overflow: hidden;
-//    top: 0;
-//    width: @sidebar-width;
-//  }
-//  .sidebar-content {
-//    padding-top: @brand-height;
-//  }
-//}
+  //@if @brand-fixed {
+  //  .sidebar-brand {
+  //    position: fixed;
+  //    height: @brand-height;
+  //    overflow: hidden;
+  //    top: 0;
+  //    width: @sidebar-width;
+  //  }
+  //  .sidebar-content {
+  //    padding-top: @brand-height;
+  //  }
+  //}
 
   .sidebar-item__icon {
     font-size: 1.2rem;
@@ -162,10 +170,12 @@ html, body {
       background: @sidebar-light-bg;
       padding: .9rem 1.6rem;
     }
+
     .sidebar-dropdown {
       .sidebar-link {
         padding: .9rem 2.4rem;
       }
+
       .sidebar-dropdown {
         .sidebar-link {
           padding: .9rem 3.2rem;
@@ -242,25 +252,17 @@ html, body {
     border-width: 0 .075rem .075rem 0;
     display: inline-block;
     padding: 2px;
-    -webkit-transform: rotate(
-            45deg
-    );
-    transform: rotate(
-            45deg
-    );
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
     position: absolute;
     top: 1.2rem;
     right: 1.5rem;
     transition: all .2s ease-out;
   }
 
-  [aria-expanded=true]:after,[data-toggle=collapse]:not(.collapsed):after {
-    -webkit-transform: rotate(
-            -135deg
-    );
-    transform: rotate(
-            -135deg
-    );
+  [aria-expanded=true]:after, [data-toggle=collapse]:not(.collapsed):after {
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
     top: 1.4rem;
   }
 

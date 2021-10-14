@@ -152,6 +152,9 @@
       var $header = $('#bjui-header')
       var $navtab = $('#bjui-navtab')
       var iContentW = ww - (BJUI.ui.showSlidebar ? $('#bjui-sidebar').width() + 6 : 6)
+      if (BJUI.layout && BJUI.layout.mode !== 'default') {
+        iContentW += 6
+      }
 
       var iContentH = $(window).height() - $header.height() - $('#bjui-footer').outerHeight()
 
