@@ -112,7 +112,8 @@
     minDate: '1900-01-01',
     maxDate: '2099-12-31',
     mmStep: 1,
-    ssStep: 1
+    ssStep: 1,
+    block: false
   }
 
   Datepicker.EVENTS = {
@@ -305,7 +306,7 @@
       var $box = this.$element.parent()
       var height = this.$element.addClass('form-control').innerHeight()
 
-      $box.css({ 'position': 'relative', 'display': 'inline-block' })
+      $box.css({ 'position': 'relative', 'display': this.options.block ? 'block' : 'inline-block' })
 
       this.$dateBtn.css({ 'height': height, 'lineHeight': height + 'px' }).appendTo($box)
       this.$dateBtn.on('selectstart', function() { return false })
