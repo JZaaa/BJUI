@@ -963,3 +963,57 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
 .bj-flex-loop(0);
 .bj-font-loop(12);
 @import "space";
+
+
+.bj-divider {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: tnum;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.bj-divider-horizontal {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 24px 0;
+
+  &.divider-with-text {
+    display: flex;
+    margin: 16px 0;
+    color: #000000d9;
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+    text-align: center;
+    border-top: 0;
+    border-top-color: rgba(0, 0, 0, .06);
+
+    &::before, &::after {
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: 1px solid transparent;
+      border-top-color: inherit;
+      border-bottom: 0;
+      transform: translateY(50%);
+      content: "";
+    }
+
+    span {
+      display: inline-block;
+      padding: 0 1em;
+      font-size: 16px;
+      font-weight: 400;
+      color: #333333;
+    }
+  }
+}
+
