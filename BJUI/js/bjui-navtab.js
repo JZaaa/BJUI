@@ -87,7 +87,13 @@
     this.$element = $(element)
     this.options = options
     if (BJUI.layout && !BJUI.layout.tags) {
-      this.options.id = 'main'
+      if (this.options.layer) {
+        if (!this.options.id) {
+          this.options.id = '_layer_page'
+        }
+      } else {
+        this.options.id = 'main'
+      }
     }
     this.tools = this.TOOLS()
   }
@@ -95,6 +101,7 @@
   Navtab.DEFAULTS = {
     id: undefined,
     title: 'New tab',
+    layer: false, // 覆盖层，单标签页允许自定义id使用。情景：列表页面打开查看页，生成独立查看页，关闭后返回原列表页不刷新
     url: undefined,
     type: 'GET',
     data: {},
