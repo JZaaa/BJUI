@@ -786,6 +786,16 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
 .bj-form-label-loop(80);
 .bj-form-item {
   margin-bottom: 18px;
+  &::before {
+    display: table;
+    content: "";
+  }
+
+  &::after {
+    clear: both;
+    display: table;
+    content: "";
+  }
 }
 .bj-form-item-label {
   vertical-align: middle;
