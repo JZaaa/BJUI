@@ -5,6 +5,7 @@
 ### Improvements
 - 样式布局优化
 - 新增单标签页功能
+- 左右菜单布局添加默认菜单监听
 
 ### fixed
 - 修复bjui-slidebar tooltip 插件销毁错误问题

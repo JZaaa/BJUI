@@ -16,6 +16,28 @@
     this._bindEvent()
     var html = this._createMenuHtml(this._menus, '#bjui-sidebar__menu')
     this._$sidebar.html('<ul class="bjui-sidebar" id="bjui-sidebar__menu">' + html + '<ul>')
+
+
+    function _initActiveMenu($sidebar) {
+      var $box = $('#bjui-navtab')
+      var $tabs = $box.find('.navtab-tab')
+      var $main = $tabs.find('li:first')
+      if ($main.length) {
+        var url = $main.data('url')
+        if (url) {
+          var activeMenu = $sidebar.find('a[data-url="'+url+'"]:first')
+          if (activeMenu.length) {
+            activeMenu.parents('.sidebar-item').addClass('active')
+            var text = activeMenu.text()
+            var $moreBox = $box.find('.tabsMoreList')
+            $moreBox.find('li:first a').text(text)
+            $main.find('span').text(text)
+          }
+        }
+      }
+    }
+
+    _initActiveMenu(this._$sidebar)
   }
 
   Layout.prototype._initUi = function () {
