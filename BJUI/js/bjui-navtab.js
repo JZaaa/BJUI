@@ -439,9 +439,8 @@
       if (!options.id) delete options.id
 
       $tab = tools.getTabs().eq(iOpenIndex)
-      $panel = tools.getPanels().eq(iOpenIndex)
       var initOp = $tab.data('initOptions')
-      var op = $.extend({}, initOp, options)
+      var op = $.extend({}, options)
 
       if (initOp.fresh || options.fresh || initOp.url !== options.url) {
         that.reload(op)
@@ -555,7 +554,7 @@
 
     if ($tab) {
       var initOptions = $tab.data('initOptions') || {}
-      var op = $.extend({}, initOptions, options)
+      var op = options
       var _reload = function() {
         if (initOptions.title !== op.title) $tab.find('> a').attr('title', op.title).find('> span').html(op.title)
         if (!initOptionFlag) $tab.data('initOptions', op)
@@ -679,7 +678,10 @@
   // ==============
 
   $(document).on('click.bjui.navtab.data-api', '[data-toggle="navtab"]', function(e) {
-    var $this = $(this); var href = $this.attr('href'); var data = $this.data(); var options = data.options
+    var $this = $(this)
+    var href = $this.attr('href')
+    var data = $this.data()
+    var options = data.options
     if (options) {
       if (typeof options === 'string') options = options.toObj()
       if (typeof options === 'object') { $.extend(data, options) }

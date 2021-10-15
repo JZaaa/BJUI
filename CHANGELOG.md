@@ -9,6 +9,7 @@
 
 ### fixed
 - 修复bjui-slidebar tooltip 插件销毁错误问题
+- 修复同id的Navtab组件重新加载时继承之前组件的属性属性，现在重复打开navtab属性与设置一致
 
 ### Update
 - 升级Bootstrap为 v3.4.1
