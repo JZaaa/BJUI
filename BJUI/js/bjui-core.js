@@ -157,7 +157,8 @@
         iContentW += 6
       }
 
-      var iContentH = $(window).height() - $header.height() - $('#bjui-footer').outerHeight()
+      var footerHeight = $('#bjui-footer').outerHeight() || 0
+      var iContentH = $(window).height() - $header.height() - footerHeight
 
       var navtabH = 0
 
