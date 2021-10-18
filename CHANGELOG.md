@@ -7,6 +7,7 @@
 - 新增单标签页功能
 - 添加左右菜单布局初始化默认菜单功能
 - 新增datepicker组件生成block样式选择
+- 新增lookup组件生成block样式选择
 
 ### fixed
 - 修复bjui-slidebar tooltip 插件销毁错误问题

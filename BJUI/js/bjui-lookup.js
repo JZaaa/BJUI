@@ -44,6 +44,7 @@
     arrayfix: null,
     open: true,
     addBtn: false,
+    block: false,
     beforeSelect: null // 选中目标赋值之前，返回false则停止赋值关闭窗口动作
   }
 
@@ -108,7 +109,7 @@
       var $box = this.$element.parent()
       var height = this.$element.addClass('form-control').innerHeight()
 
-      $box.css({'position': 'relative', 'display': 'inline-block'})
+      $box.css({'position': 'relative', 'display': this.options.block ? 'block' : 'inline-block'})
 
       $.each(that.options, function (key, val) {
         if (key !== 'toggle') that.$lookBtn.data(key, val)
