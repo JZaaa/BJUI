@@ -563,9 +563,10 @@
     if ($tab) {
       var initOptions = $tab.data('initOptions') || {}
       var op = $.extend({}, {
-        title: initOptions.title,
-        id: initOptions.id
+          title: initOptions.title,
+          id: initOptions.id
       }, options)
+
       var _reload = function() {
         if (initOptions.title !== op.title) $tab.find('> a').attr('title', op.title).find('> span').html(op.title)
         if (!initOptionFlag) $tab.data('initOptions', op)
@@ -586,6 +587,7 @@
   }
 
   Navtab.prototype.reloadForm = function(clearQuery, option) {
+    option = option || {}
     var options = $.extend({}, typeof option === 'object' && option)
     var $tab, $panel
 

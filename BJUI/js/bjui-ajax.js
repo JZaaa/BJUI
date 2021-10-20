@@ -311,7 +311,10 @@
   Bjuiajax.prototype.doSearch = function(options) {
     var that = this
     var $element = that.$element
-    var op = { pageCurrent: 1 }
+    var op = {}
+    if (!options.loadPage) {
+      op.pageCurrent = 1
+    }
     var $target = $element.closest('.bjui-layout')
     var isValid = options.isValid
 
@@ -768,7 +771,25 @@
   })
 
   $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="navtabrefresh"]', function(e) {
-    $.CurrentNavtab.navtab('refresh')
+    var $this = $(this)
+
+    var $box = $this.closest('.bjui-layout')
+
+    if (!$box.length) {
+      $box = $.CurrentNavtab
+    }
+
+    var $form = $box.find('#pagerForm')
+
+    if (!$form.length) {
+      $.CurrentNavtab.navtab('refresh')
+    }
+
+    var options = $form.data()
+    options.clearQuery = $this.data('clearQuery') || false
+    options.loadPage = $this.data('loadPage') || true
+
+    Plugin.call($form, 'doSearch', options)
 
     e.preventDefault()
   })
