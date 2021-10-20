@@ -91,6 +91,7 @@
         if (!this.options.id) {
           this.options.id = '_layer_page'
         }
+        this.options.fresh = true
       } else {
         this.options.id = 'main'
       }
