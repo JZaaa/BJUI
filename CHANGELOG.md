@@ -7,6 +7,7 @@
 - ajaxsearch新增bootstrap主题验证选择
 - 优化样式
 - 新增紧凑表单样式
+- 修改单标签模式下，navtab固定可重加载
 
 ## v1.4.1
 
