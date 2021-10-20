@@ -726,10 +726,12 @@
     if ($.validator) {
       $(document).on(BJUI.eventType.initUI, function(e) {
         $(e.target).find('form[data-toggle="ajaxsearch"]').each(function() {
-          var $form = $(this); var options = $form.data()
+          var $form = $(this)
+          var options = $form.data() || {}
 
           options.isValid = true
           $form.validator({
+            theme: options.theme || 'red_right_effect',
             valid: function(form) {
               Plugin.call($form, 'doSearch', options)
             }
