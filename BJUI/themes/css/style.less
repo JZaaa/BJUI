@@ -897,11 +897,11 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
   // 行内表单
   &-inline {
     .bj-form-item {
-      display: inline-flex;
+      display: inline-block;
       margin-right: 10px;
     }
-    .bj-form-item-content {
-      margin-left: 0!important;
+    &.bj-form-label-top .bj-form-item-content {
+     margin-right: 0;
     }
   }
 
@@ -929,6 +929,11 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
     input, .bootstrap-select .dropdown-toggle {
       height: 32px;
     }
+  }
+
+  .btn {
+    padding: 6px 14px;
+    height: auto;
   }
 }
 
