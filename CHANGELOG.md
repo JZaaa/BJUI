@@ -6,6 +6,7 @@
 - 增强$.fn.findFilter拓展，现在可以指定第二个属性过滤部分元素
 - ajaxsearch新增bootstrap主题验证选择
 - 优化样式
+- 新增紧凑表单样式
 
 ## v1.4.1
 
