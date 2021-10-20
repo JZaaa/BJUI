@@ -562,7 +562,10 @@
 
     if ($tab) {
       var initOptions = $tab.data('initOptions') || {}
-      var op = options
+      var op = $.extend({}, {
+        title: initOptions.title,
+        id: initOptions.id
+      }, options)
       var _reload = function() {
         if (initOptions.title !== op.title) $tab.find('> a').attr('title', op.title).find('> span').html(op.title)
         if (!initOptionFlag) $tab.data('initOptions', op)

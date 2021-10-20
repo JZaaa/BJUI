@@ -11,6 +11,7 @@
 
 ### fixed
 - 修复divCallback获取jQuery对象不正确问题
+- 修复navtab重复载入id丢失问题
 
 ## v1.4.1
 
