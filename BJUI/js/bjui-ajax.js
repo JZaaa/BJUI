@@ -179,9 +179,13 @@
     if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
     if (that.options.reload) {
       var form = that.tools.getPagerForm($target)
-      var url = null; var type = null
+      var url = null
+      var type = null
 
       if (form) {
+        if (!(form instanceof $)) {
+          form = $(form)
+        }
         url = form.attr('action')
         type = form.attr('method') || 'GET'
       } else {

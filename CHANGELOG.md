@@ -9,6 +9,9 @@
 - 新增紧凑表单样式
 - 修改单标签模式下，navtab固定可重加载
 
+### fixed
+- 修复divCallback获取jQuery对象不正确问题
+
 ## v1.4.1
 
 ### Improvements
