@@ -767,6 +767,12 @@
     e.preventDefault()
   })
 
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="navtabrefresh"]', function(e) {
+    $.CurrentNavtab.navtab('refresh')
+
+    e.preventDefault()
+  })
+
   $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="ajaxload"]', function(e) {
     var $this = $(this)
     var options = $this.data()
