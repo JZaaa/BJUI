@@ -892,8 +892,9 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
   }
 }
 
-// 行内表单
 .bj-form {
+
+  // 行内表单
   &-inline {
     .bj-form-item {
       display: inline-flex;
@@ -901,6 +902,19 @@ ul.ztree.zTreeDragUL{position:absolute; margin:0; padding:0; width:auto; height:
     }
     .bj-form-item-content {
       margin-left: 0!important;
+    }
+  }
+
+  // 紧凑表单
+  &-condensed {
+    .bj-form-item {
+      vertical-align: top;
+      margin-bottom: 0;
+
+      .msg-box {
+        position: static;
+        margin-top: 5px;
+      }
     }
   }
 }
