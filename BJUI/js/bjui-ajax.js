@@ -782,7 +782,7 @@
     var $form = $box.find('#pagerForm')
 
     if (!$form.length) {
-      $.CurrentNavtab.navtab('refresh')
+      return $.CurrentNavtab.navtab('refresh')
     }
 
     var options = $form.data()
