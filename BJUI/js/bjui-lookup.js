@@ -21,7 +21,7 @@
   // LOOKUP GLOBAL ELEMENTS
   // ======================
 
-  var group, suffix, $currentLookup, arrayfix, beforeSelect
+  var group, suffix, $currentLookup, arrayfix, beforeSelect, inputFilter
 
   // LOOKUP CLASS DEFINITION
   // ======================
@@ -42,6 +42,8 @@
     maxable: true,
     resizable: true,
     arrayfix: null,
+    suffix: null,
+    inputFilter: null, // 过滤
     open: true,
     addBtn: false,
     block: false,
@@ -72,6 +74,7 @@
     group = this.options.group || null
     suffix = this.options.suffix || null
     arrayfix = this.options.arrayfix || null
+    inputFilter = this.options.inputFilter || null
     $currentLookup = this.$element
     if (suffix) suffix = suffix.trim()
     if (options.beforeSelect) {
@@ -202,7 +205,7 @@
     if ($currentLookup.data('customEvent')) {
       $currentLookup.trigger('customEvent.bjui.lookup', [args])
     } else {
-      $box.find(':input').each(function () {
+      $box.find((inputFilter ? ('[data-filter='+inputFilter+']') : '') + ':input').each(function () {
         var $input = $(this)
         var inputName = $input.attr('name')
 

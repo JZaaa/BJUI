@@ -1,64 +1,94 @@
 <div class="bjui-pageContent">
-    <div class="bjui-doc">
-        <h3 class="page-header">查找带回</h3>
-        <blockquote>
-            <p>本节主要介绍框架的查找带回功能，流程：1. 打开一个呈现数据的弹出窗口；2. 选择一个或多个值，将值返回到触发页面对应的input；3. 关闭弹出窗口。</p>
-        </blockquote>
-        <blockquote class="point">
-            <code>关于动态更换url：</code>如果需要动态更换lookup的url，需要为lookupbtn新增属性<code>data-newurl</code>，如：<br>
-            <pre class="brush: js">
+  <div class="bjui-doc">
+    <h3 class="page-header">查找带回</h3>
+    <blockquote>
+      <p>本节主要介绍框架的查找带回功能，流程：1. 打开一个呈现数据的弹出窗口；2. 选择一个或多个值，将值返回到触发页面对应的input；3. 关闭弹出窗口。</p>
+    </blockquote>
+    <blockquote class="point">
+      <code>关于动态更换url：</code>如果需要动态更换lookup的url，需要为lookupbtn新增属性<code>data-newurl</code>，如：<br>
+      <pre class="brush: js">
                 $('input').parent().find('a.bjui-lookup').data('newurl', 'new url') //通过input框修改附加按钮的url
                 $('lookupbtn').data('newurl', 'new url')                            //直接修改lookup按钮的url
             </pre>
-        </blockquote>
-        <h4>初始化</h4>
-        <ul>
-            <li>Data属性：input添加属性<code>data-toggle="lookup"</code> 或 点击含有属性<code>data-toggle="lookupbtn"</code>的元素触发。<br>
-                <span class="label label-default">DOM示例1：</span>　<label>PID:</label><input type="text" name="pid" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="name" class="doc_lookup" size="10"><br>
-                <p>示例代码：</p>
-                <pre class="brush: html">
+    </blockquote>
+    <h4>初始化</h4>
+    <ul>
+      <li>Data属性：input添加属性<code>data-toggle="lookup"</code> 或 点击含有属性<code>data-toggle="lookupbtn"</code>的元素触发。<br>
+        <span class="label label-default">DOM示例1：</span>　
+        <label>PID:</label>
+        <input type="text" name="pid"
+               class="doc_lookup"
+               size="5">&nbsp;<label>查找名称：</label><input
+          type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="name" class="doc_lookup"
+          size="10"><br>
+        <label>PID:</label>
+        <input type="text" name="pid"
+               data-filter="inputFilter"
+               class="doc_lookup"
+               size="5">&nbsp;<label>查找名称：</label><input
+          type="text" data-toggle="lookup" data-filter="inputFilter" data-input-filter="inputFilter"
+          data-url="doc/form/mylookup.html" name="name" class="doc_lookup" size="10"><br>
+        <p>示例代码：</p>
+        <pre class="brush: html">
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="pid" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="name" size="10">
+                    <!--    添加[data-input-filter]将会对 [data-filter]:input 元素进行赋值     -->
+                    &lt;label>PID:&lt;/label>&lt;input type="text" name="pid" data-filter="inputFilter" size="5">
+                    &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-filter="inputFilter" data-input-filter="inputFilter" data-url="doc/form/mylookup.html" name="name" size="10">
                 </pre>
-                <span class="label label-default">DOM示例2：</span>　<label>PID:</label><input type="text" name="t2.pid" size="5">&nbsp;<label>查找名称：</label><input type="text" name="t2.name" size="10"> <a href="doc/form/mylookup.html" data-toggle="lookupbtn" data-group="t2">打开Lookup窗口</a><br>
-                <p>示例代码：</p>
-                <pre class="brush: html">
+        <span class="label label-default">DOM示例2：</span>　<label>PID:</label><input type="text" name="t2.pid" size="5">&nbsp;<label>查找名称：</label><input
+          type="text" name="t2.name" size="10"> <a href="doc/form/mylookup.html" data-toggle="lookupbtn"
+                                                   data-group="t2">打开Lookup窗口</a><br>
+        <p>示例代码：</p>
+        <pre class="brush: html">
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="t2.pid" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" name="t2.name" size="10"> &lt;a href="doc/form/mylookup.html" data-toggle="lookupbtn" data-group="t2">打开Lookup窗口&lt;/a>
                 </pre>
-                <span class="label label-default">DOM示例3：</span>　<label>PID:</label><input type="text" name="aa[pid]" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="aa[name]" class="doc_lookup" data-arrayfix="aa" size="10"><br>
-                <p>示例代码：</p>
-                <pre class="brush: html">
+        <span class="label label-default">DOM示例3：</span>　<label>PID:</label><input type="text" name="aa[pid]"
+                                                                                   class="doc_lookup"
+                                                                                   size="5">&nbsp;<label>查找名称：</label><input
+          type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="aa[name]" class="doc_lookup"
+          data-arrayfix="aa" size="10"><br>
+        <p>示例代码：</p>
+        <pre class="brush: html">
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="aa[pid]" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="aa[name]" data-arrayfix="aa" size="10">
                 </pre>
-                <script>
-                    function lookup_before_select(val, valArray, type) {
-                      console.log(val)
-                      console.log(valArray)
-                      console.log(type)
-                      $(this).alertmsg('error', '选择无效')
-                      return false
-                    }
-                </script>
-                <span class="label label-default">DOM示例4：</span>　<label>PID:</label><input type="text" name="bb[pid]" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="bb[name]" class="doc_lookup" data-arrayfix="bb" data-before-select="lookup_before_select" size="10"><br>
-                <p>示例代码：</p>
-                <pre class="brush: html">
+        <script>
+          function lookup_before_select(val, valArray, type) {
+            console.log(val)
+            console.log(valArray)
+            console.log(type)
+            $(this).alertmsg('error', '选择无效')
+            return false
+          }
+        </script>
+        <span class="label label-default">DOM示例4：</span>　<label>PID:</label><input type="text" name="bb[pid]"
+                                                                                   class="doc_lookup"
+                                                                                   size="5">&nbsp;<label>查找名称：</label><input
+          type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="bb[name]" class="doc_lookup"
+          data-arrayfix="bb" data-before-select="lookup_before_select" size="10"><br>
+        <p>示例代码：</p>
+        <pre class="brush: html">
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="bb[pid]" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" data-toggle="lookup" data-url="doc/form/mylookup.html" name="bb[name]" data-arrayfix="bb" size="10" data-before-select="lookup_before_select">
                 </pre>
-            </li>
-            <li>jQuery API：<br>
-                <pre class="brush: js">
+      </li>
+      <li>jQuery API：<br>
+        <pre class="brush: js">
                     $(input).lookup(options)
                 </pre>
-              <span class="label label-default">DOM示例：</span>　<label>PID:</label><input type="text" name="api[pid]" class="doc_lookup" size="5">&nbsp;<label>查找名称：</label><input data-filter="lookup-api" type="text" data-url="doc/form/mylookup.html" name="api[name]" class="doc_lookup" data-arrayfix="api" size="10"><br>
-              <p>示例代码：</p>
-              <pre class="brush: html">
+        <span class="label label-default">DOM示例：</span>　<label>PID:</label><input type="text" name="api[pid]"
+                                                                                  class="doc_lookup"
+                                                                                  size="5">&nbsp;<label>查找名称：</label><input
+          data-filter="lookup-api" type="text" data-url="doc/form/mylookup.html" name="api[name]" class="doc_lookup"
+          data-arrayfix="api" size="10"><br>
+        <p>示例代码：</p>
+        <pre class="brush: html">
                     &lt;label>PID:&lt;/label>&lt;input type="text" name="api[pid]" size="5">
                     &lt;label>查找名称：&lt;/label>&lt;input type="text" data-filter="lookup-api" data-url="doc/form/mylookup.html" name="api[name]" data-arrayfix="api" size="10">
                 </pre>
-              <pre class="brush: js">
+        <pre class="brush: js">
                $.CurrentNavtab.findFilter('lookup-api').lookup({
                     addBtn: true, // 实例化是否添加btn
                     open: false, // 实例化是否直接打开
@@ -70,171 +100,184 @@
                     }
                   })
             </pre>
-              <script>
-                (function() {
-                  $.CurrentNavtab.findFilter('lookup-api').lookup({
-                    addBtn: true,
-                    open: false,
-                    beforeSelect: function (val, valArray, type) {
-                      console.log(val)
-                      console.log(valArray)
-                      console.log(type)
-                      $(this).alertmsg('info', '选择前回调')
-                    }
-                  })
-                }())
-              </script>
-            </li>
-        </ul>
-        <h4>参数（options）</h4>
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>名称</th>
-                    <th>类型</th>
-                    <th>默认值</th>
-                    <th>描述</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>url</td>
-                    <td>string</td>
-                    <td>null</td>
-                    <td>[必选] <span class="badge"><i>D-Url</i></span> 打开lookup的URL，a链接触发时可以将url定义在href属性。。</td>
-                </tr>
-                <tr>
-                    <td>group</td>
-                    <td>string</td>
-                    <td>null</td>
-                    <td>[可选] input的名称，适用于input名称为"aa.bb"的形式，其中 group为：<code>aa</code>。</td>
-                </tr>
-                <tr>
-                    <td>suffix</td>
-                    <td>string</td>
-                    <td>null</td>
-                    <td>[可选] input的名称后缀，适用于input名称为"abcd[]"或"aa.bb[]"的形式，其中 suffix为：<code>[]</code>，<code>特别注意：</code>如果真实情况suffix为"[]"，请写为<code>" []"</code>，空格加"[]"，以防止被转义为空数组。</td>
-                </tr>
-                <tr>
-                    <td>arrayfix</td>
-                    <td>string</td>
-                    <td>null</td>
-                    <td>[可选] input的名称后缀，适用于input名称为"[abcd]"或"aa[abcd]"的形式，一般用于<code>PHP</code>语言下可编辑表格数组拼接</td>
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>string</td>
-                    <td>lookup_dialog</td>
-                    <td>[可选] 弹出窗口的id。</td>
-                </tr>
-                <tr>
-                    <td>mask</td>
-                    <td>boolean</td>
-                    <td>true</td>
-                    <td>[可选] 是否弹出模态窗口。</td>
-                </tr>
-                <tr>
-                    <td>width</td>
-                    <td>int</td>
-                    <td>600</td>
-                    <td>[可选] 弹出窗口的宽度。</td>
-                </tr>
-                <tr>
-                    <td>height</td>
-                    <td>int</td>
-                    <td>400</td>
-                    <td>[可选] 弹出窗口的高度。</td>
-                </tr>
-                <tr>
-                    <td>title</td>
-                    <td>string</td>
-                    <td>Lookup</td>
-                    <td>[可选] 弹出窗口的标题，单击触发时，如未明确定义title，将取元素的text值作为title。</td>
-                </tr>
-                <tr>
-                    <td>maxable</td>
-                    <td>boolean</td>
-                    <td>true</td>
-                    <td>[可选] 弹出窗口可以最大化。</td>
-                </tr>
-                <tr>
-                    <td>resizable</td>
-                    <td>boolean</td>
-                    <td>true</td>
-                    <td>[可选] 弹出窗口可以调整大小。</td>
-                </tr>
-                <tr>
-                    <td>open</td>
-                    <td>boolean</td>
-                    <td>true</td>
-                    <td>
-                      <span class="label label-success">1.1.9+</span>
-                      api实例化是否自动打开弹窗。
-                    </td>
-                </tr>
-                <tr>
-                    <td>addBtn</td>
-                    <td>boolean</td>
-                    <td>false</td>
-                    <td>
-                      <span class="label label-success">1.1.9+</span>
-                      api实例化是否新增图标点击。
-                    </td>
-                </tr>
-                <tr>
-                  <td>block</td>
-                  <td>boolean</td>
-                  <td>false</td>
-                  <td>[可选] 生成包裹器是否为 <code>display: block;</code></td>
-                </tr>
-                <tr>
-                    <td>beforeSelect</td>
-                    <td>function</td>
-                    <td>null</td>
-                    <td>
-                      [可选]  选中目标赋值之前，返回<code>false</code>则停止赋值关闭窗口动作。
-                      <div>
-                        function(val)
-                        回调参数<code>val</code>为赋值参数
-                      </div>
-                      <div>
-                        <span class="label label-success">1.1.8+</span>
-                        function(val, valArray, type)
-                        回调参数<code>val</code>为赋值参数,回调参数<code>valArray</code>选中数据的array集,<code>type</code>是否追加
-                      </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <h4>事件</h4>
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>事件名称</th>
-                    <th>中文说明</th>
-                    <th>描述</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>afterchange.bjui.lookup</td>
-                    <td>带回值后的事件</td>
-                    <td>监听该事件，可以在input取得返回值后进行相关操作。</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>这样监听lookup的事件：<code>mylookup - selector</code>表示lookup赋值了的input选择器</p>
-        <pre class="brush: js">
+        <script>
+          (function () {
+            $.CurrentNavtab.findFilter('lookup-api').lookup({
+              addBtn: true,
+              open: false,
+              beforeSelect: function (val, valArray, type) {
+                console.log(val)
+                console.log(valArray)
+                console.log(type)
+                $(this).alertmsg('info', '选择前回调')
+              }
+            })
+          }())
+        </script>
+      </li>
+    </ul>
+    <h4>参数（options）</h4>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th>名称</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>描述</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>url</td>
+        <td>string</td>
+        <td>null</td>
+        <td>[必选] <span class="badge"><i>D-Url</i></span> 打开lookup的URL，a链接触发时可以将url定义在href属性。。</td>
+      </tr>
+      <tr>
+        <td>inputFilter</td>
+        <td>string</td>
+        <td>null</td>
+        <td>
+          <span class="label label-success">1.4.3+</span>
+          [可选] input的[data-filter]过滤，设置此属性仅对符合[data-filter]属性的input进行赋值
+        </td>
+      </tr>
+      <tr>
+        <td>group</td>
+        <td>string</td>
+        <td>null</td>
+        <td>[可选] input的名称，适用于input名称为"aa.bb"的形式，其中 group为：<code>aa</code>。</td>
+      </tr>
+      <tr>
+        <td>suffix</td>
+        <td>string</td>
+        <td>null</td>
+        <td>[可选] input的名称后缀，适用于input名称为"abcd[]"或"aa.bb[]"的形式，其中 suffix为：<code>[]</code>，<code>特别注意：</code>如果真实情况suffix为"[]"，请写为<code>"
+          []"</code>，空格加"[]"，以防止被转义为空数组。
+        </td>
+      </tr>
+      <tr>
+        <td>arrayfix</td>
+        <td>string</td>
+        <td>null</td>
+        <td>[可选] input的名称后缀，适用于input名称为"[abcd]"或"aa[abcd]"的形式，一般用于<code>PHP</code>语言下可编辑表格数组拼接</td>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>string</td>
+        <td>lookup_dialog</td>
+        <td>[可选] 弹出窗口的id。</td>
+      </tr>
+      <tr>
+        <td>mask</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>[可选] 是否弹出模态窗口。</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>int</td>
+        <td>600</td>
+        <td>[可选] 弹出窗口的宽度。</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>int</td>
+        <td>400</td>
+        <td>[可选] 弹出窗口的高度。</td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>string</td>
+        <td>Lookup</td>
+        <td>[可选] 弹出窗口的标题，单击触发时，如未明确定义title，将取元素的text值作为title。</td>
+      </tr>
+      <tr>
+        <td>maxable</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>[可选] 弹出窗口可以最大化。</td>
+      </tr>
+      <tr>
+        <td>resizable</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>[可选] 弹出窗口可以调整大小。</td>
+      </tr>
+      <tr>
+        <td>open</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>
+          <span class="label label-success">1.1.9+</span>
+          api实例化是否自动打开弹窗。
+        </td>
+      </tr>
+      <tr>
+        <td>addBtn</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>
+          <span class="label label-success">1.1.9+</span>
+          api实例化是否新增图标点击。
+        </td>
+      </tr>
+      <tr>
+        <td>block</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>[可选] 生成包裹器是否为 <code>display: block;</code></td>
+      </tr>
+      <tr>
+        <td>beforeSelect</td>
+        <td>function</td>
+        <td>null</td>
+        <td>
+          [可选] 选中目标赋值之前，返回<code>false</code>则停止赋值关闭窗口动作。
+          <div>
+            function(val)
+            回调参数<code>val</code>为赋值参数
+          </div>
+          <div>
+            <span class="label label-success">1.1.8+</span>
+            function(val, valArray, type)
+            回调参数<code>val</code>为赋值参数,回调参数<code>valArray</code>选中数据的array集,<code>type</code>是否追加
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <h4>事件</h4>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th>事件名称</th>
+        <th>中文说明</th>
+        <th>描述</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>afterchange.bjui.lookup</td>
+        <td>带回值后的事件</td>
+        <td>监听该事件，可以在input取得返回值后进行相关操作。</td>
+      </tr>
+      </tbody>
+    </table>
+    <p>这样监听lookup的事件：<code>mylookup - selector</code>表示lookup赋值了的input选择器</p>
+    <pre class="brush: js">
             $('mylookup - selector').on('afterchange.bjui.lookup', function(e, data) {
                 var myvalue = data.value
 
                 // do something...
             })
         </pre>
-    </div>
+  </div>
 </div>
 <div class="bjui-pageFooter">
-    <ul>
-        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
-    </ul>
+  <ul>
+    <li>
+      <button type="button" class="btn-close" data-icon="close">关闭</button>
+    </li>
+  </ul>
 </div>

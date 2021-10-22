@@ -5,6 +5,7 @@
 ### Improvements
 - 新增 **data-toggle="navtabrefresh"** 监听事件，触发事件会对navtab进行刷新(若在.bjui-layout下则对局部加载刷新)，默认存在表单则保留表单参数(包括分页)参数刷新，否则全页面刷新
 - 优化页面布局
+- 对lookup组件新增 **inputFilter** 配置项，仅对符合data-filter属性的input进行赋值
 
 -------------------------------------------
 
