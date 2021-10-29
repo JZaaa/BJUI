@@ -29,6 +29,8 @@
   Upload.DEFAULTS = {
     fileTypeExts: '*.jpg;*.png', // 允许上传的文件类型，格式'*.jpg;*.doc'
     uploader: '', // 文件提交的地址
+    class: 'btn btn-default',
+    hideFileList: false, // 隐藏上传面板
     auto: false, // 是否开启自动上传
     method: 'POST', // 发送请求的方式，get或post
     multi: false, // 是否允许选择多个文件
@@ -316,6 +318,7 @@
 
     var $uploadFrag = $(FRAG.uploadFrag
       .replaceAll('#multi#', options.multi ? 'multiple' : '')
+      .replaceAll('#btn-default#', options.class ? options.class : 'btn btn-default')
       .replaceAll('#accept#', that.tools.getAcceptString(options.fileTypeExts))
       .replaceAll('#btnTxt#', (options.icon ? '<i class="fa fa-' + options.icon + '">&nbsp;&nbsp;' : '') + options.buttonText))
 
@@ -356,7 +359,9 @@
   }
 
   Upload.prototype.fileSelect = function(e) {
-    this.$uploadFileList.show()
+    if (!(this.options.hideFileList && this.options.auto)) {
+      this.$uploadFileList.show()
+    }
     this.tools.getFiles(e)
   }
 

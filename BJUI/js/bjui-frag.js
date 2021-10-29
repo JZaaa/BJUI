@@ -352,7 +352,7 @@
                     '    <span class="filesize"><span class="uploadedsize">{uploadedSize}</span>/<span class="totalsize">{fileSize}</span></span>' +
                     '</div>',
     uploadFrag: '<input class="bjui-upload-select-file" style="display:none;" type="file" name="fileselect[]" #multi# accept="#accept#">' +
-                    '<a href="javascript:void(0)" class="btn btn-default bjui-upload-select">#btnTxt#</a>' +
+                    '<a href="javascript:void(0)" class="#btn-default# bjui-upload-select">#btnTxt#</a>' +
                     '<div class="queue"></div>',
     statusCode_503: 'HTTP status 503, #statusCode_503#',
     sessionTimout: '#sessiontimeout#',
