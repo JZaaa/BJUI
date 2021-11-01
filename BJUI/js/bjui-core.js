@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.4.3',
+    version: '1.4.4',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -66,6 +66,7 @@
     layout: {
       mode: 'default',
       tags: true, // 是否显示标签页
+      panel: true, // 手风琴模式
       // style: {
       //   headerBg: '#009688', // 顶部头颜色
       //   sidebarBg: '#001529', // 菜单栏背景色

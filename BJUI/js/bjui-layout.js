@@ -116,8 +116,9 @@
   Layout.prototype._createMenuHtml = function (treeData, parentSelector) {
     var html = ''
     var that = this
+    var isPanel = BJUI.layout.panel ? 'panel' : ''
     treeData.forEach(function (val) {
-      html += '<li class="sidebar-item">'
+      html += '<li class="sidebar-item '+ (isPanel) +'">'
       var icon = ''
       if (val.icon && val.icon.length) {
         icon = '<i class="sidebar-item__icon align-middle ' + val.icon + '"></i>'
