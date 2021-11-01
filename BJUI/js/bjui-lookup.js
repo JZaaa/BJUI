@@ -21,7 +21,7 @@
   // LOOKUP GLOBAL ELEMENTS
   // ======================
 
-  var group, suffix, $currentLookup, arrayfix, beforeSelect, inputFilter
+  var group, suffix, $currentLookup, arrayfix, beforeSelect, inputFilter, autoAssign
 
   // LOOKUP CLASS DEFINITION
   // ======================
@@ -44,6 +44,7 @@
     arrayfix: null,
     suffix: null,
     inputFilter: null, // 过滤
+    autoAssign: true, // 自动赋值
     open: true,
     addBtn: false,
     block: false,
@@ -75,6 +76,7 @@
     suffix = this.options.suffix || null
     arrayfix = this.options.arrayfix || null
     inputFilter = this.options.inputFilter || null
+    autoAssign = this.options.autoAssign
     $currentLookup = this.$element
     if (suffix) suffix = suffix.trim()
     if (options.beforeSelect) {
@@ -202,34 +204,36 @@
     var newValue /* @description 增加 @author 小策一喋 */
 
     // for datagrid
-    if ($currentLookup.data('customEvent')) {
-      $currentLookup.trigger('customEvent.bjui.lookup', [args])
-    } else {
-      $box.find((inputFilter ? ('[data-filter='+inputFilter+']') : '') + ':input').each(function () {
-        var $input = $(this)
-        var inputName = $input.attr('name')
+    if (autoAssign) {
+      if ($currentLookup.data('customEvent')) {
+        $currentLookup.trigger('customEvent.bjui.lookup', [args])
+      } else {
+        $box.find((inputFilter ? ('[data-filter='+inputFilter+']') : '') + ':input').each(function () {
+          var $input = $(this)
+          var inputName = $input.attr('name')
 
-        for (var key in args) {
-          if (args.hasOwnProperty(key)) {
-            var name = that.getField(key)
+          for (var key in args) {
+            if (args.hasOwnProperty(key)) {
+              var name = that.getField(key)
 
-            if (name === inputName) {
-              /* @description 增加 追加参数 @author 小策一喋 */
-              if (parseInt(type) === 1) {
-                newValue = $input.val() ? $input.val() + ',' + args[key] : args[key]
-              } else {
-                newValue = args[key]
+              if (name === inputName) {
+                /* @description 增加 追加参数 @author 小策一喋 */
+                if (parseInt(type) === 1) {
+                  newValue = $input.val() ? $input.val() + ',' + args[key] : args[key]
+                } else {
+                  newValue = args[key]
+                }
+
+                $input
+                  .val(newValue) /* @description 修改 args[key] 为 newValue @author 小策一喋 */
+                  .trigger(Lookup.EVENTS.afterChange, {value: args[key]})
+
+                break
               }
-
-              $input
-                .val(newValue) /* @description 修改 args[key] 为 newValue @author 小策一喋 */
-                .trigger(Lookup.EVENTS.afterChange, {value: args[key]})
-
-              break
             }
           }
-        }
-      })
+        })
+      }
     }
 
     this.$element.dialog('closeCurrent')
