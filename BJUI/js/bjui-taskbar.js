@@ -163,7 +163,7 @@
         var iLeft = this.getLeft()
         var jTasks = this.getTasks()
 
-        for (var i = 0; i < jTasks.size(); i++) {
+        for (var i = 0; i < jTasks.length; i++) {
           if (jTasks.eq(i).position().left + jTasks.eq(i).outerWidth(true) + iLeft >= 0) return jTasks.eq(i)
         }
 
@@ -173,11 +173,11 @@
         var iLeft = this.getLeft()
         var jTasks = this.getTasks()
 
-        for (var i = 0; i < jTasks.size(); i++) {
+        for (var i = 0; i < jTasks.length; i++) {
           if (jTasks.eq(i).position().left + jTasks.eq(i).outerWidth(true) + iLeft > this.getBarWidth()) return jTasks.eq(i)
         }
 
-        return jTasks.eq(jTasks.size() - 1)
+        return jTasks.eq(jTasks.length - 1)
       },
       getTasks: function() {
         return $taskList.find('> li')
@@ -237,7 +237,7 @@
           mCur.addClass(taskDisabled)
           mOther.addClass(taskDisabled)
         } else {
-          if (that.tools.getTasks().size() === 1) { mOther.addClass(taskDisabled) }
+          if (that.tools.getTasks().length === 1) { mOther.addClass(taskDisabled) }
         }
       }
     })
@@ -249,7 +249,7 @@
     if (!$task || !$task.length) return
 
     $task.remove()
-    if (this.tools.getTasks().size() === 0) {
+    if (this.tools.getTasks().length === 0) {
       this.hide()
     }
     this.tools.scrollCurrent()

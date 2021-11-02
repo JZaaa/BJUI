@@ -47,14 +47,14 @@
       getRight: function($obj) {
         var width = 0
 
-        $obj.prevAll().andSelf().each(function() {
+        $obj.prevAll().addBack().each(function() {
           width += $(this).outerWidth()
         })
 
         return width - 1
       },
       getCellNum: function($obj) {
-        return $obj.prevAll().andSelf().size()
+        return $obj.prevAll().addBack().length
       },
       getColspan: function($obj) {
         return $obj.attr('colspan') || 1

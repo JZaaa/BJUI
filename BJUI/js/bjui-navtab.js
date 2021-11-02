@@ -173,7 +173,7 @@
         var iW = 0
         var $tabs = this.getTabs()
 
-        for (var i = 0; i < $tabs.size(); i++) {
+        for (var i = 0; i < $tabs.length; i++) {
           if (iW + iLeft >= 0) return i
           iW += $tabs.eq(i).outerWidth(true)
         }
@@ -185,12 +185,12 @@
         var iW = 0
         var $tabs = this.getTabs()
 
-        for (var i = 0; i < $tabs.size(); i++) {
+        for (var i = 0; i < $tabs.length; i++) {
           iW += $tabs.eq(i).outerWidth(true)
           if (iW + iLeft > this.getScrollBarW()) return i
         }
 
-        return $tabs.size()
+        return $tabs.length
       },
       scrollPrev: function() {
         var iStart = this.visibleStart()
@@ -202,7 +202,7 @@
       scrollNext: function() {
         var iEnd = this.visibleEnd()
 
-        if (iEnd < this.getTabs().size()) {
+        if (iEnd < this.getTabs().length) {
           this.scrollTab(-this.getTabsW(0, iEnd + 1) + this.getScrollBarW())
         }
       },
