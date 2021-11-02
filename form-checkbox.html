@@ -4,7 +4,7 @@
     <div style="margin:15px auto 0; width:800px;">
       <fieldset>
         <legend>iCheck</legend>
-        <table class="table table-hover">
+        <table class="table ">
           <thead>
           <tr>
             <th>样例</th>
@@ -61,7 +61,7 @@
               </div>
               <br/>
               <div class="alert alert-danger form-inline"><i class="fa fa-warning"></i> <strong>注意：</strong>
-                大数据量下iCheck插件存在性能问题，请谨慎使用
+                大数据量下iCheck插件存在严重性能问题，请谨慎使用
               </div>
             </td>
           </tr>
@@ -70,7 +70,7 @@
       </fieldset>
       <fieldset>
         <legend>pretty-checkbox</legend>
-        <table class="table table-hover">
+        <table class="table">
           <thead>
           <tr>
             <th>样例</th>
@@ -112,11 +112,18 @@
           </tr>
           <tr>
             <td colspan="2">
-              <div class="alert alert-info "><i class="fa fa-warning"></i> <strong>1.4.4</strong>
+              <div class="alert alert-info "><i class="fa fa-warning"></i> <strong>1.4.4+</strong>
                 框架内置了pretty-checkbox，以下几种方式可以利用[data-toggle="icheck"]进行实例化：<br/>
                 1. 未引入iCheck插件 <br/>
                 2. 全局<code>pluginConfig.checkbox</code>未配置为 icheck<br/>
                 3. 存在 [data-init-type="default"] 属性<br/>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="alert alert-danger"><i class="fa fa-warning"></i> <strong>注意：</strong>
+                pretty-checkbox方式实例化仅为框架快捷生成美化样式方法，实际组件为纯css实现，不兼容任何iCheck方法与事件！请使用默认监听事件
               </div>
               <div class="alert alert-warning form-inline"><i class="fa fa-warning"></i> 参见 <a
                 href="https://github.com/lokesh-coder/pretty-checkbox" target="_blank">https://github.com/lokesh-coder/pretty-checkbox</a>。
