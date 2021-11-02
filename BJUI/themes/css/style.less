@@ -3870,9 +3870,17 @@ ul.ztree.zTreeDragUL {
   }
 
   input, select {
-    position: relative;
-    display: inline-block;
-    width: 100%;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+  }
+
+  .pretty {
+    /* fixed pretty-checkbox */
+    input {
+      position: absolute;
+      height: auto;
+    }
   }
 
 
@@ -4116,9 +4124,12 @@ input.password-input {
 }
 
 @import "pretty-checkbox.min.css";
-.pretty {
-  margin-right: 0;
-  +.pretty {
-    margin-left: 1em;
+table, .table {
+  .pretty {
+    margin-right: 0;
+    +.pretty {
+      margin-left: 1em;
+    }
   }
 }
+
