@@ -6,6 +6,7 @@
 - left-menu侧边栏样式新增手风琴模式
 - 删除部分jQuery废弃函数
 - 修改默认autosize版本为5，兼容1.x版本,需要替换原 **jquery.autosize.js** 为 **autosize.min.js**
+- 新增内置pretty-checkbox功能
 
 -------------------------------------------
 

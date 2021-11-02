@@ -1,9 +1,9 @@
-<div class="form-pageContent">
+<div class="bjui-pageContent">
   <form action="ajaxDone1.html" id="j_image_form" class="pageForm form-validate" method="post" callback="navTabAjaxDone"
         noEnter>
     <div style="margin:15px auto 0; width:800px;">
       <fieldset>
-        <legend>复选、单选框</legend>
+        <legend>iCheck</legend>
         <table class="table table-hover">
           <thead>
           <tr>
@@ -14,8 +14,8 @@
           <tbody>
           <tr>
             <td><input type="checkbox" name="checkbox" id="j_form_checkbox1" value="1" data-toggle="icheck"
-                       data-label="复选框"></td>
-            <td>data-toggle="icheck" data-label="复选框"</td>
+                       data-label="复选框" data-init-type="icheck"></td>
+            <td>data-toggle="icheck" data-label="复选框" data-init-type="icheck"</td>
           </tr>
           <tr>
             <td><input type="checkbox" name="checkbox" id="j_form_checkbox2" value="1" data-toggle="icheck"
@@ -62,6 +62,64 @@
               <br/>
               <div class="alert alert-danger form-inline"><i class="fa fa-warning"></i> <strong>注意：</strong>
                 大数据量下iCheck插件存在性能问题，请谨慎使用
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>pretty-checkbox</legend>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>样例</th>
+            <th>属性</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>
+              <input type="checkbox" data-toggle="boolcheck" name="ss" data-label="boolcheck" data-init-type="default">
+            </td>
+            <td>data-toggle="boolcheck" name="ss" data-init-type="default"</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" data-toggle="icheck" data-label="复选框" data-init-type="default">
+            </td>
+            <td>data-toggle="icheck" data-label="复选框" data-init-type="default"</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" name="icon_solid" data-toggle="icheck" data-label="单选" data-init-type="default" />
+            </td>
+            <td>data-toggle="icheck" data-label="单选" data-init-type="default"</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" name="checkboxSwitch" data-toggle="icheck" data-switch="true" data-label="复选框switch" data-init-type="default">
+            </td>
+            <td>data-toggle="icheck" data-switch="true" data-label="复选框switch" data-init-type="default"</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" name="radioSwitch" data-toggle="icheck" data-switch="true" data-label="单选switch1" data-init-type="default">
+              <input type="radio" name="radioSwitch" data-toggle="icheck" data-switch="true" data-label="单选switch2" data-init-type="default">
+            </td>
+            <td>data-toggle="icheck" data-switch="true" data-label="单选switch2" data-init-type="default"</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="alert alert-info "><i class="fa fa-warning"></i> <strong>1.4.4</strong>
+                框架内置了pretty-checkbox，以下几种方式可以利用[data-toggle="icheck"]进行实例化：<br/>
+                1. 未引入iCheck插件 <br/>
+                2. 全局<code>pluginConfig.checkbox</code>未配置为 icheck<br/>
+                3. 存在 [data-init-type="default"] 属性<br/>
+              </div>
+              <div class="alert alert-warning form-inline"><i class="fa fa-warning"></i> 参见 <a
+                href="https://github.com/lokesh-coder/pretty-checkbox" target="_blank">https://github.com/lokesh-coder/pretty-checkbox</a>。
               </div>
             </td>
           </tr>

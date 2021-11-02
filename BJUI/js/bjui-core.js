@@ -24,6 +24,10 @@
       width: 500,
       height: 300
     },
+    // 插件配置
+    pluginConfig: {
+      checkbox: 'icheck' // checkbox配置  icheck | default
+    },
     // 编辑器统一配置
     KindEditor: {
       uploadJson: undefined,
@@ -110,6 +114,10 @@
       $.extend(BJUI.KindEditor, op.KindEditor)
       $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
+
+      if (op.pluginConfig) {
+        $.extend(BJUI.pluginConfig, op.pluginConfig)
+      }
 
       if (op.layout) {
         $.extend(BJUI.layout, op.layout)

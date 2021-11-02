@@ -22,6 +22,127 @@
 
     // UI init begin...
 
+    var _checkBoxConfig = BJUI.pluginConfig.checkbox || 'icheck'
+
+    var _defaultCheckInit = function ($element) {
+
+      var type = $element.data('switch') ? 'switch' : (($element.attr('type') || '').toLowerCase())
+
+      var wrapHtml
+      var icon = ''
+      var color
+
+      switch (type) {
+        case 'checkbox':
+          wrapHtml = '<div class="pretty p-icon p-curve"></div>'
+          icon = '<i class="icon fa fa-check"></i>'
+          color = $element.data('color') || 'primary-o'
+          break
+        case 'radio':
+          wrapHtml = '<div class="pretty p-default p-round"></div>'
+          icon = ''
+          break
+        case 'switch':
+          wrapHtml = '<div class="pretty p-switch p-fill"></div>'
+          icon = ''
+          break
+      }
+
+      if (!wrapHtml) {
+        return
+      }
+
+      if (!color) {
+        color = $element.data('color') || 'primary'
+      }
+
+      var label = $element.data('label') || ''
+
+      $element.wrap($(wrapHtml))
+
+      $element.parent().append('<div class="state p-'+ color +'">'+icon+'<label>'+label+'</label></div>')
+
+    }
+
+    var _iCheckInit = function ($element) {
+
+      var _initType = $element.data('initType') || _checkBoxConfig
+
+      if (_initType !== 'icheck') {
+        _defaultCheckInit($element)
+        return
+      }
+        var id = $element.attr('id')
+
+        var name = $element.attr('name')
+
+        var label = $element.data('label')
+
+        if (label) {
+          if (!id) {
+            id = $.getGUID()
+            $element.attr('id', id)
+          }
+          $element.after('<label for="' + id + '" class="ilabel">' + label + '</label>')
+        }
+
+        $element
+          .on('ifCreated', function(e) {
+            /* Fixed validate msgbox position */
+            var $parent = $(this).closest('div')
+
+            var $ilabel = $parent.next('[for="' + id + '"]')
+
+            $parent.attr('data-icheck', name)
+            $ilabel.attr('data-icheck', name)
+          })
+          .iCheck({
+            checkboxClass: 'icheckbox_minimal-purple',
+            radioClass: 'iradio_minimal-purple',
+            increaseArea: '20%' // optional
+          })
+          .on('ifChanged', function() {
+            /* Trigger validation */
+            $(this).trigger('validate')
+          })
+      if ($element.prop('disabled')) $element.iCheck('disable')
+    }
+
+    /* i-check */
+    var $icheck = $box.find('[data-toggle="icheck"]')
+
+    if ($.fn.iCheck) {
+      $icheck.each(function () {
+        _iCheckInit($(this))
+      })
+    } else {
+      $icheck.each(function () {
+        _defaultCheckInit($(this))
+      })
+    }
+
+    /* i-check check all */
+    $icheck.filter('.checkboxCtrl').each(function () {
+      var $this = $(this)
+      if (($this.data('initType') || _checkBoxConfig) === 'icheck') {
+        $this.on('ifChanged', function(e) {
+          var checked = e.target.checked === true ? 'check' : 'uncheck'
+          var group = $(this).data('group')
+
+          $box.find(':checkbox[name="' + group + '"]').iCheck(checked)
+        })
+      } else {
+        $this.on('change', function () {
+          var $that = $(this)
+          var checked = $that.prop('checked')
+          var group = $that.data('group')
+          $box.find(':checkbox[name="' + group + '"]').prop('checked', checked)
+        })
+      }
+    })
+
+
+
     var $boolCheck = $box.find('[data-toggle="boolcheck"]')
 
     $boolCheck.each(function(i) {
@@ -33,72 +154,32 @@
         var value = $element.is(':checked') ? 1 : 0
         $input = $('<input type="hidden" value="'+value+'" name="'+name+'">').appendTo($element.parent())
       }
-      $element
-        .iCheck({
-          checkboxClass: 'icheckbox_minimal-purple',
-          radioClass: 'iradio_minimal-purple',
-          increaseArea: '20%' // optional
-        })
-        .on('ifChecked', function() {
-          if ($input) {
-            $input.val(1)
-          }
-        })
-        .on('ifUnchecked', function() {
-          if ($input) {
-            $input.val(0)
-          }
-        })
-    })
-
-    /* i-check */
-    var $icheck = $box.find('[data-toggle="icheck"]')
-
-    $icheck.each(function(i) {
-      var $element = $(this)
-
-      var id = $element.attr('id')
-
-      var name = $element.attr('name')
-
-      var label = $element.data('label')
-
-      if (label) {
-        if (!id) {
-          id = $.getGUID()
-          $element.attr('id', id)
+      if ($.fn.iCheck && ($element.data('initType') || _checkBoxConfig) === 'icheck') {
+        $element
+          .iCheck({
+            checkboxClass: 'icheckbox_minimal-purple',
+            radioClass: 'iradio_minimal-purple',
+            increaseArea: '20%' // optional
+          })
+          .on('ifChecked', function() {
+            if ($input) {
+              $input.val(1)
+            }
+          })
+          .on('ifUnchecked', function() {
+            if ($input) {
+              $input.val(0)
+            }
+          })
+      } else {
+        if ($input) {
+          $element.on('change', function () {
+            $input.val(($(this).prop('checked') ? 1 : 0))
+          })
         }
-        $element.after('<label for="' + id + '" class="ilabel">' + label + '</label>')
+        _defaultCheckInit($element)
       }
 
-      $element
-        .on('ifCreated', function(e) {
-          /* Fixed validate msgbox position */
-          var $parent = $(this).closest('div')
-
-          var $ilabel = $parent.next('[for="' + id + '"]')
-
-          $parent.attr('data-icheck', name)
-          $ilabel.attr('data-icheck', name)
-        })
-        .iCheck({
-          checkboxClass: 'icheckbox_minimal-purple',
-          radioClass: 'iradio_minimal-purple',
-          increaseArea: '20%' // optional
-        })
-        .on('ifChanged', function() {
-          /* Trigger validation */
-          $(this).trigger('validate')
-        })
-
-      if ($element.prop('disabled')) $element.iCheck('disable')
-    })
-    /* i-check check all */
-    $icheck.filter('.checkboxCtrl').on('ifChanged', function(e) {
-      var checked = e.target.checked === true ? 'check' : 'uncheck'
-      var group = $(this).data('group')
-
-      $box.find(':checkbox[name="' + group + '"]').iCheck(checked)
     })
 
     /* fixed ui style */
