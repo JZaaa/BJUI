@@ -1,5 +1,11 @@
 # 更新日志
 -------------------------------------------
+## v1.5.0-pre
+
+### Breaking changes 非兼容更新
+- **删除datagrid组件** ，由于组件处于Beta状态并不再维护且使用频率极小，此版本后将会删除该组件。建议使用长期维护的类似组件，如[bootstrap-table](https://bootstrap-table.com/), [vxe-table(vue)](https://github.com/x-extends/vxe-table)
+
+-------------------------------------------
 ## v1.4.4
 
 ### Improvements

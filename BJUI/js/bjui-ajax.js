@@ -228,13 +228,6 @@
     }
     if (json.dialogid) { setTimeout(function() { that.$element.dialog('refresh', json.dialogid) }, 100) }
     if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
-    if (json.datagrid) {
-      setTimeout(function() {
-        $.each(json.datagrid.join(','), function(i, n) {
-          $('#' + n.trim()).datagrid('refresh')
-        })
-      }, 100)
-    }
 
     if (json.forward) {
       var _forward = function() {

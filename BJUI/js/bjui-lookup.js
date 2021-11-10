@@ -203,7 +203,6 @@
     var $box = $currentLookup.closest('.unitBox')
     var newValue /* @description 增加 @author 小策一喋 */
 
-    // for datagrid
     if (autoAssign) {
       if ($currentLookup.data('customEvent')) {
         $currentLookup.trigger('customEvent.bjui.lookup', [args])

@@ -52,36 +52,6 @@
       refresh: '刷新'
     })
 
-    BJUI.setRegional('datagrid', {
-      asc: '升序',
-      desc: '降序',
-      showhide: '显示/隐藏 列',
-      filter: '过滤',
-      clear: '清除',
-      lock: '锁定列',
-      unlock: '解除锁定',
-      add: '添加',
-      edit: '编辑',
-      save: '保存',
-      update: '更新',
-      cancel: '取消',
-      del: '删除',
-      prev: '上一条',
-      next: '下一条',
-      refresh: '刷新',
-      query: '查询',
-      'import': '导入',
-      'export': '导出',
-      all: '全部',
-      'true': '是',
-      'false': '否',
-      selectMsg: '未选中任何行！',
-      editMsg: '请先保存编辑行！',
-      saveMsg: '没有需要保存的行！',
-      delMsg: '确定要删除该行吗？',
-      delMsgM: '确定要删除选中行？'
-    })
-
     /* ajax加载提示 */
     BJUI.setRegional('progressmsg', '正在努力加载数据，请稍等...')
 
