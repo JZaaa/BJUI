@@ -121,7 +121,7 @@
       html += '<li class="sidebar-item '+ (isPanel) +'">'
       var icon = ''
       if (val.icon && val.icon.length) {
-        icon = '<i class="sidebar-item__icon align-middle ' + val.icon + '"></i>'
+        icon = '<div class="sidebar-item__icon"><i class="align-middle ' + val.icon + '"></i></div>'
       }
       if (val.children && val.children.length) {
         var id = $.getGUID()
