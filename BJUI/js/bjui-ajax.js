@@ -756,7 +756,8 @@
     if (!$form || !$form.length) return
 
     options = $form.data()
-    options.clearQuery = $this.data('clearQuery') || true
+    var clearQuery = $this.data('clearQuery')
+    options.clearQuery = (clearQuery === undefined) ? true : (!!clearQuery)
 
     Plugin.call($form, 'doSearch', options)
 

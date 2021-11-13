@@ -390,10 +390,11 @@
               data[pageInfo[key]] = pageData[pageInfo[key]]
             }
           }
+          options.data = data
         } else {
           data = pageData
+          options.data = $.extend({}, options.data || {}, data)
         }
-        options.data = $.extend({}, options.data || {}, data)
       }
 
       this.reload(options, true)
