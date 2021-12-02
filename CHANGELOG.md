@@ -5,6 +5,9 @@
 ### Breaking changes 非兼容更新
 - **删除datagrid组件** ，由于组件处于Beta状态并不再维护且使用频率极小，此版本后将会删除该组件。建议使用长期维护的类似组件，如[bootstrap-table](https://bootstrap-table.com/), [vxe-table(vue)](https://github.com/x-extends/vxe-table)
 
+### Improvements
+- 新增lookup组件jQuery且addBtn=false调用下url实时修改功能
+
 ### fixed
 - 修复dialog上使用 **[data-toggle="reloadsearch"]** 未按预期配置执行的问题
 

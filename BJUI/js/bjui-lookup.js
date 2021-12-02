@@ -265,6 +265,10 @@
         if (!args) data[property]()
         else data[property].apply(data, args)
       } else {
+        // 新增jQuery调用可实时替换url
+        if (typeof property === 'object' && property.url) {
+          data.options.url = property.url
+        }
         data.init()
       }
     })
