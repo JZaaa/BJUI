@@ -10,6 +10,7 @@
 
 ### fixed
 - 修复dialog上使用 **[data-toggle="reloadsearch"]** 未按预期配置执行的问题
+- 修复left-menu模式下自定义`@sidebar-width`样式不正确问题
 
 -------------------------------------------
 ## v1.4.4

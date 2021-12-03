@@ -45,7 +45,7 @@ html, body {
 }
 
 #bjui-navtab {
-  left: 201px;
+  left: @sidebar-width + 1px;
 }
 
 #bjui-header {
@@ -58,6 +58,7 @@ html, body {
 }
 
 #bjui-sidebar {
+  width: @sidebar-width;
   background: @sidebar-bg;
   border: none;
   overflow-y: auto;
