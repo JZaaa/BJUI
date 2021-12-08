@@ -28,22 +28,24 @@
 
       var type = $element.data('switch') ? 'switch' : (($element.attr('type') || '').toLowerCase())
 
+      var className = $element.data('class') || ''
+
       var wrapHtml
       var icon = ''
       var color
 
       switch (type) {
         case 'checkbox':
-          wrapHtml = '<div class="pretty p-icon p-curve"></div>'
+          wrapHtml = '<div class="pretty p-icon p-curve '+ className +'"></div>'
           icon = '<i class="icon fa fa-check"></i>'
           color = $element.data('color') || 'primary-o'
           break
         case 'radio':
-          wrapHtml = '<div class="pretty p-default p-round"></div>'
+          wrapHtml = '<div class="pretty p-default p-round '+ className +'"></div>'
           icon = ''
           break
         case 'switch':
-          wrapHtml = '<div class="pretty p-switch p-fill"></div>'
+          wrapHtml = '<div class="pretty p-switch p-fill '+ className +'"></div>'
           icon = ''
           break
       }

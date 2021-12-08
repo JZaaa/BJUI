@@ -7,6 +7,7 @@
 
 ### Improvements
 - 新增lookup组件jQuery且addBtn=false调用下url实时修改功能
+- 新增默认icheck组件自定义class功能
 
 ### fixed
 - 修复dialog上使用 **[data-toggle="reloadsearch"]** 未按预期配置执行的问题
