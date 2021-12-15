@@ -95,6 +95,7 @@
       } else {
         this.options.id = 'main'
       }
+      this.options.loadPageData = false
     }
     this.tools = this.TOOLS()
   }
@@ -108,6 +109,7 @@
     data: {},
     loadingmask: true,
     fresh: false,
+    loadPageData: true,
     autorefresh: false,
     onLoad: null,
     beforeClose: null,
@@ -365,7 +367,7 @@
                   $panel.navtab('refresh')
                 }, arefre * 1000)
               }
-              if (BJUI.ui.clientPaging && $panel.data('bjui.clientPaging')) $panel.pagination('setPagingAndOrderby', $panel)
+              if (options.loadPageData && BJUI.ui.clientPaging && $panel.data('bjui.clientPaging')) $panel.pagination('setPagingAndOrderby', $panel)
             }
           })
       }

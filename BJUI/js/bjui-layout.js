@@ -135,7 +135,7 @@
       } else {
         var attr = ''
         if (val.path && val.path.length) {
-          attr = ' data-url="' + val.path + '" data-toggle="navtab"'
+          attr = ' data-url="' + val.path + '" data-toggle="navtab" data-load-page-data="false"'
         }
         if (val.data) {
           var dataItem = val.data
