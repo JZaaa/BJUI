@@ -91,6 +91,7 @@
           name: $that.text(),
           path: 'javascript:',
           icon: undefined,
+          target: $that.attr('target'),
           data: {},
           children: []
         }
@@ -134,11 +135,19 @@
         html += '</ul>'
       } else {
         var attr = ''
+        var dataItem = val.data
         if (val.path && val.path.length) {
-          attr = ' data-url="' + val.path + '" data-toggle="navtab" data-load-page-data="false"'
+          attr = ' data-url="' + val.path + '" data-load-page-data="false"'
+          if (dataItem && dataItem.link) {
+            attr = ' href="' + val.path + '"'
+            if (val.target) {
+              attr += ' target="' + val.target + '"'
+            }
+          } else {
+            attr += ' data-toggle="navtab"'
+          }
         }
-        if (val.data) {
-          var dataItem = val.data
+        if (dataItem) {
           delete dataItem.url
           delete dataItem.path
           for (var i in dataItem) {
