@@ -761,6 +761,14 @@
         'br,tbody,tr,strong,b,sub,sup,em,i,u,strike,s,del': []
       }
 
+      var formatUploadUrl = true
+
+      if (options.formatUploadUrl !== undefined) {
+        formatUploadUrl = options.formatUploadUrl
+      } else if (BJUI.KindEditor.formatUploadUrl !== undefined) {
+        formatUploadUrl = BJUI.KindEditor.formatUploadUrl
+      }
+
       KindEditor.create($editor, {
         pasteType: options.pasteType,
         minHeight: options.minHeight || 260,
@@ -768,6 +776,7 @@
         items: options.items || KindEditor.options.items,
         uploadJson: options.uploadJson || BJUI.KindEditor.uploadJson,
         fileManagerJson: options.fileManagerJson || BJUI.KindEditor.fileManagerJson,
+        formatUploadUrl: formatUploadUrl,
         allowFileManager: options.allowFileManager || true,
         fillDescAfterUploadImage: options.fillDescAfterUploadImage || true, // 上传图片成功后转到属性页，为false则直接插入图片[设为true方便自定义函数(X_afterSelect)]
         afterUpload: options.afterUpload,

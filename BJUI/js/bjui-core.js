@@ -31,7 +31,8 @@
     // 编辑器统一配置
     KindEditor: {
       uploadJson: undefined,
-      fileManagerJson: undefined
+      fileManagerJson: undefined,
+      formatUploadUrl: true
     },
     keyCode: {
       ENTER: 13, ESC: 27, END: 35, HOME: 36,
