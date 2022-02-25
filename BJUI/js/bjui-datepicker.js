@@ -290,7 +290,7 @@
         return false
       },
       afterChange: function(date) {
-        that.$element.trigger(Datepicker.EVENTS.afterChange, { value: date })
+        that.$element.trigger(Datepicker.EVENTS.afterChange, { value: date, valueString: date instanceof Date ? date.formatDate(that.options.pattern) : '' })
       }
     }
     return tools
