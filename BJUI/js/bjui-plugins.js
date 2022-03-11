@@ -728,6 +728,7 @@
       if (options.confirmSelect) options.confirmSelect = options.confirmSelect.toFunc()
 
       var htmlTags = {
+        video: ['id', 'class', 'src', 'controls', 'width', 'height'],
         font: [/* 'color', 'size', 'face', '.background-color'*/],
         span: ['.color', '.background-color', '.font-size', '.font-family'
           /* '.color', '.background-color', '.font-size', '.font-family', '.background',
