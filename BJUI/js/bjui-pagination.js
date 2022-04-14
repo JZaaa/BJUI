@@ -128,7 +128,7 @@
       var $button = $(this).find('.goto')
 
       $button.on('click', function() {
-        var pageCurrent = $inputBox.val(); var pagingInfo = { pageCurrent: pageCurrent, pageSize: options.pageSize }
+        var pageCurrent = $inputBox.val(); var pagingInfo = { pageCurrent: pageCurrent, pageSize: options.pageSize, loadPageData: true }
 
         if (pageCurrent && pageCurrent.isPositiveInteger()) {
           that.setClientPaging(pagingInfo)
@@ -143,7 +143,7 @@
 
     function _bindEvent($target, pageCurrent) {
       $target.on('click', function(e) {
-        var pagingInfo = { pageCurrent: pageCurrent, pageSize: that.options.pageSize }
+        var pagingInfo = { pageCurrent: pageCurrent, pageSize: that.options.pageSize, loadPageData: true }
 
         that.setClientPaging(pagingInfo)
         $(this).bjuiajax('pageCallback', pagingInfo, that.$element.closest('.bjui-layout'))
@@ -154,7 +154,7 @@
   }
 
   Pagination.prototype.changePagesize = function() {
-    var that = this; var pageSize = that.$element.val(); var pagingInfo = { pageSize: pageSize }
+    var that = this; var pageSize = that.$element.val(); var pagingInfo = { pageSize: pageSize, loadPageData: true }
 
     if (!isNaN(pageSize)) {
       that.setClientPaging(pagingInfo)
@@ -168,7 +168,7 @@
     that.$element.css({ cursor: 'pointer' }).click(function() {
       var orderField = $(this).data('orderField')
       var orderDirection = $(this).data('orderDirection')
-      var orderInfo = { orderField: orderField, orderDirection: orderDirection }
+      var orderInfo = { orderField: orderField, orderDirection: orderDirection, loadPageData: true }
 
       that.setClientPaging(orderInfo)
       $(this).bjuiajax('pageCallback', orderInfo, that.$element.closest('.bjui-layout'))

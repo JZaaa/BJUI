@@ -6,6 +6,9 @@
 - datepicker 组件新增日期字符串返回
 - kindedior 新增 video 支持
 
+### fixed
+- 修复分页选择后选择器不改变问题
+
 ## v1.5.0
 
 ### Breaking changes 非兼容更新
