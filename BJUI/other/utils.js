@@ -19,6 +19,21 @@
     }
   }
 
+  if (! $.fn.loading) {
+    /**
+     * 加载条
+     * $.CurrentDialog.loading() | $.CurrentNavtab.loading()
+     * @param type
+     */
+    $.fn.loading = function (type) {
+      if (type !== false) {
+        $(this).trigger(BJUI.eventType.ajaxStatus)
+      } else {
+        $(this).trigger('bjui.ajaxStop')
+      }
+    }
+  }
+
   if (!$.getRandom) {
     /**
      * 获取一串随机数
