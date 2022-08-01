@@ -27,6 +27,7 @@
       &lt;li>&lt;a href="form.html" data-options="{id:'form-demo', faicon:'th-large'}">表单示例&lt;/a>&lt;/li>
     &lt;/ul>
   &lt;/li>
+  &lt;li>&lt;a href="https://www.baidu.com" target="_blank" data-link="true">&lt;i class="fa fa-link">&lt;/i> 百度外链&lt;/a>&lt;/li>
 &lt;/ul>
     </pre>
     <p>初始化配置</p>
@@ -36,6 +37,8 @@
         // left-menu 请在 core.css 后加载 BJUI/themes/left-menu.css 样式
         layout: {
           mode: 'left-menu', // default | left-menu 两种模式
+          panel: true, // 是否开启手风琴模式
+          tags: false, // 是否显示标签页
           // 简单的样式配置，left-menu模式生效，若不满足需求则**取消此处配置**，并自定义添加样式实现
           style: {
             headerBg: '#009688', // 顶部头颜色
