@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.5.1',
+    version: '1.5.2',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -55,7 +55,8 @@
       beforeCloseNavtab: 'bjui.beforeCloseNavtab',
       beforeCloseDialog: 'bjui.beforeCloseDialog',
       afterCloseNavtab: 'bjui.afterCloseNavtab',
-      afterCloseDialog: 'bjui.afterCloseDialog'
+      afterCloseDialog: 'bjui.afterCloseDialog',
+      destroyModules: 'bjui.destroyModules', // 触发销毁plugin事件
     },
     pageInfo: { total: 'total', pageCurrent: 'pageCurrent', pageSize: 'pageSize', orderField: 'orderField', orderDirection: 'orderDirection' },
     alertMsg: { displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 3000 }, // 信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时

@@ -1,5 +1,10 @@
 # 更新日志
 -------------------------------------------
+## master
+
+### Improvements
+- 新增 **bjui.destroyModules** 事件，用于监听dialog或navtab销毁或重载
+
 ## v1.5.1
 
 ### Improvements

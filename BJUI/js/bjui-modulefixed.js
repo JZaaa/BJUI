@@ -13,6 +13,7 @@
    * @param $selector 需处理的dialog/navtab jquery对象
    */
   ModuleFixed.prototype.destroyModules = function($selector) {
+    $(document).trigger(BJUI.eventType.destroyModules, $selector)
     try {
       // ie9 uploadify 销毁
       var uploadify = $selector.find('.bjui-upload > .uploadify')
