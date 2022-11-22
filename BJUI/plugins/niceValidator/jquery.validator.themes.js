@@ -10,8 +10,10 @@
         var $input    = $msgbox.prev(),
             $btngroup = $msgbox.next(),
             $icheck   = $msgbox.closest('[data-icheck]'),
-            $ichecks  = $icheck.siblings('[data-icheck="'+ $icheck.data('icheck') +'"]').andSelf(),
             $upload   = $msgbox.closest('.bjui-upload')
+
+        var $ichecks  = $.fn.addBack ? $icheck.siblings('[data-icheck="'+ $icheck.data('icheck') +'"]').addBack() : $icheck.siblings('[data-icheck="'+ $icheck.data('icheck') +'"]').andSelf()
+
 
         var offLeft = 0
 
