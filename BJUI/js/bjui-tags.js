@@ -14,6 +14,9 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
+/**
+ * @deprecated 组件存在问题，已弃用
+ */
 +(function($) {
   'use strict'
 
