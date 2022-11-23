@@ -1,0 +1,61 @@
+<script src="BJUI/plugins/jquery-autocomplete/jquery.autocomplete.min.js"></script>
+<div class="bjui-pageContent">
+  <div class="bjui-doc">
+    <h3 class="page-header">
+      jQuery-Autocomplete自动完成
+      <span class="label label-warning">该插件默认未引入框架，需手动引入</span>
+    </h3>
+    <blockquote>
+      <p>本节主要介绍自动完成插件 - jQuery-Autocomplete, 插件地址：<a
+        href="https://github.com/devbridge/jQuery-Autocomplete" target="_blank">https://github.com/devbridge/jQuery-Autocomplete</a>
+      </p>
+    </blockquote>
+    <h4>引入</h4>
+    <pre class="brush: html">
+            &lt;script src="BJUI/plugins/jquery-autocomplete/jquery.autocomplete.min.js">&lt;/script>
+        </pre>
+    <h4>使用</h4>
+    <div>
+      <div data-filter="autoComplete">
+        <input type="text" value="" placeholder="输入你好" name="tag">
+      </div>
+    </div>
+    <h4>示例</h4>
+    <pre class="brush: html">
+       &lt;div data-filter="autoComplete">
+        &lt;input type="text" value="" placeholder="输入你好" name="tag">
+      &lt;/div>
+    </pre>
+    <pre class="brush: js">
+        (function () {
+          const $box = $.CurrentNavtab
+
+          $box.find('input[name="tag"]').autocomplete({
+            serviceUrl: 'ajax/tags.json',
+            appendTo: $box.findFilter('autoComplete')
+          })
+        }())
+    </pre>
+    <h4>JSON文件内容</h4>
+    <pre class="brush: js">
+      {"suggestions": ["你好", "BJUI", "测试"]}
+    </pre>
+  </div>
+</div>
+<div class="bjui-pageFooter">
+  <ul>
+    <li>
+      <button type="button" class="btn-close" data-icon="close">关闭</button>
+    </li>
+  </ul>
+</div>
+<script>
+  (function () {
+    const $box = $.CurrentNavtab
+
+    $box.find('input[name="tag"]').autocomplete({
+      serviceUrl: 'ajax/tags.json',
+      appendTo: $box.findFilter('autoComplete')
+    })
+  }())
+</script>
