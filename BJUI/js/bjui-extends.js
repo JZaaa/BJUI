@@ -180,7 +180,8 @@
         searchData: searchData,
         pageInfo: {
           pageSize: pageInfo.pageSize,
-          pageCurrent: pageInfo.pageCurrent
+          pageCurrent: pageInfo.pageCurrent,
+          total: (+pageInfo.total)
         }
       }
     },

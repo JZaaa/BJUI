@@ -4,12 +4,14 @@
 
 ### Breaking changes 非兼容更新
 - 打包文件中不再包含**tags组件**，如需此插件，请运行<code>bin/bjui-js-optimize-old.bat</code>打包</p>
+- ajaxload组件 修改默认**refreshLayout**与**refreshDiv**刷新为清空查询刷新，保证与navtab刷新一致，可设置**reloadWithSearch**为true保留查询信息
 
 ### Improvements
 - 【重要】jQuery3.6.1兼容调整，现在默认使用jQuery版本默认使用3
 - 新增 **bjui.destroyModules** 事件，用于监听dialog或navtab销毁或重载
 - 新增 **autocomplete** 插件示例
-- 新增 navtab **reloadWithSearch** 方法，添加ajax回调支持
+- 新增 navtab **reloadWithSearch** 方法
+- ajax回调默认支持 **reloadWithSearch** 方法，支持刷新div与navtab
 
 ## v1.5.1
 

@@ -38,7 +38,7 @@
                 </pre>
                 <p><b>刷新指定ID的div容器<code>多个id以<b> , </b>分隔</code>：</b></p>
                 <pre class="brush: js">
-                    $(selector).bjuiajax('refreshDiv', divid)
+                    $(selector).bjuiajax('refreshDiv', divid, options)
                 </pre>
             </li>
         </ul>
@@ -88,6 +88,18 @@
                     <td>boolean/int(秒)</td>
                     <td>false</td>
                     <td>[可选] 指定该div容器是否可自动刷新，为true时默认间隔15秒自动刷新，指定具体的秒数则以指定的间隔秒值自动刷新。</td>
+                </tr>
+                <tr>
+                  <td>reloadWithSearch</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                  <td><span class="label label-success">1.6.0+</span><strong>可选。</strong> 默认为false，页面所有查询与分页信息均会重置，true则保留当前页面查询与分页信息发起post请求</td>
+                </tr>
+                <tr>
+                  <td>delCount</td>
+                  <td>number</td>
+                  <td>0</td>
+                  <td><span class="label label-success">1.6.0+</span><strong>可选。</strong> 删除信息总数，默认为0。当启用<code>reloadWithSearch</code>且<code>delCount>0</code>时，框架将会提取分页组件信息，计算当前页码是否超出界限，若超出则自动切换最后一页</td>
                 </tr>
             </tbody>
         </table>

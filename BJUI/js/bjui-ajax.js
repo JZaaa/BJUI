@@ -200,7 +200,10 @@
     }
     if (json.divid) {
       setTimeout(function () {
-        that.$element.bjuiajax('refreshDiv', json.divid)
+        that.$element.bjuiajax('refreshDiv', json.divid, {
+          reloadWithSearch: json.reloadWithSearch,
+          delCount: json.delCount
+        })
       }, 100)
     }
     if (that.options.reload) {
@@ -272,7 +275,10 @@
     }
     if (json.divid) {
       setTimeout(function () {
-        that.$element.bjuiajax('refreshDiv', json.divid)
+        that.$element.bjuiajax('refreshDiv', json.divid, {
+          reloadWithSearch: json.reloadWithSearch,
+          delCount: json.delCount
+        })
       }, 100)
     }
 
@@ -320,7 +326,10 @@
     }
     if (json.divid) {
       setTimeout(function () {
-        that.$element.bjuiajax('refreshDiv', json.divid)
+        that.$element.bjuiajax('refreshDiv', json.divid, {
+          reloadWithSearch: json.reloadWithSearch,
+          delCount: json.delCount
+        })
       }, 100)
     }
     if (json.closeCurrent && !json.forward) {
@@ -496,7 +505,7 @@
     var that = this
     var $target = options.target ? $(options.target) : null
 
-    options = $.extend({}, Bjuiajax.DEFAULTS, typeof options === 'object' && options)
+    options = $.extend({}, Bjuiajax.DEFAULTS, Bjuiajax.CALLBACK_DEFAULTS, typeof options === 'object' && options)
     if (!$target || !$target.length) {
       if (autorefreshTimer) clearInterval(autorefreshTimer)
       BJUI.debug('Not set loaded \'ajax\' content container, like [data-target].')
@@ -510,6 +519,41 @@
 
   Bjuiajax.prototype.reloadDiv = function ($target, options) {
     var arefre = options.autorefresh && (isNaN(String(options.autorefresh)) ? 15 : options.autorefresh)
+
+    if (options.reload) {
+      if (options.reloadWithSearch) {
+        if (!options.data) {
+          options.data = []
+        }
+        var searchData = $target.getPageSearchData(0)
+        var total = searchData.pageInfo.total
+        if (total && options.delCount && (+options.delCount) > 0) {
+          var dataMap = {}
+          if (Array.isArray(options.data)) {
+            for (var i = 0; i < options.data.length; i++) {
+              if (options.data[i].name) {
+                dataMap[options.data[i].name] = options.data[i].value
+              }
+            }
+          } else {
+            dataMap = options.data
+          }
+          if (dataMap.pageSize && dataMap.pageCurrent) {
+            var pageCurrent = Math.ceil((total - (+options.delCount)) / (+dataMap.pageSize))
+            if (pageCurrent <= 0) {
+              pageCurrent = 1
+            }
+            if (pageCurrent < (+dataMap.pageCurrent)) {
+              dataMap.pageCurrent = pageCurrent
+            }
+          }
+          options.data = dataMap
+        }
+      } else {
+        options.data = undefined
+      }
+    }
+
 
     $target
       .addClass('bjui-layout')
@@ -538,12 +582,12 @@
       })
   }
 
-  Bjuiajax.prototype.refreshDiv = function (divid) {
+  Bjuiajax.prototype.refreshDiv = function (divid, options) {
     if (divid && typeof divid === 'string') {
       var arr = divid.split(',')
 
       for (var i = 0; i < arr.length; i++) {
-        this.refreshLayout({target: '#' + arr[i]})
+        this.refreshLayout($.extend({target: '#' + arr[i]}, options || {}))
       }
     }
   }
