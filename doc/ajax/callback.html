@@ -14,7 +14,7 @@
                     .bjuiajax('ajaxDone', json)       // 信息提示
                     .navtab('refresh')                // 刷新当前navtab
                     .navtab('reloadFlag', json.tabid) // 为指定的tabid设置刷新标记
-                
+
                 //do other something...
             }
         </pre>
@@ -67,6 +67,16 @@
                     <td>forwardConfirm</td>
                     <td>string</td>
                     <td><strong>可选。</strong>跳转url前的确认提示信息。</td>
+                </tr>
+                <tr>
+                    <td>reloadWithSearch</td>
+                    <td>boolean</td>
+                    <td><span class="label label-success">1.6.0+</span><strong>可选。仅对刷新当前navtab有效</strong> 默认为false，页面所有查询与分页信息均会重置，true则保留当前页面查询与分页信息发起post请求</td>
+                </tr>
+                <tr>
+                    <td>delCount</td>
+                    <td>number</td>
+                  <td><span class="label label-success">1.6.0+</span><strong>可选。仅对刷新当前navtab有效</strong> 删除信息总数，默认为0。当启用<code>reloadWithSearch</code>且<code>delCount>0</code>时，框架将会提取分页组件信息，计算当前页码是否超出界限，若超出则自动切换最后一页</td>
                 </tr>
             </tbody>
         </table>

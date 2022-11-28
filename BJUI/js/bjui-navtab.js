@@ -351,12 +351,13 @@
           options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
         }
 
+        var data = options.data || {}
         $panel
           .trigger(BJUI.eventType.beforeLoadNavtab)
           .ajaxUrl({
             type: (options.type || 'GET'),
             url: options.url,
-            data: options.data || {},
+            data: data,
             loadingmask: options.loadingmask,
             callback: function(response) {
               that.tools.loadUrlCallback($panel)
@@ -367,7 +368,19 @@
                   $panel.navtab('refresh')
                 }, arefre * 1000)
               }
-              if (options.loadPageData && BJUI.ui.clientPaging && $panel.data('bjui.clientPaging')) $panel.pagination('setPagingAndOrderby', $panel)
+              if (options.loadPageData && BJUI.ui.clientPaging && $panel.data('bjui.clientPaging')) {
+                var clientPaging = $panel.data('bjui.clientPaging')
+                if (clientPaging) {
+                  if (data.pageSize) {
+                    clientPaging.pageSize = data.pageSize
+                  }
+                  if (data.pageCurrent) {
+                    clientPaging.pageCurrent = data.pageCurrent
+                  }
+                }
+                $panel.data('bjui.clientPaging', clientPaging)
+                $panel.pagination('setPagingAndOrderby', $panel)
+              }
             }
           })
       }
@@ -650,6 +663,44 @@
     var ih = $panel.closest('.navtab-panel').height()
 
     $panel.html(FRAG.externalFrag.replaceAll('{url}', url).replaceAll('{height}', ih + 'px'))
+  }
+
+  /**
+   * 重载数据，包括当前的分页与查询信息
+   * @param tabid
+   * @param options
+   */
+  Navtab.prototype.reloadWithSearch = function (tabid, options) {
+    if (typeof options !== 'object') {
+      options = {}
+    }
+    var $tab
+    if (!tabid) {
+      $tab = $currentTab
+    } else if (typeof tabid === 'string') {
+      $tab = this.tools.getTab(tabid)
+    } else {
+      $tab = tabid
+    }
+    if ($tab) {
+      var opt = $tab.data('initOptions')
+      var $panel = this.tools.getPanel(opt.id)
+      if ($panel) {
+        var searchData = $panel.getPageSearchData(options.delCount)
+        if ($tab.hasClass('external')) {
+          this.openExternal(opt.url, $panel)
+        } else {
+          this.tools.reloadTab($panel, $.extend({}, opt, {
+            type: 'post',
+            data: $.extend({}, searchData.searchData, searchData.pageInfo),
+          }))
+        }
+        return
+      }
+    }
+    this.reload({
+      id: tabid
+    }, false)
   }
 
   // NAVTAB PLUGIN DEFINITION

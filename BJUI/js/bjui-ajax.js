@@ -15,7 +15,7 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
-+(function($) {
++(function ($) {
   'use strict'
 
   // BJUIAJAX GLOBAL ELEMENTS
@@ -26,7 +26,7 @@
   // BJUIAJAX CLASS DEFINITION
   // ======================
 
-  var Bjuiajax = function(element, options) {
+  var Bjuiajax = function (element, options) {
     this.$element = $(element)
     this.options = options
     this.tools = this.TOOLS()
@@ -37,12 +37,18 @@
     loadingmask: true
   }
 
+  // 回调默认
+  Bjuiajax.CALLBACK_DEFAULTS = {
+    reloadWithSearch: false, // 包含参数的重新加载
+    delCount: 0, // 删除数据数量，如果数量大于0，则根据当前分页信息，决定是否加载上一页，避免出现加载数据不存问题
+  }
+
   Bjuiajax.NAVTAB = 'navtab'
 
-  Bjuiajax.prototype.TOOLS = function() {
+  Bjuiajax.prototype.TOOLS = function () {
     var that = this
     return {
-      getPagerForm: function($parent, args) {
+      getPagerForm: function ($parent, args) {
         var form = $parent.isTag('form') ? $parent[0] : $parent.find('#pagerForm:first')[0]
         var pageInfo = $.extend({}, BJUI.pageInfo)
 
@@ -69,14 +75,14 @@
 
         return form
       },
-      getTarget: function() {
+      getTarget: function () {
         if (that.$element.closest('.navtab-panel').length) return Bjuiajax.NAVTAB
         else return 'dialog'
       }
     }
   }
 
-  Bjuiajax.prototype.ajaxForm = function(options) {
+  Bjuiajax.prototype.ajaxForm = function (options) {
     var that = this
     var $form = this.$element
 
@@ -88,17 +94,23 @@
 
     if (callback) callback = callback.toFunc()
 
-    var successFn = function(data, textStatus, jqXHR) {
+    var successFn = function (data, textStatus, jqXHR) {
       callback ? callback.apply(that, [data, $form]) : $.proxy(that.ajaxCallback(data), that)
     }
-    var _submitFn = function() {
-      var op = { loadingmask: options.loadingmask, type: $form.attr('method'), url: $form.attr('action'), callback: successFn, error: $.proxy(that.ajaxError, that) }
+    var _submitFn = function () {
+      var op = {
+        loadingmask: options.loadingmask,
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        callback: successFn,
+        error: $.proxy(that.ajaxError, that)
+      }
 
       if (enctype && enctype === 'multipart/form-data') {
         if (window.FormData) {
-          $.extend(op, { data: new FormData($form[0]), contentType: false, processData: false })
+          $.extend(op, {data: new FormData($form[0]), contentType: false, processData: false})
         } else {
-          $.extend(op, { data: $form.serializeArray(), files: $form.find(':file'), iframe: true, processData: false })
+          $.extend(op, {data: $form.serializeArray(), files: $form.find(':file'), iframe: true, processData: false})
         }
       } else {
         var _extra = $form.data('extra')
@@ -112,19 +124,19 @@
             extra = JSON.stringify($.extend(_extra, $form.serializeJson()))
           }
         }
-        $.extend(op, { data: extra ? extra : $form.serializeArray() })
+        $.extend(op, {data: extra ? extra : $form.serializeArray()})
       }
       $form.doAjax(op)
     }
 
     if (options.confirmMsg) {
-      $form.alertmsg('confirm', options.confirmMsg, { okCall: _submitFn })
+      $form.alertmsg('confirm', options.confirmMsg, {okCall: _submitFn})
     } else {
       _submitFn()
     }
   }
 
-  Bjuiajax.prototype.ajaxDone = function(json) {
+  Bjuiajax.prototype.ajaxDone = function (json) {
     var $element = this.$element
 
     if (json[BJUI.keys.statusCode] === BJUI.statusCode.error) {
@@ -137,7 +149,7 @@
     }
   }
 
-  Bjuiajax.prototype.ajaxError = function(xhr, ajaxOptions, thrownError) {
+  Bjuiajax.prototype.ajaxError = function (xhr, ajaxOptions, thrownError) {
     BJUI.removeProgress()
     var msg = xhr.responseText.trim()
 
@@ -151,12 +163,14 @@
     }
   }
 
-  Bjuiajax.prototype.ajaxCallback = function(json) {
+  Bjuiajax.prototype.ajaxCallback = function (json) {
     var that = this
     var $element = that.$element
     var $target = $element.closest('.bjui-layout')
 
     that.ajaxDone(json)
+
+    json = $.extend({}, Bjuiajax.CALLBACK_DEFAULTS, json)
 
     if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
       if ($target && $target.length) {
@@ -171,12 +185,24 @@
     }
   }
 
-  Bjuiajax.prototype.divCallback = function(json, $target) {
+  Bjuiajax.prototype.divCallback = function (json, $target) {
     var that = this
 
-    if (json.tabid) { setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100) }
-    if (json.dialogid) { setTimeout(function() { that.$element.dialog('refresh', json.dialogid) }, 100) }
-    if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
+    if (json.tabid) {
+      setTimeout(function () {
+        that.$element.navtab('reloadFlag', json.tabid)
+      }, 100)
+    }
+    if (json.dialogid) {
+      setTimeout(function () {
+        that.$element.dialog('refresh', json.dialogid)
+      }, 100)
+    }
+    if (json.divid) {
+      setTimeout(function () {
+        that.$element.bjuiajax('refreshDiv', json.divid)
+      }, 100)
+    }
     if (that.options.reload) {
       var form = that.tools.getPagerForm($target)
       var url = null
@@ -193,17 +219,23 @@
         type = $target.data('type') || 'GET'
       }
 
-      if (url) $target.ajaxUrl({ url: url, type: type })
+      if (url) $target.ajaxUrl({url: url, type: type})
     }
-    if (that.options.reloadNavtab) { setTimeout(function() { that.$element.navtab('refresh') }, 100) }
+    if (that.options.reloadNavtab) {
+      setTimeout(function () {
+        that.$element.navtab('refresh')
+      }, 100)
+    }
     if (json.forward) {
-      var _forward = function() {
-        $target.ajaxUrl({ url: json.forward })
+      var _forward = function () {
+        $target.ajaxUrl({url: json.forward})
       }
 
       if (json.forwardConfirm) {
         that.$element.alertmsg('confirm', json.forwardConfirm, {
-          okCall: function() { _forward() }
+          okCall: function () {
+            _forward()
+          }
         })
       } else {
         _forward()
@@ -211,7 +243,7 @@
     }
   }
 
-  Bjuiajax.prototype.navtabCallback = function(json) {
+  Bjuiajax.prototype.navtabCallback = function (json) {
     var that = this
 
     if (json.closeCurrent && !json.forward) {
@@ -219,25 +251,46 @@
     }
     if (json.tabid !== false) {
       if (($.trim(json.tabid) === '') && json.statusCode === BJUI.statusCode.ok) {
-        setTimeout(function() { that.$element.navtab('refresh') }, 100)
+        setTimeout(function () {
+          json.reloadWithSearch ?
+            that.$element.navtab('reloadWithSearch', null, json) : that.$element.navtab('refresh')
+        }, 100)
       } else if (json.tabid) {
-        setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100)
+        setTimeout(function () {
+          that.$element.navtab('reloadFlag', json.tabid)
+        }, 100)
       } else if (that.options.reload) {
-        setTimeout(function() { that.$element.navtab('refresh') }, 100)
+        setTimeout(function () {
+          that.$element.navtab('refresh')
+        }, 100)
       }
     }
-    if (json.dialogid) { setTimeout(function() { that.$element.dialog('refresh', json.dialogid) }, 100) }
-    if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
+    if (json.dialogid) {
+      setTimeout(function () {
+        that.$element.dialog('refresh', json.dialogid)
+      }, 100)
+    }
+    if (json.divid) {
+      setTimeout(function () {
+        that.$element.bjuiajax('refreshDiv', json.divid)
+      }, 100)
+    }
 
     if (json.forward) {
-      var _forward = function() {
-        that.$element.navtab('reload', { url: json.forward })
+      var _forward = function () {
+        that.$element.navtab('reload', {url: json.forward})
       }
 
       if (json.forwardConfirm) {
         that.$element.alertmsg('confirm', json.forwardConfirm, {
-          okCall: function() { _forward() },
-          cancelCall: function() { if (json.closeCurrent) { that.$element.navtab('closeCurrentTab') } }
+          okCall: function () {
+            _forward()
+          },
+          cancelCall: function () {
+            if (json.closeCurrent) {
+              that.$element.navtab('closeCurrentTab')
+            }
+          }
         })
       } else {
         _forward()
@@ -245,28 +298,53 @@
     }
   }
 
-  Bjuiajax.prototype.dialogCallback = function(json) {
+  Bjuiajax.prototype.dialogCallback = function (json) {
     var that = this
     // 当 tabid 为空时, 200 statusCode会自动刷新当前navtab, 设置为false时将不刷新
     if (json.tabid !== false) {
       if (($.trim(json.tabid) === '') && json.statusCode === BJUI.statusCode.ok) {
-        setTimeout(function() { that.$element.navtab('refresh') }, 100)
+        setTimeout(function () {
+          json.reloadWithSearch ?
+            that.$element.navtab('reloadWithSearch', null, json) : that.$element.navtab('refresh')
+        }, 100)
       } else if (json.tabid) {
-        setTimeout(function() { that.$element.navtab('reloadFlag', json.tabid) }, 100)
+        setTimeout(function () {
+          that.$element.navtab('reloadFlag', json.tabid)
+        }, 100)
       }
     }
-    if (json.dialogid) { setTimeout(function() { that.$element.dialog('refresh', json.dialogid) }, 100) }
-    if (json.divid) { setTimeout(function() { that.$element.bjuiajax('refreshDiv', json.divid) }, 100) }
-    if (json.closeCurrent && !json.forward) { that.$element.dialog('closeCurrent') } else if (that.options.reload) { setTimeout(function() { that.$element.dialog('refresh') }, 100) }
-    if (that.options.reloadNavtab) { setTimeout(function() { that.$element.navtab('refresh') }, 100) }
+    if (json.dialogid) {
+      setTimeout(function () {
+        that.$element.dialog('refresh', json.dialogid)
+      }, 100)
+    }
+    if (json.divid) {
+      setTimeout(function () {
+        that.$element.bjuiajax('refreshDiv', json.divid)
+      }, 100)
+    }
+    if (json.closeCurrent && !json.forward) {
+      that.$element.dialog('closeCurrent')
+    } else if (that.options.reload) {
+      setTimeout(function () {
+        that.$element.dialog('refresh')
+      }, 100)
+    }
+    if (that.options.reloadNavtab) {
+      setTimeout(function () {
+        that.$element.navtab('refresh')
+      }, 100)
+    }
     if (json.forward) {
-      var _forward = function() {
-        that.$element.dialog('reload', { url: json.forward })
+      var _forward = function () {
+        that.$element.dialog('reload', {url: json.forward})
       }
 
       if (json.forwardConfirm) {
         that.$element.alertmsg('confirm', json.forwardConfirm, {
-          okCall: function() { _forward() }
+          okCall: function () {
+            _forward()
+          }
         })
       } else {
         _forward()
@@ -274,7 +352,7 @@
     }
   }
 
-  Bjuiajax.prototype.pageCallback = function(options, target) {
+  Bjuiajax.prototype.pageCallback = function (options, target) {
     var that = this
     var op = $.extend({}, Bjuiajax.DEFAULTS, options)
     var $target = target || null
@@ -284,7 +362,12 @@
       form = that.tools.getPagerForm($target, op)
       if (form) {
         $.extend(op, $(form).data())
-        that.reloadDiv($target, { type: $(form).attr('method') || 'POST', url: $(form).attr('action'), data: $(form).serializeArray(), loadingmask: op.loadingmask })
+        that.reloadDiv($target, {
+          type: $(form).attr('method') || 'POST',
+          url: $(form).attr('action'),
+          data: $(form).serializeArray(),
+          loadingmask: op.loadingmask
+        })
       }
     } else {
       if (that.tools.getTarget() === Bjuiajax.NAVTAB) {
@@ -301,7 +384,7 @@
     }
   }
 
-  Bjuiajax.prototype.doSearch = function(options) {
+  Bjuiajax.prototype.doSearch = function (options) {
     var that = this
     var $element = that.$element
     var op = {}
@@ -328,11 +411,12 @@
       options.url = encodeURI(options.url)
     }
 
-    var search = function() {
+    var search = function () {
       if ($target && $target.length) {
         that.tools.getPagerForm($target, op)
 
-        var data = $element.serializeJson(); var _data = {}
+        var data = $element.serializeJson();
+        var _data = {}
 
         if (options.clearQuery) {
           var pageInfo = BJUI.pageInfo
@@ -344,7 +428,12 @@
           }
           data = _data
         }
-        that.reloadDiv($target, { type: $element.attr('method') || 'POST', url: options.url, data: data, loadingmask: options.loadingmask })
+        that.reloadDiv($target, {
+          type: $element.attr('method') || 'POST',
+          url: options.url,
+          data: data,
+          loadingmask: options.loadingmask
+        })
       } else {
         if (that.tools.getTarget() === Bjuiajax.NAVTAB) {
           $target = $.CurrentNavtab
@@ -360,7 +449,7 @@
 
     if (!isValid) {
       if ($.validator) {
-        $element.isValid(function(v) {
+        $element.isValid(function (v) {
           if (v) search()
         })
       } else {
@@ -371,8 +460,10 @@
     }
   }
 
-  Bjuiajax.prototype.doLoad = function(options) {
-    var that = this; var $element = that.$element; var $target = options.target ? $(options.target) : null
+  Bjuiajax.prototype.doLoad = function (options) {
+    var that = this;
+    var $element = that.$element;
+    var $target = options.target ? $(options.target) : null
 
     options = $.extend({}, Bjuiajax.DEFAULTS, typeof options === 'object' && options)
     if (!options.url) {
@@ -401,7 +492,7 @@
     }
   }
 
-  Bjuiajax.prototype.refreshLayout = function(options) {
+  Bjuiajax.prototype.refreshLayout = function (options) {
     var that = this
     var $target = options.target ? $(options.target) : null
 
@@ -417,33 +508,49 @@
     }
   }
 
-  Bjuiajax.prototype.reloadDiv = function($target, options) {
+  Bjuiajax.prototype.reloadDiv = function ($target, options) {
     var arefre = options.autorefresh && (isNaN(String(options.autorefresh)) ? 15 : options.autorefresh)
 
     $target
       .addClass('bjui-layout')
       .data('options', options)
-      .ajaxUrl({ type: options.type, url: options.url, data: options.data, loadingmask: options.loadingmask, callback: function(html) {
-        if (BJUI.ui.clientPaging && $target.data('bjui.clientPaging')) { $target.pagination('setPagingAndOrderby', $target) }
-        if (options.callback) { options.callback.apply(this, [$target]) }
-        if (autorefreshTimer) { clearInterval(autorefreshTimer) }
-        if (arefre) { autorefreshTimer = setInterval(function() { $target.bjuiajax('refreshLayout', options) }, arefre * 1000) }
-      }
+      .ajaxUrl({
+        type: options.type,
+        url: options.url,
+        data: options.data,
+        loadingmask: options.loadingmask,
+        callback: function (html) {
+          if (BJUI.ui.clientPaging && $target.data('bjui.clientPaging')) {
+            $target.pagination('setPagingAndOrderby', $target)
+          }
+          if (options.callback) {
+            options.callback.apply(this, [$target])
+          }
+          if (autorefreshTimer) {
+            clearInterval(autorefreshTimer)
+          }
+          if (arefre) {
+            autorefreshTimer = setInterval(function () {
+              $target.bjuiajax('refreshLayout', options)
+            }, arefre * 1000)
+          }
+        }
       })
   }
 
-  Bjuiajax.prototype.refreshDiv = function(divid) {
+  Bjuiajax.prototype.refreshDiv = function (divid) {
     if (divid && typeof divid === 'string') {
       var arr = divid.split(',')
 
       for (var i = 0; i < arr.length; i++) {
-        this.refreshLayout({ target: '#' + arr[i] })
+        this.refreshLayout({target: '#' + arr[i]})
       }
     }
   }
 
-  Bjuiajax.prototype.doAjax = function(options) {
-    var that = this; var $element = that.$element
+  Bjuiajax.prototype.doAjax = function (options) {
+    var that = this;
+    var $element = that.$element
 
     options = $.extend({}, Bjuiajax.DEFAULTS, typeof options === 'object' && options)
     if (!options.url) {
@@ -466,13 +573,20 @@
     }
 
     var callback = options.callback && options.callback.toFunc()
-    var todo = function() {
-      $element.doAjax({ type: options.type, url: options.url, data: options.data, callback: callback || $.proxy(function(data) { that.ajaxCallback(data) }, that) })
+    var todo = function () {
+      $element.doAjax({
+        type: options.type,
+        url: options.url,
+        data: options.data,
+        callback: callback || $.proxy(function (data) {
+          that.ajaxCallback(data)
+        }, that)
+      })
     }
 
     if (options.confirmMsg) {
       $element.alertmsg('confirm', options.confirmMsg, {
-        okCall: function() {
+        okCall: function () {
           todo()
         }
       })
@@ -481,7 +595,7 @@
     }
   }
 
-  Bjuiajax.prototype.doExport = function(options) {
+  Bjuiajax.prototype.doExport = function (options) {
     var that = this
     var $element = that.$element
     var $target = options.target ? $(options.target) : null
@@ -500,7 +614,7 @@
       }
     }
 
-    var todo = function() {
+    var todo = function () {
       if (!$target || !$target.length) {
         if (that.tools.getTarget() === Bjuiajax.NAVTAB) {
           $target = $.CurrentNavtab
@@ -523,7 +637,7 @@
         httpMethod: options.type,
         data: options.data,
         cookiePath: '/',
-        failCallback: function(responseHtml, url) {
+        failCallback: function (responseHtml, url) {
           if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
           that.ajaxDone(responseHtml)
         }
@@ -532,7 +646,7 @@
 
     if (options.confirmMsg) {
       $element.alertmsg('confirm', options.confirmMsg, {
-        okCall: function() {
+        okCall: function () {
           todo()
         }
       })
@@ -541,7 +655,7 @@
     }
   }
 
-  Bjuiajax.prototype.doExportChecked = function(options) {
+  Bjuiajax.prototype.doExportChecked = function (options) {
     var that = this
     var $element = that.$element
     var $target = options.target ? $(options.target) : null
@@ -559,7 +673,7 @@
       }
     }
 
-    var todo = function() {
+    var todo = function () {
       if (!options.group) {
         that.$element.alertmsg('error', options.warn || FRAG.alertNoCheckGroup.replace('#nocheckgroup#', BJUI.regional.nocheckgroup))
         return
@@ -579,7 +693,7 @@
         that.$element.alertmsg('error', FRAG.alertNotChecked.replace('#notchecked#', BJUI.regional.notchecked))
         return
       }
-      $checks.each(function() {
+      $checks.each(function () {
         ids.push($(this).val())
       })
 
@@ -594,7 +708,7 @@
         httpMethod: options.type,
         data: options.data,
         cookiePath: '/',
-        failCallback: function(responseHtml, url) {
+        failCallback: function (responseHtml, url) {
           if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
           that.ajaxDone(responseHtml)
         }
@@ -603,7 +717,7 @@
 
     if (options.confirmMsg) {
       $element.alertmsg('confirm', options.confirmMsg, {
-        okCall: function() {
+        okCall: function () {
           todo()
         }
       })
@@ -612,7 +726,7 @@
     }
   }
 
-  Bjuiajax.prototype.doAjaxChecked = function(options) {
+  Bjuiajax.prototype.doAjaxChecked = function (options) {
     var that = this
     var $element = that.$element
     var $target = options.target ? $(options.target) : null
@@ -631,7 +745,7 @@
       }
     }
 
-    var todo = function() {
+    var todo = function () {
       if (!options.group) {
         $element.alertmsg('error', options.warn || FRAG.alertNoCheckGroup.replace('#nocheckgroup#', BJUI.regional.nocheckgroup))
         return
@@ -652,7 +766,7 @@
         $element.alertmsg('error', FRAG.alertNotChecked.replace('#notchecked#', BJUI.regional.notchecked))
         return
       }
-      $checks.each(function() {
+      $checks.each(function () {
         ids.push($(this).val())
       })
 
@@ -662,12 +776,19 @@
         options.data = {}
       }
       options.data[options.idname ? options.idname : 'ids'] = ids.join(',')
-      $element.doAjax({ type: options.type, url: options.url, data: options.data, callback: callback || $.proxy(function(data) { that.ajaxCallback(data) }, that) })
+      $element.doAjax({
+        type: options.type,
+        url: options.url,
+        data: options.data,
+        callback: callback || $.proxy(function (data) {
+          that.ajaxCallback(data)
+        }, that)
+      })
     }
 
     if (options.confirmMsg) {
       $element.alertmsg('confirm', options.confirmMsg, {
-        okCall: function() {
+        okCall: function () {
           todo()
         }
       })
@@ -683,7 +804,7 @@
     var args = arguments
     var property = option
 
-    return this.each(function() {
+    return this.each(function () {
       var $this = $(this)
       var options = $.extend({}, Bjuiajax.DEFAULTS, $this.data(), typeof option === 'object' && option)
       var data = $this.data('bjui.bjuiajax')
@@ -705,7 +826,7 @@
   // BJUIAJAX NO CONFLICT
   // =================
 
-  $.fn.bjuiajax.noConflict = function() {
+  $.fn.bjuiajax.noConflict = function () {
     $.fn.bjuiajax = old
     return this
   }
@@ -713,8 +834,9 @@
   // BJUIAJAX DATA-API
   // ==============
 
-  $(document).on('submit.bjui.bjuiajax.data-api', 'form[data-toggle="ajaxform"]', function(e) {
-    var $this = $(this); var options = $this.data()
+  $(document).on('submit.bjui.bjuiajax.data-api', 'form[data-toggle="ajaxform"]', function (e) {
+    var $this = $(this);
+    var options = $this.data()
 
     Plugin.call($this, 'ajaxForm', options)
 
@@ -722,25 +844,28 @@
   })
 
   /* doSearch */
-  $(function() {
+  $(function () {
     if ($.validator) {
-      $(document).on(BJUI.eventType.initUI, function(e) {
-        $(e.target).find('form[data-toggle="ajaxsearch"]').each(function() {
+      $(document).on(BJUI.eventType.initUI, function (e) {
+        $(e.target).find('form[data-toggle="ajaxsearch"]').each(function () {
           var $form = $(this)
           var options = $form.data() || {}
+          // 存储当前的数据
+          $form.data('ajaxSearchData', $form.serializeJson())
 
           options.isValid = true
           $form.validator({
             theme: options.theme || 'red_right_effect',
-            valid: function(form) {
+            valid: function (form) {
               Plugin.call($form, 'doSearch', options)
             }
           })
         })
       })
     } else {
-      $(document).on('submit.bjui.bjuiajax.data-api', 'form[data-toggle="ajaxsearch"]', function(e) {
-        var $this = $(this); var options = $this.data()
+      $(document).on('submit.bjui.bjuiajax.data-api', 'form[data-toggle="ajaxsearch"]', function (e) {
+        var $this = $(this);
+        var options = $this.data()
 
         Plugin.call($this, 'doSearch', options)
 
@@ -749,8 +874,9 @@
     }
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="reloadsearch"]', function(e) {
-    var $this = $(this); var options
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="reloadsearch"]', function (e) {
+    var $this = $(this);
+    var options
     var $form = $this.closest('form')
 
     if (!$form || !$form.length) return
@@ -764,7 +890,7 @@
     e.preventDefault()
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="navtabrefresh"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="navtabrefresh"]', function (e) {
     var $this = $(this)
 
     var $box = $this.closest('.bjui-layout')
@@ -788,7 +914,7 @@
     e.preventDefault()
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="ajaxload"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="ajaxload"]', function (e) {
     var $this = $(this)
     var options = $this.data()
 
@@ -799,25 +925,26 @@
     e.preventDefault()
   })
 
-  $(document).on(BJUI.eventType.initUI, function(e) {
+  $(document).on(BJUI.eventType.initUI, function (e) {
     var $box = $(e.target).find('[data-toggle="autoajaxload"]')
 
-    $box.each(function() {
-      var $element = $(this); var options = $element.data()
+    $box.each(function () {
+      var $element = $(this);
+      var options = $element.data()
 
       options.target = this
       Plugin.call($element, 'doLoad', options)
     })
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="refreshlayout"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="refreshlayout"]', function (e) {
     var $this = $(this)
     var options = $this.data()
 
     Plugin.call($this, 'refreshLayout', options)
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doajax"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doajax"]', function (e) {
     var $this = $(this)
     var options = $this.data()
 
@@ -828,7 +955,7 @@
     e.preventDefault()
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doexport"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doexport"]', function (e) {
     var $this = $(this)
     var options = $this.data()
 
@@ -839,7 +966,7 @@
     e.preventDefault()
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doexportchecked"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doexportchecked"]', function (e) {
     var $this = $(this)
     var options = $this.data()
 
@@ -850,7 +977,7 @@
     e.preventDefault()
   })
 
-  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doajaxchecked"]', function(e) {
+  $(document).on('click.bjui.bjuiajax.data-api', '[data-toggle="doajaxchecked"]', function (e) {
     var $this = $(this)
     var options = $this.data()
 

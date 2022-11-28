@@ -155,6 +155,35 @@
 
       return $target
     },
+    /**
+     * 获取指定navtab或dialog的查询数据与分页数据
+     * @param delCount 删除数据量
+     * @return {{pageInfo: {pageSize, pageCurrent: *}, searchData: (*|{})}}
+     */
+    getPageSearchData: function (delCount) {
+      var $panel = this
+      var pageInfo = $panel.find('[data-toggle="pagination"]').data()
+      var searchData = $panel.find('form[data-toggle="ajaxsearch"]').data('ajaxSearchData') || {}
+      if (pageInfo && delCount && (+delCount) > 0) {
+        var pageCurrent = Math.ceil((pageInfo.total - (+delCount)) / (+pageInfo.pageSize))
+        if (pageCurrent <= 0) {
+          pageCurrent = 1
+        }
+        if (pageCurrent < (+pageInfo.pageCurrent)) {
+          pageInfo.pageCurrent = pageCurrent
+        }
+      }
+      if (!pageInfo) {
+        pageInfo = {}
+      }
+      return {
+        searchData: searchData,
+        pageInfo: {
+          pageSize: pageInfo.pageSize,
+          pageCurrent: pageInfo.pageCurrent
+        }
+      }
+    },
     resizePageH: function() {
       return this.each(function() {
         if ($(this).closest('.tab-content').length) return
