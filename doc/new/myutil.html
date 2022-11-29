@@ -1,22 +1,109 @@
 <div class="bjui-pageContent">
-    <div class="bjui-doc">
-        <h1>内置工具集<span class="label label-success">1.1.7+</span></h1>
-        <small class="text-muted">引入BJUI/other/utils.js使用</small>
-        <hr>
-        <blockquote>
-            <h4 class="text-info">$.fn.findFilter() </h4>
-            <p>查找 [data-filter] 属性的dom元素</p>
-            <p>当前弹窗中查找[data-filter="a"]的元素。$.CurrentDialog.findFilter('a')</p>
-            <p>当前弹窗中查找span[data-filter="test"]的元素。$.CurrentNavtab.findFilter('test', 'span')</p>
-        </blockquote>
-        <blockquote>
-            <h4 class="text-info">$.getRandom() </h4>
-            <p>获取一串随机字符串，可用于全局唯一id使用</p>
-        </blockquote>
-    </div>
+  <div class="bjui-doc">
+    <h1>内置工具集<span class="label label-success">1.1.7+</span></h1>
+    <small class="text-muted">引入BJUI/other/utils.js使用</small>
+    <hr>
+    <blockquote>
+      <h4 class="text-info">$.fn.findFilter() </h4>
+      <p>查找 [data-filter] 属性的dom元素</p>
+      <p>当前弹窗中查找[data-filter="a"]的元素。$.CurrentDialog.findFilter('a')</p>
+      <p>当前弹窗中查找span[data-filter="test"]的元素。$.CurrentNavtab.findFilter('test', 'span')</p>
+    </blockquote>
+    <blockquote>
+      <h4 class="text-info">$.getRandom() </h4>
+      <p>获取一串随机字符串，可用于全局唯一id使用</p>
+    </blockquote>
+    <blockquote>
+      <h4 class="text-info">$.fn.loading(open) </h4>
+      <p>打开或关闭BJUI加载框，$.CurrentDialog.loading(true|false) | $.CurrentNavtab.loading(true|false)</p>
+    </blockquote>
+    <blockquote>
+      <h4 class="text-info">$.ajaxRequest(opt) <span class="label label-success" style="font-size: 12px">1.6.0+</span></h4>
+      <div></div>
+      <p>与BJUI框架统一的ajax请求封装</p>
+
+      <div class="table-responsive text-center">
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>默认</th>
+            <th>说明</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>url</td>
+            <td>string</td>
+            <td></td>
+            <td>请求地址</td>
+          </tr>
+          <tr>
+            <td>method</td>
+            <td>string</td>
+            <td>GET</td>
+            <td>请求类型</td>
+          </tr>
+          <tr>
+            <td>contentType</td>
+            <td>string</td>
+            <td>application/json</td>
+            <td>发送的实体数据的数据类型</td>
+          </tr>
+          <tr>
+            <td>dataType</td>
+            <td>string</td>
+            <td>json</td>
+            <td>预期服务器返回的数据类型</td>
+          </tr>
+          <tr>
+            <td>data</td>
+            <td>object</td>
+            <td>{}</td>
+            <td>发送数据</td>
+          </tr>
+          <tr>
+            <td>success</td>
+            <td>callable</td>
+            <td></td>
+            <td>成功回调</td>
+          </tr>
+          <tr>
+            <td>error</td>
+            <td>callable</td>
+            <td></td>
+            <td>失败回调</td>
+          </tr>
+          <tr>
+            <td>complete</td>
+            <td>callable</td>
+            <td></td>
+            <td>请求结束回调</td>
+          </tr>
+          <tr>
+            <td>loading</td>
+            <td>boolean|$.CurrentDialog|$.CurrentNavtab</td>
+            <td>false</td>
+            <td>是否存在加载框</td>
+          </tr>
+          <tr>
+            <td>loadingFunc</td>
+            <td>callable</td>
+            <td></td>
+            <td>加载回调方法代替loading参数，返回true(开始请求)或false(结束请求)</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </blockquote>
+  </div>
 </div>
 <div class="bjui-pageFooter">
-    <ul>
-        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
-    </ul>
+  <ul>
+    <li>
+      <button type="button" class="btn-close" data-icon="close">关闭</button>
+    </li>
+  </ul>
 </div>
