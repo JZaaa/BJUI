@@ -3,7 +3,7 @@
 ## master
 
 ### Breaking changes 非兼容更新
-- 打包文件中不再包含**tags组件**，如需此插件，请运行<code>bin/bjui-js-optimize-old.bat</code>打包</p>
+- 打包文件中不再包含**tags组件**，如需此插件，请运行**bin/bjui-js-optimize-old.bat**打包
 - ajaxload组件 修改默认**refreshLayout**与**refreshDiv**刷新为清空查询刷新，保证与navtab刷新一致，可设置**reloadWithSearch**为true保留查询信息
 
 ### Improvements
