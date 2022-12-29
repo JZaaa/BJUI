@@ -250,7 +250,7 @@
         })
       },
       createTag: function(label, value) {
-        var $btn = $('<span class="label label-tag" data-value="' + value + '" style="margin-left: 1px; margin-top: 1px;"><i class="fa fa-tag"></i> ' + label + '&nbsp;&nbsp;<a href="#" class="close">&times;</a></span>')
+        var $btn = $('<span class="label label-tag" data-value="' + value + '" style="margin-left: 1px; margin-top: 1px;"><i class="bjicon-tag"></i> ' + label + '&nbsp;&nbsp;<a href="#" class="close">&times;</a></span>')
 
         $btn
           .insertBefore(that.$element)

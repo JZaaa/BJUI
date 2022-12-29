@@ -419,7 +419,7 @@
 
         $th.empty()
         that.$numAdd = $('<input type="text" value="1" class="form-control num-add" size="2" title="待添加的行数">')
-        that.$btnAdd = $('<a href="javascript:;" class="row-add" title="添加行"><i class="fa fa-plus-square"></i></a>')
+        that.$btnAdd = $('<a href="javascript:;" class="row-add" title="添加行"><i class="bjicon-plus-squared"></i></a>')
         $addBox.append(that.$numAdd).append(that.$btnAdd).appendTo($th)
       }
     })

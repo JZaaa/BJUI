@@ -18,7 +18,7 @@
   <link href="BJUI/plugins/kindeditor/themes/default/default.css" rel="stylesheet">
   <link href="BJUI/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
   <link href="BJUI/plugins/bootstrapSelect/bootstrap-select.min.css" rel="stylesheet">
-  <link href="BJUI/themes/css/FA/css/font-awesome.min.css" rel="stylesheet">
+<!--  <link href="BJUI/themes/css/FA/css/font-awesome.min.css" rel="stylesheet">-->
   <!-- jquery -->
   <script src="BJUI/js/jquery-3.min.js"></script>
   <!-- BJUI.all 分模块压缩版 -->
@@ -128,7 +128,7 @@
     <div class="bjui-navbar-header">
       <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse"
               data-target="#bjui-navbar-collapse">
-        <i class="fa fa-bars"></i>
+        <i class="bjicon-menu"></i>
       </button>
       <a class="bjui-navbar-logo" href="#"><img src="images/logo.png" alt="logo"></a>
     </div>
@@ -163,27 +163,27 @@
           </ul>
         </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle theme blue" data-toggle="dropdown" title="切换皮肤"><i
-          class="fa fa-tree"></i></a>
+          class="bjicon-tree"></i></a>
           <ul class="dropdown-menu" role="menu" id="bjui-themes">
             <li><a href="javascript:;" class="theme_default" data-toggle="theme" data-theme="default">&nbsp;<i
-              class="fa fa-tree"></i> 黑白分明&nbsp;&nbsp;</a></li>
+              class="bjicon-tree"></i> 黑白分明&nbsp;&nbsp;</a></li>
             <li><a href="javascript:;" class="theme_orange" data-toggle="theme" data-theme="orange">&nbsp;<i
-              class="fa fa-tree"></i> 橘子红了</a></li>
+              class="bjicon-tree"></i> 橘子红了</a></li>
             <li><a href="javascript:;" class="theme_purple" data-toggle="theme" data-theme="purple">&nbsp;<i
-              class="fa fa-tree"></i> 紫罗兰</a></li>
+              class="bjicon-tree"></i> 紫罗兰</a></li>
             <li class="active"><a href="javascript:;" class="theme_blue" data-toggle="theme" data-theme="blue">&nbsp;<i
-              class="fa fa-tree"></i> 天空蓝</a></li>
+              class="bjicon-tree"></i> 天空蓝</a></li>
             <li><a href="javascript:;" class="theme_green" data-toggle="theme" data-theme="green">&nbsp;<i
-              class="fa fa-tree"></i> 绿草如茵</a></li>
+              class="bjicon-tree"></i> 绿草如茵</a></li>
             <li><a href="javascript:;" class="theme_teal" data-toggle="theme" data-theme="teal">&nbsp;<i
-              class="fa fa-tree"></i> 蓝绿色</a></li>
+              class="bjicon-tree"></i> 蓝绿色</a></li>
           </ul>
         </li>
       </ul>
     </nav>
     <div id="bjui-hnav">
       <button type="button" class="btn-default bjui-hnav-more-left" title="导航菜单左移"><i
-        class="fa fa-angle-double-left"></i></button>
+        class="bjicon-angle-double-left"></i></button>
       <div id="bjui-hnav-navbar-box">
         <ul id="bjui-hnav-navbar">
           <li class="active"><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-check-square-o"></i> 表单元素</a>
@@ -253,6 +253,7 @@
             <div class="items hide" data-noinit="true">
               <ul class="menu-items" data-faicon="fire" data-tit="新特性">
                 <li><a href="doc/new/style.html" data-options="{id:'doc-new-style', faicon:'caret-right'}">全局样式</a></li>
+                <li><a href="doc/new/icon.html" data-options="{id:'doc-icon', faicon:'caret-right'}">内置图标</a></li>
                 <li><a href="doc/new/jsonEditor.html" data-options="{id:'doc-json-editor', faicon:'caret-right'}">JSON编辑器</a>
                 </li>
                 <li><a href="doc/new/clipboard.html"
@@ -356,7 +357,7 @@
         </ul>
       </div>
       <button type="button" class="btn-default bjui-hnav-more-right" title="导航菜单右移"><i
-        class="fa fa-angle-double-right"></i></button>
+        class="bjicon-angle-double-right"></i></button>
     </div>
   </header>
   <div id="bjui-container" class="clearfix">
@@ -365,8 +366,8 @@
         <div class="collapse"></div>
       </div>
       <div id="bjui-sidebar">
-        <div class="toggleCollapse"><h2><i class="fa fa-bars"></i> 导航栏 <i class="fa fa-bars"></i></h2><a
-          href="javascript:;" class="lock"><i class="fa fa-lock"></i></a></div>
+        <div class="toggleCollapse"><h2><i class="bjicon-menu"></i> 导航栏 <i class="bjicon-menu"></i></h2><a
+          href="javascript:;" class="lock"><i class="bjicon-lock"></i></a></div>
         <div class="panel-group panel-main" data-toggle="accordion" id="bjui-accordionmenu">
         </div>
       </div>
@@ -375,13 +376,13 @@
       <div class="tabsPageHeader">
         <div class="tabsPageHeaderContent">
           <ul class="navtab-tab nav nav-tabs">
-            <li data-url="index_layout.html" data-faicon="home"><a href="javascript:;"><span><i class="fa fa-home"></i> #maintab#</span></a>
+            <li data-url="index_layout.html" data-faicon="home"><a href="javascript:;"><span><i class="bjicon-home"></i> #maintab#</span></a>
             </li>
           </ul>
         </div>
-        <div class="tabsLeft"><i class="fa fa-angle-double-left"></i></div>
-        <div class="tabsRight"><i class="fa fa-angle-double-right"></i></div>
-        <div class="tabsMore"><i class="fa fa-angle-double-down"></i></div>
+        <div class="tabsLeft"><i class="bjicon-angle-double-left"></i></div>
+        <div class="tabsRight"><i class="bjicon-angle-double-right"></i></div>
+        <div class="tabsMore"><i class="bjicon-angle-double-down"></i></div>
       </div>
       <ul class="tabsMoreList">
         <li><a href="javascript:;">#maintab#</a></li>

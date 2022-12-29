@@ -1,5 +1,14 @@
 # 更新日志
 -------------------------------------------
+## v1.7.0
+
+### 内置图标
+新增了内置图标替换fontawesome图标，现在项目不再依赖fontawesome图标，老项目需要处理首页fontawesome替换为项目内置图标
+
+### Update
+
+- 升级clipboardjs至v2.0.11 
+
 ## v1.6.0
 
 ### Breaking changes 非兼容更新

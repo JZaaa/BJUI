@@ -131,11 +131,11 @@
   }
 
   Slidebar.prototype.faLock = function () {
-    this.$lock.find('> i').attr('class', 'fa fa-lock')
+    this.$lock.find('> i').attr('class', 'bjicon-lock')
   }
 
   Slidebar.prototype.faUnLock = function () {
-    this.$lock.find('> i').attr('class', 'fa fa-unlock-alt')
+    this.$lock.find('> i').attr('class', 'bjicon-lock-open-alt')
   }
 
   Slidebar.prototype.init = function () {
@@ -340,8 +340,8 @@
           options = options.toObj()
           if (options && options.faicon) {
             options.faicon = options.faicon.trim()
-            if (options.faicon.startsWith('fa-')) options.faicon = options.faicon.substr(3)
-            $a.prepend('<i class="fa fa-' + options.faicon + '"></i>').data('icon.init', true).attr('title', $a.text())
+            $a.prepend('<i class="' + BJUI.iconPrefix + options.faicon + '"></i>')
+            $a.data('icon.init', true).attr('title', $a.text())
           }
         }
       })
@@ -363,11 +363,11 @@
       panel = FRAG.slidePanel
         .replaceAll('#id#', 'bjui-collapse' + i)
         .replaceAll('#title#', title)
-        .replaceAll('#righticon#', '<i class="fa fa-angle-down"></i>')
+        .replaceAll('#righticon#', '<i class="bjicon-angle-down"></i>')
         .replaceAll('#class#', cls)
         .replaceAll('#bodyclass#', bodycls)
 
-      if (icon) panel = panel.replaceAll('#icon#', '<i class="fa fa-' + icon + '"></i>')
+      if (icon) panel = panel.replaceAll('#icon#', '<i class="' + BJUI.iconPrefix + icon + '"></i>')
       else panel = panel.replaceAll('#icon#', '')
 
       $panel = $(panel)

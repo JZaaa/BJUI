@@ -320,7 +320,7 @@
       .replaceAll('#multi#', options.multi ? 'multiple' : '')
       .replaceAll('#btn-default#', options.class ? options.class : 'btn btn-default')
       .replaceAll('#accept#', that.tools.getAcceptString(options.fileTypeExts))
-      .replaceAll('#btnTxt#', (options.icon ? '<i class="fa fa-' + options.icon + '">&nbsp;&nbsp;' : '') + options.buttonText))
+      .replaceAll('#btnTxt#', (options.icon ? '<i class="' + BJUI.iconPrefix + options.icon + '">&nbsp;&nbsp;' : '') + options.buttonText))
 
     $element
       .addClass('bjui-upload')

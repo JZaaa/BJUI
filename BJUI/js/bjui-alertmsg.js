@@ -49,7 +49,7 @@
     alertTimeout: 3000,
     mask: null,
     types: { error: 'error', info: 'info', warn: 'warn', correct: 'correct', confirm: 'confirm' },
-    fas: { error: 'fa-times-circle', info: 'fa-info-circle', warn: 'fa-exclamation-circle', correct: 'fa-check-circle', confirm: 'fa-question-circle' }
+    fas: { error: 'bjicon-cancel-circled', info: 'bjicon-info-circled', warn: 'bjicon-attention-circled', correct: 'bjicon-ok-circled', confirm: 'bjicon-help-circled' }
   }
 
   Alertmsg.prototype.TOOLS = function() {
@@ -237,9 +237,9 @@
           for (var i = 0; i < buttons.length; i++) {
             var sRel = buttons[i].call ? 'callback' : ''
             var sCls = buttons[i].cls ? buttons[i].cls : 'default'
-            var sIco = (buttons[i].cls && buttons[i].cls === 'green') ? 'check' : 'close'
+            var sIco = (buttons[i].cls && buttons[i].cls === 'green') ? 'bjicon-ok' : 'bjicon-cancel'
 
-            btnsHtml += FRAG.alertBtnFrag.replace('#btnMsg#', '<i class="fa fa-' + sIco + '"></i> ' + buttons[i].name).replace('#callback#', sRel).replace('#class#', sCls)
+            btnsHtml += FRAG.alertBtnFrag.replace('#btnMsg#', '<i class="' + sIco + '"></i> ' + buttons[i].name).replace('#callback#', sRel).replace('#class#', sCls)
           }
         }
         $newbox =

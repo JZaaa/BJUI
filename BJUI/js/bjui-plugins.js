@@ -37,7 +37,7 @@
       switch (type) {
         case 'checkbox':
           wrapHtml = '<div class="pretty p-icon p-curve '+ className +'"></div>'
-          icon = '<i class="icon fa fa-check"></i>'
+          icon = '<i class="icon bjicon-ok"></i>'
           color = $element.data('color') || 'primary-o'
           break
         case 'radio':
@@ -200,10 +200,8 @@
 
         if (!$element.hasClass('btn')) { $element.removeClass().addClass('btn').addClass(oldClass) }
         if (icon) {
-          _icon = 'fa-' + icon.replace('fa-', '')
-
           if (!$element.data('bjui.icon')) {
-            $element.html('<i class="fa ' + _icon + '"></i> ' + $element.html())
+            $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
               .data('bjui.icon', true)
           }
         }
@@ -212,10 +210,9 @@
         icon = $element.data('icon')
 
         if (icon) {
-          _icon = 'fa-' + icon.replace('fa-', '')
 
           if (!$element.data('bjui.icon')) {
-            $element.html('<i class="fa ' + _icon + '"></i> ' + $element.html())
+            $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
               .data('bjui.icon', true)
           }
         }
@@ -282,10 +279,10 @@
         }
         $more.css('top', $parent.outerHeight() - 1)
         if ($more.is(':visible')) {
-          $element.html('<i class="fa fa-angle-double-down"></i>')
+          $element.html('<i class="bjicon-angle-double-down"></i>')
           if (name) $('body').data('moresearch.' + name, false)
         } else {
-          $element.html('<i class="fa fa-angle-double-up"></i>')
+          $element.html('<i class="bjicon-angle-double-up"></i>')
           if (name) $('body').data('moresearch.' + name, true)
         }
         $more.fadeToggle('slow', 'linear')
@@ -295,7 +292,7 @@
 
       if (name && $('body').data('moresearch.' + name)) {
         $more.css('top', $parent.outerHeight() - 1).fadeIn()
-        $element.html('<i class="fa fa-angle-double-up"></i>')
+        $element.html('<i class="bjicon-angle-double-up"></i>')
       }
     })
 
@@ -395,7 +392,7 @@
       var options = op.options
       var _setting
       if (!op.hasOwnProperty('iconPrefix')) {
-        op.iconPrefix = 'fa fa-'
+        op.iconPrefix = BJUI.iconPrefix
       }
 
       if (options && typeof options === 'string') options = options.toObj()

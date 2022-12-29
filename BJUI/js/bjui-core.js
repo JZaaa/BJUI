@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.6.0',
+    version: '1.7.0',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -40,6 +40,7 @@
       LEFT: 37, RIGHT: 39, UP: 38, DOWN: 40,
       DELETE: 46, BACKSPACE: 8
     },
+    iconPrefix: 'fa fa-', // 图标前缀
     eventType: {
       initUI: 'bjui.initUI', // When document load completed or ajax load completed, B-JUI && Plugins init
       beforeInitUI: 'bjui.beforeInitUI', // If your DOM do not init [add to DOM attribute 'data-noinit="true"']
@@ -116,6 +117,9 @@
       $.extend(BJUI.KindEditor, op.KindEditor)
       $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
+      if (op.iconPrefix) {
+        this.iconPrefix = op.iconPrefix
+      }
 
       if (op.pluginConfig) {
         $.extend(BJUI.pluginConfig, op.pluginConfig)
