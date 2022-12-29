@@ -5,9 +5,13 @@
 ### 内置图标
 新增了内置图标替换fontawesome图标，现在项目不再依赖fontawesome图标，老项目需要处理首页fontawesome替换为项目内置图标
 
+### Improvements
+- 删除了jquery.autosize.js，现在用autosize.min.js替换
+
 ### Update
 
-- 升级clipboardjs至v2.0.11 
+- 升级clipboardjs至v2.0.11
+- 升级bootstrap-colorpicker.js至v2.5.3
 
 ## v1.6.0
 
