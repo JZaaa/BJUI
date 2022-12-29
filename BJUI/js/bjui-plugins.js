@@ -390,7 +390,13 @@
 
     /* zTree - plugin */
     $box.find('[data-toggle="ztree"]').each(function() {
-      var $this = $(this); var op = $this.data(); var options = op.options; var _setting
+      var $this = $(this)
+      var op = $this.data() || {}
+      var options = op.options
+      var _setting
+      if (!op.hasOwnProperty('iconPrefix')) {
+        op.iconPrefix = 'fa fa-'
+      }
 
       if (options && typeof options === 'string') options = options.toObj()
       if (options) $.extend(op, typeof options === 'object' && options)
@@ -485,7 +491,7 @@
           if (!$a.data('faicon')) {
             $a.data('faicon', true)
               .addClass('faicon')
-              .find('> span.button').append('<i class="fa fa-' + treeNode.faicon + '"></i>')
+              .find('> span.button').append('<i class="' + op.iconPrefix + treeNode.faicon + '"></i>')
           }
         }
         if (op.onNodeCreated) {
@@ -495,7 +501,7 @@
       // onCollapse
       function _onCollapse(event, treeId, treeNode) {
         if (treeNode.faiconClose) {
-          $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'fa fa-' + treeNode.faiconClose)
+          $('#' + treeNode.tId + '_ico').find('> i').attr('class', op.iconPrefix + treeNode.faiconClose)
         }
         if (op.onCollapse) {
           op.onCollapse.toFunc().call(this, event, treeId, treeNode)
@@ -504,7 +510,7 @@
       // onExpand
       function _onExpand(event, treeId, treeNode) {
         if (treeNode.faicon && treeNode.faiconClose) {
-          $('#' + treeNode.tId + '_ico').find('> i').attr('class', 'fa fa-' + treeNode.faicon)
+          $('#' + treeNode.tId + '_ico').find('> i').attr('class', op.iconPrefix + treeNode.faicon)
         }
         if (op.onExpand) {
           op.onExpand.toFunc().call(this, event, treeId, treeNode)
