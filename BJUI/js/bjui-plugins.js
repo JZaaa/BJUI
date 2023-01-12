@@ -876,8 +876,6 @@
       var clipboard = new ClipboardJS(this, opts)
 
       clipboard.on('error', function(e) {
-        console.error('Action:', e.action)
-        console.error('Trigger:', e.trigger)
         $box.alertmsg('error', '复制失败！')
         // e.clearSelection()
       })
