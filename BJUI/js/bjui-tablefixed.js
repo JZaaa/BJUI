@@ -152,6 +152,8 @@
       this.options.newWidth = parseInt(this.options.width)
     }
 
+    this.options.tableClass = this.$element.attr('class') || 'table table-bordered'
+
     this.options.styles = []
     this.$element.wrap('<div class="bjui-tablefixed clearfix"></div>')
     this.$fixed = this.$element.parent()
@@ -251,7 +253,7 @@
       $th.html('<div class="fixedtableCol">' + $th.html() + '</div>')
     })
 
-    $thead.wrap('<div class="fixedtableHeader" style="width:' + (this.options.newWidth - Tablefixed.SCROLLW) + 'px;overflow:hidden;"><div class="fixedtableThead"><table class="table table-bordered" style="width:' + (this.options.newWidth - Tablefixed.SCROLLW) + 'px; max-width:' + (this.options.newWidth - Tablefixed.SCROLLW) + 'px;"></table></div></div>')
+    $thead.wrap('<div class="fixedtableHeader" style="width:' + (this.options.newWidth - Tablefixed.SCROLLW) + 'px;overflow:hidden;"><div class="fixedtableThead"><table class="' + this.options.tableClass + '" style="width:' + (this.options.newWidth - Tablefixed.SCROLLW) + 'px; max-width:' + (this.options.newWidth - Tablefixed.SCROLLW) + 'px;"></table></div></div>')
     this.$fixed.append('<div class="resizeMarker" style="display:none; height:300px; left:57px;"></div><div class="resizeProxy" style="left:377px; display:none; height:300px;"></div>')
   }
 

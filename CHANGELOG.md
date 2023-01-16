@@ -13,6 +13,11 @@
 - 升级clipboardjs至v2.0.11
 - 升级bootstrap-colorpicker.js至v2.5.3
 
+### fixed
+
+- 修复tablefixed组件未加载原table class 的问题
+
+
 ## v1.6.0
 
 ### Breaking changes 非兼容更新
