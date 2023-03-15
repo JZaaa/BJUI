@@ -117,8 +117,10 @@
       }
       if (op.loadingmask) {
         $target = $this.getPageTarget()
-        $target.trigger(BJUI.eventType.ajaxStatus)
-        $ajaxMask = $target.find('> .bjui-ajax-mask')
+        if ($target && $target.length) {
+          $target.trigger(BJUI.eventType.ajaxStatus)
+          $ajaxMask = $target.find('> .bjui-ajax-mask')
+        }
       }
       if (!op.type) op.type = 'POST'
       if (!op.dataType) op.dataType = 'json'
