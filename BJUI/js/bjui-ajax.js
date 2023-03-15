@@ -622,6 +622,7 @@
         type: options.type,
         url: options.url,
         data: options.data,
+        loadingmask: options.loadingmask,
         callback: callback || $.proxy(function (data) {
           that.ajaxCallback(data)
         }, that)
