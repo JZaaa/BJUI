@@ -416,6 +416,10 @@
   }
 
   Dialog.prototype.switchDialog = function ($dialog) {
+    $dialog = (typeof $dialog === 'string') ? $('body').data($dialog) : $dialog
+    if (!$dialog) {
+      return
+    }
     var index = $dialog.css('zIndex')
 
     if ($current && $current !== $dialog) {
@@ -434,6 +438,9 @@
   Dialog.prototype.close = function (dialog) {
     var that = this
     var $dialog = (typeof dialog === 'string') ? $('body').data(dialog) : dialog
+    if (!$dialog) {
+      return
+    }
     var $mask = $dialog.data('bjui.dialog.mask')
     var options = $dialog.data('options')
     var target = $dialog.data('bjui.dialog.target')
@@ -441,7 +448,7 @@
     var onClose = options.onClose ? options.onClose.toFunc() : null
     var canClose = true
 
-    if (!$dialog || !options) return
+    if (!options) return
     if (beforeClose) canClose = beforeClose.apply(that, [$dialog])
     if (!canClose) {
       that.switchDialog($dialog)
