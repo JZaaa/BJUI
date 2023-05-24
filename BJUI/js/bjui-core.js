@@ -62,7 +62,8 @@
     pageInfo: { total: 'total', pageCurrent: 'pageCurrent', pageSize: 'pageSize', orderField: 'orderField', orderDirection: 'orderDirection' },
     alertMsg: { displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 3000 }, // 信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时
     ajaxTimeout: 50000,
-    statusCode: { ok: 200, error: 300, timeout: 301 },
+    statusCode: { ok: 200, error: 300, timeout: 301, unauthorized: 401, forbidden: 403 },
+    httpCode: { unauthorized: 401, forbidden: 403 }, // 用于定义httpCode
     keys: { statusCode: 'statusCode', message: 'message' },
     ui: {
       windowWidth: 0,
@@ -117,6 +118,9 @@
       $.extend(BJUI.KindEditor, op.KindEditor)
       $.extend(BJUI.ui, op.ui)
       $.extend(BJUI.dialog, op.dialog)
+      if (op.httpCode) {
+        $.extend(BJUI.httpCode, op.httpCode)
+      }
       if (op.iconPrefix) {
         this.iconPrefix = op.iconPrefix
       }

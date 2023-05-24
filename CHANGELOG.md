@@ -2,10 +2,16 @@
 -------------------------------------------
 ## v1.7.2 (master)
 
+### Improvements
+
+- 新增httpCode,statusCode ``unauthorized`` 与 ``forbidden``定义
+
 ### fixed
 
 - 修复switchDialog方法无法调用问题
-- 新增dialog close方法判定，现在指定不存在的dialogId不再报错
+- 添加dialog close方法判定，现在指定不存在的dialogId不再报错
+- 修复httpCode 401/403意义判断问题
+
 
 ## v1.7.1
 

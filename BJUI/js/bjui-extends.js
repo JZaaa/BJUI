@@ -45,13 +45,13 @@
             $this.empty().html(response).append($ajaxMask).initui()
             if ($.isFunction(op.callback)) op.callback(response)
           } else {
-            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error) {
+            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode === BJUI.statusCode.forbidden]) {
               if (json[BJUI.keys.message]) $this.alertmsg('error', json[BJUI.keys.message])
               if (!$this.closest('.bjui-layout').length) {
                 if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
                 else $this.dialog('closeCurrent')
               }
-            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout) {
+            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode === BJUI.statusCode.unauthorized]) {
               if ($this.closest('.bjui-dialog').length) $this.dialog('closeCurrent')
               if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
 
@@ -75,13 +75,13 @@
           503: function(xhr, ajaxOptions, thrownError) {
             $this.alertmsg('error', FRAG.statusCode_503.replace('#statusCode_503#', BJUI.regional.statusCode_503) || thrownError)
           },
-          // 添加 httpCode 403 超时弹框
-          403: function(xhr, ajaxOptions, thrownError) {
+          // 添加 httpCode 401 超时弹框/未登录
+          [BJUI.httpCode.unauthorized]: function(xhr, ajaxOptions, thrownError) {
             $this.alertmsg('error', '登录超时' || thrownError)
             BJUI.loadLogin()
           },
-          // 添加 httpCode 401 无权限
-          401: function(xhr, ajaxOptions, thrownError) {
+          // 添加 httpCode 403 无权限
+          [BJUI.httpCode.forbidden]: function(xhr, ajaxOptions, thrownError) {
             if (!BJUI.IS_DEBUG) {
               $this.alertmsg('error', '无权限访问' || thrownError)
             }
