@@ -45,13 +45,13 @@
             $this.empty().html(response).append($ajaxMask).initui()
             if ($.isFunction(op.callback)) op.callback(response)
           } else {
-            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode === BJUI.statusCode.forbidden]) {
+            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode] === BJUI.statusCode.forbidden) {
               if (json[BJUI.keys.message]) $this.alertmsg('error', json[BJUI.keys.message])
               if (!$this.closest('.bjui-layout').length) {
                 if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
                 else $this.dialog('closeCurrent')
               }
-            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode === BJUI.statusCode.unauthorized]) {
+            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode] === BJUI.statusCode.unauthorized) {
               if ($this.closest('.bjui-dialog').length) $this.dialog('closeCurrent')
               if ($this.closest('.navtab-panel').length) $this.navtab('closeCurrentTab')
 

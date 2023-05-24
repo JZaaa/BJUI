@@ -79,10 +79,10 @@
           if (!json[BJUI.keys.statusCode]) {
             op.error && op.error(json)
           } else {
-            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode === BJUI.statusCode.forbidden]) {
+            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode] === BJUI.statusCode.forbidden) {
               if (json[BJUI.keys.message]) $('body').alertmsg('error', json[BJUI.keys.message])
               op.error && op.error(json)
-            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode === BJUI.statusCode.unauthorized]) {
+            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode] === BJUI.statusCode.unauthorized) {
               $('body').alertmsg('info', (json[BJUI.keys.message] || BJUI.regional.sessiontimeout))
               BJUI.loadLogin()
             } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
