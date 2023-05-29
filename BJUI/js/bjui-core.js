@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.7.2',
+    version: '1.7.3',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -280,10 +280,23 @@
       // 时钟
       var today = new Date()
       $('#bjui-date').html(today.formatDate('yyyy/MM/dd'))
-      setInterval(function() {
-        today = new Date(today.setSeconds(today.getSeconds() + 1))
-        $('#bjui-clock').html(today.formatDate('HH:mm:ss'))
-      }, 1000)
+      var $clock = $('#bjui-clock')
+      var timer = null
+      function setDate() {
+        timer && clearInterval(timer)
+        timer = setInterval(function() {
+          today = new Date(today.setSeconds(today.getSeconds() + 1))
+          $clock.html(today.formatDate('HH:mm:ss'))
+        }, 1000)
+      }
+      setDate()
+
+      document.addEventListener("visibilitychange", function() {
+        if (!document.hidden) {
+          today = new Date()
+          setDate()
+        }
+      })
     },
     // 清除遮罩层
     removeProgress: function() {
