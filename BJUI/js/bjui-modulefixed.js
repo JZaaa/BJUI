@@ -14,7 +14,12 @@
    */
   ModuleFixed.prototype.destroyModules = function($selector) {
     $(document).trigger(BJUI.eventType.destroyModules, $selector)
+    $selector.find('[data-bj-panel-dom]').trigger(BJUI.eventType.destroyPanel, $selector)
     try {
+      // 查询是否存在vue3节点，存在则触发卸载挂载实例
+      $selector.find('[data-bj-vue-dom]').each(function () {
+        this.__vue_app__ && this.__vue_app__.unmount()
+      })
       // ie9 uploadify 销毁
       var uploadify = $selector.find('.bjui-upload > .uploadify')
       if (uploadify.length) {

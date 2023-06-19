@@ -54,6 +54,21 @@
                     <td>ajax载入前事件</td>
                     <td>监听该事件，可在使用<code>ajaxUrl</code>方法 <b>(navtab/dialog均用此方法加载子页片内容)</b> 前进行相关操作，例如：本框架监听该事件用于在重载入子页片前释放在body中生成的selectpicker插件资源。</td>
                 </tr>
+                <tr>
+                    <td>bjui.destroyPanel</td>
+                    <td>navtab或dialog重新加载事件</td>
+                    <td>dom添加[data-bj-panel-dom]属性并监听该事件，可在navtab/dialog关闭前触发,可用于页面关闭前处理操作，如清除控制器等</td>
+                </tr>
+                <tr>
+                    <td>bjui.destroyPanel</td>
+                    <td><span class="label label-success">1.7.4+</span>navtab或dialog重新加载事件</td>
+                    <td>dom添加[data-bj-panel-dom]属性并监听该事件，可在navtab/dialog关闭前触发,可用于页面关闭前处理操作，如清除控制器等</td>
+                </tr>
+                <tr>
+                    <td>其他</td>
+                    <td><span class="label label-success">1.7.4+</span>vue3的卸载事件触发</td>
+                    <td>在挂载vue3的dom上添加[data-bj-vue-dom]属性，在触发bjui.destroyPanel事件同时并触发vue3卸载，并触发onBeforeUnmount/onUnmounted监听</td>
+                </tr>
             </tbody>
         </table>
         <h4>bjui.initUI事件示例：</h4>
