@@ -13,6 +13,9 @@
    * @param $selector 需处理的dialog/navtab jquery对象
    */
   ModuleFixed.prototype.destroyModules = function($selector) {
+    if (!$selector instanceof jQuery) {
+      return
+    }
     $(document).trigger(BJUI.eventType.destroyModules, $selector)
     $selector.find('[data-bj-panel-dom]').trigger(BJUI.eventType.destroyPanel, $selector)
     try {

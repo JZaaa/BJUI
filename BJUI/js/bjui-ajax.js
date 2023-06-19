@@ -554,6 +554,7 @@
       }
     }
 
+    BJUI.ModuleFixed.destroyModules($target)
 
     $target
       .addClass('bjui-layout')
