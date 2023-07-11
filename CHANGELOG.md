@@ -3,7 +3,9 @@
 ## v1.7.3(master)
 
 ### Improvements
-- 新增 bjui.destroyPanel事件，并新增vue3卸载处理
+
+- 新增 bjui.destroyPanel事件
+- 新增vue3/2卸载处理，vue3默认自动卸载
 
 ### fixed
 - 优化时钟计时，修复浏览器休眠后时钟不正确问题

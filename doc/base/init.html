@@ -11,12 +11,21 @@
                     JSPATH       : 'BJUI/',         //[可选]框架路径
                     PLUGINPATH   : 'BJUI/plugins/', //[可选]插件路径
                     loginInfo    : {url:'login_timeout.html', title:'登录', width:400, height:200}, // 会话超时后弹出登录对话框
-                    statusCode   : {ok:200, error:300, timeout:301}, //[可选] ajax回调函数的状态码
+                    statusCode: { ok: 200, error: 300, timeout: 301, unauthorized: 401, forbidden: 403 }, //[可选] ajax回调函数的状态码
+                    httpCode: { unauthorized: 401, forbidden: 403 }, // 用于定义httpCode
                     ajaxTimeout  : 5000, //[可选]全局Ajax请求超时时间(毫秒)
                     dialog       : {  // [可选]dialog全局配置
                         mask: false, // 遮罩层
                         width: 500, // 宽
                         height: 300 // 高
+                    },
+                    // 插件配置
+                    pluginConfig: {
+                      checkbox: 'icheck', // checkbox配置  icheck | default
+                      vue: {
+                        autoUnmount: true, // 自动卸载,仅支持vue3
+                        unmountAttr: '[data-bj-vue-dom]', // 手动卸载的属性, 用于vue2
+                      },
                     },
                     pageInfo     : {total:'total', pageCurrent:'pageCurrent', pageSize:'pageSize', orderField:'orderField', orderDirection:'orderDirection'}, //[可选]分页参数key
                     alertMsg     : {displayPosition:'topcenter', displayMode:'slide', alertTimeout:3000}, //[可选]信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时(毫秒)
@@ -27,6 +36,18 @@
                                      clientPaging     : true, //[可选]是否在客户端响应分页及排序参数
                                      overwriteHomeTab : false //[可选]当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
                                    },
+                    layout: {
+                      mode: 'default', // other
+                      tags: true, // 是否显示标签页
+                      panel: true, // 手风琴模式
+                      // style: {
+                      //   headerBg: '#009688', // 顶部头颜色
+                      //   sidebarBg: '#001529', // 菜单栏背景色
+                      //   sidebarLightBg: '#0c2135', // 非一级菜单背景色
+                      //   activeLinkBg: 'linear-gradient(90deg,rgba(59,125,221,.3) 0,rgba(59,125,221,.2) 70%,rgba(0,0,0,.14) 100%)', // 选中的链接背景色
+                      //   activeLinkBorderLeftColor: '#3B7DDD' // 选中的链接左border颜色
+                      // }
+                    },
                     debug        : true,    // [可选]调试模式 [true|false，默认false]
                     theme: 'teal', // 若有Cookie['bjui_theme'],优先选择Cookie['bjui_theme']。皮肤[皮肤:default, orange, purple, blue, red, green, teal]
                     date: true, // [可选]是否显示时钟

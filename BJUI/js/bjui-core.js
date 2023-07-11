@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.7.3-beta2',
+    version: '1.7.3-beta3',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -26,7 +26,11 @@
     },
     // 插件配置
     pluginConfig: {
-      checkbox: 'icheck' // checkbox配置  icheck | default
+      checkbox: 'icheck', // checkbox配置  icheck | default
+      vue: {
+        autoUnmount: true, // 自动卸载,仅支持vue3
+        unmountAttr: '[data-bj-vue-dom]', // 手动卸载的属性, 用于vue2
+      },
     },
     // 编辑器统一配置
     KindEditor: {
@@ -127,7 +131,7 @@
       }
 
       if (op.pluginConfig) {
-        $.extend(BJUI.pluginConfig, op.pluginConfig)
+        $.extend(true, BJUI.pluginConfig, op.pluginConfig)
       }
 
       if (op.layout) {
