@@ -444,12 +444,12 @@
     }
     var $mask = $dialog.data('bjui.dialog.mask')
     var options = $dialog.data('options')
+    if (!options) return
     var target = $dialog.data('bjui.dialog.target')
     var beforeClose = options.beforeClose ? options.beforeClose.toFunc() : null
     var onClose = options.onClose ? options.onClose.toFunc() : null
     var canClose = true
 
-    if (!options) return
     if (beforeClose) canClose = beforeClose.apply(that, [$dialog])
     if (!canClose) {
       that.switchDialog($dialog)
