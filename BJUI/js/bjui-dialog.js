@@ -62,7 +62,8 @@
     fresh: false,
     onLoad: null,
     beforeClose: null,
-    onClose: null
+    onClose: null,
+    ajaxFormCallback: null, // 如果设置此项且dialog内ajaxform提交表单callback未设，则替换ajaxform提交表单callback回调处理
   }
 
   Dialog.ZINDEX = 30

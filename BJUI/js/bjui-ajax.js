@@ -92,7 +92,16 @@
 
     options = $.extend({}, that.options, typeof options === 'object' && options)
 
-    if (callback) callback = callback.toFunc()
+    if (callback) {
+      callback = callback.toFunc()
+    }
+    // dialog ajaxFormCallback 设置
+    else if (this.tools.getTarget() === 'dialog') {
+      options = $.CurrentDialog.data('initOptions') || $.CurrentDialog.data('options') || {}
+      if (options.ajaxFormCallback) {
+        callback = options.ajaxFormCallback.toFunc()
+      }
+    }
 
     var successFn = function (data, textStatus, jqXHR) {
       callback ? callback.apply(that, [data, $form]) : $.proxy(that.ajaxCallback(data), that)
