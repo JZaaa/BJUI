@@ -256,6 +256,31 @@
       </tr>
       </tbody>
     </table>
+    <h4>api回调赋值</h4>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th>事件名称</th>
+        <th>版本</th>
+        <th>说明</th>
+        <th>参数</th>
+        <th>使用方法</th>
+        <th>参数说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>setValCustom</td>
+        <td><span class="label label-success">1.7.3+</span></td>
+        <td>自定义回调结果</td>
+        <td>(val: object, valArray: array, isAppend: boolean)</td>
+        <td>
+          $(target).lookup('setValCustom', val, valArray, isAppend)
+        </td>
+        <td><b>target</b>必须为查找带回弹出框内元素，isAppend：是否追加，val为赋值object，当autoAssign为true时遵循配置项规则，参数对应beforeSelect</td>
+      </tr>
+      </tbody>
+    </table>
     <h4>事件</h4>
     <table class="table table-bordered table-striped table-hover">
       <thead>

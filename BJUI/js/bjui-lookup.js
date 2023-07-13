@@ -149,6 +149,16 @@
     return (group ? (group + '.') : '') + (key) + (suffix || '')
   }
 
+  /**
+   * 自定义传值，此处传值由用户自定义，如果需要自动赋值，应遵循传值规则
+   */
+  Lookup.prototype.setValCustom = function (val, valArray, isAppend) {
+    var type = isAppend ? 1 : 0
+    if (this.beforeSelect(val, valArray, type)) {
+      this.setVal(val, type)
+    }
+  }
+
   Lookup.prototype.setSingle = function (args, type) {
     if (typeof args === 'string') {
       args = new Function('return ' + args)()

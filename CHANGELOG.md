@@ -7,6 +7,7 @@
 - 新增 bjui.destroyPanel事件
 - 新增vue3/2卸载处理，vue3默认自动卸载
 - 新增 dialog ajaxFormCallback 参数，如果设置此项且dialog内ajaxform提交表单callback未设，则替换ajaxform提交表单callback回调处理
+- 新增 lookup自定义api回调方式
 
 ### fixed
 - 优化时钟计时，修复浏览器休眠后时钟不正确问题
