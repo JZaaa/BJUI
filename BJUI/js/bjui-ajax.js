@@ -97,9 +97,9 @@
     }
     // dialog ajaxFormCallback 设置
     else if (this.tools.getTarget() === 'dialog') {
-      options = $.CurrentDialog.data('initOptions') || $.CurrentDialog.data('options') || {}
-      if (options.ajaxFormCallback) {
-        callback = options.ajaxFormCallback.toFunc()
+      var _dialogOpt = $.CurrentDialog.data('initOptions') || $.CurrentDialog.data('options') || {}
+      if (_dialogOpt.ajaxFormCallback) {
+        callback = _dialogOpt.ajaxFormCallback.toFunc()
       }
     }
 
@@ -109,8 +109,8 @@
     var _submitFn = function () {
       var op = {
         loadingmask: options.loadingmask,
-        type: $form.attr('method'),
-        url: $form.attr('action'),
+        type: options.method || $form.attr('method') || 'POST',
+        url: options.url || $form.attr('action'),
         callback: successFn,
         error: $.proxy(that.ajaxError, that)
       }
@@ -122,7 +122,9 @@
           $.extend(op, {data: $form.serializeArray(), files: $form.find(':file'), iframe: true, processData: false})
         }
       } else {
-        var _extra = $form.data('extra')
+        var _extra = options.extra || $form.data('extra')
+        console.log(options)
+        console.log(_extra)
         var extra = undefined
         if (_extra) {
           if (typeof _extra === 'string') {
