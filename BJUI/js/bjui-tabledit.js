@@ -382,7 +382,7 @@
           if (options.callback) (options.callback.toFunc()).apply(that, [json])
         }
 
-        if ($btnDel.is('[href^=javascript:]') || $btnDel.is('[href^="#"]')) {
+        if ($btnDel.is('[href^="javascript:"]') || $btnDel.is('[href^="#"]')) {
           _delRow()
         } else {
           $btnDel.bjuiajax('doAjax', {
