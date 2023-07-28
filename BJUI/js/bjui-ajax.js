@@ -123,8 +123,6 @@
         }
       } else {
         var _extra = options.extra || $form.data('extra')
-        console.log(options)
-        console.log(_extra)
         var extra = undefined
         if (_extra) {
           if (typeof _extra === 'string') {
