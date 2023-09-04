@@ -506,7 +506,7 @@
 
     if ($target && $target.length) {
       $target.removeData('bjui.clientPaging')
-      that.reloadDiv($target, options)
+      that.reloadDiv($target, options, 'doLoad')
     }
   }
 
@@ -526,7 +526,7 @@
     }
   }
 
-  Bjuiajax.prototype.reloadDiv = function ($target, options) {
+  Bjuiajax.prototype.reloadDiv = function ($target, options, type) {
     var arefre = options.autorefresh && (isNaN(String(options.autorefresh)) ? 15 : options.autorefresh)
 
     if (options.reload) {
@@ -559,7 +559,9 @@
           options.data = dataMap
         }
       } else {
-        options.data = undefined
+        if (type !== 'doLoad') {
+          options.data = undefined
+        }
       }
     }
 
