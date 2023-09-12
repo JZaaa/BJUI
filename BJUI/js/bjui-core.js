@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '1.7.5-beta1',
+    version: '1.7.5-beta2',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -68,6 +68,21 @@
     alertMsg: { displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 3000 }, // 信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时
     ajaxTimeout: 50000,
     statusCode: { ok: 200, error: 300, timeout: 301, unauthorized: 401, forbidden: 403 },
+    ajaxStatusCodeObj: {
+      503: function (xhr, ajaxOptions, thrownError) {
+        $('body').alertmsg('error', FRAG.statusCode_503.replace('#statusCode_503#', BJUI.regional.statusCode_503) || thrownError)
+      },
+      404: function (xhr, ajaxOptions, thrownError) {
+        if (!BJUI.IS_DEBUG) {
+          $('body').alertmsg('error', ' httpCode: 404 .请求未找到！' || thrownError)
+        }
+      },
+      500: function (xhr, ajaxOptions, thrownError) {
+        if (!BJUI.IS_DEBUG) {
+          $('body').alertmsg('error', ' httpCode: 500 .请求失败！' || thrownError)
+        }
+      },
+    },
     httpCode: { unauthorized: 401, forbidden: 403 }, // 用于定义httpCode
     keys: { statusCode: 'statusCode', message: 'message' },
     ui: {
@@ -149,6 +164,19 @@
       if (this.date) this.initDate()
 
       $(this).theme('setTheme', this.theme)
+
+      // 添加 httpCode 401 超时弹框/未登录
+      this.ajaxStatusCodeObj[BJUI.httpCode.unauthorized] = function(xhr, ajaxOptions, thrownError) {
+        $('body').alertmsg('error', '登录超时' || thrownError)
+        BJUI.loadLogin()
+      }
+      // 添加 httpCode 403 无权限
+      this.ajaxStatusCodeObj[BJUI.httpCode.forbidden] = function(xhr, ajaxOptions, thrownError) {
+        if (!BJUI.IS_DEBUG) {
+          $('body').alertmsg('error', '无权限访问' || thrownError)
+        }
+      }
+
     },
     initEnv: function() {
       $(window).resize(function() {

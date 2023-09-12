@@ -20,7 +20,7 @@
 
   $.fn.extend({
     /**
-     *  @param {Object} op: {type:GET/POST, url:ajax请求地址, data:ajax请求参数列表, callback:回调函数 }
+     *  @param {object} op {type:GET/POST, url:ajax请求地址, data:ajax请求参数列表, callback:回调函数 }
      */
     ajaxUrl: function(op) {
       var $this = $(this)
@@ -71,32 +71,7 @@
           }
           $this.trigger('bjui.ajaxError')
         },
-        statusCode: {
-          503: function(xhr, ajaxOptions, thrownError) {
-            $this.alertmsg('error', FRAG.statusCode_503.replace('#statusCode_503#', BJUI.regional.statusCode_503) || thrownError)
-          },
-          // 添加 httpCode 401 超时弹框/未登录
-          [BJUI.httpCode.unauthorized]: function(xhr, ajaxOptions, thrownError) {
-            $this.alertmsg('error', '登录超时' || thrownError)
-            BJUI.loadLogin()
-          },
-          // 添加 httpCode 403 无权限
-          [BJUI.httpCode.forbidden]: function(xhr, ajaxOptions, thrownError) {
-            if (!BJUI.IS_DEBUG) {
-              $this.alertmsg('error', '无权限访问' || thrownError)
-            }
-          },
-          404: function(xhr, ajaxOptions, thrownError) {
-            if (!BJUI.IS_DEBUG) {
-              $this.alertmsg('error', ' httpCode: 404 .请求未找到！' || thrownError)
-            }
-          },
-          500: function(xhr, ajaxOptions, thrownError) {
-            if (!BJUI.IS_DEBUG) {
-              $this.alertmsg('error', ' httpCode: 500 .请求失败！' || thrownError)
-            }
-          }
-        }
+        statusCode: BJUI.ajaxStatusCodeObj
       })
     },
     loadUrl: function(url, data, callback) {

@@ -115,32 +115,7 @@
             message: '请求失败'
           })
         },
-        statusCode: {
-          503: function (xhr, ajaxOptions, thrownError) {
-            $('body').alertmsg('error', FRAG.statusCode_503.replace('#statusCode_503#', BJUI.regional.statusCode_503) || thrownError)
-          },
-          // 添加 httpCode 401 超时弹框/未登录
-          [BJUI.httpCode.unauthorized]: function(xhr, ajaxOptions, thrownError) {
-            $('body').alertmsg('error', '登录超时' || thrownError)
-            BJUI.loadLogin()
-          },
-          // 添加 httpCode 403 无权限
-          [BJUI.httpCode.forbidden]: function(xhr, ajaxOptions, thrownError) {
-            if (!BJUI.IS_DEBUG) {
-              $('body').alertmsg('error', '无权限访问' || thrownError)
-            }
-          },
-          404: function (xhr, ajaxOptions, thrownError) {
-            if (!BJUI.IS_DEBUG) {
-              $('body').alertmsg('error', ' httpCode: 404 .请求未找到！' || thrownError)
-            }
-          },
-          500: function (xhr, ajaxOptions, thrownError) {
-            if (!BJUI.IS_DEBUG) {
-              $('body').alertmsg('error', ' httpCode: 500 .请求失败！' || thrownError)
-            }
-          }
-        }
+        statusCode: BJUI.ajaxStatusCodeObj
       })
     }
   }
