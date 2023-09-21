@@ -12,6 +12,7 @@
 ### Improvements
 
 - 新增ajaxForm ``method``、`url`配置项，现在ajaxForm可以不在form表单上api调用
+- 新增``bjui-pageWrap``配置，现在可以在dialog或navtab中用此css包裹住``bjui-pageHeader|bjui-pageContent|bjui-pageFooter``
 
 ### fixed
 

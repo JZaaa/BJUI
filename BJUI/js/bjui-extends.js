@@ -171,11 +171,17 @@
           return
         }
 
-        var $pageHeader = $box.find('> .bjui-pageHeader')
+        var $pageWrap = $box.find('> .bjui-pageWrap')
 
-        var $pageContent = $box.find('> .bjui-pageContent')
+        if (!($pageWrap && $pageWrap.length)) {
+          $pageWrap = $box
+        }
 
-        var $pageFooter = $box.find('> .bjui-pageFooter')
+        var $pageHeader = $pageWrap.find('> .bjui-pageHeader')
+
+        var $pageContent = $pageWrap.find('> .bjui-pageContent')
+
+        var $pageFooter = $pageWrap.find('> .bjui-pageFooter')
 
         var headH = $pageHeader.outerHeight() || 0
 
