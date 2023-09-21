@@ -129,7 +129,8 @@
   $(document).on(BJUI.eventType.afterInitUI, function(e) {
     var $box = $(e.target)
     var noinits = $box.data('bjui.noinit')
-    var $form = $box.find('> .bjui-pageContent').find('form')
+    var $pageWrap = $box.getPageWrap()
+    var $form = $pageWrap.find('> .bjui-pageContent').find('form')
 
     // Recovery not need to initialize the UI DOM
     if (noinits) {
@@ -149,7 +150,7 @@
 
     // submit
     if ($form.length) {
-      $box.find('> .bjui-pageFooter').find(':submit').on('click.bjui.submit', function(e) {
+      $pageWrap.find('> .bjui-pageFooter').find(':submit').on('click.bjui.submit', function(e) {
         e.preventDefault()
 
         $form.submit()

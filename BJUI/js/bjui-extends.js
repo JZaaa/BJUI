@@ -162,6 +162,17 @@
         }
       }
     },
+    /**
+     * 获取page包裹元素
+     */
+    getPageWrap: function () {
+      var $pageWrap = $(this).find('> .bjui-pageWrap')
+      if (!($pageWrap && $pageWrap.length)) {
+        $pageWrap = $(this)
+      }
+
+      return $pageWrap
+    },
     resizePageH: function() {
       return this.each(function() {
         if ($(this).closest('.tab-content').length) return
@@ -171,7 +182,7 @@
           return
         }
 
-        var $pageWrap = $box.find('> .bjui-pageWrap')
+        var $pageWrap = $box.getPageWrap()
 
         if (!($pageWrap && $pageWrap.length)) {
           $pageWrap = $box
