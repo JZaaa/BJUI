@@ -1412,6 +1412,9 @@
                 },
                 getValue: function() {
                     var elem = this.element;
+                    if (!elem) {
+                        return 'NaN';
+                    }
                     if (elem.type === 'number' && elem.validity && elem.validity.badInput) {
                         return 'NaN';
                     }
