@@ -331,18 +331,9 @@
   }
 
   /**
-   * replaceTmEval('{1+2}-{2-1}')
-   */
-  function replaceTmEval(data) {
-    return data.replace(RegExp('({[A-Za-z0-9_+-]*})', 'g'), function($1) {
-      return eval('(' + $1.replace(/[{}]+/g, '') + ')')
-    })
-  }
-
-  /**
    * dateFmt:%y-%M-%d
-   * %y-%M-{%d+1}
-   * ex: new Date().formatDateTm('%y-%M-{%d-1}')
+   * %y-%M-%d
+   * ex: new Date().formatDateTm('%y-%M-%d')
    *     new Date().formatDateTm('2012-1')
    */
   Date.prototype.formatDateTm = function(dateFmt) {
@@ -350,8 +341,6 @@
     var m = this.getMonth() + 1
     var d = this.getDate()
     var sDate = dateFmt.replaceAll('%y', y).replaceAll('%M', m).replaceAll('%d', d)
-
-    sDate = replaceTmEval(sDate)
 
     var _y = 1900; var _m = 0; var _d = 1
     var aDate = sDate.split('-')

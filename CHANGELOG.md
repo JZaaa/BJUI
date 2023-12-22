@@ -3,6 +3,10 @@
 
 ## v1.7.5  (master)
 
+### Change
+
+- 现在 ``Date.prototype.formatDateTm`` 不再支持公式计算,仅支持``%y-%M-%d``或数字
+
 ### fixed
 - 修复 doLoad 方法 data参数丢失问题
 - 修复ie下部分写法不兼容问题
