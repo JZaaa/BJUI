@@ -7,9 +7,15 @@
 
 - 现在 ``Date.prototype.formatDateTm`` 不再支持公式计算,仅支持``%y-%M-%d``或数字
 
+
+### Improvements
+
+- 调整框架包裹元素位置为自动计算，现在定义`bjui-pageWrap`的`padding`与`margin`可以在正确位置展示内容
+
 ### fixed
 - 修复 doLoad 方法 data参数丢失问题
 - 修复ie下部分写法不兼容问题
+- 修复部分情况下`pagination`组件报错问题
 
 ## v1.7.4
 

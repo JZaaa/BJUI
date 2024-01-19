@@ -183,9 +183,22 @@
         }
 
         var $pageWrap = $box.getPageWrap()
-
         if (!($pageWrap && $pageWrap.length)) {
           $pageWrap = $box
+        }
+        var pageOutSize = {}
+        var _getPageOutSize = function () {
+          try {
+            pageOutSize = $pageWrap.css(['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight', 'marginTop', 'marginBottom', 'marginLeft', 'marginRight'])
+          } catch (e) {
+            pageOutSize = {}
+          }
+          pageOutSize = {
+            top: parseInt((pageOutSize.paddingTop || 0) + (pageOutSize.marginTop || 0)),
+            left: parseInt((pageOutSize.paddingLeft || 0) + (pageOutSize.marginLeft || 0)),
+            right: parseInt((pageOutSize.paddingRight || 0) + (pageOutSize.marginRight || 0)),
+            bottom: parseInt((pageOutSize.paddingBottom || 0) + (pageOutSize.marginBottom || 0)),
+          }
         }
 
         var $pageHeader = $pageWrap.find('> .bjui-pageHeader')
@@ -202,11 +215,28 @@
           $box.show()
           headH = $pageHeader.outerHeight() || 0
           footH = $pageFooter.outerHeight() || 0
+          _getPageOutSize()
           $box.hide()
+        } else {
+          _getPageOutSize()
         }
-        if ($pageFooter.css('bottom')) footH += parseInt($pageFooter.css('bottom')) || 0
-        if (footH === 0 && $box.hasClass('dialogContent')) footH = 5
-        $pageContent.css({ top: headH, bottom: footH })
+        var pageFooterBottom = pageOutSize.bottom
+        if (pageFooterBottom) footH += Math.floor(pageFooterBottom)
+
+        if (footH === 0 && $box.hasClass('dialogContent')) {
+          footH = 5
+        }
+        $pageContent.css({ top: headH + pageOutSize.top, bottom: footH, right: pageOutSize.right, left: pageOutSize.left, width: 'auto' })
+
+        if ($pageFooter.length) {
+          $pageFooter.css({
+            right: pageOutSize.right,
+            left: pageOutSize.left,
+            width: 'auto',
+            bottom: pageOutSize.bottom,
+          })
+        }
+
       })
     },
     getMaxIndexObj: function($elements) {

@@ -190,14 +190,14 @@
   }
 
   Pagination.prototype.getClientPaging = function() {
-    return this.getTarget().data('bjui.clientPaging')
+    return (this.getTarget() && this.getTarget().data('bjui.clientPaging')) || {}
   }
 
   Pagination.prototype.setClientPaging = function(clientPaging) {
     if (BJUI.ui.clientPaging) {
       var $target = this.getTarget()
 
-      $target.data('bjui.clientPaging', $.extend({}, $target.data('bjui.clientPaging') || {}, clientPaging))
+      $target && $target.data('bjui.clientPaging', $.extend({}, $target.data('bjui.clientPaging') || {}, clientPaging))
     }
   }
 
