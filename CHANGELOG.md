@@ -11,6 +11,7 @@
 ### Improvements
 
 - 调整框架包裹元素位置为自动计算，现在定义`bjui-pageWrap`的`padding`与`margin`可以在正确位置展示内容
+- 新增left-menus模式下另一种icon配置方式
 
 ### fixed
 - 修复 doLoad 方法 data参数丢失问题

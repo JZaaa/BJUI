@@ -90,7 +90,7 @@
         var item = {
           name: $that.text(),
           path: 'javascript:',
-          icon: undefined,
+          icon: $that.data('icon'),
           target: $that.attr('target'),
           data: {},
           children: []
