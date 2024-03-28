@@ -17,6 +17,7 @@
 - 修复 doLoad 方法 data参数丢失问题
 - 修复ie下部分写法不兼容问题
 - 修复部分情况下`pagination`组件报错问题
+- 修复部分情况下$.CurrentDialog错误赋值问题
 
 ## v1.7.4
 

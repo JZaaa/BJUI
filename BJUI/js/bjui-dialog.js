@@ -207,7 +207,12 @@
 
       $dialog.on('click', function (e) {
         if (!$(e.target).data('bjui.dialog')) {
-          if ($current && $current[0] !== $dialog[0]) that.switchDialog($dialog)
+          if ($current && $current[0] !== $dialog[0]) {
+            var _opt = $current.data('options') || {}
+            if (!_opt.mask) {
+              that.switchDialog($dialog)
+            }
+          }
         }
       }).on('click', '.btn-close', function (e) {
         that.close($dialog)
