@@ -204,7 +204,7 @@
     initLayout: function(ww) {
       var $header = $('#bjui-header')
       var $navtab = $('#bjui-navtab')
-      var iContentW = ww - 6
+      var iContentW = ww - (BJUI.ui.showSlidebar ? (($('#bjui-sidebar').width() || 0) + 6) : 6)
       if (BJUI.layout && BJUI.layout.mode !== 'default') {
         iContentW += 6
       }
@@ -226,6 +226,7 @@
 
       $('#bjui-container').height(iContentH)
       $navtab.width(iContentW)
+      $('#bjui-leftside, #bjui-sidebar, #bjui-sidebar-s, #bjui-splitBar, #bjui-splitBarProxy').css({ height: '100%' })
       $('#bjui-navtab .tabsPageContent').height(iContentH - navtabH)
 
       /* fixed pageFooter */
