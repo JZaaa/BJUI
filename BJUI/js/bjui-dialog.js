@@ -214,7 +214,7 @@
             }
           }
         }
-      }).on('click', '.btn-close', function (e) {
+      }).on('click', '.btn-close, [data-toggle="closeBtn"]', function (e) {
         that.close($dialog)
 
         e.preventDefault()

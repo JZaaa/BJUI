@@ -321,7 +321,11 @@
         })
       },
       loadUrlCallback: function($panel) {
-        $panel.find(':button.btn-close').click(function() {
+        var $closeBtn = $panel.find(':button.btn-close')
+        if (!$closeBtn.length) {
+          $closeBtn = $closeBtn.find(':button[data-toggle="closeBtn"]')
+        }
+        $closeBtn.length && $closeBtn.click(function() {
           that.closeCurrentTab()
         })
       },
