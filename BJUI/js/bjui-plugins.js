@@ -22,8 +22,6 @@
 
     // UI init begin...
 
-    var _checkBoxConfig = BJUI.pluginConfig.checkbox || 'icheck'
-
     var _defaultCheckInit = function ($element) {
 
       var type = $element.data('switch') ? 'switch' : (($element.attr('type') || '').toLowerCase())
@@ -65,82 +63,21 @@
       $element.parent().append('<div class="state p-'+ color +'">'+icon+'<label>'+label+'</label></div>')
 
     }
-
-    var _iCheckInit = function ($element) {
-
-      var _initType = $element.data('initType') || _checkBoxConfig
-
-      if (_initType !== 'icheck') {
-        _defaultCheckInit($element)
-        return
-      }
-        var id = $element.attr('id')
-
-        var name = $element.attr('name')
-
-        var label = $element.data('label')
-
-        if (label) {
-          if (!id) {
-            id = $.getGUID()
-            $element.attr('id', id)
-          }
-          $element.after('<label for="' + id + '" class="ilabel">' + label + '</label>')
-        }
-
-        $element
-          .on('ifCreated', function(e) {
-            /* Fixed validate msgbox position */
-            var $parent = $(this).closest('div')
-
-            var $ilabel = $parent.next('[for="' + id + '"]')
-
-            $parent.attr('data-icheck', name)
-            $ilabel.attr('data-icheck', name)
-          })
-          .iCheck({
-            checkboxClass: 'icheckbox_minimal-purple',
-            radioClass: 'iradio_minimal-purple',
-            increaseArea: '20%' // optional
-          })
-          .on('ifChanged', function() {
-            /* Trigger validation */
-            $(this).trigger('validate')
-          })
-      if ($element.prop('disabled')) $element.iCheck('disable')
-    }
-
-    /* i-check */
     var $icheck = $box.find('[data-toggle="icheck"]')
 
-    if ($.fn.iCheck) {
-      $icheck.each(function () {
-        _iCheckInit($(this))
-      })
-    } else {
-      $icheck.each(function () {
-        _defaultCheckInit($(this))
-      })
-    }
+    $icheck.each(function () {
+      _defaultCheckInit($(this))
+    })
 
-    /* i-check check all */
+    /* check all */
     $icheck.filter('.checkboxCtrl').each(function () {
       var $this = $(this)
-      if (($this.data('initType') || _checkBoxConfig) === 'icheck') {
-        $this.on('ifChanged', function(e) {
-          var checked = e.target.checked === true ? 'check' : 'uncheck'
-          var group = $(this).data('group')
-
-          $box.find(':checkbox[name="' + group + '"]').iCheck(checked)
-        })
-      } else {
-        $this.on('change', function () {
-          var $that = $(this)
-          var checked = $that.prop('checked')
-          var group = $that.data('group')
-          $box.find(':checkbox[name="' + group + '"]').prop('checked', checked)
-        })
-      }
+      $this.on('change', function () {
+        var $that = $(this)
+        var checked = $that.prop('checked')
+        var group = $that.data('group')
+        $box.find(':checkbox[name="' + group + '"]').prop('checked', checked)
+      })
     })
 
 
@@ -156,31 +93,12 @@
         var value = $element.is(':checked') ? 1 : 0
         $input = $('<input type="hidden" value="'+value+'" name="'+name+'">').appendTo($element.parent())
       }
-      if ($.fn.iCheck && ($element.data('initType') || _checkBoxConfig) === 'icheck') {
-        $element
-          .iCheck({
-            checkboxClass: 'icheckbox_minimal-purple',
-            radioClass: 'iradio_minimal-purple',
-            increaseArea: '20%' // optional
-          })
-          .on('ifChecked', function() {
-            if ($input) {
-              $input.val(1)
-            }
-          })
-          .on('ifUnchecked', function() {
-            if ($input) {
-              $input.val(0)
-            }
-          })
-      } else {
-        if ($input) {
-          $element.on('change', function () {
-            $input.val(($(this).prop('checked') ? 1 : 0))
-          })
-        }
-        _defaultCheckInit($element)
+      if ($input) {
+        $element.on('change', function () {
+          $input.val(($(this).prop('checked') ? 1 : 0))
+        })
       }
+      _defaultCheckInit($element)
 
     })
 
