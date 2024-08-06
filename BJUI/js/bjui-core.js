@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '2.0.0-beta1.0.1',
+    version: '2.0.0-beta1.0.2',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -18,7 +18,6 @@
       ctrl: false,
       shift: false
     },
-    theme: 'blue',
     dialog: {
       mask: false,
       width: 500,
@@ -95,14 +94,6 @@
     layout: {
       mode: 'default',
       tags: false, // 是否显示标签页
-      panel: true, // 手风琴模式
-      // style: {
-      //   headerBg: '#009688', // 顶部头颜色
-      //   sidebarBg: '#001529', // 菜单栏背景色
-      //   sidebarLightBg: '#0c2135', // 非一级菜单背景色
-      //   activeLinkBg: 'linear-gradient(90deg,rgba(59,125,221,.3) 0,rgba(59,125,221,.2) 70%,rgba(0,0,0,.14) 100%)', // 选中的链接背景色
-      //   activeLinkBorderLeftColor: '#3B7DDD' // 选中的链接左border颜色
-      // }
     },
     debug: function(msg) {
       if (this.IS_DEBUG) {
@@ -126,7 +117,7 @@
      * 初始化
      * 可配置项:
      *  [object]  pageInfo, statusCode, alertMsg, loginInfo, ui, dialog
-     *  [string] JSPATH, PLUGINPATH, ajaxTimeout, debug, theme
+     *  [string] JSPATH, PLUGINPATH, ajaxTimeout, debug
      * @param options
      */
     init: function(options) {
@@ -160,11 +151,8 @@
       this.date = (op.date === undefined) ? this.date : op.date
 
       this.IS_DEBUG = op.debug || false
-      this.theme = $.cookie('bjui_theme') || op.theme
       this.initEnv()
       if (this.date) this.initDate()
-
-      $(this).theme('setTheme', this.theme)
 
       // 添加 httpCode 401 超时弹框/未登录
       this.ajaxStatusCodeObj[BJUI.httpCode.unauthorized] = function(xhr, ajaxOptions, thrownError) {
