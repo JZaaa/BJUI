@@ -675,7 +675,6 @@ td[align=right] input {
 #bjui-header {
   position: relative;
   margin-bottom: 0;
-  height: 70px;
   overflow: visible;
   border-width: 0;
   border-radius: 0;
@@ -1198,10 +1197,6 @@ td[align=right] input {
 
 .bjui-pageFooter > .pagination-box {
   float: right;
-}
-
-.bjui-pageFooter > .pagination-box > ul {
-  display: inline;
 }
 
 .bjui-pageFooter > .pagination-box > ul > li > a,
@@ -4145,3 +4140,9 @@ table, .table {
 @import "autocomplete";
 @import "../bjicon/common";
 @import "../bjicon/icon.css";
+
+.dropdown-menu {
+  --tblr-dropdown-link-hover-bg: rgba(var(--tblr-secondary-rgb), 0.08);
+}
+@import "page";
+
