@@ -206,7 +206,7 @@
 
       if (callback) {
         setTimeout(function() {
-          callback.toFunc().call(this)
+          BJUI.Tools.toFunc(callback).call(this)
         }, 25)
       }
     })

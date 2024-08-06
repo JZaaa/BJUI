@@ -14,7 +14,7 @@
                         httpMethod: 'get',
                         data: null,
                         failCallback: function(responseHtml, url) {
-                            if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
+                            if (responseHtml.trim().startsWith('{')) responseHtml = BJUI.Tools.toObj(responseHtml)
                             $(a).bjuiajax('ajaxDone', responseHtml)
                         }
                     })
@@ -29,7 +29,7 @@
                                 httpMethod: 'get',
                                 data: null,
                                 failCallback: function(responseHtml, url) {
-                                    if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
+                                    if (responseHtml.trim().startsWith('{')) responseHtml = BJUI.Tools.toObj(responseHtml)
                                     $(a).bjuiajax('ajaxDone', responseHtml)
                                 }
                             })
@@ -47,7 +47,7 @@
                         function doc_filedownload1(a) {
                             $.fileDownload($(a).attr('href'), {
                                 failCallback: function(responseHtml, url) {
-                                    if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
+                                    if (responseHtml.trim().startsWith('{')) responseHtml = BJUI.Tools.toObj(responseHtml)
                                     $(a).bjuiajax('ajaxDone', responseHtml)
                                 }
                             })

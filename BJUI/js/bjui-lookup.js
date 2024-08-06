@@ -63,8 +63,8 @@
       BJUI.debug('Lookup Plugin: Error trying open a lookup dialog, url is undefined!')
       return false
     } else {
-      options.url = decodeURI(options.url).replacePlh(that.$element.closest('.unitBox'))
-      if (!options.url.isFinishedTm()) {
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), that.$element.closest('.unitBox'))
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         that.$element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('Lookup Plugin: The lookup\'s url is incorrect, url:' + options.url)
         return false
@@ -81,7 +81,7 @@
     if (suffix) suffix = suffix.trim()
     if (options.beforeSelect) {
       if (typeof options.beforeSelect === 'string') {
-        this.options.beforeSelect = options.beforeSelect.toFunc()
+        this.options.beforeSelect = BJUI.Tools.toFunc(options.beforeSelect)
       }
     }
 

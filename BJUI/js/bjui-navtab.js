@@ -249,7 +249,7 @@
         var $tab = this.getTabs().removeClass('active').eq(iTabIndex).addClass('active')
         var $panels = this.getPanels()
         var $panel = $panels.eq(iTabIndex)
-        var onSwitch = that.options.onSwitch ? that.options.onSwitch.toFunc() : null
+        var onSwitch = that.options.onSwitch ? BJUI.Tools.toFunc(that.options.onSwitch) : null
 
         if ($tab.data('reloadFlag')) {
           $panels.hide()
@@ -287,8 +287,8 @@
         var $more = this.getMoreLi().eq(index)
         var $panel = this.getPanels().eq(index)
         var options = $tab.data('options')
-        var beforeClose = options.beforeClose ? options.beforeClose.toFunc() : null
-        var onClose = options.onClose ? options.onClose.toFunc() : null
+        var beforeClose = options.beforeClose ? BJUI.Tools.toFunc(options.beforeClose) : null
+        var onClose = options.onClose ? BJUI.Tools.toFunc(options.onClose) : null
         var canClose = true
 
         if (beforeClose) canClose = beforeClose.apply(that, [$panel])
@@ -342,13 +342,13 @@
         }
       },
       reloadTab: function($panel, options) {
-        var onLoad = options.onLoad ? options.onLoad.toFunc() : null
+        var onLoad = options.onLoad ? BJUI.Tools.toFunc(options.onLoad) : null
 
         var arefre = options.autorefresh && (isNaN(String(options.autorefresh)) ? 15 : options.autorefresh)
 
         BJUI.ModuleFixed.destroyModules($panel)
         if (options.data) {
-          options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+          options.data = (typeof options.data === 'object') ? options.data : BJUI.Tools.toObj(options.data)
         }
 
         var data = options.data || {}
@@ -441,9 +441,8 @@
       BJUI.debug('Navtab Plugin: Error trying to open a navtab, url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
-
-      if (!options.url.isFinishedTm()) {
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('Navtab Plugin: The new navtab\'s url is incorrect, url: ' + options.url)
         return
@@ -485,7 +484,7 @@
 
       $tab.data('options', options).data('initOptions', options)
 
-      if (options.external || (options.url && options.url.isExternalUrl())) {
+      if (options.external || (options.url && BJUI.Tools.isExternalUrl(options.val))) {
         $tab.addClass('external')
         this.openExternal(options.url, $panel)
       } else {
@@ -752,7 +751,7 @@
     var data = $this.data()
     var options = data.options
     if (options) {
-      if (typeof options === 'string') options = options.toObj()
+      if (typeof options === 'string') options = BJUI.Tools.toObj(options)
       if (typeof options === 'object') { $.extend(data, options) }
     }
 

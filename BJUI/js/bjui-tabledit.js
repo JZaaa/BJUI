@@ -70,13 +70,13 @@
 
             var arrayfix = $child.attr('data-arrayfix')
 
-            if (name) $child.attr('name', name.replaceSuffix(i))
-            if (fors) $child.attr('for', fors.replaceSuffix(i))
-            if (id) $child.attr('id', id.replaceSuffix(i).replaceSuffix2(i))
-            if (href) $child.attr('href', href.replaceSuffix(i))
-            if (group) $child.attr('data-group', group.replaceSuffix(i))
-            if (suffix) $child.attr('data-suffix', suffix.replaceSuffix(i))
-            if (arrayfix) $child.attr('data-arrayfix', arrayfix.replaceSuffix(i))
+            if (name) $child.attr('name', BJUI.Tools.replaceSuffix(name, i))
+            if (fors) $child.attr('for', BJUI.Tools.replaceSuffix(fors, i))
+            if (id) $child.attr('id', BJUI.Tools.replaceSuffix2(BJUI.Tools.replaceSuffix(id, i), i))
+            if (href) $child.attr('href', BJUI.Tools.replaceSuffix(href, i))
+            if (group) $child.attr('data-group', BJUI.Tools.replaceSuffix(group, i))
+            if (suffix) $child.attr('data-suffix', BJUI.Tools.replaceSuffix(suffix, i))
+            if (arrayfix) $child.attr('data-arrayfix', BJUI.Tools.replaceSuffix(arrayfix, i))
             if (val && val.indexOf('#index#') >= 0) $child.val(val.replace('#index#', i + 1))
             if ($child.hasClass('no')) {
               var prefix = $child.data('prefix') ? $child.data('prefix') : ''
@@ -191,14 +191,14 @@
               if ($tr.attr('data-id')) {
                 var name = $table.find('> thead > tr:eq(0)').data('idname') || 'id'
 
-                $tr.before('<input type="hidden" name="' + name.replaceSuffix(index) + '" value="' + $tr.attr('data-id') + '">')
+                $tr.before('<input type="hidden" name="' + BJUI.Tools.replaceSuffix(name, index) + '" value="' + $tr.attr('data-id') + '">')
               }
 
               var data = $tr.parent().serializeArray()
 
               if (that.options.singleNoindex) {
                 $.each(data, function(ii, nn) {
-                  $.extend(nn, { name: nn.name.replaceSuffix(0) })
+                  $.extend(nn, { name: BJUI.Tools.replaceSuffix(nn.name, 0) })
                 })
               }
 
@@ -208,7 +208,7 @@
                 .isValid(function(v) {
                   if (v) {
                     if (callback) {
-                      callback = callback.toFunc()
+                      callback = BJUI.Tools.toFunc(callback)
                     } else {
                       callback = function(json) {
                         if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
@@ -379,7 +379,7 @@
           $btnDel.closest('tr').remove()
           tool.initSuffix($tbody)
           tool.afterDelete($tbody)
-          if (options.callback) (options.callback.toFunc()).apply(that, [json])
+          if (options.callback) (BJUI.Tools.toFunc(options.callback)).apply(that, [json])
         }
 
         if ($btnDel.is('[href^="javascript:"]') || $btnDel.is('[href^="#"]')) {

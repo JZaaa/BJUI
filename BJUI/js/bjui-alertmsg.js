@@ -289,7 +289,7 @@
 
             var call = buttons[i].call
 
-            if (typeof call === 'string') call = call.toFunc()
+            if (typeof call === 'string') call = BJUI.Tools.toFunc(call)
             if (typeof call === 'function') call.call()
           }, that)
           )
@@ -395,7 +395,7 @@
     var type
 
     if (options) {
-      if (typeof options === 'string') options = options.toObj()
+      if (typeof options === 'string') options = BJUI.Tools.toObj(options)
       if (typeof options === 'object') {
         $.extend(data, options)
       }

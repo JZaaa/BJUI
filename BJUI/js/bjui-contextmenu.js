@@ -151,7 +151,7 @@
         $li = $('<li class="diver"></li>')
       } else {
         $li = $('<li><span class="icon">' + icon + '</span><span class="title">' + n.title + '</span></li>')
-        if (n.func && typeof n.func === 'string') n.func = n.func.toFunc()
+        if (n.func && typeof n.func === 'string') n.func = BJUI.Tools.toFunc(n.func)
         if (n.func) {
           $li.on('click', function(evt) {
             that.hide()

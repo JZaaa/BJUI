@@ -128,9 +128,10 @@
       var $button = $(this).find('.goto')
 
       $button.on('click', function() {
-        var pageCurrent = $inputBox.val(); var pagingInfo = { pageCurrent: pageCurrent, pageSize: options.pageSize, loadPageData: true }
+        var pageCurrent = $inputBox.val()
+        var pagingInfo = { pageCurrent: pageCurrent, pageSize: options.pageSize, loadPageData: true }
 
-        if (pageCurrent && pageCurrent.isPositiveInteger()) {
+        if (pageCurrent && BJUI.Tools.isPositiveInteger(pageCurrent)) {
           that.setClientPaging(pagingInfo)
           $(this).bjuiajax('pageCallback', pagingInfo, that.$element.closest('.bjui-layout'))
         }

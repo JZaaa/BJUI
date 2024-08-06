@@ -257,7 +257,7 @@
           theme: $element.data('theme') || 'red_right_effect'
         })
         .on('invalid.form', function(e, form, errors) {
-          if (alertmsg) $(form).alertmsg('error', FRAG.validateErrorMsg.replace('#validatemsg#', BJUI.regional.validatemsg).replaceMsg(errors.length))
+          if (alertmsg) $(form).alertmsg('error', BJUI.Tools.replaceMsg(FRAG.validateErrorMsg.replace('#validatemsg#', BJUI.regional.validatemsg), errors.length))
         })
     })
 
@@ -395,7 +395,7 @@
         op.iconPrefix = BJUI.iconPrefix
       }
 
-      if (options && typeof options === 'string') options = options.toObj()
+      if (options && typeof options === 'string') options = BJUI.Tools.toObj(options)
       if (options) $.extend(op, typeof options === 'object' && options)
 
       _setting = op.setting
@@ -414,9 +414,9 @@
       } else {
         if (typeof op.nodes === 'string') {
           if (op.nodes.trim().startsWith('[') || op.nodes.trim().startsWith('{')) {
-            op.nodes = op.nodes.toObj()
+            op.nodes = BJUI.Tools.toObj(op.nodes)
           } else {
-            op.nodes = op.nodes.toFunc()
+            op.nodes = BJUI.Tools.toFunc(op.nodes)
           }
         }
         if (typeof op.nodes === 'function') {
@@ -428,15 +428,15 @@
 
       if (!op.showRemoveBtn) op.showRemoveBtn = false
       if (!op.showRenameBtn) op.showRenameBtn = false
-      if (op.addHoverDom && typeof op.addHoverDom !== 'function') op.addHoverDom = (op.addHoverDom === 'edit') ? _addHoverDom : op.addHoverDom.toFunc()
-      if (op.removeHoverDom && typeof op.removeHoverDom !== 'function') op.removeHoverDom = (op.removeHoverDom === 'edit') ? _removeHoverDom : op.removeHoverDom.toFunc()
+      if (op.addHoverDom && typeof op.addHoverDom !== 'function') op.addHoverDom = (op.addHoverDom === 'edit') ? _addHoverDom : BJUI.Tools.toFunc(op.addHoverDom)
+      if (op.removeHoverDom && typeof op.removeHoverDom !== 'function') op.removeHoverDom = (op.removeHoverDom === 'edit') ? _removeHoverDom : BJUI.Tools.toFunc(op.removeHoverDom)
       if (!op.maxAddLevel) op.maxAddLevel = 2
 
       var setting = {
         view: {
           addHoverDom: op.addHoverDom || null,
           removeHoverDom: op.removeHoverDom || null,
-          addDiyDom: op.addDiyDom ? op.addDiyDom.toFunc() : null
+          addDiyDom: op.addDiyDom ? BJUI.Tools.toFunc(op.addDiyDom) : null
         },
         edit: {
           enable: op.editEnable,
@@ -449,13 +449,13 @@
           radioType: op.radioType
         },
         callback: {
-          onClick: op.onClick ? op.onClick.toFunc() : null,
-          beforeDrag: op.beforeDrag ? op.beforeDrag.toFunc() : _beforeDrag,
-          beforeDrop: op.beforeDrop ? op.beforeDrop.toFunc() : _beforeDrop,
-          onDrop: op.onDrop ? op.onDrop.toFunc() : null,
-          onCheck: op.onCheck ? op.onCheck.toFunc() : null,
-          beforeRemove: op.beforeRemove ? op.beforeRemove.toFunc() : null,
-          onRemove: op.onRemove ? op.onRemove.toFunc() : null,
+          onClick: op.onClick ? BJUI.Tools.toFunc(op.onClick) : null,
+          beforeDrag: op.beforeDrag ? BJUI.Tools.toFunc(op.beforeDrag) : _beforeDrag,
+          beforeDrop: op.beforeDrop ? BJUI.Tools.toFunc(op.beforeDrop) : _beforeDrop,
+          onDrop: op.onDrop ? BJUI.Tools.toFunc(op.onDrop) : null,
+          onCheck: op.onCheck ? BJUI.Tools.toFunc(op.onCheck) : null,
+          beforeRemove: op.beforeRemove ? BJUI.Tools.toFunc(op.beforeRemove) : null,
+          onRemove: op.onRemove ? BJUI.Tools.toFunc(op.onRemove) : null,
           onNodeCreated: _onNodeCreated,
           onCollapse: _onCollapse,
           onExpand: _onExpand
@@ -470,7 +470,7 @@
         }
       }
 
-      if (_setting && typeof _setting === 'string') _setting = _setting.toObj()
+      if (_setting && typeof _setting === 'string') _setting = BJUI.Tools.toObj(_setting)
       if (_setting) $.extend(true, setting, typeof _setting === 'object' && _setting)
 
       $.fn.zTree.init($this, setting, op.nodes)
@@ -492,7 +492,7 @@
           }
         }
         if (op.onNodeCreated) {
-          op.onNodeCreated.toFunc().call(this, event, treeId, treeNode)
+          BJUI.Tools.toFunc(op.onNodeCreated).call(this, event, treeId, treeNode)
         }
       }
       // onCollapse
@@ -501,7 +501,7 @@
           $('#' + treeNode.tId + '_ico').find('> i').attr('class', op.iconPrefix + treeNode.faiconClose)
         }
         if (op.onCollapse) {
-          op.onCollapse.toFunc().call(this, event, treeId, treeNode)
+          BJUI.Tools.toFunc(op.onCollapse).call(this, event, treeId, treeNode)
         }
       }
       // onExpand
@@ -510,7 +510,7 @@
           $('#' + treeNode.tId + '_ico').find('> i').attr('class', op.iconPrefix + treeNode.faicon)
         }
         if (op.onExpand) {
-          op.onExpand.toFunc().call(this, event, treeId, treeNode)
+          BJUI.Tools.toFunc(op.onExpand).call(this, event, treeId, treeNode)
         }
       }
       // add button, del button
@@ -541,7 +541,7 @@
                   okCall: function() {
                     zTree.removeNode(treeNode)
                     if (op.onRemove) {
-                      var fn = op.onRemove.toFunc()
+                      var fn = BJUI.Tools.toFunc(op.onRemove)
 
                       if (fn) fn.call(this, event, treeId, treeNode)
                     }
@@ -552,7 +552,7 @@
               }
 
               if (op.beforeRemove) {
-                var fn = op.beforeRemove.toFunc()
+                var fn = BJUI.Tools.toFunc(op.beforeRemove)
 
                 if (fn) {
                   var isdel = fn.call(fn, treeId, treeNode)
@@ -726,9 +726,9 @@
       var $editor = $(this); var options = $editor.data()
 
       if (options.items && typeof options.items === 'string') { options.items = options.items.replaceAll('\'', '').replaceAll(' ', '').split(',') }
-      if (options.afterUpload) options.afterUpload = options.afterUpload.toFunc()
-      if (options.afterSelectFile) options.afterSelectFile = options.afterSelectFile.toFunc()
-      if (options.confirmSelect) options.confirmSelect = options.confirmSelect.toFunc()
+      if (options.afterUpload) options.afterUpload = BJUI.Tools.toFunc(options.afterUpload)
+      if (options.afterSelectFile) options.afterSelectFile = BJUI.Tools.toFunc(options.afterSelectFile)
+      if (options.confirmSelect) options.confirmSelect = BJUI.Tools.toFunc(options.confirmSelect)
 
       var htmlTags = {
         video: ['id', 'class', 'src', 'controls', 'width', 'height'],

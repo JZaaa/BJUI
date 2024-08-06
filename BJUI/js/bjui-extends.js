@@ -39,7 +39,7 @@
         dataType: 'html',
         timeout: BJUI.ajaxTimeout,
         success: function(response) {
-          var json = response.toJson()
+          var json = BJUI.Tools.toJson(response)
           var $ajaxMask = $this.find('> .bjui-ajax-mask')
           if (!json[BJUI.keys.statusCode]) {
             $this.empty().html(response).append($ajaxMask).initui()
@@ -88,7 +88,7 @@
         BJUI.debug('The ajax callback is undefined!')
         return
       } else {
-        op.callback = op.callback.toFunc()
+        op.callback = BJUI.Tools.toFunc(op.callback)
       }
       if (op.loadingmask) {
         $target = $this.getPageTarget()
@@ -297,144 +297,91 @@
     }
   })
 
-  /**
-   * 扩展String方法
-   */
-  $.extend(String.prototype, {
-    isPositiveInteger: function() {
-      return (new RegExp(/^[1-9]\d*$/).test(this))
+  BJUI.Tools = {
+    isPositiveInteger: function(val) {
+      return (new RegExp(/^[1-9]\d*$/).test(val))
     },
-    isInteger: function() {
-      return (new RegExp(/^\d+$/).test(this))
+    isInteger: function(val) {
+      return (new RegExp(/^\d+$/).test(val))
     },
-    isNumber: function() {
-      return (new RegExp(/^([-]{0,1}(\d+)[\.]+(\d+))|([-]{0,1}(\d+))$/).test(this))
+    isNumber: function(val) {
+      return (new RegExp(/^([-]{0,1}(\d+)[\.]+(\d+))|([-]{0,1}(\d+))$/).test(val))
     },
-    includeChinese: function() {
-      return (new RegExp(/[\u4E00-\u9FA5]/).test(this))
+    includeChinese: function(val) {
+      return (new RegExp(/[\u4E00-\u9FA5]/).test(val))
     },
-    trim: function() {
-      return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
+    replaceSuffix: function(val, index) {
+      return val.replace(/\[[0-9]+\]/, '[' + index + ']').replace('#index#', index)
     },
-    startsWith: function(pattern) {
-      return this.indexOf(pattern) === 0
+    replaceSuffix2: function(val, index) {
+      return val.replace(/\-(i)([0-9]+)$/, '-i' + index).replace('#index#', index)
     },
-    endsWith: function(pattern) {
-      var d = this.length - pattern.length
-      return d >= 0 && this.lastIndexOf(pattern) === d
-    },
-    replaceSuffix: function(index) {
-      return this.replace(/\[[0-9]+\]/, '[' + index + ']').replace('#index#', index)
-    },
-    replaceSuffix2: function(index) {
-      return this.replace(/\-(i)([0-9]+)$/, '-i' + index).replace('#index#', index)
-    },
-    trans: function() {
-      return this.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
-    },
-    encodeTXT: function() {
-      return (this).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll(' ', '&nbsp;')
-    },
-    replaceAll: function(os, ns) {
-      return this.replace(new RegExp(os, 'gm'), ns)
+    replaceAll: function(val, os, ns) {
+      return val.replace(new RegExp(os, 'gm'), ns)
     },
     /* 替换占位符为对应选择器的值*/ // {^(.|\#)[A-Za-z0-9_-\s]*}
-    replacePlh: function($box) {
+    replacePlh: function(val, $box) {
       $box = $box || $(document)
-      return this.replace(/{\/?[^}]*}/g, function($1) {
+      return val.replace(/{\/?[^}]*}/g, function($1) {
         var $input = $box.find($1.replace(/[{}]+/g, ''))
 
         return $input && $input.val() ? $input.val() : $1
       })
     },
-    replaceMsg: function(holder) {
-      return this.replace(new RegExp('({.*})', 'g'), holder)
+    replaceMsg: function(val, holder) {
+      return val.replace(new RegExp('({.*})', 'g'), holder)
     },
-    replaceTm: function($data) {
-      if (!$data) return this
-
-      return this.replace(RegExp('({[A-Za-z_]+[A-Za-z0-9_-]*})', 'g'), function($1) {
-        return $data[$1.replace(/[{}]+/g, '')]
-      })
+    isFinishedTm: function(val) {
+      return !(new RegExp('{\/?[^}]*}').test(val))
     },
-    replaceTmById: function(_box) {
-      var $parent = _box || $(document)
-
-      return this.replace(RegExp('({[A-Za-z_]+[A-Za-z0-9_-]*})', 'g'), function($1) {
-        var $input = $parent.find('#' + $1.replace(/[{}]+/g, ''))
-        return $input.val() ? $input.val() : $1
-      })
+    isUrl: function(val) {
+      return (new RegExp(/^[a-zA-z]+:\/\/([a-zA-Z0-9\-\.]+)([-\w .\/?%&=:]*)$/).test(val))
     },
-    isFinishedTm: function() {
-      return !(new RegExp('{\/?[^}]*}').test(this))
+    isExternalUrl: function(val) {
+      return BJUI.Tools.isUrl(val) && val.indexOf('://' + document.domain) === -1
     },
-    skipChar: function(ch) {
-      if (!this || this.length === 0) return ''
-      if (this.charAt(0) === ch) return this.substring(1).skipChar(ch)
-      return this
-    },
-    isValidPwd: function() {
-      return (new RegExp(/^([_]|[a-zA-Z0-9]){6,32}$/).test(this))
-    },
-    isValidMail: function() {
-      return (new RegExp(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/).test(this.trim()))
-    },
-    isSpaces: function() {
-      for (var i = 0; i < this.length; i += 1) {
-        var ch = this.charAt(i)
-
-        if (ch !== ' ' && ch !== '\n' && ch !== '\t' && ch !== '\r') return false
-      }
-      return true
-    },
-    isPhone: function() {
-      return (new RegExp(/(^([0-9]{3,4}[-])?\d{3,8}(-\d{1,6})?$)|(^\([0-9]{3,4}\)\d{3,8}(\(\d{1,6}\))?$)|(^\d{3,8}$)/).test(this))
-    },
-    isUrl: function() {
-      return (new RegExp(/^[a-zA-z]+:\/\/([a-zA-Z0-9\-\.]+)([-\w .\/?%&=:]*)$/).test(this))
-    },
-    isExternalUrl: function() {
-      return this.isUrl() && this.indexOf('://' + document.domain) === -1
-    },
-    toBool: function() {
-      return (this.toLowerCase() === 'true')
-    },
-    toJson: function() {
-      var json = this
+    toJson: function(val) {
+      var json = val
 
       try {
         if (typeof json === 'object') json = json.toString()
-        if (!json.trim().match('^\{(.+:.+,*){1,}\}$')) return this
-        else return JSON.parse(this)
+        if (!json.trim().match('^\{(.+:.+,*){1,}\}$')) return val
+        else return JSON.parse(val)
       } catch (e) {
-        return this
+        return val
       }
     },
-    toObj: function() {
+    toObj: function(val) {
+      if (typeof val === 'object') {
+        return val
+      }
       var obj = null
 
       try {
-        obj = (new Function('return ' + this))()
+        obj = (new Function('return ' + val))()
       } catch (e) {
-        obj = this
-        BJUI.debug('String toObj：Parse "String" to "Object" error! Your str is: ' + this)
+        obj = val
+        BJUI.debug('String toObj：Parse "String" to "Object" error! Your str is: ' + val)
       }
       return obj
     },
     /**
-         * String to Function
-         * 参数(方法字符串或方法名)： 'function(){...}' 或 'getName' 或 'USER.getName' 均可
-         * Author: K'naan
-         */
-    toFunc: function() {
-      if (!this || this.length === 0) return undefined
+     * String to Function
+     * 参数(方法字符串或方法名)： 'function(){...}' 或 'getName' 或 'USER.getName' 均可
+     * Author: K'naan
+     */
+    toFunc: function(val) {
+      if (typeof val === 'function') {
+        return this
+      }
+      if (!val || val.length === 0) return undefined
       // if ($.isFunction(this)) return this
 
-      if (this.startsWith('function')) {
-        return (new Function('return ' + this))()
+      if (val.startsWith('function')) {
+        return (new Function('return ' + val))()
       }
 
-      var m_arr = this.split('.')
+      var m_arr = val.split('.')
       var fn = window
 
       for (var i = 0; i < m_arr.length; i++) {
@@ -447,8 +394,8 @@
 
       return undefined
     },
-    setUrlParam: function(key, value) {
-      var url = this
+    setUrlParam: function(val, key, value) {
+      var url = val
       var r = url
       if (r != null && r !== 'undefined' && r !== '') {
         value = encodeURIComponent(value)
@@ -492,55 +439,7 @@
       }
       return (name ? $params[name] : $params)
     }
-  })
-
-  /* Function */
-  $.extend(Function.prototype, {
-    // to fixed String.prototype -> toFunc
-    toFunc: function() {
-      return this
-    }
-  })
-
-  /* Array */
-  $.extend(Array.prototype, {
-    remove: function(index) {
-      if (index < 0) return this
-      else return this.slice(0, index).concat(this.slice(index + 1, this.length))
-    },
-    unique: function() {
-      var temp = []
-
-      this.sort()
-      for (var i = 0; i < this.length; i++) {
-        if (this[i] === this[i + 1]) continue
-        temp[temp.length] = this[i]
-      }
-
-      return temp
-    },
-    myIndexOf: function(e) {
-      return this.indexOf(e)
-    },
-    /* serializeArray to json */
-    toJson: function() {
-      var o = {}
-      var a = this
-
-      $.each(a, function() {
-        if (o[this.name] !== undefined) {
-          if (!o[this.name].push) {
-            o[this.name] = [o[this.name]]
-          }
-          o[this.name].push(this.value || '')
-        } else {
-          o[this.name] = this.value || ''
-        }
-      })
-
-      return o
-    }
-  })
+  }
 
   /* Global */
   $.isJson = function(obj) {

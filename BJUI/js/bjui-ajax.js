@@ -93,13 +93,13 @@
     options = $.extend({}, that.options, typeof options === 'object' && options)
 
     if (callback) {
-      callback = callback.toFunc()
+      callback = BJUI.Tools.toFunc(callback)
     }
     // dialog ajaxFormCallback 设置
     else if (this.tools.getTarget() === 'dialog') {
       var _dialogOpt = $.CurrentDialog.data('initOptions') || $.CurrentDialog.data('options') || {}
       if (_dialogOpt.ajaxFormCallback) {
-        callback = _dialogOpt.ajaxFormCallback.toFunc()
+        callback = BJUI.Tools.toFunc(_dialogOpt.ajaxFormCallback)
       }
     }
 
@@ -126,7 +126,7 @@
         var extra = undefined
         if (_extra) {
           if (typeof _extra === 'string') {
-            _extra = _extra.toObj()
+            _extra = BJUI.Tools.toObj(_extra)
           }
           if (typeof _extra === 'object') {
             op.contentType = 'application/json'
@@ -163,7 +163,7 @@
     var msg = xhr.responseText.trim()
 
     if (msg.startsWith('{')) {
-      this.ajaxDone(msg.toObj())
+      this.ajaxDone(BJUI.Tools.toObj(msg))
     } else {
       this.$element.alertmsg('error', '<div>Http status: ' + xhr.status + ' ' + xhr.statusText + '</div>' +
         '<div>ajaxOptions: ' + ajaxOptions + ' </div>' +
@@ -418,9 +418,9 @@
       BJUI.debug('Error trying to submit form action: action url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
 
-      if (!options.url.isFinishedTm()) {
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('The submit form action is incorrect: ' + options.url)
         return
@@ -488,9 +488,9 @@
       BJUI.debug('Error trying to open a ajax link: The url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
 
-      if (!options.url.isFinishedTm()) {
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('The ajax link incorrect: ' + options.url)
         return
@@ -613,9 +613,9 @@
       BJUI.debug('Error trying to open a ajax link: url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
 
-      if (!options.url.isFinishedTm()) {
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('The ajax url is incorrect: ' + options.url)
         return
@@ -625,10 +625,10 @@
     }
 
     if (options.data) {
-      options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+      options.data = (typeof options.data === 'object') ? options.data : BJUI.Tools.toObj(options.data)
     }
 
-    var callback = options.callback && options.callback.toFunc()
+    var callback = options.callback && BJUI.Tools.toFunc(options.callback)
     var todo = function () {
       $element.doAjax({
         type: options.type,
@@ -662,9 +662,9 @@
       BJUI.debug('Error trying to open a ajax link: url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
 
-      if (!options.url.isFinishedTm()) {
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('The ajax url is incorrect: ' + options.url)
         return
@@ -680,7 +680,7 @@
         }
       }
       if (options.data) {
-        options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+        options.data = (typeof options.data === 'object') ? options.data : BJUI.Tools.toObj(options.data)
       } else {
         options.data = {}
       }
@@ -695,7 +695,7 @@
         data: options.data,
         cookiePath: '/',
         failCallback: function (responseHtml, url) {
-          if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
+          if (responseHtml.trim().startsWith('{')) responseHtml = BJUI.Tools.toObj(responseHtml)
           that.ajaxDone(responseHtml)
         }
       })
@@ -721,9 +721,9 @@
       BJUI.debug('Error trying to open a export link: url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
 
-      if (!options.url.isFinishedTm()) {
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('The ajax url is incorrect: ' + options.url)
         return
@@ -755,7 +755,7 @@
       })
 
       if (options.data) {
-        options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+        options.data = (typeof options.data === 'object') ? options.data : BJUI.Tools.toObj(options.data)
       } else {
         options.data = {}
       }
@@ -766,7 +766,7 @@
         data: options.data,
         cookiePath: '/',
         failCallback: function (responseHtml, url) {
-          if (responseHtml.trim().startsWith('{')) responseHtml = responseHtml.toObj()
+          if (responseHtml.trim().startsWith('{')) responseHtml = BJUI.Tools.toObj(responseHtml)
           that.ajaxDone(responseHtml)
         }
       })
@@ -793,9 +793,9 @@
       BJUI.debug('Error trying to open a del link: url is undefined!')
       return
     } else {
-      options.url = decodeURI(options.url).replacePlh($element.closest('.unitBox'))
+      options.url = BJUI.Tools.replacePlh(decodeURI(options.url), $element.closest('.unitBox'))
 
-      if (!options.url.isFinishedTm()) {
+      if (!BJUI.Tools.isFinishedTm(options.url)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('The ajax url is incorrect: ' + options.url)
         return
@@ -817,7 +817,7 @@
 
       var ids = []
       var $checks = $target.find(':checkbox[name=' + options.group + ']:checked')
-      var callback = options.callback && options.callback.toFunc()
+      var callback = options.callback && BJUI.Tools.toFunc(options.callback)
 
       if ($checks.length === 0) {
         $element.alertmsg('error', FRAG.alertNotChecked.replace('#notchecked#', BJUI.regional.notchecked))
@@ -828,7 +828,7 @@
       })
 
       if (options.data) {
-        options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+        options.data = (typeof options.data === 'object') ? options.data : BJUI.Tools.toObj(options.data)
       } else {
         options.data = {}
       }

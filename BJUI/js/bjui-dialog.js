@@ -102,12 +102,12 @@
         var onLoad
 
         options = options || $dialog.data('initOptions')
-        onLoad = options.onLoad ? options.onLoad.toFunc() : null
+        onLoad = options.onLoad ? BJUI.Tools.toFunc(options.onLoad) : null
 
         $dialog.trigger(BJUI.eventType.beforeLoadDialog)
         BJUI.ModuleFixed.destroyModules($dialog)
         if (options.data) {
-          options.data = (typeof options.data === 'object') ? options.data : options.data.toObj()
+          options.data = (typeof options.data === 'object') ? options.data : BJUI.Tools.toObj(options.data)
         }
 
         if (options.url) {
@@ -155,9 +155,9 @@
         BJUI.debug('Dialog Plugin: Error trying to open a dialog, url is undefined!')
         return
       } else {
-        options.url = decodeURI(options.url).replacePlh(that.$element.closest('.unitBox'))
+        options.url = BJUI.Tools.replacePlh(decodeURI(options.url), that.$element.closest('.unitBox'))
 
-        if (!options.url.isFinishedTm()) {
+        if (!BJUI.Tools.isFinishedTm(options.url)) {
           that.$element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
           BJUI.debug('Dialog Plugin: The new dialog\'s url is incorrect, url: ' + options.url)
           return
@@ -451,8 +451,8 @@
     var options = $dialog.data('options')
     if (!options) return
     var target = $dialog.data('bjui.dialog.target')
-    var beforeClose = options.beforeClose ? options.beforeClose.toFunc() : null
-    var onClose = options.onClose ? options.onClose.toFunc() : null
+    var beforeClose = options.beforeClose ? BJUI.Tools.toFunc(options.beforeClose) : null
+    var onClose = options.onClose ? BJUI.Tools.toFunc(options.onClose) : null
     var canClose = true
 
     if (beforeClose) canClose = beforeClose.apply(that, [$dialog])
@@ -708,7 +708,7 @@
     var options = data.options
 
     if (options) {
-      if (typeof options === 'string') options = options.toObj()
+      if (typeof options === 'string') options = BJUI.Tools.toObj(options)
       if (typeof options === 'object') {
         $.extend(data, options)
       }

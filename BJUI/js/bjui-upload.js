@@ -218,7 +218,7 @@
       },
       successQueueItem: function(file, xhr) {
         tools.showProgress(file.id, file.size, file.size)
-        options.onUploadSuccess && options.onUploadSuccess.toFunc().call(that, file, xhr.responseText, that.$element)
+        options.onUploadSuccess && BJUI.Tools.toFunc(options.onUploadSuccess).call(that, file, xhr.responseText, that.$element)
         // 在指定的间隔时间后删掉进度条
         setTimeout(function() {
           that.$element.find('#' + file.id).fadeOut('normal', function() {
@@ -303,9 +303,8 @@
       BJUI.debug('Upload Plugin: The options uploader is undefined!')
       return
     } else {
-      options.uploader = decodeURI(options.uploader).replacePlh($element.closest('.unitBox'))
-
-      if (!options.uploader.isFinishedTm()) {
+      options.uploader = BJUI.Tools.replacePlh(decodeURI(options.uploader), $element.closest('.unitBox'))
+      if (!BJUI.Tools.isFinishedTm(options.uploader)) {
         $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
         BJUI.debug('Upload Plugin: The options uploader is incorrect: ' + options.uploader)
         return
@@ -371,14 +370,14 @@
 
     if (options.onUploadComplete) {
       if (typeof options.onUploadComplete === 'string') {
-        options.onUploadComplete = options.onUploadComplete.toFunc()
+        options.onUploadComplete = BJUI.Tools.toFunc(options.onUploadComplete)
       }
     }
 
     var next = true
     if (options.onUploadBefore) {
       if (typeof options.onUploadBefore === 'string') {
-        options.onUploadBefore = options.onUploadBefore.toFunc()
+        options.onUploadBefore = BJUI.Tools.toFunc(options.onUploadBefore)
       }
       next = options.onUploadBefore(options.formData || {}, this.$file)
       if (next !== true) {
@@ -548,9 +547,9 @@
           BJUI.debug('Upload Plugin: The options uploader is undefined!')
           return
         } else {
-          options.uploader = decodeURI(options.uploader).replacePlh($element.closest('.unitBox'))
+          options.uploader = BJUI.Tools.replacePlh(decodeURI(options.uploader), $element.closest('.unitBox'))
 
-          if (!options.uploader.isFinishedTm()) {
+          if (!BJUI.Tools.isFinishedTm(options.uploader)) {
             $element.alertmsg('error', (options.warn || FRAG.alertPlhMsg.replace('#plhmsg#', BJUI.regional.plhmsg)))
             BJUI.debug('Upload Plugin: The options uploader is incorrect: ' + options.uploader)
             return
@@ -561,13 +560,13 @@
         if (options.id === 'fileInput') options.id = options.id + (new Date().getTime())
         var $file = $('<input type="file" name="' + options.name + '" id="' + options.id + '">')
 
-        if (options.onInit && typeof options.onInit === 'string') { options.onInit = options.onInit.toFunc() }
-        if (options.onCancel && typeof options.onCancel === 'string') { options.onCancel = options.onCancel.toFunc() }
-        if (options.onSelect && typeof options.onSelect === 'string') { options.onSelect = options.onSelect.toFunc() }
-        if (options.onUploadSuccess && typeof options.onUploadSuccess === 'string') { options.onUploadSuccess = options.onUploadSuccess.toFunc() }
-        if (options.onUploadComplete && typeof options.onUploadComplete === 'string') { options.onUploadComplete = options.onUploadComplete.toFunc() }
-        if (options.onUploadError && typeof options.onUploadError === 'string') { options.onUploadError = options.onUploadError.toFunc() }
-        if (options.onUploadBefore && typeof options.onUploadBefore === 'string') { options.onUploadBefore = options.onUploadBefore.toFunc() }
+        if (options.onInit && typeof options.onInit === 'string') { options.onInit = BJUI.Tools.toFunc(options.onInit) }
+        if (options.onCancel && typeof options.onCancel === 'string') { options.onCancel = BJUI.Tools.toFunc(options.onCancel) }
+        if (options.onSelect && typeof options.onSelect === 'string') { options.onSelect = BJUI.Tools.toFunc(options.onSelect) }
+        if (options.onUploadSuccess && typeof options.onUploadSuccess === 'string') { options.onUploadSuccess = BJUI.Tools.toFunc(options.onUploadSuccess) }
+        if (options.onUploadComplete && typeof options.onUploadComplete === 'string') { options.onUploadComplete = BJUI.Tools.toFunc(options.onUploadComplete) }
+        if (options.onUploadError && typeof options.onUploadError === 'string') { options.onUploadError = BJUI.Tools.toFunc(options.onUploadError) }
+        if (options.onUploadBefore && typeof options.onUploadBefore === 'string') { options.onUploadBefore = BJUI.Tools.toFunc(options.onUploadBefore) }
 
         $file.appendTo($element)
         if (!options.auto) {
