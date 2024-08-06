@@ -765,6 +765,15 @@
         $menu.find('.active').removeClass('active')
         $this.addClass('active')
         $this.closest('.nav-item').addClass('active')
+
+        if ($this.hasClass('dropdown-item')) {
+          var $dropend = $this.closest('.dropend')
+          if ($dropend.length) {
+            $dropend.children('.dropdown-item').addClass('active')
+            $dropend.closest('.dropdown-menu').removeClass('show')
+          }
+        }
+
       }
     }
 
