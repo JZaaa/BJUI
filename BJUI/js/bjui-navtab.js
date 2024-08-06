@@ -759,6 +759,16 @@
     if (!data.title) data.title = $this.text()
     if (href && !data.url) data.url = href
 
+
+    if ($this.hasClass('nav-link') || $this.hasClass('dropdown-item')) {
+      var $menu = $this.closest('#navbar-menu')
+      if ($menu.length) {
+        $menu.find('.active').removeClass('active')
+        $this.addClass('active')
+        $this.closest('.nav-item').addClass('active')
+      }
+    }
+
     Plugin.call($this, data)
 
     e.preventDefault()
