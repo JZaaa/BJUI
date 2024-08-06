@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '2.0.0-beta1',
+    version: '2.0.0-beta1.0.1',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -89,11 +89,12 @@
       windowWidth: 0,
       showSlidebar: true, // 左侧导航栏锁定/隐藏
       clientPaging: true, // 是否在客户端响应分页及排序参数
-      overwriteHomeTab: false // 当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
+      overwriteHomeTab: true, // 当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
+      autoFixedClass: false, // 自动填补class，如 btn等
     },
     layout: {
       mode: 'default',
-      tags: true, // 是否显示标签页
+      tags: false, // 是否显示标签页
       panel: true, // 手风琴模式
       // style: {
       //   headerBg: '#009688', // 顶部头颜色

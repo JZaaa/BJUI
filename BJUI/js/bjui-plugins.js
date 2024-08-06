@@ -188,17 +188,17 @@
     $box.find(':text, :password, textarea, :button, a.btn').each(function() {
       var $element = $(this)
       var icon
-      var _icon
       var $tabledit = $element.closest('table.bjui-tabledit')
 
-      if (($element.is(':text') || $element.is(':password') || $element.isTag('textarea')) && !$element.hasClass('form-control')) {
+      var autoFixedClass = BJUI.ui.autoFixedClass
+      if (autoFixedClass && ($element.is(':text') || $element.is(':password') || $element.isTag('textarea')) && !$element.hasClass('form-control')) {
         $element.addClass('form-control')
       }
       if ($element.is(':button')) {
         icon = $element.data('icon')
         var oldClass = $element.attr('class')
 
-        if (!$element.hasClass('btn')) { $element.removeClass().addClass('btn').addClass(oldClass) }
+        if (autoFixedClass && !$element.hasClass('btn')) { $element.removeClass().addClass('btn').addClass(oldClass) }
         if (icon) {
           if (!$element.data('bjui.icon')) {
             $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
