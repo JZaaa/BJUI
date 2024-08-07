@@ -123,13 +123,6 @@
         letters: [/^[a-z]+$/i, '{0}只能输入字母'],
         datetime: [/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])\s+(2[0123]|(1|0?)[0-9]){1}:([0-5][0-9]){1}:([0-5][0-9]){1}$/,
           '请输入正确的日期时间，例：yyyy-MM-dd HH:mm:ss'],
-        pattern: function(element, params) {
-          if (!params) return true
-
-          var date = element.value.parseDate(params)
-
-          return (!date ? this.renderMsg('错误的日期时间格式！', params) : true)
-        },
         accept: function(element, params) {
           if (!params) return true
 
