@@ -213,7 +213,7 @@
       BJUI.windowWidth = ww
 
       $('#bjui-container').height(iContentH)
-      $navtab.width(iContentW)
+      $navtab.width('100%')
       $('#bjui-leftside, #bjui-sidebar, #bjui-sidebar-s, #bjui-splitBar, #bjui-splitBarProxy').css({ height: '100%' })
       $('#bjui-navtab .tabsPageContent').height(iContentH - navtabH)
 
