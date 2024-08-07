@@ -38,6 +38,19 @@
         }
       }
 
+      var datepicker = $selector.find('[data-toggle="datepicker"]')
+
+      if (datepicker.length) {
+        datepicker.each(function () {
+          var $this = $(this)
+          var dp = $this.data('BJUI.plugins.datepicker')
+          if (dp) {
+            dp.destroy()
+            $this.data('BJUI.plugins.datepicker', false)
+          }
+        })
+      }
+
       // ie9 uploadify 销毁
       var uploadify = $selector.find('.bjui-upload > .uploadify')
       if (uploadify.length) {
@@ -52,6 +65,8 @@
       if (selectpicker.length) {
         selectpicker.selectpicker('destroy')
       }
+
+
     }
      catch (e) {
       BJUI.debug(e)

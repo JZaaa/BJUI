@@ -297,6 +297,67 @@
     }
   })
 
+  BJUI.plugins = {
+    airDatepicker: {
+      i18n: {
+        zhCN: {
+          days: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+          daysShort: ['日', '一', '二', '三', '四', '五', '六'],
+          daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+          months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+          monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+          today: '今天',
+          clear: '清除',
+          dateFormat: 'yyyy-MM-dd',
+          timeFormat: 'HH:mm',
+          firstDay: 1
+        }
+      }
+    }
+  }
+
+  BJUI.test = {
+    /**
+     * 验证十进制数字
+     */
+    isNumber: function (value) {
+      return /^[\+-]?(\d+\.?\d*|\.\d+|\d\.\d+e\+\d+)$/.test(value)
+    },
+    /**
+     * 是否是空，0认为为空
+     * @param value
+     * @returns {boolean}
+     */
+    isEmpty: function (value) {
+      switch (typeof value) {
+        case 'undefined':
+          return true
+        case 'string':
+          if (value.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length === 0) return true
+          break
+        case 'boolean':
+          if (!value) return true
+          break
+        case 'number':
+          if (value === 0 || isNaN(value)) return true
+          break
+        case 'object':
+          if (value === null || value.length === 0) return true
+          for (const i in value) {
+            return false
+          }
+          return true
+      }
+      return false
+    },
+    isDate: function (value) {
+      if (!value) return false
+      // 判断是否数值或者字符串数值(意味着为时间戳)，转为数值，否则new Date无法识别字符串时间戳
+      if (BJUI.test.isNumber(value)) value = +value
+      return !/Invalid|NaN/.test(new Date(value).toString())
+    }
+  }
+
   BJUI.Tools = {
     isPositiveInteger: function(val) {
       return (new RegExp(/^[1-9]\d*$/).test(val))
@@ -372,7 +433,7 @@
      */
     toFunc: function(val) {
       if (typeof val === 'function') {
-        return this
+        return val
       }
       if (!val || val.length === 0) return undefined
       // if ($.isFunction(this)) return this

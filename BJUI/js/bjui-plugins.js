@@ -14,10 +14,10 @@
  * Licensed under Apache (http://www.apache.org/licenses/LICENSE-2.0)
  * ======================================================================== */
 
-+(function($) {
++(function ($) {
   'use strict'
 
-  $(document).on(BJUI.eventType.initUI, function(e) {
+  $(document).on(BJUI.eventType.initUI, function (e) {
     var $box = $(e.target)
 
     // UI init begin...
@@ -34,16 +34,16 @@
 
       switch (type) {
         case 'checkbox':
-          wrapHtml = '<div class="pretty p-icon p-curve '+ className +'"></div>'
+          wrapHtml = '<div class="pretty p-icon p-curve ' + className + '"></div>'
           icon = '<i class="icon bjicon-ok"></i>'
           color = $element.data('color') || 'primary-o'
           break
         case 'radio':
-          wrapHtml = '<div class="pretty p-default p-round '+ className +'"></div>'
+          wrapHtml = '<div class="pretty p-default p-round ' + className + '"></div>'
           icon = ''
           break
         case 'switch':
-          wrapHtml = '<div class="pretty p-switch p-fill '+ className +'"></div>'
+          wrapHtml = '<div class="pretty p-switch p-fill ' + className + '"></div>'
           icon = ''
           break
       }
@@ -60,7 +60,7 @@
 
       $element.wrap($(wrapHtml))
 
-      $element.parent().append('<div class="state p-'+ color +'">'+icon+'<label>'+label+'</label></div>')
+      $element.parent().append('<div class="state p-' + color + '">' + icon + '<label>' + label + '</label></div>')
 
     }
     var $icheck = $box.find('[data-toggle="icheck"]')
@@ -81,17 +81,16 @@
     })
 
 
-
     var $boolCheck = $box.find('[data-toggle="boolcheck"]')
 
-    $boolCheck.each(function(i) {
+    $boolCheck.each(function (i) {
       var $element = $(this)
       var name = $element.attr('name')
       $element.removeAttr('name')
       var $input
       if (name) {
         var value = $element.is(':checked') ? 1 : 0
-        $input = $('<input type="hidden" value="'+value+'" name="'+name+'">').appendTo($element.parent())
+        $input = $('<input type="hidden" value="' + value + '" name="' + name + '">').appendTo($element.parent())
       }
       if ($input) {
         $element.on('change', function () {
@@ -102,8 +101,77 @@
 
     })
 
+    $box.find('[data-toggle="datepicker"]').each(function () {
+      var $that = $(this)
+      var _data = $that.data() || {}
+      var opts = {
+        autoClose: true,
+        locale: BJUI.plugins.airDatepicker.i18n.zhCN,
+        timepicker: false,
+        onlyTimepicker: false,
+        keyboardNav: false,
+      }
+
+      var isInput = $that.is(':input')
+
+      if (isInput) {
+        opts.onBeforeSelect = function () {
+          $that.data('_isInputVal', false)
+          return true
+        }
+        opts.onHide = function (isFinished) {
+          if (isFinished) {
+            if ($that.data('_isInputVal') && !$that.prop('disabled')) {
+              var dp = $that.data('BJUI.plugins.datepicker')
+              if (!dp) {
+                return
+              }
+              var _defaultVal = dp.selectedDates
+              var _val = $that.val()
+              if (BJUI.test.isEmpty(_val)) {
+                dp.clear()
+                return
+              }
+              _val = _val.trim()
+              if (BJUI.test.isDate(_val)) {
+                dp.selectDate(_val)
+              } else {
+                dp.selectDate(_defaultVal)
+              }
+            }
+            $that.trigger('validate')
+          }
+
+        }
+        $that.on('input', function () {
+          $that.data('_isInputVal', true)
+        })
+      }
+
+      for (var k in _data) {
+        if (_data.hasOwnProperty(k) && (typeof _data[k] === 'string' || typeof _data[k] === 'boolean')) {
+          if (k === 'toggle') {
+            continue
+          }
+          opts[k] = _data[k]
+        }
+      }
+
+
+      var dp = new AirDatepicker(this, opts)
+
+      $that.data('BJUI.plugins.datepicker', dp)
+      if ($that.is(':input')) {
+        var _val = $that.val()
+        if (!BJUI.test.isEmpty(_val)) {
+          dp.selectDate(_val)
+          // dp.setViewDate(_val)
+        }
+      }
+    })
+
     /* fixed ui style */
-    $box.find(':text, :password, textarea, :button, a.btn').each(function() {
+    $box.find(':text, :password, textarea, :button, a.btn').each(function () {
       var $element = $(this)
       var icon
       var $tabledit = $element.closest('table.bjui-tabledit')
@@ -116,7 +184,9 @@
         icon = $element.data('icon')
         var oldClass = $element.attr('class')
 
-        if (autoFixedClass && !$element.hasClass('btn')) { $element.removeClass().addClass('btn').addClass(oldClass) }
+        if (autoFixedClass && !$element.hasClass('btn')) {
+          $element.removeClass().addClass('btn').addClass(oldClass)
+        }
         if (icon) {
           if (!$element.data('bjui.icon')) {
             $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
@@ -162,25 +232,25 @@
     })
 
     /* form validate */
-    $box.find('form[data-toggle="validate"]').each(function() {
+    $box.find('form[data-toggle="validate"]').each(function () {
       var $element = $(this)
       var alertmsg = (typeof $element.data('alertmsg') === 'undefined') ? true : $element.data('alertmsg')
 
       $(this)
         .validator({
-          valid: function(form) {
+          valid: function (form) {
             $(form).bjuiajax('ajaxForm', $(form).data())
           },
           validClass: 'ok',
           theme: $element.data('theme') || 'red_right_effect'
         })
-        .on('invalid.form', function(e, form, errors) {
+        .on('invalid.form', function (e, form, errors) {
           if (alertmsg) $(form).alertmsg('error', BJUI.Tools.replaceMsg(FRAG.validateErrorMsg.replace('#validatemsg#', BJUI.regional.validatemsg), errors.length))
         })
     })
 
     /* moreSearch */
-    $box.find('[data-toggle="moresearch"]').each(function() {
+    $box.find('[data-toggle="moresearch"]').each(function () {
       var $element = $(this)
 
       var $parent = $element.closest('.bjui-pageHeader')
@@ -190,7 +260,7 @@
       var name = $element.data('name')
 
       if (!$element.attr('title')) $element.attr('title', '更多查询条件')
-      $element.click(function(e) {
+      $element.click(function (e) {
         if (!$more.length) {
           BJUI.debug('Not created \'moresearch\' box[class="bjui-moreSearch"]!')
           return
@@ -216,9 +286,9 @@
 
     /* bootstrap - select */
     var $selectpicker = $box.find('select[data-toggle="selectpicker"]')
-    var bjui_select_linkage = function($obj, $next) {
+    var bjui_select_linkage = function ($obj, $next) {
       var refurl = $obj.data('refurl')
-      var _setEmpty = function($select) {
+      var _setEmpty = function ($select) {
         var $_nextselect = $($select.data('nextselect'))
 
         if ($_nextselect && $_nextselect.length) {
@@ -230,7 +300,8 @@
       }
 
       if (($next && $next.length) && refurl) {
-        var val = $obj.data('val'); var nextVal = $next.data('val')
+        var val = $obj.data('val');
+        var nextVal = $next.data('val')
 
         if (typeof val === 'undefined') val = $obj.val()
         $.ajax({
@@ -239,12 +310,13 @@
           url: refurl.replace('{value}', encodeURIComponent(val)),
           cache: false,
           data: {},
-          success: function(json) {
+          success: function (json) {
             if (!json) return
 
-            var html = ''; var selected = ''
+            var html = '';
+            var selected = ''
 
-            $.each(json, function(i) {
+            $.each(json, function (i) {
               var value, label
 
               if (json[i] && json[i].length) {
@@ -274,7 +346,7 @@
       }
     }
 
-    $selectpicker.each(function() {
+    $selectpicker.each(function () {
       var $element = $(this)
       var options = $element.data()
       var $next = $(options.nextselect)
@@ -287,11 +359,13 @@
 
       $element.selectpicker()
 
-      if ($next && $next.length && (typeof $next.data('val') !== 'undefined')) { bjui_select_linkage($element, $next) }
+      if ($next && $next.length && (typeof $next.data('val') !== 'undefined')) {
+        bjui_select_linkage($element, $next)
+      }
     })
 
     /* bootstrap - select - linkage && Trigger validation */
-    $selectpicker.change(function() {
+    $selectpicker.change(function () {
       var $element = $(this)
       var $nextselect = $($element.data('nextselect'))
 
@@ -304,7 +378,7 @@
     })
 
     /* zTree - plugin */
-    $box.find('[data-toggle="ztree"]').each(function() {
+    $box.find('[data-toggle="ztree"]').each(function () {
       var $this = $(this)
       var op = $this.data() || {}
       var options = op.options
@@ -320,7 +394,7 @@
 
       if (!op.nodes) {
         op.nodes = []
-        $this.find('> li').each(function() {
+        $this.find('> li').each(function () {
           var $li = $(this)
           var node = $li.data()
 
@@ -413,6 +487,7 @@
           BJUI.Tools.toFunc(op.onNodeCreated).call(this, event, treeId, treeNode)
         }
       }
+
       // onCollapse
       function _onCollapse(event, treeId, treeNode) {
         if (treeNode.faiconClose) {
@@ -422,6 +497,7 @@
           BJUI.Tools.toFunc(op.onCollapse).call(this, event, treeId, treeNode)
         }
       }
+
       // onExpand
       function _onExpand(event, treeId, treeNode) {
         if (treeNode.faicon && treeNode.faiconClose) {
@@ -431,6 +507,7 @@
           BJUI.Tools.toFunc(op.onExpand).call(this, event, treeId, treeNode)
         }
       }
+
       // add button, del button
       function _addHoverDom(treeId, treeNode) {
         var level = treeNode.level
@@ -442,8 +519,8 @@
           if (level < op.maxAddLevel) {
             $add = $('<span class="tree_add" id="diyBtn_add_' + treeNode.id + '" title="添加"></span>')
             $add.appendTo($obj)
-            $add.on('click', function() {
-              zTree.addNodes(treeNode, { name: '新增Item' })
+            $add.on('click', function () {
+              zTree.addNodes(treeNode, {name: '新增Item'})
             })
           }
         }
@@ -453,34 +530,34 @@
 
           $del
             .appendTo($obj)
-            .on('click', function(event) {
-              var delFn = function() {
-                $del.alertmsg('confirm', '确认要删除 ' + treeNode.name + ' 吗？', {
-                  okCall: function() {
-                    zTree.removeNode(treeNode)
-                    if (op.onRemove) {
-                      var fn = BJUI.Tools.toFunc(op.onRemove)
+            .on('click', function (event) {
+                var delFn = function () {
+                  $del.alertmsg('confirm', '确认要删除 ' + treeNode.name + ' 吗？', {
+                    okCall: function () {
+                      zTree.removeNode(treeNode)
+                      if (op.onRemove) {
+                        var fn = BJUI.Tools.toFunc(op.onRemove)
 
-                      if (fn) fn.call(this, event, treeId, treeNode)
+                        if (fn) fn.call(this, event, treeId, treeNode)
+                      }
+                    },
+                    cancelCall: function () {
                     }
-                  },
-                  cancelCall: function() {
-                  }
-                })
-              }
-
-              if (op.beforeRemove) {
-                var fn = BJUI.Tools.toFunc(op.beforeRemove)
-
-                if (fn) {
-                  var isdel = fn.call(fn, treeId, treeNode)
-
-                  if (isdel && isdel === true) delFn()
+                  })
                 }
-              } else {
-                delFn()
+
+                if (op.beforeRemove) {
+                  var fn = BJUI.Tools.toFunc(op.beforeRemove)
+
+                  if (fn) {
+                    var isdel = fn.call(fn, treeId, treeNode)
+
+                    if (isdel && isdel === true) delFn()
+                  }
+                } else {
+                  delFn()
+                }
               }
-            }
             )
         }
       }
@@ -517,7 +594,7 @@
     /* zTree - drop-down selector */
     var $selectzTree = $box.find('[data-toggle="selectztree"]')
 
-    $selectzTree.each(function() {
+    $selectzTree.each(function () {
       var $this = $(this)
       var options = $this.data()
 
@@ -532,7 +609,7 @@
 
       var treeid = $tree.attr('id')
       var $box = $('#' + treeid + '_select_box')
-      var setPosition = function($box) {
+      var setPosition = function ($box) {
         var top = $this.offset().top
 
         var left = $this.offset().left
@@ -548,10 +625,10 @@
         var maxHeight = $(window).height() - top - h
 
         if (options.height === 'auto' && offsetBot < 0) maxHeight = maxHeight + offsetBot
-        $box.css({ top: (top + h), left: left, 'max-height': maxHeight })
+        $box.css({top: (top + h), left: left, 'max-height': maxHeight})
       }
 
-      $this.click(function() {
+      $this.click(function () {
         if ($box && $box.length) {
           setPosition($box)
           $box.show()
@@ -565,7 +642,15 @@
           zindex = dialog.css('zIndex') + 1
         }
         $box = $('<div id="' + treeid + '_select_box" class="tree-box"></div>')
-          .css({ position: 'absolute', 'zIndex': zindex, 'min-width': options.width, height: options.height, overflow: 'auto', background: '#FAFAFA', border: '1px #EEE solid' })
+          .css({
+            position: 'absolute',
+            'zIndex': zindex,
+            'min-width': options.width,
+            height: options.height,
+            overflow: 'auto',
+            background: '#FAFAFA',
+            border: '1px #EEE solid'
+          })
           .hide()
           .appendTo($('body'))
 
@@ -574,7 +659,7 @@
         $box.show()
       })
 
-      $('body').on('mousedown', function(e) {
+      $('body').on('mousedown', function (e) {
         var $target = $(e.target)
 
         if (!($this[0] === e.target || ($box && $box.length > 0 && $target.closest('.tree-box').length > 0))) {
@@ -585,7 +670,7 @@
       var $scroll = $this.closest('.bjui-pageContent')
 
       if ($scroll && $scroll.length) {
-        $scroll.scroll(function() {
+        $scroll.scroll(function () {
           if ($box && $box.length) {
             setPosition($box)
           }
@@ -593,7 +678,7 @@
       }
 
       // destroy selectzTree
-      $this.on('destroy.bjui.selectztree', function() {
+      $this.on('destroy.bjui.selectztree', function () {
         $box.remove()
       })
     })
@@ -604,11 +689,11 @@
      * height 每页元素高，默认为填充目标元素高度
      * offsety 每页高度偏移, 内容高度 height - offsety
      */
-    $box.find('[data-toggle="accordion"]').each(function() {
+    $box.find('[data-toggle="accordion"]').each(function () {
       var $this = $(this)
       var hBox = $this.data('heightbox')
       var height = $this.data('height')
-      var initAccordion = function(hBox, height) {
+      var initAccordion = function (hBox, height) {
         var offsety = $this.data('offsety') || 0
 
         height = height || ($(hBox).outerHeight() - (offsety * 1))
@@ -626,24 +711,30 @@
       if ($this.find('> .panel').length) {
         if (hBox || height) {
           initAccordion(hBox, height)
-          $(window).resize(function() {
+          $(window).resize(function () {
             initAccordion(hBox, height)
           })
 
-          $this.on('hidden.bs.collapse', function(e) {
-            var $last = $(this).find('> .panel:last'); var $a = $last.find('> .panel-heading > h4 > a')
+          $this.on('hidden.bs.collapse', function (e) {
+            var $last = $(this).find('> .panel:last');
+            var $a = $last.find('> .panel-heading > h4 > a')
 
-            if ($a.hasClass('collapsed')) { $last.css('border-bottom', '1px #ddd solid') }
+            if ($a.hasClass('collapsed')) {
+              $last.css('border-bottom', '1px #ddd solid')
+            }
           })
         }
       }
     })
 
     /* Kindeditor */
-    $box.find('[data-toggle="kindeditor"]').each(function() {
-      var $editor = $(this); var options = $editor.data()
+    $box.find('[data-toggle="kindeditor"]').each(function () {
+      var $editor = $(this);
+      var options = $editor.data()
 
-      if (options.items && typeof options.items === 'string') { options.items = options.items.replaceAll('\'', '').replaceAll(' ', '').split(',') }
+      if (options.items && typeof options.items === 'string') {
+        options.items = options.items.replaceAll('\'', '').replaceAll(' ', '').split(',')
+      }
       if (options.afterUpload) options.afterUpload = BJUI.Tools.toFunc(options.afterUpload)
       if (options.afterSelectFile) options.afterSelectFile = BJUI.Tools.toFunc(options.afterSelectFile)
       if (options.confirmSelect) options.confirmSelect = BJUI.Tools.toFunc(options.confirmSelect)
@@ -709,29 +800,31 @@
           BJUI.PLUGINPATH + 'kindeditor/editor-content.css',
           BJUI.PLUGINPATH + 'kindeditor/plugins/code/prettify.css'
         ],
-        afterBlur: function() { this.sync() }
+        afterBlur: function () {
+          this.sync()
+        }
       })
     })
 
     /* colorpicker */
-    $box.find('[data-toggle="colorpicker"]').each(function() {
+    $box.find('[data-toggle="colorpicker"]').each(function () {
       var $this = $(this)
       var isbgcolor = $this.data('bgcolor')
 
       $this.colorpicker()
       if (isbgcolor) {
-        $this.on('changeColor', function(ev) {
+        $this.on('changeColor', function (ev) {
           $this.css('background-color', ev.color.toHex())
         })
       }
     })
 
-    $box.find('[data-toggle="clearcolor"]').each(function() {
+    $box.find('[data-toggle="clearcolor"]').each(function () {
       var $this = $(this)
       var $target = $this.data('target') ? $($this.data('target')) : null
 
       if ($target && $target.length) {
-        $this.click(function() {
+        $this.click(function () {
           $target.val('')
           if ($target.data('bgcolor')) $target.css('background-color', '')
         })
@@ -739,13 +832,16 @@
     })
 
     /* tooltip */
-    $box.find('[data-toggle="tooltip"]').each(function() {
+    $box.find('[data-toggle="tooltip"]').each(function () {
       $(this).tooltip()
     })
 
     /* fixed dropdown-menu width */
-    $box.find('[data-toggle="dropdown"]').parent().on('show.bs.dropdown', function(e) {
-      var $this = $(this); var width = $this.outerWidth(); var $menu = $this.find('> .dropdown-menu'); var menuWidth = $menu.outerWidth()
+    $box.find('[data-toggle="dropdown"]').parent().on('show.bs.dropdown', function (e) {
+      var $this = $(this);
+      var width = $this.outerWidth();
+      var $menu = $this.find('> .dropdown-menu');
+      var menuWidth = $menu.outerWidth()
 
       if (width > menuWidth) {
         $menu.css('min-width', width)
@@ -753,18 +849,18 @@
     })
 
     /* not validate */
-    $box.find('form[data-toggle="ajaxform"]').each(function() {
-      $(this).validator({ ignore: ':input' })
+    $box.find('form[data-toggle="ajaxform"]').each(function () {
+      $(this).validator({ignore: ':input'})
       $(this).validator('destroy')
     })
 
     /**
      * jsonEditor
      */
-    $box.find('textarea[data-toggle=jsoneditor]').each(function() {
+    $box.find('textarea[data-toggle=jsoneditor]').each(function () {
       var $this = $(this)
       $this.hide()
-      setTimeout(function() {
+      setTimeout(function () {
         var codeMirror = CodeMirror.fromTextArea($this[0], {
           lineNumbers: true,
           mode: 'application/json',
@@ -772,28 +868,28 @@
           theme: 'rubyblue',
           lint: true
         })
-        codeMirror.on('change', function(cm) {
+        codeMirror.on('change', function (cm) {
           $this.val(cm.getValue())
         })
       }, 100)
     })
 
-    $box.find('[data-toggle=clipboard]').each(function() {
+    $box.find('[data-toggle=clipboard]').each(function () {
       var $this = $(this)
       var data = $this.data()
       var opts = {}
       if (data.target) {
-        opts.target = function() {
+        opts.target = function () {
           return $box.find(data.target)[0]
         }
       } else if (data.text) {
-        opts.text = function() {
+        opts.text = function () {
           return data.text
         }
       }
       var clipboard = new ClipboardJS(this, opts)
 
-      clipboard.on('error', function(e) {
+      clipboard.on('error', function (e) {
         $box.alertmsg('error', '复制失败！')
         // e.clearSelection()
       })
