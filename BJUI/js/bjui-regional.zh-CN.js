@@ -55,17 +55,6 @@
     /* ajax加载提示 */
     BJUI.setRegional('progressmsg', '正在努力加载数据，请稍等...')
 
-    /* 日期选择器 */
-    BJUI.setRegional('datepicker', {
-      close: '关闭',
-      prev: '上月',
-      next: '下月',
-      clear: '清空',
-      ok: '确定',
-      dayNames: ['日', '一', '二', '三', '四', '五', '六'],
-      monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-    })
-
     /* navtab右键菜单  */
     BJUI.setRegional('navtabCM', {
       refresh: '刷新本标签',

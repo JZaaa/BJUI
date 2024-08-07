@@ -47,16 +47,6 @@
 
   BJUI.setRegional('progressmsg', 'Data loading, please waiting...')
 
-  BJUI.setRegional('datepicker', {
-    close: 'Close',
-    prev: 'Prev month',
-    next: 'Next month',
-    clear: 'Clear',
-    ok: 'OK',
-    dayNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  })
-
   BJUI.setRegional('navtabCM', {
     refresh: 'Refresh navtab',
     close: 'Close navtab',
@@ -162,93 +152,8 @@
                     '</ul>',
     alertBoxFrag: '<div id="bjui-alertMsgBox" class="bjui-alert"><div class="alertContent"><div class="#type#"><div class="alertInner"><h1><i class="fa #fa#"></i>#title#</h1><div class="msg">#message#</div></div><div class="toolBar"><ul>#btnFragment#</ul></div></div></div></div>',
     alertBtnFrag: '<li><button class="btn btn-#class#" rel="#callback#" type="button">#btnMsg#</button></li>',
-    calendarFrag: '<div id="bjui-calendar">' +
-                      '    <div class="main">' +
-                      '        <a class="close" href="javascript:;" title="#close#"><i class="bjicon-cancel-circled2"></i></a>' +
-                      '        <div class="head">' +
-                      '            <table width="100%" border="0" cellpadding="0" cellspacing="2">' +
-                      '                <tr>' +
-                      '                    <td width="20"><a class="prev" href="javascript:;" title="#prev#"><i class="bjicon-left-big"></i></a></td>' +
-                      '                    <td><select name="year"></select></td>' +
-                      '                    <td><select name="month"></select></td>' +
-                      '                    <td width="20"><a class="next" href="javascript:;" title="#next#"><i class="bjicon-right-big"></i></a></td>' +
-                      '                </tr>' +
-                      '            </table>' +
-                      '        </div>' +
-                      '        <div class="body">' +
-                      '            <dl class="dayNames"><dt>7</dt><dt>1</dt><dt>2</dt><dt>3</dt><dt>4</dt><dt>5</dt><dt>6</dt></dl>' +
-                      '            <dl class="days"><!-- date list --></dl>' +
-                      '            <div style="clear:both;height:0;line-height:0"></div>' +
-                      '        </div>' +
-                      '        <div class="foot">' +
-                      '            <table class="time">' +
-                      '                <tr>' +
-                      '                    <td>' +
-                      '                        <input type="text" class="hh" maxlength="2" data-type="hh" data-start="0" data-end="23">:<input' +
-                      '                         type="text" class="mm" maxlength="2" data-type="mm" data-start="0" data-end="59">:<input' +
-                      '                         type="text" class="ss" maxlength="2" data-type="ss" data-start="0" data-end="59">' +
-                      '                    </td>' +
-                      '                    <td><ul><li class="up" data-add="1">&and;</li><li class="down">&or;</li></ul></td>' +
-                      '                </tr>' +
-                      '            </table>' +
-                      '            <button type="button" class="clearBtn btn btn-orange">#clear#</button>' +
-                      '            <button type="button" class="okBtn btn btn-default">#ok#</button>' +
-                      '        </div>' +
-                      '        <div class="tm">' +
-                      '            <ul class="hh">' +
-                      '                <li>0</li>' +
-                      '                <li>1</li>' +
-                      '                <li>2</li>' +
-                      '                <li>3</li>' +
-                      '                <li>4</li>' +
-                      '                <li>5</li>' +
-                      '                <li>6</li>' +
-                      '                <li>7</li>' +
-                      '                <li>8</li>' +
-                      '                <li>9</li>' +
-                      '                <li>10</li>' +
-                      '                <li>11</li>' +
-                      '                <li>12</li>' +
-                      '                <li>13</li>' +
-                      '                <li>14</li>' +
-                      '                <li>15</li>' +
-                      '                <li>16</li>' +
-                      '                <li>17</li>' +
-                      '                <li>18</li>' +
-                      '                <li>19</li>' +
-                      '                <li>20</li>' +
-                      '                <li>21</li>' +
-                      '                <li>22</li>' +
-                      '                <li>23</li>' +
-                      '            </ul>' +
-                      '            <ul class="mm">' +
-                      '                <li>0</li>' +
-                      '                <li>5</li>' +
-                      '                <li>10</li>' +
-                      '                <li>15</li>' +
-                      '                <li>20</li>' +
-                      '                <li>25</li>' +
-                      '                <li>30</li>' +
-                      '                <li>35</li>' +
-                      '                <li>40</li>' +
-                      '                <li>45</li>' +
-                      '                <li>50</li>' +
-                      '                <li>55</li>' +
-                      '            </ul>' +
-                      '            <ul class="ss">' +
-                      '                <li>0</li>' +
-                      '                <li>10</li>' +
-                      '                <li>20</li>' +
-                      '                <li>30</li>' +
-                      '                <li>40</li>' +
-                      '                <li>50</li>' +
-                      '            </ul>' +
-                      '        </div>' +
-                      '    </div>' +
-                      '</div>',
     spinnerBtn: '<ul class="bjui-spinner"><li class="up" data-add="1">&and;</li><li class="down">&or;</li></ul>',
     lookupBtn: '<a class="bjui-lookup" href="javascript:;" data-toggle="lookupbtn"><i class="bjicon-search"></i></a>',
-    dateBtn: '<a class="bjui-lookup" href="javascript:;" data-toggle="datepickerbtn"><i class="bjicon-calendar"></i></a>',
     navtabCM: '<ul id="bjui-navtabCM">' +
                   '    <li rel="reload"><span class="icon"><i class="bjicon-arrows-cw"></i></span><span class="title">#refresh#</span></li>' +
                   '    <li rel="closeCurrent"><span class="icon"><i class="bjicon-cancel"></i></span><span class="title">#close#</li>' +
