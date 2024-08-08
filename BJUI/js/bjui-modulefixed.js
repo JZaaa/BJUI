@@ -57,10 +57,10 @@
         uploadify.uploadify('destroy')
       }
       // colorpicker 销毁
-      var colorpicker = $selector.find('[data-toggle="colorpicker"]')
-      if (colorpicker.length) {
-        colorpicker.colorpicker('destroy')
-      }
+      // var colorpicker = $selector.find('[data-toggle="colorpicker"]')
+      // if (colorpicker.length) {
+      //   colorpicker.colorpicker('destroy')
+      // }
       var selectpicker = $selector.find('[data-toggle="selectpicker"]')
       if (selectpicker.length) {
         selectpicker.selectpicker('destroy')
