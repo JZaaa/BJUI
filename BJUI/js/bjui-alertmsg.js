@@ -239,7 +239,7 @@
             var sCls = buttons[i].cls ? buttons[i].cls : 'default'
             var sIco = (buttons[i].cls && buttons[i].cls === 'green') ? 'bjicon-ok' : 'bjicon-cancel'
 
-            btnsHtml += FRAG.alertBtnFrag.replace('#btnMsg#', '<i class="' + sIco + '"></i> ' + buttons[i].name).replace('#callback#', sRel).replace('#class#', sCls)
+            btnsHtml += FRAG.alertBtnFrag.replace('#btnMsg#', '<i class="' + sIco + '"></i>&nbsp;' + buttons[i].name).replace('#callback#', sRel).replace('#class#', sCls)
           }
         }
         $newbox =
