@@ -299,22 +299,19 @@
     },
     initDate: function() {
       // 时钟
-      var today = new Date()
-      $('#bjui-date').html(today.formatDate('yyyy/MM/dd'))
+      $('#bjui-date').html(XEUtils.toDateString(new Date(), 'yyyy/MM/dd'))
       var $clock = $('#bjui-clock')
       var timer = null
       function setDate() {
         timer && clearInterval(timer)
         timer = setInterval(function() {
-          today = new Date(today.setSeconds(today.getSeconds() + 1))
-          $clock.html(today.formatDate('HH:mm:ss'))
+          $clock.html(XEUtils.toDateString(new Date(), 'HH:mm:ss'))
         }, 1000)
       }
       setDate()
 
       document.addEventListener("visibilitychange", function() {
         if (!document.hidden) {
-          today = new Date()
           setDate()
         }
       })
