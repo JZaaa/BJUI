@@ -110,6 +110,9 @@
         timepicker: false,
         onlyTimepicker: false,
         keyboardNav: false,
+        onSelect: function ({date, formattedDate, datepicker}) {
+          $that.trigger('afterchange.bjui.datepicker', {date, formattedDate, datepicker})
+        }
       }
 
       var isInput = $that.is(':input')
@@ -136,7 +139,9 @@
               if (BJUI.test.isDate(_val)) {
                 dp.selectDate(_val)
               } else {
-                dp.selectDate(_defaultVal)
+                dp.selectDate(_defaultVal, {
+                  silent: true
+                })
               }
             }
             $that.trigger('validate')
@@ -164,7 +169,9 @@
       if ($that.is(':input')) {
         var _val = $that.val()
         if (!BJUI.test.isEmpty(_val)) {
-          dp.selectDate(_val)
+          dp.selectDate(_val, {
+            silent: true
+          })
           // dp.setViewDate(_val)
         }
       }
@@ -807,29 +814,29 @@
     })
 
     /* colorpicker */
-    $box.find('[data-toggle="colorpicker"]').each(function () {
-      var $this = $(this)
-      var isbgcolor = $this.data('bgcolor')
-
-      $this.colorpicker()
-      if (isbgcolor) {
-        $this.on('changeColor', function (ev) {
-          $this.css('background-color', ev.color.toHex())
-        })
-      }
-    })
-
-    $box.find('[data-toggle="clearcolor"]').each(function () {
-      var $this = $(this)
-      var $target = $this.data('target') ? $($this.data('target')) : null
-
-      if ($target && $target.length) {
-        $this.click(function () {
-          $target.val('')
-          if ($target.data('bgcolor')) $target.css('background-color', '')
-        })
-      }
-    })
+    // $box.find('[data-toggle="colorpicker"]').each(function () {
+    //   var $this = $(this)
+    //   var isbgcolor = $this.data('bgcolor')
+    //
+    //   $this.colorpicker()
+    //   if (isbgcolor) {
+    //     $this.on('changeColor', function (ev) {
+    //       $this.css('background-color', ev.color.toHex())
+    //     })
+    //   }
+    // })
+    //
+    // $box.find('[data-toggle="clearcolor"]').each(function () {
+    //   var $this = $(this)
+    //   var $target = $this.data('target') ? $($this.data('target')) : null
+    //
+    //   if ($target && $target.length) {
+    //     $this.click(function () {
+    //       $target.val('')
+    //       if ($target.data('bgcolor')) $target.css('background-color', '')
+    //     })
+    //   }
+    // })
 
     /* tooltip */
     $box.find('[data-toggle="tooltip"]').each(function () {

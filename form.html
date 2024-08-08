@@ -13,14 +13,10 @@ function do_OK(json, $form) {
     console.log($form)
 }
 //护照有效日期  = 签发日期 + 10年
-$('#j_custom_issuedate').on('afterchange.bjui.datepicker', function(e, data) {
-    var pattern = 'yyyy-MM-dd'
-    var start   = end = data.value
-
-    end.setFullYear(start.getFullYear() + 10)
-    end.setDate(start.getDate() - 1)
-
-    $('#j_custom_indate').val(end.formatDate(pattern))
+$('#j_custom_issuedate').on('afterchange.bjui.datepicker', function(e, {date, formattedDate, datepicker}) {
+  if (date) {
+    $('#j_custom_indate').val(XEUtils.toDateString(XEUtils.getWhatYear(date, 10), 'yyyy-MM-dd'))
+  }
 })
 </script>
 <div class="bjui-pageContent">
