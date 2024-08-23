@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '2.0.0-beta1.0.3',
+    version: '2.0.0-beta1.0.4',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -30,6 +30,8 @@
         unmountAttr: '[data-bj-vue-dom]', // 手动卸载的属性, 用于vue2
       },
     },
+    // 插件相关
+    plugins: {},
     // 编辑器统一配置
     KindEditor: {
       uploadJson: undefined,
