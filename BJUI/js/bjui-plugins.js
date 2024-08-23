@@ -220,97 +220,11 @@
     })
 
     /* bootstrap - select */
-    var $selectpicker = $box.find('select[data-toggle="selectpicker"]')
-    var bjui_select_linkage = function ($obj, $next) {
-      var refurl = $obj.data('refurl')
-      var _setEmpty = function ($select) {
-        var $_nextselect = $($select.data('nextselect'))
 
-        if ($_nextselect && $_nextselect.length) {
-          var emptytxt = $_nextselect.data('emptytxt') || '&nbsp;'
-
-          $_nextselect.html('<option>' + emptytxt + '</option>').selectpicker('refresh')
-          _setEmpty($_nextselect)
-        }
-      }
-
-      if (($next && $next.length) && refurl) {
-        var val = $obj.data('val');
-        var nextVal = $next.data('val')
-
-        if (typeof val === 'undefined') val = $obj.val()
-        $.ajax({
-          type: 'POST',
-          dataType: 'json',
-          url: refurl.replace('{value}', encodeURIComponent(val)),
-          cache: false,
-          data: {},
-          success: function (json) {
-            if (!json) return
-
-            var html = '';
-            var selected = ''
-
-            $.each(json, function (i) {
-              var value, label
-
-              if (json[i] && json[i].length) {
-                value = json[i][0]
-                label = json[i][1]
-              } else {
-                value = json[i].value
-                label = json[i].label
-              }
-              if (typeof nextVal !== 'undefined') selected = value === nextVal ? ' selected' : ''
-              html += '<option value="' + value + '"' + selected + '>' + label + '</option>'
-            })
-
-            $obj.removeAttr('data-val').removeData('val')
-            $next.removeAttr('data-val').removeData('val')
-
-            if (!html) {
-              html = $next.data('emptytxt') || '&nbsp;'
-              html = '<option>' + html + '</option>'
-            }
-
-            $next.html(html).selectpicker('refresh')
-            _setEmpty($next)
-          },
-          error: BJUI.ajaxError
-        })
-      }
-    }
-
-    $selectpicker.each(function () {
-      var $element = $(this)
-      var options = $element.data()
-      var $next = $(options.nextselect)
-
-      $element.addClass('show-tick')
-      if (!options.style) $element.data('style', 'btn-default')
-      if (!options.width) $element.data('width', 'auto')
-      if (!options.container) $element.data('container', 'body')
-      else if (options.container === true) $element.attr('data-container', 'false').data('container', false)
-
-      $element.selectpicker()
-
-      if ($next && $next.length && (typeof $next.data('val') !== 'undefined')) {
-        bjui_select_linkage($element, $next)
-      }
+    $box.find('select[data-toggle="selectpicker"]').each(function () {
+      BJUI.plugins.Selectpicker.init(this)
     })
 
-    /* bootstrap - select - linkage && Trigger validation */
-    $selectpicker.change(function () {
-      var $element = $(this)
-      var $nextselect = $($element.data('nextselect'))
-
-      bjui_select_linkage($element, $nextselect)
-
-      /* Trigger validation */
-      if ($element.attr('aria-required')) {
-        $element.trigger('validate')
-      }
-    })
 
     /* zTree - plugin */
     $box.find('[data-toggle="ztree"]').each(function () {

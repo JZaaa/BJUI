@@ -13,7 +13,7 @@
    * @param $selector 需处理的dialog/navtab jquery对象
    */
   ModuleFixed.prototype.destroyModules = function($selector) {
-    if (!$selector instanceof jQuery) {
+    if (!($selector instanceof jQuery)) {
       return
     }
     $(document).trigger(BJUI.eventType.destroyModules, $selector)
@@ -42,29 +42,23 @@
 
       if (datepicker.length) {
         datepicker.each(function () {
-          var $this = $(this)
-          var dp = $this.data('BJUI.plugins.datepicker')
-          if (dp) {
-            dp.destroy()
-            $this.data('BJUI.plugins.datepicker', false)
-          }
+          BJUI.plugins.Datepicker.destroy(this)
         })
       }
 
+      var selectpicker = $selector.find('[data-toggle="selectpicker"]')
+      if (selectpicker.length) {
+        selectpicker.each(function () {
+          BJUI.plugins.Selectpicker.destroy(this)
+        })
+      }
       // ie9 uploadify 销毁
       var uploadify = $selector.find('.bjui-upload > .uploadify')
       if (uploadify.length) {
         uploadify.uploadify('destroy')
       }
-      // colorpicker 销毁
-      // var colorpicker = $selector.find('[data-toggle="colorpicker"]')
-      // if (colorpicker.length) {
-      //   colorpicker.colorpicker('destroy')
-      // }
-      var selectpicker = $selector.find('[data-toggle="selectpicker"]')
-      if (selectpicker.length) {
-        selectpicker.selectpicker('destroy')
-      }
+
+
 
 
     }

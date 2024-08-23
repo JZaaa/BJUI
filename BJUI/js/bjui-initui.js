@@ -248,7 +248,6 @@
 
   /* Clean plugins generated 'Dom elements' in the body */
   var bodyClear = function($target) {
-    $target.find('select[data-toggle="selectpicker"]').selectpicker('destroyMenu')
     $target.find('[data-toggle="selectztree"]').trigger('destroy.bjui.selectztree')
   }
 

@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '2.0.0-beta1.0.4',
+    version: '2.0.0-beta1.0.6',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
