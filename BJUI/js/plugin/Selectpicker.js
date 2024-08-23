@@ -4,6 +4,9 @@
   BJUI.plugins.Selectpicker = {
     init(element, opt = {}) {
       const $el = $(element)
+      if ($el.data(NAME)) {
+        return
+      }
       const options = Object.assign({
         create: false,
         allowEmptyOption: true,

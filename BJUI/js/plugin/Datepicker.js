@@ -18,6 +18,9 @@
     },
     init: function (element, opt = {}) {
       var $el = $(element)
+      if ($el.data(NAME)) {
+        return
+      }
       var _data = $el.data() || {}
       var opts = Object.assign({
         autoClose: true,
