@@ -129,7 +129,7 @@
     DefaultConfigs: {
       plugins: ['no_backspace_delete', 'auto_position'],
       create: false,
-      allowEmptyOption: false,
+      allowEmptyOption: true,
       copyClassesToDropdown: false,
       dropdownParent: 'body',
       render:{
