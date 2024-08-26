@@ -19,24 +19,6 @@
     $(document).trigger(BJUI.eventType.destroyModules, $selector)
     $selector.find('[data-bj-panel-dom]').trigger(BJUI.eventType.destroyPanel, $selector)
     try {
-      // 查询是否存在vue节点，存在则触发卸载挂载实例
-      if (typeof Vue !== 'undefined') {
-        if (Vue.version.startsWith('2.')) {
-          $selector.find(BJUI.pluginConfig.vue.unmountAttr).each(function () {
-            this.__vue__ && this.__vue__.$destroy()
-          })
-        } else if (Vue.version.startsWith('3.')) {
-          if (BJUI.pluginConfig.vue.autoUnmount) {
-            $selector.find('[data-v-app]').each(function () {
-              this.__vue_app__ && this.__vue_app__.unmount()
-            })
-          } else {
-            $selector.find(BJUI.pluginConfig.vue.unmountAttr).each(function () {
-              this.__vue_app__ && this.__vue_app__.unmount()
-            })
-          }
-        }
-      }
 
       var datepicker = $selector.find('[data-toggle="datepicker"]')
 
@@ -58,7 +40,24 @@
         uploadify.uploadify('destroy')
       }
 
-
+      // 查询是否存在vue节点，存在则触发卸载挂载实例
+      if (typeof Vue !== 'undefined') {
+        if (Vue.version.startsWith('2.')) {
+          $selector.find(BJUI.pluginConfig.vue.unmountAttr).each(function () {
+            this.__vue__ && this.__vue__.$destroy()
+          })
+        } else if (Vue.version.startsWith('3.')) {
+          if (BJUI.pluginConfig.vue.autoUnmount) {
+            $selector.find('[data-v-app]').each(function () {
+              this.__vue_app__ && this.__vue_app__.unmount()
+            })
+          } else {
+            $selector.find(BJUI.pluginConfig.vue.unmountAttr).each(function () {
+              this.__vue_app__ && this.__vue_app__.unmount()
+            })
+          }
+        }
+      }
 
 
     }
