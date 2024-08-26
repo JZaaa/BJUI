@@ -24,7 +24,7 @@
       }
 
       const _data = this._$el.data() || {}
-      const opts = Object.assign(BJUI.plugins.Datepicker.DefaultConfigs, options || {})
+      const opts = Object.assign({}, BJUI.plugins.Datepicker.DefaultConfigs, options || {})
 
       const isInput = this._$el.is(':input')
 

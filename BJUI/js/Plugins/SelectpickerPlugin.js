@@ -23,7 +23,7 @@
       }
 
       const domData = this._$el.data()
-      const options = Object.assign(BJUI.plugins.Selectpicker.DefaultConfigs, domData || {}, config || {})
+      const options = Object.assign({}, BJUI.plugins.Selectpicker.DefaultConfigs, domData || {}, config || {})
 
       this._plugin = new TomSelect(element, options)
 
