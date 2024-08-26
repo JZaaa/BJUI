@@ -20,6 +20,67 @@
   $(document).on(BJUI.eventType.initUI, function (e) {
     var $box = $(e.target)
 
+    /* fixed ui style */
+    $box.find(':text, :password, textarea, :button, a.btn, select').each(function () {
+      var $element = $(this)
+      var icon
+      var $tabledit = $element.closest('table.bjui-tabledit')
+
+      var autoFixedClass = BJUI.ui.autoFixedClass
+      if (autoFixedClass && ($element.is(':text') || $element.is(':password') || $element.isTag('textarea')) && !$element.hasClass('form-control')) {
+        $element.addClass('form-control')
+      }
+      if ($element.is(':button')) {
+        icon = $element.data('icon')
+        var oldClass = $element.attr('class')
+
+        if (autoFixedClass && !$element.hasClass('btn')) {
+          $element.removeClass().addClass('btn').addClass(oldClass)
+        }
+        if (icon) {
+          if (!$element.data('bjui.icon')) {
+            $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
+              .data('bjui.icon', true)
+          }
+        }
+      }
+      if ($element.isTag('a')) {
+        icon = $element.data('icon')
+
+        if (icon) {
+
+          if (!$element.data('bjui.icon')) {
+            $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
+              .data('bjui.icon', true)
+          }
+        }
+      }
+      if ($element.isTag('textarea')) {
+        var toggle = $element.data('toggle')
+
+        if (toggle && toggle === 'autoheight') {
+          if ($.fn.autosize) {
+            $element.addClass('autosize').autosize()
+          } else if (window.autosize) {
+            window.autosize($element)
+            $element.addClass('autosize')
+          }
+        }
+      }
+      if (!$tabledit.length) {
+        // 添加size%支持
+        var size = $element.attr('size')
+        if (!size) return
+        var width = 0
+        if (size.charAt(size.length - 1) !== '%') {
+          width = size * 10
+        } else {
+          width = size
+        }
+        if (width) $element.css('width', width)
+      }
+    })
+
     // UI init begin...
 
     var _defaultCheckInit = function ($element) {
@@ -103,67 +164,6 @@
 
     $box.find('[data-toggle="datepicker"]').each(function () {
       BJUI.plugins.Datepicker.init(this)
-    })
-
-    /* fixed ui style */
-    $box.find(':text, :password, textarea, :button, a.btn').each(function () {
-      var $element = $(this)
-      var icon
-      var $tabledit = $element.closest('table.bjui-tabledit')
-
-      var autoFixedClass = BJUI.ui.autoFixedClass
-      if (autoFixedClass && ($element.is(':text') || $element.is(':password') || $element.isTag('textarea')) && !$element.hasClass('form-control')) {
-        $element.addClass('form-control')
-      }
-      if ($element.is(':button')) {
-        icon = $element.data('icon')
-        var oldClass = $element.attr('class')
-
-        if (autoFixedClass && !$element.hasClass('btn')) {
-          $element.removeClass().addClass('btn').addClass(oldClass)
-        }
-        if (icon) {
-          if (!$element.data('bjui.icon')) {
-            $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
-              .data('bjui.icon', true)
-          }
-        }
-      }
-      if ($element.isTag('a')) {
-        icon = $element.data('icon')
-
-        if (icon) {
-
-          if (!$element.data('bjui.icon')) {
-            $element.html('<i class="' + BJUI.iconPrefix + icon + '"></i> ' + $element.html())
-              .data('bjui.icon', true)
-          }
-        }
-      }
-      if ($element.isTag('textarea')) {
-        var toggle = $element.data('toggle')
-
-        if (toggle && toggle === 'autoheight') {
-          if ($.fn.autosize) {
-            $element.addClass('autosize').autosize()
-          } else if (window.autosize) {
-            window.autosize($element)
-            $element.addClass('autosize')
-          }
-        }
-      }
-      if (!$tabledit.length) {
-        // 添加size%支持
-        var size = $element.attr('size')
-        if (!size) return
-        var width = 0
-        if (size.charAt(size.length - 1) !== '%') {
-          width = size * 10
-        } else {
-          width = size
-        }
-        if (width) $element.css('width', width)
-      }
     })
 
     /* form validate */

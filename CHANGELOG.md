@@ -11,4 +11,5 @@
 - 删除bootstrap-colorpicker库
 - 现在框架依赖 [xe-utils](https://vxetable.cn/xe-utils/)
 - 删除bjui-tags模块
+- bootstrap-select库替换为tom-select
 

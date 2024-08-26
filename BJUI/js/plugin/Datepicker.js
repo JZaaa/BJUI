@@ -4,6 +4,8 @@
   const NAME = 'BJUI.plugins.datepicker'
 
   BJUI.plugins.Datepicker = {
+    name: NAME,
+    toggleAttr: 'datepicker',
     i18n: {
       days: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
       daysShort: ['日', '一', '二', '三', '四', '五', '六'],
@@ -80,6 +82,9 @@
         }
       }
 
+      if (!element.hasAttribute('date-toggle')) {
+        $el.attr('date-toggle', this.toggleAttr)
+      }
 
       var dp = new AirDatepicker(element, opts)
 
