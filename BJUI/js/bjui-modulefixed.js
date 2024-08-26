@@ -42,14 +42,14 @@
 
       if (datepicker.length) {
         datepicker.each(function () {
-          BJUI.plugins.Datepicker.destroy(this)
+          BJUI.plugins.Datepicker.Instance.destroy(this)
         })
       }
 
       var selectpicker = $selector.find('[data-toggle="selectpicker"]')
       if (selectpicker.length) {
         selectpicker.each(function () {
-          BJUI.plugins.Selectpicker.destroy(this)
+          BJUI.plugins.Selectpicker.Instance.destroy(this)
         })
       }
       // ie9 uploadify 销毁

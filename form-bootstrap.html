@@ -48,7 +48,7 @@
       <div class="bj-form-item">
         <label class="bj-form-item-label is-required">出生地：</label>
         <div class="bj-form-item-content">
-          <input type="text" name="custom.birthplace" value="" data-rule="required;">
+          <input type="text" name="custom.birthplace" class="form-control" value="" data-rule="required;">
         </div>
       </div>
       <div class="bj-form-item">
@@ -60,7 +60,7 @@
       <div class="bj-form-item">
         <label class="bj-form-item-label is-required">所属业务：</label>
         <div class="bj-form-item-content">
-          <select name="custom.sale" id="j_custom_sale" data-toggle="selectpicker"
+          <select name="custom.sale" id="j_custom_sale" class="form-control w-100" data-toggle="selectpicker"
                   data-rule="required">
             <option value="">全部</option>
             <option value="1">业务1</option>
@@ -103,11 +103,11 @@
         <div class="bj-form-item-content">
           <div class="bj-flex">
             <div>
-              <input type="text" name="custom.date" data-toggle="datepicker" value="" placeholder="开始日期">
+              <input type="text" name="custom.date" class="form-control" data-toggle="datepicker" data-rule="required" value="" placeholder="开始日期">
             </div>
             <div class="bj-p-l-5 bj-p-r-5">-</div>
             <div>
-              <input type="text" name="custom.date_end" data-toggle="datepicker" value="" placeholder="结束日期">
+              <input type="text" name="custom.date_end" class="form-control"  data-toggle="datepicker" data-rule="required" value="" placeholder="结束日期">
             </div>
           </div>
         </div>

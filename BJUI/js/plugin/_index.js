@@ -1,2 +1,0 @@
-import './Datepicker'
-import './Selectpicker'

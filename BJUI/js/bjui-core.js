@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '2.0.0-beta1.0.6',
+    version: '2.0.0-beta1.0.7',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -32,6 +32,8 @@
     },
     // 插件相关
     plugins: {},
+    // 工具相关
+    tools: {},
     // 编辑器统一配置
     KindEditor: {
       uploadJson: undefined,

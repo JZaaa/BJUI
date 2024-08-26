@@ -163,7 +163,7 @@
     })
 
     $box.find('[data-toggle="datepicker"]').each(function () {
-      BJUI.plugins.Datepicker.init(this)
+      new BJUI.plugins.Datepicker.Instance(this)
     })
 
     /* form validate */
@@ -222,7 +222,7 @@
     /* bootstrap - select */
 
     $box.find('select[data-toggle="selectpicker"]').each(function () {
-      BJUI.plugins.Selectpicker.init(this)
+      new BJUI.plugins.Selectpicker.Instance(this)
     })
 
 

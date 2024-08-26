@@ -2,10 +2,13 @@ import './jquery.cookie'
 import './bjui-core'
 import './bjui-regional.zh-CN'
 import './bjui-frag'
+
+import './Tools/_index'
+
 import './bjui-extends'
 import './bjui-modulefixed'
 
-import './plugin/_index'
+import './Plugins/_index'
 
 import './bjui-basedrag'
 import './bjui-layout'
