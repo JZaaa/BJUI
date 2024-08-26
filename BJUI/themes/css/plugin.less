@@ -1,5 +1,11 @@
 .ts-wrapper {
   display: inline-block;
+
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-position: right .75rem center, center right 2.25rem;
+  background-size: 16px 12px, calc(.7142857143em + .5625rem) calc(.7142857143em + .5625rem);
+  background-repeat: no-repeat;
+
   .ts-control {
     > input {
       width: auto !important;
@@ -7,4 +13,26 @@
     }
   }
 
+  &.form-control-sm {
+    .ts-control {
+      min-height: calc(1.4285714286em + 0.25rem + calc(var(--tblr-border-width) * 2));
+      padding: 0.125rem 0.25rem;
+    }
+  }
+
 }
+
+.pages {
+  .ts-wrapper {
+    .ts-control {
+      padding-top: 0;
+      padding-bottom: 0;
+      min-height: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+}
+

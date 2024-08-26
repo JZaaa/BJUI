@@ -217,7 +217,7 @@
       .pagination('destroy')
       .pagination(clientPaging)
 
-    if (clientPaging.pageSize) { $target.find('select[data-toggle-change="changepagesize"]').selectpicker('val', clientPaging.pageSize) }
+    // if (clientPaging.pageSize) { BJUI.plugins.Selectpicker.Instance.getInstance($target.find('select[data-toggle-change="changepagesize"]')[0])?.setVal(clientPaging.pageSize) }
     if (clientPaging.orderField) { $target.find('th[data-order-field="' + clientPaging.orderField + '"]').addClass(clientPaging.orderDirection).siblings().removeClass('asc desc') }
   }
 
