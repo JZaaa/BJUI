@@ -111,8 +111,6 @@
                  '    <div class="taskbarLeft taskbarLeftDisabled"><i class="bjicon-angle-double-left"></i></div>' +
                  '    <div class="taskbarRight"><i class="bjicon-angle-double-right"></i></div>' +
                  '</div>',
-    splitBar: '<div id="bjui-splitBar"></div>',
-    splitBarProxy: '<div id="bjui-splitBarProxy"></div>',
     resizable: '<div id="bjui-resizable" class="bjui-resizable"></div>',
     alertBackground: '<div class="bjui-alertBackground"></div>',
     maskBackground: '<div class="bjui-maskBackground bjui-ajax-mask"></div>',
@@ -121,15 +119,6 @@
     dialogMask: '<div class="bjui-dialogBackground"></div>',
     orderby: '<a href="javascript:;" class="order asc" data-order-direction="asc" title="#asc#"><i class="bjicon-angle-up"></i></a>' +
                  '<a href="javascript:;" class="order desc" data-order-direction="desc" title="#desc#"><i class="bjicon-angle-down"></i></a>',
-    slidePanel: '<div class="panel panel-default">' +
-                    '    <div class="panel-heading">' +
-                    '        <h4 class="panel-title"><a data-toggle="collapse" data-parent="#bjui-accordionmenu" href="##id#" class="#class#">#icon#&nbsp;#title#<b>#righticon#</b></a></h4>' +
-                    '    </div>' +
-                    '    <div id="#id#" class="panel-collapse collapse#bodyclass#">' +
-                    '        <div class="panel-body">' +
-                    '        </div>' +
-                    '    </div>' +
-                    '</div>',
     pagination: '<ul class="pagination m-0 ms-auto">' +
                     '    <li class="j-first page-item">' +
                     '        <a class="first page-link" href="javascript:;"><i class="bjicon-to-start"></i> #first#</a>' +

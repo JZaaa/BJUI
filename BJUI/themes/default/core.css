@@ -51,15 +51,6 @@ fieldset{border-color:#dfdfdf;}
 #bjui-hnav #bjui-hnav-navbar > li.open:hover,
 #bjui-hnav #bjui-hnav-navbar > li.active,
 #bjui-hnav #bjui-hnav-navbar > li.active:hover{background-color:#515151; border-color:#515151;}
-#bjui-sidebar.shadown{box-shadow:2px 0 5px rgba(81,81,81, 0.5);}
-#bjui-sidebar{background:#f4f4f4; border-color:#dfdfdf; border-bottom:1px #dfdfdf solid;}
-#bjui-sidebar > .toggleCollapse{background:#eaeaea;}
-#bjui-sidebar > .toggleCollapse .lock{color:#515151; background:#eaeaea;}
-#bjui-sidebar > .toggleCollapse .lock:hover{color:#f4f4f4; background:#515151;}
-#bjui-sidebar-s > .collapse{background:#f4f4f4; border:1px #dfdfdf solid;}
-#bjui-sidebar-s > .collapse:hover{background:#515151; border-color:#515151;}
-#bjui-splitBar{background:#f4f4f4;}
-#bjui-splitBarProxy{border-color:#c0c0c0; background:#f4f4f4;}
 /* Left menus */
 .menu-items li > a{color:#222;}
 .menu-items li > a:hover{background-color:#f4f4f4;}

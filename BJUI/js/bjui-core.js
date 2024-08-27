@@ -9,7 +9,7 @@
   'use strict'
 
   var BJUI = {
-    version: '2.0.0-beta1.0.7',
+    version: '2.0.0-beta1.0.8',
     JSPATH: 'BJUI/',
     PLUGINPATH: 'BJUI/plugins/',
     IS_DEBUG: false,
@@ -196,7 +196,7 @@
     initLayout: function(ww) {
       var $header = $('#bjui-header')
       var $navtab = $('#bjui-navtab')
-      var iContentW = ww - (BJUI.ui.showSlidebar ? (($('#bjui-sidebar').width() || 0) + 6) : 6)
+      var iContentW = ww - 6
       if (BJUI.layout && BJUI.layout.mode !== 'default') {
         iContentW += 6
       }
@@ -218,7 +218,6 @@
 
       $('#bjui-container').height(iContentH)
       $navtab.width('100%')
-      $('#bjui-leftside, #bjui-sidebar, #bjui-sidebar-s, #bjui-splitBar, #bjui-splitBarProxy').css({ height: '100%' })
       $('#bjui-navtab .tabsPageContent').height(iContentH - navtabH)
 
       /* fixed pageFooter */
@@ -226,54 +225,6 @@
         $('#bjui-navtab > .tabsPageContent > .navtabPage').resizePageH().find('.bjui-layout').resizePageH()
       }, 10)
 
-      /* header navbar */
-      var navbarWidth = $('body').data('bjui.navbar.width')
-
-      var $toggle = $header.find('.bjui-navbar-toggle')
-      var $logo = $header.find('.bjui-navbar-logo')
-      var $navbar = $('#bjui-navbar-collapse')
-      var $nav = $navbar.find('.bjui-navbar-right')
-
-      if (!navbarWidth) {
-        navbarWidth = { logoW: $logo.outerWidth(), navW: $nav.outerWidth() }
-        $('body').data('bjui.navbar.width', navbarWidth)
-      }
-      if (navbarWidth) {
-        if (ww - navbarWidth.logoW < navbarWidth.navW) {
-          $toggle.show()
-          $navbar.addClass('collapse menu')
-        } else {
-          $toggle.hide()
-          $navbar.removeClass('collapse menu in')
-        }
-      }
-      /* horizontal navbar */
-      var $hnavbox = $('#bjui-hnav-navbar-box')
-
-      var $hnavbar = $hnavbox.find('> #bjui-hnav-navbar')
-
-      var $hmoreL = $hnavbox.prev()
-
-      var $hmoreR = $hnavbox.next()
-
-      var hboxWidth = $hnavbox.width()
-
-      var liW = 0
-
-      $hnavbar.find('> li').each(function(i) {
-        var $li = $(this)
-
-        liW += $li.outerWidth()
-
-        if (liW > hboxWidth) {
-          $hmoreR.show()
-          $hnavbox.data('hnav.move', true).data('hnav.liw', liW)
-        } else {
-          $hmoreL.hide()
-          $hmoreR.hide()
-          $hnavbox.removeData('hnav.move')
-        }
-      })
     },
     regional: {},
     setRegional: function(key, value) {
