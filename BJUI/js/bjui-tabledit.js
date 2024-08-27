@@ -246,7 +246,7 @@
             if ($this.isTag('select')) {
               $td.find('.tabledit-select-text').first().hide()
               $this.val($td.attr('data-val'))
-              $this.removeClass('readonly disabled').selectpicker('show')
+              // $this.removeClass('readonly disabled').selectpicker('show')
               // $this.val($td.attr('data-val')).prop('disabled', false).removeClass('readonly').selectpicker('refresh')
             }
             if ($this.is(':checkbox')) {
@@ -288,7 +288,7 @@
 
             if ($td.data('notread')) return true
             if ($this.isTag('select')) {
-              $this.addClass('readonly disabled').selectpicker('hide')
+              // $this.addClass('readonly disabled').selectpicker('hide')
               var selectText = $this.children('option').filter(':selected').text()
               var selectTextBox = $td.find('.tabledit-select-text').first()
               if (selectTextBox.length) {
