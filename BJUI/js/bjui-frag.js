@@ -92,7 +92,7 @@
                 '        <a class="maximize" href="#maximize" title="#maximize#"><i class="bjicon-plus-circled"></i></a>' +
                 '        <a class="restore" href="#restore" title="#restore#"><i class="bjicon-history"></i></a>' +
                 '        <a class="minimize" href="#minimize" title="#minimize#"><i class="bjicon-minus-circled"></i></a>' +
-                '        <h1><span><i class="bjicon-th-large"></i></span> <span class="title">#title#</span></h1>' +
+                '        <h1><span class="title">#title#</span></h1>' +
                 '    </div>' +
                 '    <div class="dialogContent unitBox"></div>' +
                 '    <div class="resizable_h_l" tar="nw"></div>' +
