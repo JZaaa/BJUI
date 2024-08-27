@@ -11,7 +11,6 @@ import './bjui-modulefixed'
 import './Plugins/_index'
 
 import './bjui-basedrag'
-import './bjui-layout'
 import './bjui-contextmenu'
 import './bjui-navtab'
 import './bjui-dialog'
