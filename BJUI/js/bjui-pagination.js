@@ -34,7 +34,7 @@
     last: 'li.j-last',
     nums: 'li.j-num > a',
     jump: 'li.jumpto',
-    pageNumFrag: '<li class="#liClass#"><a href="javascript:;">#pageNum#</a></li>',
+    pageNumFrag: '<li class="#liClass#"><a class="page-link" href="javascript:;">#pageNum#</a></li>',
     total: 0,
     pageSize: 10,
     pageNum: 10,
@@ -83,7 +83,7 @@
     var pr = BJUI.regional.pagination
 
     for (var i = interval.start; i < interval.end; i++) {
-      pageNumFrag += options.pageNumFrag.replaceAll('#pageNum#', i).replaceAll('#liClass#', i === tools.getCurrentPage() ? 'selected j-num' : 'j-num')
+      pageNumFrag += options.pageNumFrag.replaceAll('#pageNum#', i).replaceAll('#liClass#', i === tools.getCurrentPage() ? 'active j-num page-item' : 'j-num page-item')
     }
 
     pagination =
@@ -103,20 +103,19 @@
     var $prev = this.$element.find(options.prev)
     var $next = this.$element.find(options.next)
     var $last = this.$element.find(options.last)
-
     if (tools.hasPrev()) {
-      $first.add($prev).find('> span').hide()
       _bindEvent($prev, tools.getCurrentPage() - 1)
       _bindEvent($first, 1)
     } else {
-      $first.add($prev).addClass('disabled').find('> a').hide()
+      $first.addClass('disabled')
+      $prev.addClass('disabled')
     }
     if (tools.hasNext()) {
-      $next.add($last).find('> span').hide()
       _bindEvent($next, tools.getCurrentPage() + 1)
       _bindEvent($last, tools.pageNums())
     } else {
-      $next.add($last).addClass('disabled').find('> a').hide()
+      $next.addClass('disabled')
+      $last.addClass('disabled')
     }
 
     this.$element.find(options.nums).each(function(i) {

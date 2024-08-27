@@ -130,25 +130,21 @@
                     '        </div>' +
                     '    </div>' +
                     '</div>',
-    pagination: '<ul class="pagination">' +
-                    '    <li class="j-first">' +
-                    '        <a class="first" href="javascript:;"><i class="bjicon-to-start"></i> #first#</a>' +
-                    '        <span class="first"><i class="bjicon-to-start"></i> #first#</span>' +
+    pagination: '<ul class="pagination m-0 ms-auto">' +
+                    '    <li class="j-first page-item">' +
+                    '        <a class="first page-link" href="javascript:;"><i class="bjicon-to-start"></i> #first#</a>' +
                     '    </li>' +
-                    '    <li class="j-prev">' +
-                    '        <a class="previous" href="javascript:;"><i class="bjicon-fast-bw"></i> #prev#</a>' +
-                    '        <span class="previous"><i class="bjicon-fast-bw"></i> #prev#</span>' +
+                    '    <li class="j-prev page-item">' +
+                    '        <a class="previous page-link" href="javascript:;"><i class="bjicon-fast-bw"></i> #prev#</a>' +
                     '    </li>' +
                     '    #pageNumFrag#' +
-                    '    <li class="j-next">' +
-                    '        <a class="next" href="javascript:;">#next# <i class="bjicon-fast-fw"></i></a>' +
-                    '        <span class="next">#next# <i class="bjicon-fast-fw"></i></span>' +
+                    '    <li class="j-next page-item">' +
+                    '        <a class="next page-link" href="javascript:;">#next# <i class="bjicon-fast-fw"></i></a>' +
                     '    </li>' +
-                    '    <li class="j-last">' +
-                    '        <a class="last" href="javascript:;">#last# <i class="bjicon-to-end"></i></a>' +
-                    '        <span class="last">#last# <i class="bjicon-to-end"></i></span>' +
+                    '    <li class="j-last page-item">' +
+                    '        <a class="last page-link" href="javascript:;">#last# <i class="bjicon-to-end"></i></a>' +
                     '    </li>' +
-                    '    <li class="jumpto"><span class="p-input"><input class="form-control input-sm-pages" type="text" size="2.6" value="#pageCurrent#" title="#jumpto#"></span><a class="goto" href="javascript:;" title="#jump#"><i class="bjicon-right-open"></i></a></li>' +
+                    '    <li class="jumpto page-item"><input class="form-control form-control-sm" type="text" value="#pageCurrent#" title="#jumpto#"><a class="goto page-link" href="javascript:;" title="#jump#"><i class="bjicon-right-open"></i></a></li>' +
                     '</ul>',
     alertBoxFrag: '<div id="bjui-alertMsgBox" class="bjui-alert"><div class="alertContent"><div class="#type#"><div class="alertInner"><h1><i class="#fa#"></i>#title#</h1><div class="msg">#message#</div></div><div class="toolBar"><ul>#btnFragment#</ul></div></div></div></div>',
     alertBtnFrag: '<li><button class="btn btn-#class#" rel="#callback#" type="button">#btnMsg#</button></li>',
