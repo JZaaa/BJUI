@@ -24,7 +24,15 @@
 
 
       const domData = this._$el.data()
-      const options = Object.assign({}, BJUI.plugins.Selectpicker.DefaultConfigs, domData || {}, config || {})
+      let _default = {}
+
+      if (this._$el.isTag('select') && element.hasAttribute('multiple')) {
+        _default = {
+          plugins: ['auto_position', 'remove_button'],
+        }
+      }
+
+      const options = Object.assign({}, BJUI.plugins.Selectpicker.DefaultConfigs, _default, domData || {}, config || {})
 
       this._plugin = new TomSelect(element, options)
 
