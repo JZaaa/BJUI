@@ -772,12 +772,22 @@ label.x150 {
 /* TableFixed */
 .bjui-tablefixed {
   clear: both;
+
+  .table {
+    table-layout: fixed;
+    margin-bottom: 0;
+  }
+
+  .fixedtableScroller {
+    table {
+      thead {
+        border: transparent;
+      }
+    }
+  }
 }
 
-.bjui-tablefixed .table {
-  border: 0;
-  table-layout: fixed;
-}
+
 
 .bjui-tablefixed .table > thead > tr.resize-head > th {
   padding-top: 0;
