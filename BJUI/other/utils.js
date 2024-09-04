@@ -63,59 +63,69 @@
      * loading {boolean|$box} 是否存在加载框 默认false，需要指定 $.CurrentDialog 获取 $.CurrentNavtab
      * loadingFunc {callable}
      */
-    $.ajaxRequest = function (op) {
+    $.ajaxRequest = async function (op) {
       var contentType = op.contentType || 'application/json'
       var data = op.data || {}
       var method = op.method || 'GET'
-      $.ajax({
-        method: method,
-        url: op.url,
-        data: (contentType === 'application/json' && method.toUpperCase() === 'POST') ? JSON.stringify(data) : $.extend({}, data),
-        cache: false,
-        contentType: contentType,
-        dataType: op.dataType || 'json',
-        timeout: BJUI.ajaxTimeout,
-        success: function (json) {
-          if (!json[BJUI.keys.statusCode]) {
-            op.error && op.error(json)
-          } else {
-            if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode] === BJUI.statusCode.forbidden) {
-              if (json[BJUI.keys.message]) $('body').alertmsg('error', json[BJUI.keys.message])
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: method,
+          url: op.url,
+          data: (contentType === 'application/json' && method.toUpperCase() === 'POST') ? JSON.stringify(data) : $.extend({}, data),
+          cache: false,
+          contentType: contentType,
+          dataType: op.dataType || 'json',
+          timeout: BJUI.ajaxTimeout,
+          success: function (json) {
+            if (!json[BJUI.keys.statusCode]) {
               op.error && op.error(json)
-            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode] === BJUI.statusCode.unauthorized) {
-              $('body').alertmsg('info', (json[BJUI.keys.message] || BJUI.regional.sessiontimeout))
-              BJUI.loadLogin()
-            } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
-              op.success && op.success(json)
+              reject(json)
             } else {
-              op.error && op.error(json)
+              if (json[BJUI.keys.statusCode] === BJUI.statusCode.error || json[BJUI.keys.statusCode] === BJUI.statusCode.forbidden) {
+                if (json[BJUI.keys.message]) $('body').alertmsg('error', json[BJUI.keys.message])
+                op.error && op.error(json)
+                reject(json)
+              } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.timeout || json[BJUI.keys.statusCode] === BJUI.statusCode.unauthorized) {
+                $('body').alertmsg('info', (json[BJUI.keys.message] || BJUI.regional.sessiontimeout))
+                BJUI.loadLogin()
+              } else if (json[BJUI.keys.statusCode] === BJUI.statusCode.ok) {
+                op.success && op.success(json)
+                resolve(json)
+              } else {
+                op.error && op.error(json)
+                reject(json)
+              }
             }
-          }
-        },
-        beforeSend: function () {
-          if (op.loadingFunc) {
-            op.loadingFunc(true)
-          } else if (op.loading) {
-            op.loading.loading()
-          }
-        },
-        complete: function () {
-          if (op.loadingFunc) {
-            op.loadingFunc(false)
-          } else if (op.loading) {
-            op.loading.loading(false)
-          }
-          if (op.complete) {
-            op.complete()
-          }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          op.error && op.error({
-            statusCode: xhr.status,
-            message: '请求失败'
-          })
-        },
-        statusCode: BJUI.ajaxStatusCodeObj
+          },
+          beforeSend: function () {
+            if (op.loadingFunc) {
+              op.loadingFunc(true)
+            } else if (op.loading) {
+              op.loading.loading()
+            }
+          },
+          complete: function () {
+            if (op.loadingFunc) {
+              op.loadingFunc(false)
+            } else if (op.loading) {
+              op.loading.loading(false)
+            }
+            if (op.complete) {
+              op.complete()
+            }
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            reject({
+              statusCode: xhr.status,
+              message: '请求失败'
+            })
+            op.error && op.error({
+              statusCode: xhr.status,
+              message: '请求失败'
+            })
+          },
+          statusCode: BJUI.ajaxStatusCodeObj
+        })
       })
     }
   }
