@@ -23,6 +23,8 @@
 
   var Pagination = function(element, options) {
     this.$element = $(element)
+    options.total = this.TOOLS().toNumber(options.total)
+    options.pageSize = this.TOOLS().toNumber(options.pageSize)
     this.options = options
     this.tools = this.TOOLS()
   }
@@ -45,6 +47,13 @@
   Pagination.prototype.TOOLS = function() {
     var options = this.options
     return {
+      toNumber: function (str) {
+        if (typeof str === 'string') {
+          const cleanedStr = str.replace(/[^0-9]/ig, '')
+          return parseInt(cleanedStr, 10)
+        }
+        return str
+      },
       pageNums: function() {
         return Math.ceil(options.total / options.pageSize)
       },
