@@ -3,8 +3,10 @@
         noEnter>
     <div style="margin:15px auto 0; width:800px;">
       <fieldset>
-        <legend>iCheck</legend>
-        <table class="table ">
+        <legend>单选/复选框
+          <span class="subheader">pretty-checkbox</span>
+        </legend>
+        <table class="table">
           <thead>
           <tr>
             <th>样例</th>
@@ -33,17 +35,20 @@
             <td>data-toggle="icheck" data-label="已选中已禁用复选框" checked disabled</td>
           </tr>
           <tr>
-            <td><input type="radio" name="radio1" id="j_form_radio1" value="1" data-toggle="icheck" data-label="单选框" data-init-type="icheck">
+            <td><input type="radio" name="radio1" id="j_form_radio1" value="1" data-toggle="icheck" data-label="单选框"
+                       data-init-type="icheck">
             </td>
             <td>data-toggle="icheck" data-label="单选框"</td>
           </tr>
           <tr>
-            <td><input type="radio" name="radio2" id="j_form_radio2" value="1" data-toggle="icheck" data-label="已选中单选框"
+            <td><input type="radio" name="radio2" id="j_form_radio2" value="1" data-toggle="icheck"
+                       data-label="已选中单选框"
                        checked data-init-type="icheck"></td>
             <td>data-toggle="icheck" data-label="已选中单选框" checked</td>
           </tr>
           <tr>
-            <td><input type="radio" name="radio2" id="j_form_radio4" value="1" data-toggle="icheck" data-label="已禁用单选框"
+            <td><input type="radio" name="radio2" id="j_form_radio4" value="1" data-toggle="icheck"
+                       data-label="已禁用单选框"
                        disabled data-init-type="icheck"></td>
             <td>data-toggle="icheck" data-label="已禁用单选框" disabled</td>
           </tr>
@@ -53,83 +58,37 @@
             <td>data-toggle="icheck" data-label="已选中已禁用单选框" checked disabled</td>
           </tr>
           <tr>
-            <td colspan="2">
-              <div class="alert alert-info form-inline"><i class="fa fa-warning"></i> <strong>复选、单选框的Label：</strong>直接添加<strong>[data-label]</strong>属性，可自动添加上Label。
-              </div>
-              <div class="alert alert-warning form-inline"><i class="fa fa-warning"></i> <strong>相关事件：</strong>参见<a
-                href="http://icheck.fronteed.com/" target="_blank">http://icheck.fronteed.com/</a>。
-              </div>
-              <br/>
-              <div class="alert alert-danger form-inline"><i class="fa fa-warning"></i> <strong>注意：</strong>
-                大数据量下iCheck插件存在严重性能问题，请谨慎使用
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </fieldset>
-      <fieldset>
-        <legend>pretty-checkbox</legend>
-        <table class="table">
-          <thead>
-          <tr>
-            <th>样例</th>
-            <th>属性</th>
-          </tr>
-          </thead>
-          <tbody>
-
-          <tr>
             <td>
-              <input type="checkbox" data-toggle="boolcheck" name="ss" data-label="boolcheck" data-init-type="default">
+              <input type="checkbox" data-toggle="boolcheck" name="ss" data-label="boolcheck">
             </td>
-            <td>data-toggle="boolcheck" name="ss" data-init-type="default"</td>
+            <td>data-toggle="boolcheck" name="ss"</td>
           </tr>
           <tr>
             <td>
-              <input type="checkbox" data-toggle="icheck" data-label="复选框" data-init-type="default">
+              <input type="checkbox" name="checkboxSwitch" data-toggle="icheck" data-switch="true"
+                     data-label="复选框switch">
             </td>
-            <td>data-toggle="icheck" data-label="复选框" data-init-type="default"</td>
+            <td>data-toggle="icheck" data-switch="true" data-label="复选框switch"</td>
           </tr>
           <tr>
             <td>
-              <input type="radio" name="icon_solid" data-toggle="icheck" data-label="单选" data-init-type="default" />
+              <input type="radio" name="radioSwitch" data-toggle="icheck" data-switch="true" data-label="单选switch1"
+                     data-class="text-danger">
+              <input type="radio" name="radioSwitch" data-toggle="icheck" data-switch="true" data-label="单选switch2">
             </td>
-            <td>data-toggle="icheck" data-label="单选" data-init-type="default"</td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" name="checkboxSwitch" data-toggle="icheck" data-switch="true" data-label="复选框switch" data-init-type="default">
-            </td>
-            <td>data-toggle="icheck" data-switch="true" data-label="复选框switch" data-init-type="default"</td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="radioSwitch" data-toggle="icheck" data-switch="true" data-label="单选switch1" data-init-type="default" data-class="text-danger">
-              <input type="radio" name="radioSwitch" data-toggle="icheck" data-switch="true" data-label="单选switch2" data-init-type="default">
-            </td>
-            <td>data-toggle="icheck" data-switch="true" data-label="单选switch2" data-init-type="default"  data-class="text-danger"</td>
+            <td>data-toggle="icheck" data-switch="true" data-label="单选switch2" data-class="text-danger"</td>
           </tr>
           <tr>
             <td colspan="2">
-              <div class="alert alert-info "><i class="fa fa-warning"></i> <strong>1.4.4+</strong>
-                框架内置了pretty-checkbox，以下几种方式可以利用[data-toggle="icheck"]进行实例化：<br/>
-                1. 未引入iCheck插件 <br/>
-                2. 全局<code>pluginConfig.checkbox</code>未配置为 icheck<br/>
-                3. 存在 [data-init-type="default"] 属性<br/>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <div class="alert alert-danger"><i class="fa fa-warning"></i> <strong>注意：</strong>
-                pretty-checkbox方式实例化仅为框架快捷生成美化样式方法，实际组件为纯css实现，不兼容任何iCheck方法与事件！请使用默认监听事件
+              <div class="alert alert-info form-inline"><i class="fa fa-warning"></i>
+                <strong>复选、单选框的Label：</strong>直接添加<strong>[data-label]</strong>属性，可自动添加上Label。
               </div>
               <div class="alert alert-warning form-inline"><i class="fa fa-warning"></i> 参见 <a
                 href="https://github.com/lokesh-coder/pretty-checkbox" target="_blank">https://github.com/lokesh-coder/pretty-checkbox</a>。
               </div>
             </td>
           </tr>
+
           </tbody>
         </table>
       </fieldset>
