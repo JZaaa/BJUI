@@ -32,7 +32,8 @@
     min: 0,
     max: 100,
     step: 1,
-    decimalPlace: 0
+    decimalPlace: 0,
+    isBlock: false,
   }
 
   Spinner.EVENTS = {
@@ -86,12 +87,18 @@
   }
 
   Spinner.prototype.addBtn = function() {
-    var that = this; var $element = that.$element
+    const that = this
+    const $element = that.$element
 
     if (!this.$lookBtn && !$element.parent().hasClass('wrap_bjui_btn_box')) {
       this.$spinner = $(FRAG.spinnerBtn)
 
-      $element.css({ paddingRight: '18px' }).wrap('<span class="wrap_bjui_btn_box" style="display: inline-block"></span>')
+      let style = ''
+      if (!that.options.isBlock) {
+        style = 'display: inline-block'
+      }
+
+      $element.css({ paddingRight: '18px' }).wrap('<div class="wrap_bjui_btn_box" style="'+style+'"></div>')
 
       const $box = $element.parent()
 
