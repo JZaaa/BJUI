@@ -91,9 +91,9 @@
     if (!this.$lookBtn && !$element.parent().hasClass('wrap_bjui_btn_box')) {
       this.$spinner = $(FRAG.spinnerBtn)
 
-      $element.css({ 'paddingRight': '13px' }).wrap('<span class="wrap_bjui_btn_box"></span>')
+      $element.css({ paddingRight: '18px' }).wrap('<span class="wrap_bjui_btn_box" style="display: inline-block"></span>')
 
-      var $box = $element.parent()
+      const $box = $element.parent()
 
       $box.css('position', 'relative')
       this.$spinner.css({ 'height': this.height }).appendTo($box)
