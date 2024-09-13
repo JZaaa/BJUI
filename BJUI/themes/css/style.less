@@ -1857,29 +1857,19 @@ ul.ztree.zTreeDragUL {
 
 /* bj-label */
 .bj-form-label-loop(70);
-.bj-form-item {
-  margin-bottom: 18px;
-
-  &::before {
-    display: table;
-    content: "";
-  }
-
-  &::after {
-    clear: both;
-    display: table;
-    content: "";
-  }
-}
 
 .bj-form-item-label {
   vertical-align: middle;
   float: left;
   text-align: right;
-  padding: 0 12px 0 0;
   box-sizing: border-box;
+
+  padding-top: calc(.5625rem + var(--tblr-border-width));
+  padding-bottom: calc(.5625rem + var(--tblr-border-width));
   margin-bottom: 0;
-  font-weight: 400;
+  font-size: inherit;
+  font-weight: var(--tblr-font-weight-medium);
+  line-height: 1.4285714286;
 
   &.is-required {
     &::before {
@@ -1890,16 +1880,27 @@ ul.ztree.zTreeDragUL {
   }
 }
 
-.bj-form-item-content {
-  line-height: 40px;
-  position: relative;
-  //font-size: 14px;
-  min-width: 0;
-  padding-bottom: 6px;
+.bj-form-item {
+  margin-bottom: 18px;
 
-  .ilabel {
-    font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &.checkbox {
+    .bj-form-item-label {
+      padding-top: 0;
+    }
   }
+}
+
+
+.bj-form-item-content {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+  margin-left: 10px;
+
 
   &.textarea {
     padding-top: 6px;
@@ -1907,24 +1908,18 @@ ul.ztree.zTreeDragUL {
   }
 
   .form-control {
-    line-height: 1.42857143;
 
     &.is-invalid {
       border-color: #dc3545;
     }
   }
 
-  input, select {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-  }
 
   .msg-box {
     opacity: 0;
     font-size: 12px;
     line-height: 1;
-    padding-top: 0;
+    padding-top: 4px;
     margin: 0;
     position: absolute;
     top: 100%;
@@ -1957,6 +1952,7 @@ ul.ztree.zTreeDragUL {
     float: none;
     padding: 0;
     width: auto !important;
+    margin-bottom: .5rem;
   }
 
   .bj-form-item-content {
@@ -1996,30 +1992,11 @@ ul.ztree.zTreeDragUL {
       }
 
       .msg-box {
+        margin-top: -5px;
         position: static;
-        //margin-top: 5px;
+        margin-bottom: 5px;
       }
     }
-  }
-}
-
-.bj-form {
-  // 默认大小
-  .bj-form-item-label {
-    line-height: 32px;
-  }
-
-  .bj-form-item-content {
-    line-height: 32px;
-
-    input:not([type='checkbox']):not([type='radio']), .bootstrap-select .dropdown-toggle {
-      height: 32px;
-    }
-  }
-
-  .btn {
-    padding: 6px 14px;
-    height: auto;
   }
 }
 

@@ -35,14 +35,17 @@
   </div>
 </div>
 <script>
-  $.ajax({
-    url: 'CHANGELOG.md',
-    type: 'get',
-    cache: false,
-    dataType: 'text',
-    success: function(data) {
-      $.CurrentNavtab.find('#bjui-changelog').html(markdownit().render(data))
-    }
-  })
+  (function () {
+    $.ajax({
+      url: 'CHANGELOG.md',
+      type: 'get',
+      cache: false,
+      dataType: 'text',
+      success: function(data) {
+        $.CurrentNavtab.find('#bjui-changelog').html(markdownit().render(data))
+      }
+    })
+
+  }())
 
 </script>
