@@ -4,24 +4,30 @@
     <div style="margin:15px auto 0; width:800px;">
       <fieldset>
         <legend>单选/复选框
-          <span class="subheader">pretty-checkbox</span>
         </legend>
         <table class="table">
           <thead>
           <tr>
-            <th>样例</th>
+            <th style="width: 300px">样例</th>
             <th>属性</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td><input type="checkbox" name="checkbox" id="j_form_checkbox1" value="1" data-toggle="icheck"
-                       data-label="复选框" data-init-type="icheck"></td>
-            <td>data-toggle="icheck" data-label="复选框" data-init-type="icheck"</td>
+                       data-label="复选框"></td>
+            <td>data-toggle="icheck" data-label="复选框"</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="checkbox" value="1" data-is-block="true" data-toggle="icheck"
+                       data-label="复选框1">
+              <input type="checkbox" name="checkbox" value="2" data-is-block="true" data-toggle="icheck"
+                       data-label="复选框2"></td>
+            <td>data-toggle="icheck" data-label="复选框" data-is-block="true"</td>
           </tr>
           <tr>
             <td><input type="checkbox" name="checkbox" id="j_form_checkbox2" value="1" data-toggle="icheck"
-                       data-label="已选中复选框" checked data-init-type="icheck"></td>
+                       data-label="已选中复选框"></td>
             <td>data-toggle="icheck" data-label="已选中复选框" checked</td>
           </tr>
           <tr>
@@ -43,7 +49,7 @@
           <tr>
             <td><input type="radio" name="radio2" id="j_form_radio2" value="1" data-toggle="icheck"
                        data-label="已选中单选框"
-                       checked data-init-type="icheck"></td>
+            ></td>
             <td>data-toggle="icheck" data-label="已选中单选框" checked</td>
           </tr>
           <tr>
@@ -84,7 +90,7 @@
                 <strong>复选、单选框的Label：</strong>直接添加<strong>[data-label]</strong>属性，可自动添加上Label。
               </div>
               <div class="alert alert-warning form-inline"><i class="fa fa-warning"></i> 参见 <a
-                href="https://github.com/lokesh-coder/pretty-checkbox" target="_blank">https://github.com/lokesh-coder/pretty-checkbox</a>。
+                href="https://v5.bootcss.com/docs/forms/checks-radios/" target="_blank">https://v5.bootcss.com/docs/forms/checks-radios/</a>
               </div>
             </td>
           </tr>

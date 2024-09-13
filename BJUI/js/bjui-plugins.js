@@ -85,46 +85,31 @@
 
     var _defaultCheckInit = function ($element) {
 
-      var type = $element.data('switch') ? 'switch' : (($element.attr('type') || '').toLowerCase())
+      const type = $element.data('switch') ? 'switch' : (($element.attr('type') || '').toLowerCase())
 
-      var className = $element.data('class') || ''
+      let className = $element.data('class') || ''
 
-      var wrapHtml
-      var icon = ''
-      var color
-
-      switch (type) {
-        case 'checkbox':
-          wrapHtml = '<div class="pretty p-icon p-curve ' + className + '"></div>'
-          icon = '<i class="icon bjicon-ok"></i>'
-          color = $element.data('color') || 'primary-o'
-          break
-        case 'radio':
-          wrapHtml = '<div class="pretty p-default p-round ' + className + '"></div>'
-          icon = ''
-          break
-        case 'switch':
-          wrapHtml = '<div class="pretty p-switch p-fill ' + className + '"></div>'
-          icon = ''
-          break
+      if (type === 'switch') {
+        className += ' form-switch'
       }
 
-      if (!wrapHtml) {
-        return
+      if (!$element.data('isBlock')) {
+        className += ' form-check-inline'
       }
+      className = className.trim()
 
-      if (!color) {
-        color = $element.data('color') || 'primary'
-      }
+      let wrapHtml = '<label class="form-check '+ className +'"></label>'
 
-      var label = $element.data('label') || ''
+      const label = $element.data('label') || ''
+
+      $element.addClass('form-check-input')
 
       $element.wrap($(wrapHtml))
 
-      $element.parent().append('<div class="state p-' + color + '">' + icon + '<label>' + label + '</label></div>')
+      $element.parent().append('<span class="form-check-label">' + label + '</span>')
 
     }
-    var $icheck = $box.find('[data-toggle="icheck"]')
+    const $icheck = $box.find('[data-toggle="icheck"]')
 
     $icheck.each(function () {
       _defaultCheckInit($(this))
@@ -132,25 +117,25 @@
 
     /* check all */
     $icheck.filter('.checkboxCtrl').each(function () {
-      var $this = $(this)
+      const $this = $(this)
       $this.on('change', function () {
-        var $that = $(this)
-        var checked = $that.prop('checked')
-        var group = $that.data('group')
+        const $that = $(this)
+        const checked = $that.prop('checked')
+        const group = $that.data('group')
         $box.find(':checkbox[name="' + group + '"]').prop('checked', checked)
       })
     })
 
 
-    var $boolCheck = $box.find('[data-toggle="boolcheck"]')
+    const $boolCheck = $box.find('[data-toggle="boolcheck"]')
 
     $boolCheck.each(function (i) {
-      var $element = $(this)
-      var name = $element.attr('name')
+      const $element = $(this)
+      const name = $element.attr('name')
       $element.removeAttr('name')
-      var $input
+      let $input
       if (name) {
-        var value = $element.is(':checked') ? 1 : 0
+        const value = $element.is(':checked') ? 1 : 0
         $input = $('<input type="hidden" value="' + value + '" name="' + name + '">').appendTo($element.parent())
       }
       if ($input) {
